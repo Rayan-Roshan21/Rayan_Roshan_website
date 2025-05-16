@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Sidebar from './Sidebar/Sidebar';
 import profileImage from './assets/profile-image.JPG';
-import Tooltip from './Tooltip';
+import Tooltip from './Information_bar/Tooltip';
 
 function App() {
   const [introText, setIntroText] = useState('');
