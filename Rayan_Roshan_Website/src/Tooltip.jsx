@@ -35,8 +35,8 @@ const StyledWrapper = styled.div`
 
   .example-2 {
     position: fixed;
-    bottom: 220px;
-    right: 308px;
+    bottom: 210px;
+    right: 315px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -60,6 +60,7 @@ const StyledWrapper = styled.div`
     font-size: 14px;
     white-space: nowrap;
     transition: all 0.3s ease;
+    font-family: Arial, sans-serif;
     z-index: 2;
   }
 
