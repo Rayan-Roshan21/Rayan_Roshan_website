@@ -64,6 +64,7 @@ function App() {
       <div id="intro">{introText}</div>
     </div>
     <div>
+      <img className='profile-image' src={profileImage} alt="profile-image" />
         <Tooltip />
       </div></>
   );
