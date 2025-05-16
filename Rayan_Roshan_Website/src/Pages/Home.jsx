@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
-import Sidebar from './Sidebar/Sidebar';
-import profileImage from './assets/profile-image.JPG';
-import Tooltip from './Information_bar/Tooltip';
+import '../Pages_CSS/Home.css';
+import Sidebar from '../Sidebar/Sidebar';
+import profileImage from '../assets/profile-image.JPG';
+import Tooltip from '../Information_bar/Tooltip';
 
-function App() {
+function Home() {
   const [introText, setIntroText] = useState('');
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -70,4 +70,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
