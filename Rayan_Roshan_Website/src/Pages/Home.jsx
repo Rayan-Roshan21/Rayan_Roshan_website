@@ -3,6 +3,8 @@ import '../Pages_CSS/Home.css';
 import Sidebar from '../Sidebar/Sidebar';
 import profileImage from '../assets/profile-image.JPG';
 import Tooltip from '../Information_bar/Tooltip';
+import { motion } from 'framer-motion';
+
 
 function Home() {
   const [introText, setIntroText] = useState('');
@@ -57,17 +59,24 @@ function Home() {
   }, [charIndex, isDeleting, textIndex, texts]);
 
   return (
-    <>
+  <motion.div
+    initial={{ scale: 0.9, opacity: 0 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -20 }}
+    transition={{ duration: 0.5 }}
+  >
     <div className="App">
       <Sidebar />
       <h1 className="title">Rayan Roshan</h1>
       <div id="intro">{introText}</div>
     </div>
     <div>
-      <img className='profile-image' src={profileImage} alt="profile-image" />
-        <Tooltip />
-      </div></>
-  );
+      <img className="profile-image" src={profileImage} alt="profile-image" />
+      <Tooltip />
+    </div>
+  </motion.div>
+);
+
 }
 
 export default Home;
