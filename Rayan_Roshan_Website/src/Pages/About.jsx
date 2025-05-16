@@ -1,4 +1,14 @@
+import Sidebar from '../Sidebar/Sidebar';
+import '../Pages_CSS/About.css';
 function About() {
-  return <h1>About Me</h1>;
+  return (
+    <><div>
+      <Sidebar />
+      <h1 className="name">Rayan Roshan</h1>
+    </div>
+    <div>
+      <h2 className='title'>About</h2>
+      </div></>
+  );
 }
 export default About;
