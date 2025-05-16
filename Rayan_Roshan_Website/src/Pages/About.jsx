@@ -7,7 +7,7 @@ function About() {
       <h1 className="name">Rayan Roshan</h1>
     </div>
     <div>
-      <h2 className='title'>About</h2>
+      <h2 className='about-title'>About</h2>
       </div></>
   );
 }
