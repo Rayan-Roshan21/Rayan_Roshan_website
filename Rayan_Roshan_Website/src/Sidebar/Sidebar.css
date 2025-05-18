@@ -44,7 +44,7 @@
 .menu-toggle {
     position: fixed;
     top: 30px;
-    right: 32px;
+    right: 40px;
     font-size: 26px;
     cursor: pointer;
     z-index: 1100;
