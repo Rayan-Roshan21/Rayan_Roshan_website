@@ -4,7 +4,7 @@ import Sidebar from '../Sidebar/Sidebar';
 import profileImage from '../assets/profile-image.JPG';
 import Tooltip from '../Information_bar/Tooltip';
 import { motion } from 'framer-motion';
-
+import Copyright from '../Copyright_title/Copyright_title'
 
 function Home() {
   const [introText, setIntroText] = useState('');
@@ -73,6 +73,9 @@ function Home() {
       <div>
         <img className="profile-image" src={profileImage} alt="profile-image" />
         <Tooltip />
+      </div>
+      <div>
+        <Copyright />
       </div>
     </motion.div>
 );

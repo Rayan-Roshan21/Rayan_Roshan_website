@@ -1,0 +1,10 @@
+.Copyright-title {
+    font-size: medium;
+    color: gray;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
