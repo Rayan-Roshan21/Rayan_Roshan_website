@@ -17,10 +17,7 @@ function About() {
       <h2 className='about-title'>About</h2>
       <div>
         <h2 className='Subtitle'>Who am I</h2>
-         <p class = "paragraph">I'm a computer science student passionate about building innovative software and solving real-world problems through technology. I have experience in mobile app development, with a focus on Swift and Firebase, and enjoy exploring new technologies in the fields of AI and data science. As an entrepreneur, I love turning ideas into scalable products and am always looking for new challenges to learn and grow.</p>
-      </div>
-      <div>
-        
+         <p class = "about-me-paragraph">Computer science student passionate about solving real-world problems through technology. Experienced in mobile app development with Swift and Firebase, with strong interests in AI, data science, and entrepreneurship. Driven to turn ideas into scalable products and constantly seeking new challenges to grow.</p>
       </div>
       <div>
         <Copyright />
