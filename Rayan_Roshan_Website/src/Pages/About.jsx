@@ -3,7 +3,7 @@ import Sidebar from '../Components/Sidebar/Sidebar';
 import '../Pages_CSS/About.css';
 import { motion } from 'framer-motion';
 import Copyright from '../Components/Copyright_title/Copyright_title'
-import name_title from '../Components/name_title/name_title';
+import Name_title from '../Components/name_title/name_title';
 
 function About() {
   return (
@@ -14,7 +14,7 @@ function About() {
       transition={{ duration: 0.5 }}
     >
       <Sidebar />
-      <name_title/>
+      <Name_title />
       <h2 className='about-title'>About</h2>
       <div>
         <h2 className='Subtitle'>Who am I</h2>

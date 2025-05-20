@@ -5,8 +5,7 @@ import profileImage from '../assets/profile-image.JPG';
 import Tooltip from '../Components/Information_bar/Tooltip';
 import { motion } from 'framer-motion';
 import Copyright from '../Components/Copyright_title/Copyright_title'
-import name_title from '../Components/name_title/name_title';
-
+import Name_title from '../Components/name_title/name_title';
 function Home() {
   const [introText, setIntroText] = useState('');
   const [textIndex, setTextIndex] = useState(0);
@@ -68,15 +67,15 @@ function Home() {
     >
       <div className="App">
         <Sidebar />
-        <name_title />
+        <Name_title />
         <div id="intro">{introText}</div>
-      </div>
       <div>
         <img className="profile-image" src={profileImage} alt="profile-image" />
         <Tooltip />
       </div>
       <div>
         <Copyright />
+      </div>
       </div>
     </motion.div>
 );
