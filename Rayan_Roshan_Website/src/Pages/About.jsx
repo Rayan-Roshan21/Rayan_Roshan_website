@@ -4,6 +4,7 @@ import '../Pages_CSS/About.css';
 import { motion } from 'framer-motion';
 import Copyright from '../Components/Copyright_title/Copyright_title'
 import Name_title from '../Components/name_title/name_title';
+import Image_slideshow from '../Components/Image_carousel/Image_slideshow';
 
 function About() {
   return (
@@ -19,6 +20,9 @@ function About() {
       <div>
         <h2 className='Subtitle'>Who am I</h2>
          <p class = "about-me-paragraph">A Computer science student passionate about solving real-world problems through technology. Experienced in mobile app development with Swift and Firebase, with strong interests in AI, data science, and entrepreneurship. Driven to turn ideas into scalable products and constantly seeking new challenges to grow.</p>
+      </div>
+      <div>
+        <Image_slideshow />
       </div>
       <div>
         <Copyright />

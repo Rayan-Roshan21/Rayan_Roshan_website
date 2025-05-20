@@ -1,6 +1,6 @@
 .title{
   position: fixed;
-  top: 12px; 
+  top: 24px; 
   left: 50%;
   transform: translateX(-50%);
   font-family: Arial, Helvetica, sans-serif;
@@ -15,7 +15,7 @@
 
 .title-alt {
   position: fixed;
-  top: 12px; 
+  top: 24px; 
   left: 15%;
   transform: translateX(-50%);
   font-family: Arial, Helvetica, sans-serif;
