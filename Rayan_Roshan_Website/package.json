@@ -15,7 +15,9 @@
     "react-dom": "^19.1.0",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^7.6.0",
+    "react-slick": "^0.30.3",
     "react-slideshow-image": "^4.3.2",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^6.1.18"
   },
   "devDependencies": {
