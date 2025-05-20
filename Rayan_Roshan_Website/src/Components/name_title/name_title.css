@@ -1,9 +1,17 @@
 .title{
   position: fixed;
-  top: 20px; 
+  top: 12px; 
   left: 50%;
   transform: translateX(-50%);
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   z-index: 1200;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  width: 50%
+}
+
+.title:hover {
+  color: #aaa;
 }
