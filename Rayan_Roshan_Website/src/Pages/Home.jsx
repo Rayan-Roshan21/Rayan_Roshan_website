@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import '../Pages_CSS/Home.css';
-import Sidebar from '../Sidebar/Sidebar';
+import Sidebar from '../Components/Sidebar/Sidebar';
 import profileImage from '../assets/profile-image.JPG';
-import Tooltip from '../Information_bar/Tooltip';
+import Tooltip from '../Components/Information_bar/Tooltip';
 import { motion } from 'framer-motion';
-import Copyright from '../Copyright_title/Copyright_title'
+import Copyright from '../Components/Copyright_title/Copyright_title'
+import name_title from '../Components/name_title/name_title';
 
 function Home() {
   const [introText, setIntroText] = useState('');
@@ -67,7 +68,7 @@ function Home() {
     >
       <div className="App">
         <Sidebar />
-        <h1 className="title">Rayan Roshan</h1>
+        <name_title />
         <div id="intro">{introText}</div>
       </div>
       <div>

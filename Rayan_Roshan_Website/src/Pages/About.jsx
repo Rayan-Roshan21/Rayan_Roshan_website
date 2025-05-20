@@ -1,8 +1,9 @@
 import React from 'react';
-import Sidebar from '../Sidebar/Sidebar';
+import Sidebar from '../Components/Sidebar/Sidebar';
 import '../Pages_CSS/About.css';
 import { motion } from 'framer-motion';
-import Copyright from '../Copyright_title/Copyright_title'
+import Copyright from '../Components/Copyright_title/Copyright_title'
+import name_title from '../Components/name_title/name_title';
 
 function About() {
   return (
@@ -13,7 +14,7 @@ function About() {
       transition={{ duration: 0.5 }}
     >
       <Sidebar />
-      <h1 className="name">Rayan Roshan</h1>
+      <name_title/>
       <h2 className='about-title'>About</h2>
       <div>
         <h2 className='Subtitle'>Who am I</h2>
