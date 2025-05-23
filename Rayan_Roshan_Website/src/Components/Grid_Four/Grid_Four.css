@@ -1,0 +1,47 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.grid-four-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0; /* Remove gap to use borders as dividers */
+    padding: 32px;
+    background: #f9f9f9;
+    margin-top: auto; /* Pushes the grid to the bottom */
+}
+
+.grid-four-box {
+    background: #fff;
+    border-radius: 0; /* Remove radius for seamless dividers */
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 160px;
+    font-size: 1.25rem;
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+    transition: box-shadow 0.3s, transform 0.3s;
+    border-right: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Remove right border for last column */
+.grid-four-box:nth-child(2n) {
+    border-right: none;
+}
+/* Remove bottom border for last row */
+.grid-four-box:nth-child(n+3) {
+    border-bottom: none;
+}
+
+.grid-four-box:hover {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    transform: scale(1.04);
+}

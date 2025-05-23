@@ -6,6 +6,7 @@ import Copyright from '../Components/Copyright_title/Copyright_title'
 import Name_title from '../Components/name_title/name_title';
 import Image_slideshow from '../Components/Image_carousel/Image_slideshow';
 import Down_arrow from '../Components/Down_arrow/Down_arrow';
+import GridFour from '../Components/Grid_Four/Grid_Four'; 
 
 function About() {
   return (
@@ -25,8 +26,9 @@ function About() {
       <div>
         <Image_slideshow />
       </div>
-      <Down_arrow />
+      <GridFour />
       <div>
+        <Down_arrow />
         <Copyright />
       </div>
     </motion.div>
