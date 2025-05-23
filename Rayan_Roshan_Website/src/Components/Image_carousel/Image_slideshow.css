@@ -1,11 +1,13 @@
 .box {
-  max-width: 700px;
   width: 700px;
-  height: 400px; /* Set your desired height */
+  height: 400px; /* Set a fixed height */
   position: absolute;
-  top: 300px;
+  top: 280px;
   left: 850px;
-  overflow: hidden; /* Hide overflow */
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,6 +16,32 @@
 .slide img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* or 'cover' if you want to fill the box */
+  object-fit: cover; /* Ensures images fill the box */
+  border-radius: 12px;
   display: block;
+}
+
+.nav_btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  z-index: 4;
+  border: none;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.nav_btn_left {
+  left: 10px;
+}
+
+.nav_btn_right {
+  right: 10px;
 }
