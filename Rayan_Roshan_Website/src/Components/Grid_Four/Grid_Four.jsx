@@ -5,7 +5,7 @@ function GridFour() {
     return (
         <div className="grid-four-container">
             <div className="grid-box">
-                <h2>Technical Skills</h2>
+                <h2 className="Grid-title">Technical Skills</h2>
                 <ul>
                     <li>JavaScript / React</li>
                     <li>HTML / CSS</li>
@@ -15,7 +15,7 @@ function GridFour() {
                 </ul>
             </div>
             <div className="grid-box">
-                <h2>Soft Skills</h2>
+                <h2 className="Grid-title">Soft Skills</h2>
                 <ul>
                     <li>Communication</li>
                     <li>Teamwork</li>
@@ -25,22 +25,13 @@ function GridFour() {
                 </ul>
             </div>
             <div className="grid-box">
-                <h2>Softwares</h2>
+                <h2 className="Grid-title">Softwares</h2>
                 <ul>
                     <li>VS Code</li>
                     <li>Figma</li>
                     <li>Canva</li>
                     <li>Google Suite</li>
                     <li>Microsoft Office</li>
-                </ul>
-            </div>
-            <div className="grid-box">
-                <h2>Hobbies</h2>
-                <ul>
-                    <li>Photography</li>
-                    <li>Traveling</li>
-                    <li>Music</li>
-                    <li>Gaming</li>
                 </ul>
             </div>
         </div>
