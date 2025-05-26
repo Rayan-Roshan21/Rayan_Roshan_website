@@ -26,11 +26,11 @@ function About() {
       <div>
         <Image_slideshow />
       </div>
-      <GridFour />
       <div>
-        <Down_arrow />
-        <Copyright />
+        <GridFour />
       </div>
+      <Down_arrow />
+      <Copyright />
     </motion.div>
   );
 }

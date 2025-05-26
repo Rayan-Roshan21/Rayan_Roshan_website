@@ -1,47 +1,41 @@
-body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    margin: 0;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .grid-four-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 0; /* Remove gap to use borders as dividers */
-    padding: 32px;
-    background: #f9f9f9;
-    margin-top: auto; /* Pushes the grid to the bottom */
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        position: relative;
+        top: 750px;
+        padding: 0 2rem;
+        padding-bottom: 10%;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        opacity: 0;
+        animation: fadeIn 1s ease forwards;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 25px;
 }
 
-.grid-four-box {
-    background: #fff;
-    border-radius: 0; /* Remove radius for seamless dividers */
-    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 160px;
-    font-size: 1.25rem;
-    font-weight: 500;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #222;
-    transition: box-shadow 0.3s, transform 0.3s;
-    border-right: 1px solid #e0e0e0;
-    border-bottom: 1px solid #e0e0e0;
+.grid-item {
+        background-color: #e9e9e9;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        opacity: 0;
+        animation: fadeIn 0.8s ease forwards;
+        animation-delay: calc(0.1s * var(--item-index, 0));
+        border: 1px solid #d1d1d1;
+        outline: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-/* Remove right border for last column */
-.grid-four-box:nth-child(2n) {
-    border-right: none;
-}
-/* Remove bottom border for last row */
-.grid-four-box:nth-child(n+3) {
-    border-bottom: none;
-}
-
-.grid-four-box:hover {
-    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-    transform: scale(1.04);
-}
