@@ -1,12 +1,12 @@
 .arrow {
   position: absolute;
-  top: 725px;
+  top: 720px;
   left: 50%;
   display: flex;
   animation: bounce 1.2s infinite;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 500;
-  font-size: 63px;
+  font-size: 80px;
   text-align: center;
   justify-content: center; /* horizontal */
   align-items: center;
