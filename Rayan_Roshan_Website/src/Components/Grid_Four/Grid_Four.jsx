@@ -9,7 +9,7 @@ function GridFour() {
                 <ul>
                     <li>JavaScript / React</li>
                     <li>HTML / CSS</li>
-                    <li>Node.js</li>
+                    <li>Java</li>
                     <li>Python</li>
                     <li>Git & GitHub</li>
                 </ul>
@@ -25,13 +25,13 @@ function GridFour() {
                 </ul>
             </div>
             <div className="grid-box">
-                <h2>Softwares I Use</h2>
+                <h2>Softwares</h2>
                 <ul>
                     <li>VS Code</li>
                     <li>Figma</li>
-                    <li>Adobe Photoshop</li>
-                    <li>Slack</li>
-                    <li>Postman</li>
+                    <li>Canva</li>
+                    <li>Google Suite</li>
+                    <li>Microsoft Office</li>
                 </ul>
             </div>
             <div className="grid-box">
@@ -39,7 +39,6 @@ function GridFour() {
                 <ul>
                     <li>Photography</li>
                     <li>Traveling</li>
-                    <li>Reading</li>
                     <li>Music</li>
                     <li>Gaming</li>
                 </ul>
