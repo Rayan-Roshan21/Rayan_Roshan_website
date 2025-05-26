@@ -14,10 +14,10 @@
 }
 
 .title-alt {
-  position: fixed;
-  top: 10px; 
-  left: 15.35%;
-  transform: translateX(-50%);
+  position: static;
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 15%; /* Adjusted to position the title properly */
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   z-index: 1200;
@@ -33,5 +33,5 @@
 }
 
 .title-alt:hover {
-  transform: translateX(-50%) scale(1.03);
+  transform: scale(1.03);
 }
