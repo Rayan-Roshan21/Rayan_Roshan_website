@@ -10,13 +10,13 @@
   color: inherit;
   cursor: pointer;
   transition: all 0.3s ease;
-  width: 50%
+  width: 50%;
 }
 
 .title-alt {
   position: fixed;
   top: 10px; 
-  left: 15%;
+  left: 15.35%;
   transform: translateX(-50%);
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
@@ -25,9 +25,13 @@
   color: inherit;
   cursor: pointer;
   transition: all 0.3s ease;
-  width: 50%
+  width: 50%;
 }
 
 .title:hover {
+  transform: translateX(-50%) scale(1.03);
+}
+
+.title-alt:hover {
   transform: translateX(-50%) scale(1.03);
 }
