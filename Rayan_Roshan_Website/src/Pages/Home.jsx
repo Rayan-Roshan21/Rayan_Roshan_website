@@ -73,9 +73,6 @@ function Home() {
         <img className="profile-image" src={profileImage} alt="profile-image" />
         <Tooltip />
       </div>
-      <div>
-        <Copyright />
-      </div>
       </div>
     </motion.div>
 );

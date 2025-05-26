@@ -1,11 +1,11 @@
 .Copyright-title {
-    position: absolute;
-    bottom: 0px;
+    display: flex;  
+    width: 100%;
     font-size: medium;
     color: gray;
     font-family: Arial, Helvetica, sans-serif;
-    font-style: normal;
     text-align: center;
-    width: 100%;
-    margin-top: auto;
+    background: white;
+    z-index: 1000;
+    /* Removed left, right, bottom, and position: static */
 }
