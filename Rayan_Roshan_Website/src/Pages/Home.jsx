@@ -5,7 +5,7 @@ import profileImage from '../assets/profile-image.JPG';
 import Tooltip from '../Components/Information_bar/Tooltip';
 import { motion } from 'framer-motion';
 import Copyright from '../Components/Copyright_title/Copyright_title'
-import Name_title from '../Components/name_title/name_title';
+import Name_title from '../Components/Name_title/Name_title.jsx';
 function Home() {
   const [introText, setIntroText] = useState('');
   const [textIndex, setTextIndex] = useState(0);
