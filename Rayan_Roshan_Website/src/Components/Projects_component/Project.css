@@ -1,35 +1,48 @@
 .project-container {
     font-family: Arial, Helvetica, sans-serif;
-    padding: 10px;
+    padding: 20px;
     border: 3px solid #ccc;
-    border-radius: 10px;
+    border-radius: 0; /* Remove border radius for seamless connection */
     background-color: #f9f9f9;
-    margin: 10px auto;
+    margin: 0; /* Remove margins */
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    height: 400px;
-    flex-direction: column; /* Add this line */
-    width: 30%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;    height: 400px;
+    width: 45%; /* Further reduced to ensure side-by-side placement */
+    box-sizing: border-box; /* This includes padding and border in the width calculation */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    overflow: hidden;
+}
+.project-container:hover {
+    transform: translateY(-5px);
 }
 
+.projects-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    gap: 30px; /* Remove gap between containers */
+    justify-content: center;
+    align-items: flex-start;
+}
 .project_name {
     font-size: 22px;
     font-weight: bold;
     color: #333;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     font-family: Arial, Helvetica, sans-serif;
-    text-align: left;
+    text-align: center;
 }
 
 .project-description {
     font-size: 17px;
     color: #555;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    flex-grow: 1;
 }
 
 .project-image {
@@ -37,8 +50,23 @@
     height: 180px;
     object-fit: cover;
     border-radius: 8px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     background-color: #e0f7d9;
     box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     display: block;
+}
+
+.project-container .project-github{
+    font-size: 16px;
+    color: #007bff;
+    text-decoration: none;
+    margin-top: auto;
+    margin-bottom: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.project-container .project-github:hover {
+    text-decoration: underline;
+    color: #0056b3;
 }
