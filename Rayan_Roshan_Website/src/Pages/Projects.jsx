@@ -38,11 +38,11 @@ function Projects() {
       </div>
       <div className='project-container'>
         <img className = "project-image" src={multimodalImage} alt="Related image of project." />
-        <p className='project_name'>Multimodal Video Analysis</p>
-        <p className='project-role'>Software Engineer/Project Manager</p>
-        <p className='project-description'>A powerful AI-driven web application that lets you chat with YouTube videos, generate smart timestamps, and search for specific scenes using natural language. Worked with two other software engineering residents from Headstarter.</p>
+        <p className='project_name'> Immigrant Families and Child Care Inequality in the GTA</p>
+        <p className='project-role'>Student Researcher</p>
+        <p className='project-description'>Analyzed child care accessibility for over 700,000 immigrant families across 663 GTA regions using Python, revealing infrastructure gaps in areas like Brampton and Mississauga and presenting policy recommendations to Statistics Canada competition. In collaboration with my partner Ian Macwan.</p>
         <div className='project-buttons'>
-          <a className = "project-github" href="https://github.com/razzacktiger/Multimodal-video-analysis-deployed" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+          <a className = "project-google-docs" href="https://docs.google.com/document/d/1wDk_c1n9sb-IAN295CwN3162BCbKSOUX04ZgxMZ2ins/edit?usp=sharing" target="_blank" rel="noopener noreferrer">View on Google Docs</a>
         </div>
       </div>
     </div>

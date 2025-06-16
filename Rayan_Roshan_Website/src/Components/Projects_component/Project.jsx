@@ -11,6 +11,9 @@ function Project(props) {
                 {props.linkedin && (
                     <a className = "project-linkedin" href={props.linkedin} target="_blank" rel="noopener noreferrer">View on LinkedIn</a>
                 )}
+                {props.google-docs && (
+                    <a className = "project-google-docs" href={props.google-docs} target="_blank" rel="noopener noreferrer">View on Google Docs</a>
+                )}
             </div>
         </div>
     );
