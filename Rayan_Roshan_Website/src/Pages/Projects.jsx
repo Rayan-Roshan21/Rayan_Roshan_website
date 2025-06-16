@@ -6,6 +6,7 @@ import Copyright_title from '../Components/Copyright_title/Copyright_title.jsx';
 import '../Pages_CSS/Projects.css';
 import '../Components/Projects_component/Project.css';
 import PropertyImage from '../assets/property-image.jpg';
+import multimodalImage from '../assets/multimodal video analysis.png';
 function Projects() {
   return (
     <motion.div
@@ -21,16 +22,16 @@ function Projects() {
       <div className='project-container'>
         <img className = "project-image" src={PropertyImage} alt="Related image of project." />
         <p className='project_name'>Property Recommendation Software</p>
-        <p className='project-role'>Software Developer</p>
+        <p className='project-role'>Software Engineer</p>
         <p className='project-description'>This project is a Python-based property recommendation tool that uses feature similarity to identify the top k comparable properties to a given subject property. It reads property data from a JSON file and outputs the most similar properties using a distance-based algorithm.</p>
         <a className = "project-github" href="https://github.com/Rayan-Roshan21/Property-Recommendation-System" target="_blank" rel="noopener noreferrer">View on GitHub</a>
       </div>
       <div className='project-container'>
-        <img className = "project-image" src={PropertyImage} alt="Related image of project." />
-        <p className='project_name'>Hehe</p>
-        <p className='project-role'>Software Developer</p>
-        <p className='project-description'>This project is a Python-based property recommendation tool that uses feature similarity to identify the top k comparable properties to a given subject property. It reads property data from a JSON file and outputs the most similar properties using a distance-based algorithm.</p>
-        <a className = "project-github" href="https://github.com/Rayan-Roshan21/Property-Recommendation-System" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        <img className = "project-image" src={multimodalImage} alt="Related image of project." />
+        <p className='project_name'>Multimodal Video Analysis</p>
+        <p className='project-role'>Software Engineer/Project Manager</p>
+        <p className='project-description'>A powerful AI-driven web application that lets you chat with YouTube videos, generate smart timestamps, and search for specific scenes using natural language. Worked with two other software engineering residents from Headstarter.</p>
+        <a className = "project-github" href="https://github.com/razzacktiger/Multimodal-video-analysis-deployed" target="_blank" rel="noopener noreferrer">View on GitHub</a>
       </div>
     </div>
     </motion.div>
