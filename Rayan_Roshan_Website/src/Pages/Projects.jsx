@@ -22,23 +22,28 @@ function Projects() {
       <div className='project-container'>
         <img className = "project-image" src={PropertyImage} alt="Related image of project." />
         <p className='project_name'>Property Recommendation Software</p>
-        <p className='project-role'>Software Engineer</p>
-        <p className='project-description'>This project is a Python-based property recommendation tool that uses feature similarity to identify the top k comparable properties to a given subject property. It reads property data from a JSON file and outputs the most similar properties using a distance-based algorithm.</p>
-        <a className = "project-github" href="https://github.com/Rayan-Roshan21/Property-Recommendation-System" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        <p className='project-role'>Software Engineer</p>        <p className='project-description'>This project is a Python-based property recommendation tool that uses feature similarity to identify the top k comparable properties to a given subject property. It reads property data from a JSON file and outputs the most similar properties using a distance-based algorithm.</p>
+        <div className='project-buttons'>
+          <a className = "project-github" href="https://github.com/Rayan-Roshan21/Property-Recommendation-System" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+          <a className = "project-linkedin" href="https://www.linkedin.com/posts/rayan-roshan-21_property-recommendation-software-activity-7111234567890123456-abcdefg" target="_blank" rel="noopener noreferrer">View on LinkedIn</a>
+        </div>
+      </div>      <div className='project-container'>
+        <img className = "project-image" src={multimodalImage} alt="Related image of project." />
+        <p className='project_name'>Multimodal Video Analysis</p>
+        <p className='project-role'>Software Engineer/Project Manager</p>
+        <p className='project-description'>A powerful AI-driven web application that lets you chat with YouTube videos, generate smart timestamps, and search for specific scenes using natural language. Worked with two other software engineering residents from Headstarter.</p>
+        <div className='project-buttons'>
+          <a className = "project-github" href="https://github.com/razzacktiger/Multimodal-video-analysis-deployed" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
       </div>
       <div className='project-container'>
         <img className = "project-image" src={multimodalImage} alt="Related image of project." />
         <p className='project_name'>Multimodal Video Analysis</p>
         <p className='project-role'>Software Engineer/Project Manager</p>
         <p className='project-description'>A powerful AI-driven web application that lets you chat with YouTube videos, generate smart timestamps, and search for specific scenes using natural language. Worked with two other software engineering residents from Headstarter.</p>
-        <a className = "project-github" href="https://github.com/razzacktiger/Multimodal-video-analysis-deployed" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-      </div>
-      <div className='project-container'>
-        <img className = "project-image" src={multimodalImage} alt="Related image of project." />
-        <p className='project_name'>Multimodal Video Analysis</p>
-        <p className='project-role'>Software Engineer/Project Manager</p>
-        <p className='project-description'>A powerful AI-driven web application that lets you chat with YouTube videos, generate smart timestamps, and search for specific scenes using natural language. Worked with two other software engineering residents from Headstarter.</p>
-        <a className = "project-github" href="https://github.com/razzacktiger/Multimodal-video-analysis-deployed" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        <div className='project-buttons'>
+          <a className = "project-github" href="https://github.com/razzacktiger/Multimodal-video-analysis-deployed" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
       </div>
     </div>
     </motion.div>
