@@ -7,6 +7,8 @@ import '../Pages_CSS/Projects.css';
 import '../Components/Projects_component/Project.css';
 import PropertyImage from '../assets/property-image.jpg';
 import multimodalImage from '../assets/multimodal video analysis.png';
+import torontoImage from '../assets/toronto-photo.jpg';
+
 function Projects() {
   return (
     <motion.div
@@ -37,7 +39,7 @@ function Projects() {
         </div>
       </div>
       <div className='project-container'>
-        <img className = "project-image" src={multimodalImage} alt="Related image of project." />
+        <img className = "project-image" src={torontoImage} alt="Related image of project." />
         <p className='project_name'> Immigrant Families and Child Care Inequality in the GTA</p>
         <p className='project-role'>Student Researcher</p>
         <p className='project-description'>Analyzed child care accessibility for over 700,000 immigrant families across 663 GTA regions using Python, revealing infrastructure gaps in areas like Brampton and Mississauga and presenting policy recommendations to Statistics Canada competition. In collaboration with my partner Ian Macwan.</p>
