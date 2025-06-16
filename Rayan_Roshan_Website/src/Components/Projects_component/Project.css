@@ -7,9 +7,8 @@
     margin: 0; /* Remove margins */
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;    min-height: 450px;
-    width: 45%; /* Further reduced to ensure side-by-side placement */
+    justify-content: flex-start;    align-items: stretch;    min-height: 450px;
+    width: 48%; /* Increased to show only two per row */
     box-sizing: border-box; /* This includes padding and border in the width calculation */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
     transition: transform 0.3s ease;
@@ -22,8 +21,8 @@
 .projects-wrapper {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap; /* Prevent wrapping */
-    gap: 20px; /* Small gap between containers */
+    flex-wrap: wrap; /* Allow wrapping for multiple rows */
+    gap: 15px; /* Smaller gap between containers */
     justify-content: center;
     align-items: flex-start;
 }
