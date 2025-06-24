@@ -8,6 +8,7 @@ import '../Components/Projects_component/Project.css';
 import PropertyImage from '../assets/property-image.jpg';
 import multimodalImage from '../assets/multimodal video analysis.png';
 import torontoImage from '../assets/toronto-photo.jpg';
+import medicalFormImage from '../assets/medical_form.jpg';
 
 function Projects() {
   return (
@@ -29,7 +30,9 @@ function Projects() {
           <a className = "project-github" href="https://github.com/Rayan-Roshan21/Property-Recommendation-System" target="_blank" rel="noopener noreferrer">View on GitHub</a>
           <a className = "project-linkedin" href="https://www.linkedin.com/feed/update/urn:li:activity:7333915404685254658/" target="_blank" rel="noopener noreferrer">View on LinkedIn</a>
         </div>
-      </div>      <div className='project-container'>
+      </div>
+            
+      <div className='project-container'>
         <img className = "project-image" src={multimodalImage} alt="Related image of project." />
         <p className='project_name'>Multimodal Video Analysis</p>
         <p className='project-role'>Software Engineer/Project Manager</p>
@@ -39,6 +42,17 @@ function Projects() {
            <a className = "project-linkedin" href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">View on LinkedIn</a>
         </div>
       </div>
+      <div className='project-container'>
+        <img className = "project-image" src={medicalFormImage} alt="Related image of project." />
+        <p className='project_name'>
+Automate the Prior Authorization (PA) Form Filling Workflow</p>
+        <p className='project-role'>Software Engineer</p>
+        <p className='project-description'>An intelligent automation system that uses AI models to extract information from healthcare referral packages and automatically fill Prior Authorization (PA) forms, reducing manual processing time and improving accuracy.</p>
+        <div className='project-buttons'>
+          <a className = "project-github" href="https://github.com/Rayan-Roshan21/mandolin-project" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+      </div>
+      
       <div className='project-container'>
         <img className = "project-image" src={torontoImage} alt="Related image of project." />
         <p className='project_name'> Immigrant Families and Child Care Inequality in the GTA</p>
