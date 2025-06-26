@@ -5,7 +5,8 @@ import Sidebar from '../Components/Sidebar/Sidebar.jsx';
 import '../Pages_CSS/Contact.css';
 
 function Contacts() {
-   <motion.div
+  return (
+    <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -30 }}
@@ -15,7 +16,8 @@ function Contacts() {
       <Sidebar />
       <Name_title />
     </div>  
-
+    <h2 className='contact-title'>Contact me!</h2>
     </motion.div>
+  );
 }
 export default Contacts;
