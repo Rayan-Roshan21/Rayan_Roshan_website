@@ -12,40 +12,85 @@ This portfolio website serves as a digital resume and project showcase, designed
 
 ## ✨ Features
 - Responsive design for optimal viewing on all devices
-- Modern UI/UX with intuitive navigation
-- Project showcase with filtering capabilities
-- Detailed about section with my background and skills
-- Contact form for direct communication
-- Resume download option
+- Modern UI/UX with intuitive navigation and smooth animations
+- Project showcase with GitHub and LinkedIn links
+- Interactive components with hover effects
+- Mobile-first responsive design
+- Fast loading with Vite optimization
 
 ## 💻 Technologies Used
-- HTML5, CSS3, JavaScript
-- [Additional frameworks/libraries if applicable]
-- [Backend technologies if applicable]
-- [Deployment platform]
+- **Frontend**: React 19, JavaScript (ES6+)
+- **Build Tool**: Vite
+- **Styling**: CSS3, Styled Components
+- **Animation**: Framer Motion
+- **Routing**: React Router DOM
+- **UI Components**: React Slick, React Responsive Carousel
+- **Development**: ESLint for code quality
 
 ## 📁 Project Structure
 ```
-Rayan_Roshan_website/
-├── assets/
-│   ├── css/
-│   ├── js/
-│   ├── images/
-│   └── documents/
-├── pages/
-├── index.html
+Rayan_Roshan_Website/
+├── public/
+│   └── vite.svg
+├── src/
+│   ├── assets/
+│   │   ├── images/
+│   │   └── react.svg
+│   ├── Components/
+│   │   ├── Copyright_title/
+│   │   ├── Down_arrow/
+│   │   ├── Grid_Four/
+│   │   ├── Image_carousel/
+│   │   ├── Information_bar/
+│   │   ├── Name_title/
+│   │   ├── Projects_component/
+│   │   └── Sidebar/
+│   ├── Pages/
+│   │   ├── About.jsx
+│   │   ├── Contacts.jsx
+│   │   ├── Home.jsx
+│   │   └── Projects.jsx
+│   ├── Pages_CSS/
+│   │   ├── About.css
+│   │   ├── Contact.css
+│   │   ├── Home.css
+│   │   └── Projects.css
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── package.json
+├── vite.config.js
+├── eslint.config.js
+├── vercel.json
 └── README.md
 ```
 
 ## 🚀 Setup and Installation
 1. Clone the repository:
-    ```
-    git clone https://github.com/[your-username]/Rayan_Roshan_website.git
+    ```bash
+    git clone https://github.com/Rayan-Roshan21/Rayan_Roshan_website.git
     ```
 2. Navigate to the project directory:
+    ```bash
+    cd Rayan_Roshan_Website
     ```
-    cd Rayan_Roshan_website
+3. Install dependencies:
+    ```bash
+    npm install
     ```
-3. Open `index.html` in your browser or use a local server.
+4. Start the development server:
+    ```bash
+    npm run dev
+    ```
+5. Open your browser and visit `http://localhost:5173`
+
+## 🔧 Available Scripts
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
+## 🌐 Deployment
+This project is configured for deployment on Vercel with the included `vercel.json` configuration file.
 
 Feel free to reach out if you have any questions or would like to connect! 👋
