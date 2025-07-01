@@ -23,7 +23,9 @@ function Contacts() {
        <h2 className='reach-out-subtitle'>Reach out!</h2>
       <p className = 'sub-paragraph'>If you have any questions or just want to say hello, feel free to reach out!</p>
     </div>
-    <ContactButtons />
+    <div>
+      <ContactButtons />
+    </div>
     </motion.div>
   );
 }
