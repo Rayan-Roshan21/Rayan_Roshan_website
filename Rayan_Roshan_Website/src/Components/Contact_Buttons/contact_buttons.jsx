@@ -17,10 +17,12 @@ export default function ContactButtons() {
     return (
         <Box sx={{
             display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            padding: 3,
-            gap: 3, // Space between buttons
+            justifyContent: 'flex-end',
+            alignItems: 'flex-start',
+            padding: 2,
+            paddingTop: 0,
+            marginRight: 1,
+            gap: 1, // Space between buttons
             '& .MuiButton-root': {
                 fontSize: '1.1rem',
                 fontWeight: 600,
@@ -32,6 +34,7 @@ export default function ContactButtons() {
                 transition: 'all 0.3s ease',
                 textTransform: 'none',
                 letterSpacing: '0.5px',
+                marginLeft: '8px',
                 '&:hover': {
                     transform: 'translateY(-2px)',
                     boxShadow: '0 12px 40px rgba(0, 0, 0, 0.2)',
