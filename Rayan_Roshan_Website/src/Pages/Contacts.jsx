@@ -4,6 +4,7 @@ import Name_title from '../Components/Name_title/Name_title';
 import Sidebar from '../Components/Sidebar/Sidebar.jsx';
 import ContactBox from '../Components/Contact_box/contact_box.jsx';
 import '../Pages_CSS/Contact.css';
+import ContactButtons from '../Components/Contact_Buttons/contact_buttons.jsx';
 
 function Contacts() {
   return (
@@ -16,11 +17,13 @@ function Contacts() {
     <div>
       <Sidebar />
       <Name_title />
-    </div>  
-    <h2 className='contact-title'>Contact me!</h2>
-     <h2 className='reach-out-subtitle'>Reach out!</h2>
+    </div>
+    <h2 className='contact-title'>Contact me</h2>  
+    <div>
+       <h2 className='reach-out-subtitle'>Reach out!</h2>
       <p className = 'sub-paragraph'>If you have any questions or just want to say hello, feel free to reach out!</p>
-    <ContactBox />
+    </div>
+    <ContactButtons />
     </motion.div>
   );
 }
