@@ -1,5 +1,5 @@
 import PropertyImage from '../../assets/property-image.jpg'; // Importing an image for the project
-import '../Projects_component/Project.css';
+import './Project.css';
 function Project(props) {
     return (
         <div className='projects-wrapper'>

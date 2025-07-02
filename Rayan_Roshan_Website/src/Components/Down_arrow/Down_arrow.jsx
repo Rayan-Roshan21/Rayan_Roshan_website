@@ -1,4 +1,4 @@
-import "../Down_arrow/Down_arrow.css"
+import "./Down_arrow.css"
 function Down_arrow() {
   return (
     <div className="arrow-container">

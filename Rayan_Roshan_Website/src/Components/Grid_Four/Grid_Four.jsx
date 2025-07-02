@@ -1,5 +1,5 @@
 import React from "react";
-import "../Grid_Four/Grid_Four.css"
+import "./Grid_Four.css"
 
 function GridFour() {
     return (

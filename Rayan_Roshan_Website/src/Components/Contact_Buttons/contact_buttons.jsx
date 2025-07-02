@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import CalendlyBox from '../Calendly_box/calendly_box.jsx';
+import CalendlyBox from '../Calendly_box/calendly_box';
 
 export default function ContactButtons() {
     const [showCalendar, setShowCalendar] = useState(false);

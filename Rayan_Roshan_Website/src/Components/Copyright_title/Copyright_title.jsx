@@ -1,4 +1,4 @@
-import '../Copyright_title/Copyright_title.css';
+import './Copyright_title.css';
 function Copyright_title() {
     return (
         <div class="container">
