@@ -5,6 +5,7 @@ import Sidebar from '../Components/Sidebar/Sidebar.jsx';
 import ContactBox from '../Components/Contact_box/contact_box.jsx';
 import '../Pages_CSS/Contact.css';
 import ContactButtons from '../Components/Contact_Buttons/contact_buttons.jsx';
+import calendly_link from '../Components/Calendly_box/calendly_box.jsx';
 
 function Contacts() {
   return (
@@ -26,6 +27,12 @@ function Contacts() {
     <div>
       <ContactButtons />
     </div>
+
+    <div>
+      <h1>Schedule a 30-Minute Chat</h1>
+      <calendly_link />
+    </div>
+
     </motion.div>
   );
 }

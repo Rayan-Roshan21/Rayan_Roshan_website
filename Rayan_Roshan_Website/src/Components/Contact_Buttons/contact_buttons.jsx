@@ -1,19 +1,24 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import CalendlyBox from '../Calendly_box/calendly_box.jsx';
 
 export default function ContactButtons() {
+    const [showCalendar, setShowCalendar] = useState(false);
+
     const handleMessageClick = () => {
         // Add your message functionality here
         window.location.href = 'mailto:your-email@example.com';
     };
 
     const handleCalendlyClick = () => {
-        // Add your Calendly link here
-        window.open('https://calendly.com/your-profile', '_blank');
+        // Toggle calendar visibility
+        setShowCalendar(!showCalendar);
     };
 
     return (
+        <>
         <Box sx={{
             display: 'flex',
             position: 'relative',
@@ -44,8 +49,52 @@ export default function ContactButtons() {
                 📧 Send Message
             </Button>
             <Button onClick={handleCalendlyClick}>
-                📅 Schedule Call
+                📅 {showCalendar ? 'Hide Calendar' : 'Schedule Call'}
             </Button>
         </Box>
+        
+        {/* Conditional Calendar */}
+        {showCalendar && (
+            <Box sx={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                width: '100vw',
+                height: '100vh',
+                backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                zIndex: 1000,
+            }}>
+                <Box sx={{
+                    width: '80%',
+                    height: '80%',
+                    backgroundColor: 'white',
+                    borderRadius: '12px',
+                    position: 'relative',
+                    overflow: 'hidden',
+                }}>
+                    <Button 
+                        onClick={() => setShowCalendar(false)}
+                        sx={{
+                            position: 'absolute',
+                            top: 10,
+                            right: 10,
+                            zIndex: 1001,
+                            backgroundColor: '#ff4444',
+                            color: 'white',
+                            '&:hover': {
+                                backgroundColor: '#cc3333',
+                            }
+                        }}
+                    >
+                        ✕ Close
+                    </Button>
+                    <CalendlyBox />
+                </Box>
+            </Box>
+        )}
+        </>
     );
 }
