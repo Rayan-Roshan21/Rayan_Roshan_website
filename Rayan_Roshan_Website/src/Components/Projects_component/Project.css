@@ -7,8 +7,11 @@
     margin: 0; /* Remove margins */
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;    align-items: stretch;    min-height: 450px;
-    width: 48%; /* Increased to show only two per row */
+    justify-content: flex-start;
+    align-items: stretch;
+    min-height: 500px;
+    height: 500px;
+    width: 48%;
     box-sizing: border-box; /* This includes padding and border in the width calculation */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
     transition: transform 0.3s ease;
@@ -21,36 +24,40 @@
 .projects-wrapper {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap; /* Allow wrapping for multiple rows */
-    gap: 15px; /* Smaller gap between containers */
+    flex-wrap: wrap;
+    gap: 15px;
     justify-content: center;
     align-items: flex-start;
 }
+
 .project_name {
     font-size: 22px;
     font-weight: bold;
     color: #333;
-    margin-bottom: 5px;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
+    margin-top: 10px;
+    margin-bottom: 0;
 }
 
 .project-role {
     font-size: 18px;
     color: #666;
-    margin-bottom: 8px;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
+    margin-top: 10px;
+    margin-bottom: 0;
 }
 
 .project-description {
     font-size: 17px;
     color: #555;
-    margin-bottom: 10px;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     flex-grow: 1;
     line-height: 1.5;
+    margin-top: 10px;
+    margin-bottom: 0;
 }
 
 .project-image {
@@ -58,7 +65,8 @@
     height: 180px;
     object-fit: cover;
     border-radius: 8px;
-    margin-bottom: 15px;
+    margin-top: 0;
+    margin-bottom: 0;
     background-color: #e0f7d9;
     box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     display: block;
@@ -69,6 +77,7 @@
     gap: 10px;
     padding-top: 15px;
     border-top: 2px solid #eee;
+    margin-top: auto;
 }
 
 .project-container .project-github,
@@ -303,4 +312,30 @@
         font-size: 13px;
         padding: 6px;
     }
+}
+
+@media (max-width: 1200px) {
+  .project-container {
+    width: 420px;
+    min-width: 420px;
+    max-width: 420px;
+    min-height: 480px;
+    height: 480px;
+  }
+}
+
+@media (max-width: 900px) {
+  .project-container {
+    min-height: 420px;
+    height: 420px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .project-container {
+    min-height: 420px;
+    height: 420px;
+    width: 100%;
+  }
 }
