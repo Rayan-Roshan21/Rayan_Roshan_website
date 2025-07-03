@@ -2,8 +2,8 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./Image_slideshow.css"
 import Slider from "react-slick";
-import image2 from '../../assets/Picture2.jpg';
-import image3 from '../../assets/Picture3.jpg';
+import image2 from '@/assets/Picture2.jpg';
+import image3 from '@/assets/Picture3.jpg';
 
 const images = [image2, image3];
 function Image_slideshow() {

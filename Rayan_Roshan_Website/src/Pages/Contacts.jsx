@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import Name_title from '../Components/Name_title/Name_title.jsx';
-import Sidebar from '../Components/Sidebar/Sidebar.jsx';
-import ContactBox from '../Components/Contact_box/contact_box.jsx';
-import '../Pages_CSS/Contact.css';
-import ContactButtons from '../Components/Contact_Buttons/contact_buttons.jsx';
-import calendly_link from '../Components/Calendly_box/calendly_box.jsx';
+import Name_title from '@/Components/Name_title/Name_title.jsx';
+import Sidebar from '@/Components/Sidebar/Sidebar.jsx';
+import ContactBox from '@/Components/Contact_box/contact_box.jsx';
+import '@/Pages_CSS/Contact.css';
+import ContactButtons from '@/Components/Contact_Buttons/contact_buttons.jsx';
+import calendly_link from '@/Components/Calendly_box/calendly_box.jsx';
 
 function Contacts() {
   return (

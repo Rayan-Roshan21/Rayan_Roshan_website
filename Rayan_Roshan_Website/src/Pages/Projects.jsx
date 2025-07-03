@@ -1,14 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import Name_title from '../Components/Name_title/Name_title.jsx';
-import Sidebar from '../Components/Sidebar/Sidebar.jsx';
-import Copyright_title from '../Components/Copyright_title/Copyright_title.jsx';
-import '../Pages_CSS/Projects.css';
-import '../Components/Projects_component/Project.css';
-import PropertyImage from '../assets/property-image.jpg';
-import multimodalImage from '../assets/multimodal video analysis.png';
-import torontoImage from '../assets/toronto-photo.jpg';
-import medicalFormImage from '../assets/medical_form.jpg';
+import Name_title from '@/Components/Name_title/Name_title.jsx';
+import Sidebar from '@/Components/Sidebar/Sidebar.jsx';
+import Copyright_title from '@/Components/Copyright_title/Copyright_title.jsx';
+import '@/Pages_CSS/Projects.css';
+import '@/Components/Projects_component/Project.css';
+import PropertyImage from '@/assets/property-image.jpg';
+import multimodalImage from '@/assets/multimodal video analysis.png';
+import torontoImage from '@/assets/toronto-photo.jpg';
+import medicalFormImage from '@/assets/medical_form.jpg';
 
 function Projects() {
   return (

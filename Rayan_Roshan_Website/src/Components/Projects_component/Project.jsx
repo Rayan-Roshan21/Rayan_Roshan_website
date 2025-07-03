@@ -1,4 +1,4 @@
-import PropertyImage from '../../assets/property-image.jpg'; // Importing an image for the project
+import PropertyImage from '@/assets/property-image.jpg'; // Importing an image for the project
 import './Project.css';
 function Project(props) {
     return (
