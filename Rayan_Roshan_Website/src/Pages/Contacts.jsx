@@ -29,7 +29,6 @@ function Contacts() {
     </div>
 
     <div>
-      <h1>Schedule a 30-Minute Chat</h1>
       <calendly_link />
     </div>
 
