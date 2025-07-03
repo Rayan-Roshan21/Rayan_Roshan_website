@@ -67,3 +67,129 @@
     font-family: Arial, Helvetica, sans-serif;
     color: black;
 }
+
+/* Responsive additions - keeping original design intact */
+
+/* Large screens (1200px and up) */
+@media (min-width: 1200px) {
+    .sidebar {
+        width: 280px;
+        padding: 25px;
+    }
+    
+    .sidebar h2 {
+        margin-top: 70px;
+        margin-bottom: 35px;
+    }
+    
+    .sidebar ul li a {
+        font-size: 22px;
+        margin: 18px 0;
+    }
+    
+    .menu-toggle {
+        top: 35px;
+        right: 45px;
+        font-size: 32px;
+    }
+}
+
+/* Medium screens (768px to 1199px) */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .sidebar {
+        width: 260px;
+        padding: 22px;
+    }
+    
+    .sidebar h2 {
+        margin-top: 65px;
+        margin-bottom: 32px;
+    }
+    
+    .sidebar ul li a {
+        font-size: 21px;
+        margin: 16px 0;
+    }
+    
+    .menu-toggle {
+        top: 32px;
+        right: 42px;
+        font-size: 30px;
+    }
+}
+
+/* Small screens (481px to 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+    .sidebar {
+        width: 100%;
+        right: 0;
+        padding: 20px;
+    }
+    
+    .sidebar h2 {
+        margin-top: 60px;
+        margin-bottom: 30px;
+    }
+    
+    .sidebar ul li a {
+        font-size: 20px;
+        margin: 15px 0;
+        padding: 10px 0;
+    }
+    
+    .menu-toggle {
+        top: 30px;
+        right: 40px;
+        font-size: 28px;
+    }
+}
+
+/* Extra small screens (480px and below) */
+@media (max-width: 480px) {
+    .sidebar {
+        width: 100%;
+        right: 0;
+        padding: 15px;
+    }
+    
+    .sidebar h2 {
+        margin-top: 50px;
+        margin-bottom: 25px;
+    }
+    
+    .sidebar ul li a {
+        font-size: 18px;
+        margin: 12px 0;
+        padding: 8px 0;
+    }
+    
+    .menu-toggle {
+        top: 25px;
+        right: 35px;
+        font-size: 24px;
+    }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 767px) and (orientation: landscape) {
+    .sidebar {
+        padding: 15px;
+    }
+    
+    .sidebar h2 {
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+    
+    .sidebar ul li a {
+        font-size: 18px;
+        margin: 10px 0;
+        padding: 6px 0;
+    }
+    
+    .menu-toggle {
+        top: 20px;
+        right: 30px;
+        font-size: 22px;
+    }
+}

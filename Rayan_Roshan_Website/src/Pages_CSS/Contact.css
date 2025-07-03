@@ -32,3 +32,118 @@
   font-display: swap;
   line-height: 1.5;
 }
+
+/* Responsive additions - keeping original design intact */
+
+/* Large screens (1200px and up) */
+@media (min-width: 1200px) {
+  .contact-title {
+    margin-top: 60px;
+    font-size: 35px;
+  }
+  
+  .reach-out-subtitle {
+    font-size: 35px;
+    margin-top: 280px;
+    margin-bottom: 15px;
+  }
+  
+  .sub-paragraph {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+}
+
+/* Medium screens (768px to 1199px) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .contact-title {
+    margin-top: 55px;
+    font-size: 32px;
+  }
+  
+  .reach-out-subtitle {
+    font-size: 32px;
+    margin-top: 260px;
+    margin-bottom: 12px;
+  }
+  
+  .sub-paragraph {
+    font-size: 22px;
+    margin-bottom: 22px;
+  }
+}
+
+/* Small screens (481px to 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+  .contact-title {
+    margin-top: 40px;
+    font-size: 28px;
+    width: 90%;
+  }
+  
+  .reach-out-subtitle {
+    font-size: 28px;
+    margin-top: 200px;
+    margin-bottom: 10px;
+    margin-right: 0;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .sub-paragraph {
+    font-size: 20px;
+    margin-bottom: 20px;
+    margin-right: 0;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Extra small screens (480px and below) */
+@media (max-width: 480px) {
+  .contact-title {
+    margin-top: 30px;
+    font-size: 24px;
+    width: 95%;
+  }
+  
+  .reach-out-subtitle {
+    font-size: 24px;
+    margin-top: 180px;
+    margin-bottom: 8px;
+    margin-right: 0;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .sub-paragraph {
+    font-size: 18px;
+    margin-bottom: 18px;
+    margin-right: 0;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 767px) and (orientation: landscape) {
+  .contact-title {
+    margin-top: 25px;
+    font-size: 26px;
+  }
+  
+  .reach-out-subtitle {
+    font-size: 26px;
+    margin-top: 150px;
+    margin-bottom: 8px;
+  }
+  
+  .sub-paragraph {
+    font-size: 19px;
+    margin-bottom: 15px;
+  }
+}

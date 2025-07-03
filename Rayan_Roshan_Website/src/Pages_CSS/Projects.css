@@ -9,3 +9,47 @@
   z-index: 1200;
   text-decoration: underline;
 }
+
+/* Responsive additions - keeping original design intact */
+
+/* Large screens (1200px and up) */
+@media (min-width: 1200px) {
+  .Projects-title {
+    margin-top: 60px;
+    font-size: 35px;
+  }
+}
+
+/* Medium screens (768px to 1199px) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .Projects-title {
+    margin-top: 55px;
+    font-size: 32px;
+  }
+}
+
+/* Small screens (481px to 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+  .Projects-title {
+    margin-top: 40px;
+    font-size: 28px;
+    width: 90%;
+  }
+}
+
+/* Extra small screens (480px and below) */
+@media (max-width: 480px) {
+  .Projects-title {
+    margin-top: 30px;
+    font-size: 24px;
+    width: 95%;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 767px) and (orientation: landscape) {
+  .Projects-title {
+    margin-top: 25px;
+    font-size: 26px;
+  }
+}

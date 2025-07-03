@@ -31,15 +31,17 @@ const Tooltip = () => {
 const StyledWrapper = styled.div`
   ul {
     list-style: none;
+    padding: 0;
+    margin: 0;
   }
 
   .example-2 {
-    position: fixed;
-    bottom: 210px;
-    right: 315px;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
+    margin-top: 20px;
+    position: relative;
   }
 
   .example-2 .icon-content {
@@ -133,6 +135,23 @@ const StyledWrapper = styled.div`
   .example-2 .icon-content a[data-social="github"] ~ .tooltip::before {
     background-color: #24262a;
     border-color: transparent transparent #24262a transparent;
+  }
+
+  /* Responsive: stack vertically on small screens */
+  @media (max-width: 600px) {
+    .example-2 {
+      flex-direction: row;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .example-2 .icon-content a {
+      width: 40px;
+      height: 40px;
+    }
+    .example-2 .icon-content a svg {
+      width: 22px;
+      height: 22px;
+    }
   }
 `;
 

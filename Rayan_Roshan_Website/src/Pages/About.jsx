@@ -16,19 +16,23 @@ function About() {
       exit={{ opacity: 0, y: -30 }}
       transition={{ duration: 0.5 }}
     >
-      <Sidebar />
-      <Name_title />
-      <h2 className='about-title'>About</h2>
-      <div>
-        <h2 className='Subtitle'>Who am I</h2>
-         <p class = "about-me-paragraph">A Computer science student passionate about solving real-world problems through technology. Experienced in mobile app development with Swift and Firebase, with strong interests in AI, data science, and entrepreneurship. Driven to turn ideas into scalable products and constantly seeking new challenges to grow.</p>
-      </div>
-      <div>
-        <Image_slideshow />
-      </div>
-      <Down_arrow />
-      <div>
-        <GridFour />
+      <div className="page-container">
+        <Sidebar />
+        <Name_title />
+        <h2 className='about-title'>About</h2>
+        <div className="about-main-content">
+          <div className="about-left">
+            <h2 className='Subtitle'>Who am I</h2>
+            <p className="about-me-paragraph">A Computer science student passionate about solving real-world problems through technology. Experienced in mobile app development with Swift and Firebase, with strong interests in AI, data science, and entrepreneurship. Driven to turn ideas into scalable products and constantly seeking new challenges to grow.</p>
+          </div>
+          <div className="about-right">
+            <Image_slideshow />
+          </div>
+        </div>
+        <Down_arrow />
+        <div>
+          <GridFour />
+        </div>
       </div>
     </motion.div>
   );

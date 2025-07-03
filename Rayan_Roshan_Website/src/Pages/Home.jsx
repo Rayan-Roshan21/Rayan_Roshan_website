@@ -69,7 +69,7 @@ function Home() {
         <Sidebar />
         <Name_title />
         <div id="intro">{introText}</div>
-      <div>
+      <div className="profile-section">
         <img className="profile-image" src={profileImage} alt="profile-image" />
         <Tooltip />
       </div>

@@ -1,7 +1,7 @@
 .title{
-   position: static;
+  position: static;
   display: inline-block;
-  margin-top: 15px; 
+  margin-top: 15px;
   margin-left: 50%;
   transform: translateX(-50%);
   font-family: Arial, Helvetica, sans-serif;
@@ -35,4 +35,105 @@
 
 .title-alt:hover {
   transform: translateX(-50%) scale(1.03);
+}
+
+/* Responsive additions - keeping original design intact */
+
+/* Large screens (1200px and up) */
+@media (min-width: 1200px) {
+  .title {
+    margin-top: 20px;
+    width: 45%;
+  }
+  
+  .title-alt {
+    margin-top: 25px;
+    margin-left: 12%;
+    width: 45%;
+  }
+}
+
+/* Medium screens (768px to 1199px) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .title {
+    margin-top: 18px;
+    width: 48%;
+  }
+  
+  .title-alt {
+    margin-top: 22px;
+    margin-left: 14%;
+    width: 48%;
+  }
+}
+
+/* Small screens (481px to 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+  .title {
+    margin-top: 15px;
+    width: 70%;
+  }
+  
+  .title-alt {
+    margin-top: 20px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+  }
+  
+  .title-alt:hover {
+    transform: translateX(-50%) scale(1.03);
+  }
+}
+
+/* Extra small screens (480px and below) */
+@media (max-width: 480px) {
+  .title {
+    margin-top: 12px;
+    width: 85%;
+  }
+  
+  .title-alt {
+    margin-top: 18px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+  }
+  
+  .title-alt:hover {
+    transform: translateX(-50%) scale(1.03);
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 767px) and (orientation: landscape) {
+  .title {
+    margin-top: 10px;
+    width: 80%;
+  }
+  
+  .title-alt {
+    margin-top: 15px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+  }
+  
+  .title-alt:hover {
+    transform: translateX(-50%) scale(1.03);
+  }
+}
+
+@media (max-width: 900px) {
+  .title {
+    margin-left: 20px;
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .title {
+    margin-left: 10px;
+    font-size: 22px;
+  }
 }

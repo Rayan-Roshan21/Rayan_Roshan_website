@@ -115,3 +115,192 @@
     color: #005885;
     background-color: #e6f3ff;
 }
+
+/* Responsive additions - keeping original design intact */
+
+/* Large screens (1200px and up) */
+@media (min-width: 1200px) {
+    .project-container {
+        padding: 25px;
+        min-height: 500px;
+        width: 48%;
+    }
+    
+    .projects-wrapper {
+        gap: 20px;
+    }
+    
+    .project_name {
+        font-size: 24px;
+    }
+    
+    .project-role {
+        font-size: 20px;
+    }
+    
+    .project-description {
+        font-size: 19px;
+    }
+    
+    .project-image {
+        height: 200px;
+    }
+    
+    .project-container .project-github,
+    .project-container .project-linkedin,
+    .project-container .project-google-docs {
+        font-size: 18px;
+        padding: 12px;
+    }
+}
+
+/* Medium screens (768px to 1199px) */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .project-container {
+        padding: 22px;
+        min-height: 480px;
+        width: 48%;
+    }
+    
+    .projects-wrapper {
+        gap: 18px;
+    }
+    
+    .project_name {
+        font-size: 23px;
+    }
+    
+    .project-role {
+        font-size: 19px;
+    }
+    
+    .project-description {
+        font-size: 18px;
+    }
+    
+    .project-image {
+        height: 190px;
+    }
+    
+    .project-container .project-github,
+    .project-container .project-linkedin,
+    .project-container .project-google-docs {
+        font-size: 17px;
+        padding: 11px;
+    }
+}
+
+/* Small screens (481px to 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+    .project-container {
+        padding: 18px;
+        min-height: 420px;
+        width: 100%;
+    }
+    
+    .projects-wrapper {
+        gap: 15px;
+        flex-direction: column;
+    }
+    
+    .project_name {
+        font-size: 21px;
+    }
+    
+    .project-role {
+        font-size: 17px;
+    }
+    
+    .project-description {
+        font-size: 16px;
+    }
+    
+    .project-image {
+        height: 170px;
+    }
+    
+    .project-buttons {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .project-container .project-github,
+    .project-container .project-linkedin,
+    .project-container .project-google-docs {
+        font-size: 15px;
+        padding: 10px;
+    }
+}
+
+/* Extra small screens (480px and below) */
+@media (max-width: 480px) {
+    .project-container {
+        padding: 15px;
+        min-height: 400px;
+        width: 100%;
+    }
+    
+    .projects-wrapper {
+        gap: 12px;
+        flex-direction: column;
+    }
+    
+    .project_name {
+        font-size: 20px;
+    }
+    
+    .project-role {
+        font-size: 16px;
+    }
+    
+    .project-description {
+        font-size: 15px;
+    }
+    
+    .project-image {
+        height: 160px;
+    }
+    
+    .project-buttons {
+        flex-direction: column;
+        gap: 6px;
+    }
+    
+    .project-container .project-github,
+    .project-container .project-linkedin,
+    .project-container .project-google-docs {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 767px) and (orientation: landscape) {
+    .project-container {
+        padding: 12px;
+        min-height: 350px;
+    }
+    
+    .project_name {
+        font-size: 19px;
+    }
+    
+    .project-role {
+        font-size: 15px;
+    }
+    
+    .project-description {
+        font-size: 14px;
+    }
+    
+    .project-image {
+        height: 140px;
+    }
+    
+    .project-container .project-github,
+    .project-container .project-linkedin,
+    .project-container .project-google-docs {
+        font-size: 13px;
+        padding: 6px;
+    }
+}
