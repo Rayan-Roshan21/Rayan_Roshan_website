@@ -1,0 +1,11 @@
+{
+  "name": "rayan-roshan-website-root",
+  "version": "1.0.0",
+  "description": "Root package for Rayan Roshan's portfolio website",
+  "private": true,
+  "scripts": {
+    "build": "cd Rayan_Roshan_Website && npm run build",
+    "install": "cd Rayan_Roshan_Website && npm install",
+    "dev": "cd Rayan_Roshan_Website && npm run dev"
+  }
+} 
