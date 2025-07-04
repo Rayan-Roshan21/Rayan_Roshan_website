@@ -21,16 +21,19 @@ export default function ContactButtons() {
         <>
         <Box sx={{
             display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
             position: 'relative',
-            gap: 2,
-            marginLeft: '1000px',
-            marginTop: '-250px',
+            gap: 3,
+            marginLeft: '900px',
+            marginTop: '-180px',
             padding: 2,
             paddingTop: 0,
             '& .MuiButton-root': {
-                fontSize: '1.1rem',
+                width: '300px',
+                fontSize: '1.4rem',
                 fontWeight: 600,
-                padding: '16px 32px',
+                padding: '20px 0',
                 color: 'black',
                 border: '2px solid #333',
                 borderRadius: '12px',
@@ -46,7 +49,7 @@ export default function ContactButtons() {
             }
         }}>
             <Button onClick={handleMessageClick}>
-                📧 Send Message
+                📧 Message Me
             </Button>
             <Button onClick={handleCalendlyClick}>
                 📅 {showCalendar ? 'Hide Calendar' : 'Schedule Call'}
