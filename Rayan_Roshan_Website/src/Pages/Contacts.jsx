@@ -26,14 +26,13 @@ function Contacts() {
     </div>
     <div>
       <ContactButtons />
+      <div style={{ display: 'flex', justifyContent: 'flex-start', marginTop: '-5px', marginLeft: '1198px' }}>
+        <Tooltip large />
+      </div>
     </div>
 
     <div>
       <calendly_link />
-    </div>
-
-    <div>
-      <Tooltip />
     </div>
 
     </motion.div>
