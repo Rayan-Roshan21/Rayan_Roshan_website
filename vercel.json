@@ -1,12 +1,13 @@
 {
   "version": 2,
   "name": "rayan-roshan-website",
-  "buildCommand": "cd Rayan_Roshan_Website && npm run build",
-  "outputDirectory": "Rayan_Roshan_Website/dist",
-  "installCommand": "cd Rayan_Roshan_Website && npm install",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install",
   "framework": "vite",
   "routes": [
     { "src": "/(.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|json|txt|woff2?|ttf|eot|mp4|webm|ogg|mp3|wav|m4a|pdf|zip|rar|tar|gz|xml|map))$", "dest": "/$1" },
     { "src": "/.*", "dest": "/index.html" }
-  ]
+  ],
+  "rootDirectory": "Rayan_Roshan_Website"
 } 
