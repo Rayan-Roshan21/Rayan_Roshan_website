@@ -3,7 +3,7 @@ import Sidebar from '@/Components/Sidebar/Sidebar.jsx';
 import '@/Pages_CSS/About.css';
 import { motion } from 'framer-motion';
 import Copyright from '@/Components/Copyright_title/Copyright_title.jsx'
-import Name_title from '@/Components/Name_title/Name_title.jsx';
+import Name_title from '@/Components/Name_title/name_title.jsx';
 import Image_slideshow from '@/Components/Image_carousel/Image_slideshow.jsx';
 import Down_arrow from '@/Components/Down_arrow/Down_arrow.jsx';
 import GridFour from '@/Components/Grid_Four/Grid_Four.jsx'; 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import Name_title from '@/Components/Name_title/Name_title.jsx';
+import Name_title from '@/Components/Name_title/name_title.jsx';
 import Sidebar from '@/Components/Sidebar/Sidebar.jsx';
 import Copyright_title from '@/Components/Copyright_title/Copyright_title.jsx';
 import '@/Pages_CSS/Projects.css';
