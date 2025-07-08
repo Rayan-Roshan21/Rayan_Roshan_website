@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "name": "rayan-roshan-website",
   "buildCommand": "cd Rayan_Roshan_Website",
   "outputDirectory": "Rayan_Roshan_Website/dist",
   "installCommand": "npm install",
