@@ -2,11 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Name_title from '@/Components/Name_title/name_title.jsx';
 import Sidebar from '@/Components/Sidebar/Sidebar.jsx';
-import ContactBox from '@/Components/Contact_box/contact_box.jsx';
 import '@/Pages_CSS/Contact.css';
 import ContactButtons from '@/Components/Contact_Buttons/contact_buttons.jsx';
 import Tooltip from '@/Components/Information_bar/Tooltip.jsx';
-import Calendly_box from '@/Components/Calendly_box/calendly_box.jsx';
 
 function Contacts() {
   return (
@@ -30,10 +28,6 @@ function Contacts() {
       <div style={{ display: 'flex', justifyContent: 'flex-start', marginTop: '-5px', marginLeft: '1198px' }}>
         <Tooltip large />
       </div>
-    </div>
-
-    <div>
-      <Calendly_box />
     </div>
 
     </motion.div>
