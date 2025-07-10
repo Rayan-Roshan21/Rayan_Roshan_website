@@ -6,6 +6,7 @@ import ContactBox from '@/Components/Contact_box/contact_box.jsx';
 import '@/Pages_CSS/Contact.css';
 import ContactButtons from '@/Components/Contact_Buttons/contact_buttons.jsx';
 import Tooltip from '@/Components/Information_bar/Tooltip.jsx';
+import Calendly_box from '@/Components/Calendly_box/calendly_box.jsx';
 
 function Contacts() {
   return (
@@ -32,7 +33,7 @@ function Contacts() {
     </div>
 
     <div>
-      <calendly_link />
+      <Calendly_box />
     </div>
 
     </motion.div>
