@@ -1,4 +1,4 @@
-import './Name_title.css'
+import './name_title.css'
 import { Link, useLocation } from 'react-router-dom';
 function Name_title() {
     const location = useLocation();
