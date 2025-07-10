@@ -25,7 +25,7 @@ function Contacts() {
     </div>
     <div>
       <ContactButtons />
-      <div style={{ display: 'flex', justifyContent: 'flex-start', marginTop: '-5px', marginLeft: '1198px' }}>
+      <div className="social-buttons-container">
         <Tooltip large />
       </div>
     </div>
