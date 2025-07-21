@@ -9,6 +9,7 @@ import PropertyImage from '@/assets/property-image.jpg';
 import multimodalImage from '@/assets/multimodal video analysis.png';
 import torontoImage from '@/assets/toronto-photo.jpg';
 import medicalFormImage from '@/assets/medical_form.jpg';
+import AICustomerImage from '@/assets/aiagentimage.jpg';
 
 function Projects() {
   return (
@@ -23,6 +24,16 @@ function Projects() {
       <Name_title />
     </div>    <h2 className='Projects-title'>Projects</h2>    <div className='projects-wrapper'>
       <div className='project-container'>
+        <img className = "project-image" src={AICustomerImage} alt="Related image of project." />
+        <p className='project_name'>
+AI Customer Support Agent</p>
+        <p className='project-role'>Software Engineer</p>
+        <p className='project-description'>This responsive AI assistant app enables real-time voice and text chat with Vapi and Google Gemini, featuring live transcription, seamless mode switching, and secure API management. It delivers context-aware responses using Pinecone and Gemini vector embeddings.</p>
+        <div className='project-buttons'>
+          <a className = "project-github" href="https://github.com/razzacktiger/Customer-Support-Agent-" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+      </div>
+      <div className='project-container'>
         <img className = "project-image" src={PropertyImage} alt="Related image of project." />
         <p className='project_name'>Property Recommendation Software</p>
         <p className='project-role'>Software Engineer</p>        <p className='project-description'>This project is a Python-based property recommendation tool that uses feature similarity to identify the top k comparable properties to a given subject property. It reads property data from a JSON file and outputs the most similar properties using a distance-based algorithm.</p>
@@ -36,7 +47,7 @@ function Projects() {
         <img className = "project-image" src={multimodalImage} alt="Related image of project." />
         <p className='project_name'>Multimodal Video Analysis</p>
         <p className='project-role'>Software Engineer/Project Manager</p>
-        <p className='project-description'>A powerful AI-driven web application that lets you chat with YouTube videos, generate smart timestamps, and search for specific scenes using natural language. Worked with two other software engineering residents from Headstarter.</p>
+        <p className='project-description'>A powerful AI-driven web application that lets you chat with YouTube videos, generate smart timestamps, and search for specific scenes using natural language.</p>
         <div className='project-buttons'>
           <a className = "project-github" href="https://github.com/razzacktiger/Multimodal-video-analysis-deployed" target="_blank" rel="noopener noreferrer">View on GitHub</a>
            <a className = "project-linkedin" href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">View on LinkedIn</a>
