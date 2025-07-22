@@ -7,5 +7,8 @@
     "build": "cd Rayan_Roshan_Website",
     "install": "npm install",
     "dev": "npm run dev"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^4.4.1"
   }
-} 
+}
