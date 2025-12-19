@@ -7,6 +7,7 @@ import Copyright from '@/Components/Copyright_title/Copyright_title.jsx'
 import Name_title from '@/Components/Name_title/name_title.jsx';
 import Image_slideshow from '@/Components/Image_carousel/Image_slideshow.jsx';
 import GridFour from '@/Components/Grid_Four/Grid_Four.jsx'; 
+import ExperienceTimeline from '@/Components/Experience_Timeline/ExperienceTimeline.jsx';
 
 function About() {
   const [currentSection, setCurrentSection] = useState(1);
@@ -108,23 +109,23 @@ function About() {
           )}
           {currentSection === 3 && (
             <motion.div
-              key="section2"
+              key="section3"
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -50 }}
               transition={{ duration: 0.4 }}
             >
-              {/* Skills Section Header */}
+              {/* Experience Section Header */}
               <section className="about-section skills-header-section">
-                <h2 className="section-subtitle skills-title">My experience</h2>
+                <h2 className="section-subtitle skills-title">My Experience</h2>
                 <p className="section-description">
-                  Here's a breakdown of the technical skills, soft skills, and tools I use to build meaningful products
+                  A horizontal timeline of roles and projects from 2024 to present.
                 </p>
               </section>
 
-              {/* Skills Grid */}
+              {/* Experience Timeline */}
               <section className="about-section skills-section">
-                <GridFour />
+                <ExperienceTimeline />
               </section>
             </motion.div>
           )}

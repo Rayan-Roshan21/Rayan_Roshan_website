@@ -1,0 +1,98 @@
+.timeline-root {
+  display: grid;
+  gap: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.timeline-root {
+  --card-width: 420px;
+  --card-gap: 32px;
+}
+
+.timeline-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.timeline-range {
+  font-weight: 700;
+  color: #333;
+}
+
+.timeline-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.timeline-btn {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.timeline-btn:hover { background: #f5f5f5; }
+
+/* Year filter */
+.timeline-track {
+  position: relative;
+  height: 2px;
+  background: linear-gradient(90deg, #e0e0e0, #d0d0d0);
+  border-radius: 2px;
+  margin-bottom: 4px;
+}
+
+.timeline-scroller {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: var(--card-width);
+  gap: var(--card-gap);
+  overflow-x: auto;
+  padding: 4px 0 12px;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+.timeline-scroller::-webkit-scrollbar { height: 8px; }
+.timeline-scroller::-webkit-scrollbar-thumb { background: #ddd; border-radius: 8px; }
+
+.timeline-card {
+  scroll-snap-align: start;
+  background: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 22px 22px 16px;
+}
+.card-date { font-size: 12px; color: #666; margin-bottom: 4px; }
+.card-title { font-size: 20px; margin: 0 0 10px; color: #333; font-weight: 700; }
+.card-company { font-size: 15px; color: #555; margin-bottom: 10px; }
+.card-summary { font-size: 15px; color: #555; margin: 0 0 14px; line-height: 1.6; }
+.card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.tag { background: #e9ecef; color: #333; font-size: 12px; padding: 5px 10px; border-radius: 999px; }
+.timeline-empty { color: #666; padding: 12px; }
+
+.timeline-present {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  width: 120px;
+  margin-top: 10px;
+}
+.present-dot {
+  width: 10px;
+  height: 10px;
+  background: #4CAF50;
+  border-radius: 50%;
+}
+.present-label { font-size: 12px; color: #4CAF50; margin-top: 6px; }
+
+@media (max-width: 900px) {
+  .timeline-root { --card-width: 340px; --card-gap: 26px; }
+}
+
+@media (max-width: 600px) {
+  .timeline-root { --card-width: 280px; --card-gap: 18px; }
+  .card-title { font-size: 18px; }
+  .card-summary { font-size: 14px; }
+}
