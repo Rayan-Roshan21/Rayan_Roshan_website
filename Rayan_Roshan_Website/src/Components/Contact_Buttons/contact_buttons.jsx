@@ -23,28 +23,29 @@ export default function ContactButtons() {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            position: 'relative',
             gap: 3,
-            marginLeft: '900px',
-            marginTop: '-180px',
-            padding: 2,
-            paddingTop: 0,
+            width: '100%',
+            maxWidth: 420,
+            margin: '0 auto',
+            padding: 1,
+            fontFamily: 'var(--font-sans)',
             '& .MuiButton-root': {
-                width: '300px',
-                fontSize: '1.4rem',
+                width: '100%',
+                fontSize: '1.1rem',
                 fontWeight: 600,
-                padding: '20px 0',
-                color: 'black',
-                border: '2px solid #333',
+                fontFamily: 'var(--font-sans)',
+                padding: '16px 0',
+                color: '#111',
+                border: '2px solid #222',
                 borderRadius: '12px',
-                backgroundColor: 'white',
-                transition: 'all 0.3s ease',
+                backgroundColor: '#fff',
+                transition: 'all 0.25s ease',
                 textTransform: 'none',
-                letterSpacing: '0.5px',
+                letterSpacing: '0.2px',
                 '&:hover': {
-                    transform: 'translateY(-2px)',
-                    boxShadow: '0 12px 40px rgba(0, 0, 0, 0.2)',
-                    backgroundColor: '#f8f9ff',
+                    transform: 'translateY(-1px)',
+                    boxShadow: '0 10px 28px rgba(0, 0, 0, 0.15)',
+                    backgroundColor: '#f7f9ff',
                 },
             }
         }}>
@@ -71,12 +72,13 @@ export default function ContactButtons() {
                 zIndex: 1000,
             }}>
                 <Box sx={{
-                    width: '80%',
-                    height: '80%',
+                    width: { xs: '92%', sm: '88%', md: '80%' },
+                    height: { xs: '80%', sm: '84%', md: '80%' },
                     backgroundColor: 'white',
                     borderRadius: '12px',
                     position: 'relative',
                     overflow: 'hidden',
+                    fontFamily: 'var(--font-sans)',
                 }}>
                     <Button 
                         onClick={() => setShowCalendar(false)}
@@ -85,10 +87,11 @@ export default function ContactButtons() {
                             top: 10,
                             right: 10,
                             zIndex: 1001,
-                            backgroundColor: '#ff4444',
+                            backgroundColor: '#ff4d4d',
                             color: 'white',
+                            fontFamily: 'var(--font-sans)',
                             '&:hover': {
-                                backgroundColor: '#cc3333',
+                                backgroundColor: '#d63b3b',
                             }
                         }}
                     >

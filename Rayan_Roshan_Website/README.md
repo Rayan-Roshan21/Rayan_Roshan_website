@@ -1,12 +1,52 @@
-# React + Vite
+# Rayan Roshan — Portfolio Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + Vite single-page site showcasing Rayan Roshan’s background, projects, and contact options.
 
-Currently, two official plugins are available:
+## Features
+- Hero, About, Projects, and Contact sections wired via React Router.
+- Experience timeline with smooth horizontal scrolling and present marker.
+- Responsive layouts, carousels, and Calendly/CTA buttons for quick outreach.
+- Styled with custom CSS plus Framer Motion micro-interactions.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
+- React 19, Vite 6
+- Framer Motion, React Router
+- Emotion / Styled Components where needed for styling helpers
 
-## Expanding the ESLint configuration
+## Getting Started
+1) Install dependencies
+```bash
+npm install
+```
+2) Run the dev server
+```bash
+npm run dev
+```
+3) Build for production
+```bash
+npm run build
+```
+4) Preview the production build
+```bash
+npm run preview
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Project Structure
+```
+src/
+	main.jsx          # App entry
+	App.jsx           # Routes and layout
+	Pages/            # Home, About, Projects, Contacts
+	Components/       # Reusable UI (timeline, carousels, sidebar, contact buttons)
+	Pages_CSS/        # Page-level styles
+	assets/           # Images and media
+```
+
+## Linting
+```bash
+npm run lint
+```
+
+## Notes
+- Requires Node 18+.
+- Update content in `src/Pages` and `src/Components` to personalize sections.

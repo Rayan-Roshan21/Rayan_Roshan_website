@@ -1,36 +1,59 @@
+/* Contact page modern layout */
+.contact-section {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  max-width: 1100px;
+  margin: 120px auto 80px;
+  padding: 0 24px;
+  /* Consistent font across the entire contact section */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif;
+  font-family: var(--font-sans);
+}
+
+/* Ensure all descendants (including MUI components) inherit the same font */
+.contact-section * { font-family: var(--font-sans); }
+
+.contact-copy {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+}
+
 .contact-title {
-   position: static;
-  margin-top: 50px;
-  margin-left: 50%;
-  transform: translateX(-50%);
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  color: #1a1a1a;
+  margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
-  font-size: 30px;
-  z-index: 1200;
-  text-decoration: underline;
 }
 
 .reach-out-subtitle {
-  font-size: 30px;
-  font-weight: bold;
+  font-size: 28px;
+  font-weight: 700;
   color: #333;
-  margin-top: 250px;
-  margin-bottom: 10px;
-  margin-right: 50%;
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 8px 0 0;
 }
 
 .sub-paragraph {
-  font-size: 20px;
+  font-size: 18px;
   color: #555;
-  margin-bottom: 20px;
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
-  margin-right:50%;
-  font-style: normal;
-  font-display: swap;
-  line-height: 1.5;
+  line-height: 1.6;
+  margin: 6px 0 0;
+}
+
+.contact-actions { display: grid; align-content: start; }
+
+.contact-card {
+  background: #ffffffcc;
+  backdrop-filter: blur(6px);
+  border: 1px solid #e6e6e6;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  padding: 28px 24px;
+  display: grid;
+  gap: 18px;
 }
 
 .social-buttons-container {
@@ -38,128 +61,45 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: -5px;
-  margin-left: 463px;
+  margin-top: 6px;
 }
 
 /* Responsive additions - keeping original design intact */
 
 /* Large screens (1200px and up) */
 @media (min-width: 1200px) {
-  .contact-title {
-    margin-top: 60px;
-    font-size: 35px;
-  }
-  
-  .reach-out-subtitle {
-    font-size: 35px;
-    margin-top: 200px;
-    margin-bottom: 15px;
-  }
-  
-  .sub-paragraph {
-    font-size: 24px;
-    margin-bottom: 25px;
-  }
+  .contact-title { font-size: 40px; }
+  .reach-out-subtitle { font-size: 32px; }
+  .sub-paragraph { font-size: 20px; }
 }
 
 /* Medium screens (768px to 1199px) */
 @media (min-width: 768px) and (max-width: 1199px) {
-  .contact-title {
-    margin-top: 55px;
-    font-size: 32px;
-  }
-  
-  .reach-out-subtitle {
-    font-size: 32px;
-    margin-top: 260px;
-    margin-bottom: 12px;
-  }
-  
-  .sub-paragraph {
-    font-size: 22px;
-    margin-bottom: 22px;
-  }
+  .contact-section { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .contact-title { font-size: 34px; }
+  .reach-out-subtitle { font-size: 28px; }
 }
 
 /* Small screens (481px to 767px) */
 @media (min-width: 481px) and (max-width: 767px) {
-  .contact-title {
-    margin-top: 40px;
-    font-size: 28px;
-    width: 90%;
-  }
-  
-  .reach-out-subtitle {
-    font-size: 28px;
-    margin-top: 200px;
-    margin-bottom: 10px;
-    margin-right: 0;
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .sub-paragraph {
-    font-size: 20px;
-    margin-bottom: 20px;
-    margin-right: 0;
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  .contact-section { grid-template-columns: 1fr; gap: 20px; margin: 80px auto 60px; }
+  .contact-title { font-size: 30px; }
+  .reach-out-subtitle { font-size: 24px; }
+  .sub-paragraph { font-size: 18px; }
 }
 
 /* Extra small screens (480px and below) */
 @media (max-width: 480px) {
-  .contact-title {
-    margin-top: 30px;
-    font-size: 24px;
-    width: 95%;
-  }
-  
-  .reach-out-subtitle {
-    font-size: 24px;
-    margin-top: 180px;
-    margin-bottom: 8px;
-    margin-right: 0;
-    width: 95%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .sub-paragraph {
-    font-size: 18px;
-    margin-bottom: 18px;
-    margin-right: 0;
-    width: 95%;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  .contact-section { grid-template-columns: 1fr; gap: 18px; margin: 72px auto 56px; }
+  .contact-title { font-size: 26px; }
+  .reach-out-subtitle { font-size: 22px; }
+  .sub-paragraph { font-size: 16px; }
 }
 
 /* Landscape orientation on mobile */
 @media (max-width: 767px) and (orientation: landscape) {
-  .contact-title {
-    margin-top: 25px;
-    font-size: 26px;
-  }
-  
-  .reach-out-subtitle {
-    font-size: 26px;
-    margin-top: 150px;
-    margin-bottom: 8px;
-  }
-  
-  .sub-paragraph {
-    font-size: 19px;
-    margin-bottom: 15px;
-  }
-  
-  .social-buttons-container {
-    justify-content: center;
-    margin-top: 10px;
-  }
+  .contact-title { font-size: 28px; }
+  .social-buttons-container { justify-content: center; margin-top: 10px; }
 }
 
 /* Additional responsive styles for social buttons */

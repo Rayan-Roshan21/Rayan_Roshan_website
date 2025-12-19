@@ -18,17 +18,23 @@ function Contacts() {
       <Sidebar />
       <Name_title />
     </div>
-    <h2 className='contact-title'>Contact me</h2>  
-    <div>
-       <h2 className='reach-out-subtitle'>Reach out!</h2>
-      <p className = 'sub-paragraph'>If you have any questions or just want to say hello, feel free to reach out!</p>
-    </div>
-    <div>
-      <ContactButtons />
-      <div className="social-buttons-container">
-        <Tooltip large />
+
+    <section className="contact-section">
+      <div className="contact-copy">
+        <h2 className='contact-title'>Contact me</h2>
+        <h3 className='reach-out-subtitle'>Reach out!</h3>
+        <p className='sub-paragraph'>If you have any questions or just want to say hello, feel free to reach out!</p>
       </div>
-    </div>
+
+      <div className="contact-actions">
+        <div className="contact-card">
+          <ContactButtons />
+          <div className="social-buttons-container">
+            <Tooltip large />
+          </div>
+        </div>
+      </div>
+    </section>
 
     </motion.div>
   );
