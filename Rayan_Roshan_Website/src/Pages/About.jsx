@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Sidebar from '@/Components/Sidebar/Sidebar.jsx';
 import '@/Pages_CSS/About.css';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Copyright from '@/Components/Copyright_title/Copyright_title.jsx'
 import Name_title from '@/Components/Name_title/name_title.jsx';
 import Image_slideshow from '@/Components/Image_carousel/Image_slideshow.jsx';
-import Down_arrow from '@/Components/Down_arrow/Down_arrow.jsx';
 import GridFour from '@/Components/Grid_Four/Grid_Four.jsx'; 
 
 function About() {
+  const [currentSection, setCurrentSection] = useState(1);
+
+  const goToNextSection = () => {
+    setCurrentSection((prev) => (prev < 3 ? prev + 1 : prev));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const goToPreviousSection = () => {
+    setCurrentSection((prev) => (prev > 1 ? prev - 1 : prev));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -19,20 +31,107 @@ function About() {
       <div className="page-container">
         <Sidebar />
         <Name_title />
+        
+        {/* Page Title */}
         <h2 className='about-title'>About</h2>
-        <div className="about-main-content">
-          <div className="about-left">
-            <h2 className='Subtitle'>Who am I</h2>
-            <p className="about-me-paragraph">A Computer science student passionate about solving real-world problems through technology. Experienced in mobile app development with Swift and Firebase, with strong interests in AI, data science, and entrepreneurship. Driven to turn ideas into scalable products and constantly seeking new challenges to grow.</p>
-          </div>
-          <div className="about-right">
-            <Image_slideshow />
-          </div>
+
+        {/* Section Indicators */}
+        <div className="section-indicators">
+          <button 
+            className={`indicator ${currentSection === 1 ? 'active' : ''}`}
+            onClick={goToPreviousSection}
+            aria-label="Go to Who am I section"
+          />
+          <button 
+            className={`indicator ${currentSection === 2 ? 'active' : ''}`}
+            onClick={goToNextSection}
+            aria-label="Go to Skills section"
+          />
+          <button 
+            className={`indicator ${currentSection === 3 ? 'active' : ''}`}
+            onClick={goToNextSection}
+            aria-label="Go to Experience section"
+          />
         </div>
-        <Down_arrow />
-        <div>
-          <GridFour />
-        </div>
+
+        <AnimatePresence mode="wait">
+          {currentSection === 1 && (
+            <motion.div
+              key="section1"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 50 }}
+              transition={{ duration: 0.4 }}
+            >
+              {/* Who Am I Section */}
+              <section className="about-section who-am-i-section">
+                <div className="about-main-content">
+                  <div className="about-left">
+                    <h2 className='section-subtitle'>Who am I</h2>
+                    <p className="about-me-paragraph">
+                      Computer Science student building real solutions with Swift, Firebase, and AI. 
+                      Passionate about turning ideas into scalable products. I love exploring new technologies 
+                      and frameworks to create meaningful applications that solve real-world problems. 
+                      My focus is on clean code, user experience, and continuous learning in the ever-evolving 
+                      tech landscape.
+                    </p>
+                  </div>
+                  <div className="about-right">
+                    <Image_slideshow />
+                  </div>
+                </div>
+              </section>
+            </motion.div>
+          )}
+
+          {currentSection === 2 && (
+            <motion.div
+              key="section2"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -50 }}
+              transition={{ duration: 0.4 }}
+            >
+              {/* Skills Section Header */}
+              <section className="about-section skills-header-section">
+                <h2 className="section-subtitle skills-title">My Skills & Tools</h2>
+                <p className="section-description">
+                  Here's a breakdown of the technical skills, soft skills, and tools I use to build meaningful products
+                </p>
+              </section>
+
+              {/* Skills Grid */}
+              <section className="about-section skills-section">
+                <GridFour />
+              </section>
+            </motion.div>
+          )}
+          {currentSection === 3 && (
+            <motion.div
+              key="section2"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -50 }}
+              transition={{ duration: 0.4 }}
+            >
+              {/* Skills Section Header */}
+              <section className="about-section skills-header-section">
+                <h2 className="section-subtitle skills-title">My experience</h2>
+                <p className="section-description">
+                  Here's a breakdown of the technical skills, soft skills, and tools I use to build meaningful products
+                </p>
+              </section>
+
+              {/* Skills Grid */}
+              <section className="about-section skills-section">
+                <GridFour />
+              </section>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Fixed footer should always render */}
+        <Copyright />
       </div>
     </motion.div>
   );

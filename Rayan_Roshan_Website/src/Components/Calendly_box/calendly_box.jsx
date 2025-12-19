@@ -7,7 +7,7 @@ export default function CalendlyBox() {
   return (
     <div style={{ height: "100%", width: "100%" }}>
       <InlineWidget 
-        url="https://calendly.com/2006rayanroshan/meeting-with-rayan" 
+        url="https://calendly.com/2006rayanroshan/meeting-with-rayan-1-on-1" 
         styles={{ height: "100%", width: "100%" }}
       />
     </div>

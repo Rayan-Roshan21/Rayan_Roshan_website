@@ -1,3 +1,11 @@
+/* About Page Styling */
+
+.page-container {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* ===== PAGE TITLE ===== */
 .about-title {
   position: static;
   margin-top: 50px;
@@ -5,235 +13,999 @@
   transform: translateX(-50%);
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
-  font-size: 25px;
+  font-size: 40px;
   z-index: 1200;
   text-decoration: underline;
+  font-weight: bold;
+}
+
+/* ===== ABOUT SECTIONS ===== */
+.about-section {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== WHO AM I SECTION ===== */
+.who-am-i-section {
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .about-main-content {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 40px;
-  margin-top: 40px;
-  margin-left: 113px;
-  padding-left: 0;
-  padding-right: 40px;
-  max-width: 1200px;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 60px;
+  padding-left: 100px;
+  padding-right: 100px;
+  max-width: 1400px;
+  margin: 0 auto;
   box-sizing: border-box;
 }
 
 .about-left {
-  flex: 0 0 650px;
+  flex: 1;
   max-width: 650px;
+  min-width: 400px;
   width: 100%;
-  margin-left: 0;
 }
 
 .about-right {
   flex: 0 0 500px;
   max-width: 500px;
+  min-width: 400px;
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
 
-.Subtitle {
+.section-subtitle {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 52px;
+  font-size: 42px;
   font-weight: bold;
   margin-top: 0;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
   text-align: left;
-  line-height: 1.1;
+  line-height: 1.3;
+  color: #333;
 }
 
 .about-me-paragraph {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 30px;
-  margin: 0 0 32px 0;
+  font-size: 20px;
+  margin: 0;
   max-width: 100%;
-  line-height: 1.5;
+  line-height: 1.6;
   text-align: left;
+  color: #555;
 }
 
-/* Responsive additions - keeping original design intact */
+/* ===== SECTION DIVIDER ===== */
+.section-divider {
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #333, transparent);
+  margin: 25px auto;
+  border-radius: 1px;
+}
 
-/* Large screens (1200px and up) */
-@media (min-width: 1200px) {
+/* ===== SECTION INDICATORS ===== */
+.section-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 20px 0 10px;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid #333;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.indicator:hover {
+  background: rgba(51, 51, 51, 0.3);
+}
+
+.indicator.active {
+  background: #333;
+}
+
+/* ===== SECTION NAVIGATION ===== */
+.section-nav-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  padding: 20px 0;
+}
+
+.section-nav-container.section-nav-top {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.section-nav-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 40px;
+  background: white;
+  border: 2px solid #333;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.section-nav-button:hover {
+  background: #333;
+  color: white;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.section-nav-button.back-button {
+  flex-direction: column-reverse;
+}
+
+.nav-button-text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.nav-button-arrow {
+  font-size: 24px;
+  animation: bounce 2s infinite;
+}
+
+.back-button .nav-button-arrow {
+  animation: bounceUp 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(8px);
+  }
+  60% {
+    transform: translateY(4px);
+  }
+}
+
+@keyframes bounceUp {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-8px);
+  }
+  60% {
+    transform: translateY(-4px);
+  }
+}
+
+/* ===== SKILLS HEADER SECTION ===== */
+.skills-header-section {
+  text-align: center;
+  margin: 30px auto 30px;
+  padding: 0 2rem;
+  max-width: 900px;
+}
+
+.skills-title {
+  font-size: 38px;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+.section-description {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ===== SKILLS SECTION ===== */
+.skills-section {
+  margin: 30px 0;
+}
+
+/* ===== CTA SECTION ===== */
+.cta-section {
+  margin-top: 50px;
+  padding: 50px 2rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  text-align: center;
+}
+
+.cta-divider {
+  width: 80px;
+  height: 2px;
+  background: #333;
+  margin: 0 auto 30px;
+  border-radius: 1px;
+}
+
+.cta-heading {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+  margin: 0 0 40px 0;
+}
+
+.cta-cards-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.cta-card {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  position: relative;
+}
+
+.cta-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.cta-card-projects {
+  border-top-color: #333;
+}
+
+.cta-card-projects:hover {
+  background-color: #f5f5f5;
+}
+
+.cta-card-contact {
+  border-top-color: #4CAF50;
+}
+
+.cta-card-contact:hover {
+  background-color: #f0f7f0;
+}
+
+.cta-card-title {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin: 0 0 12px 0;
+}
+
+.cta-card-text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  color: #666;
+  margin: 0 0 15px 0;
+  line-height: 1.5;
+}
+
+.cta-arrow {
+  font-size: 24px;
+  color: #333;
+  transition: transform 0.3s ease;
+}
+
+.cta-card:hover .cta-arrow {
+  transform: translateX(5px);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Extra Large screens (1440px and up) */
+@media (min-width: 1440px) {
   .about-title {
     margin-top: 60px;
-    font-size: 38px;
+    font-size: 42px;
   }
-  
-  .Subtitle {
-    font-size: 44px;
-  }
-  
-  .about-me-paragraph {
-    font-size: 27px;
-    max-width: 700px;
-  }
-}
 
-/* Medium screens (768px to 1199px) */
-@media (min-width: 768px) and (max-width: 1199px) {
-  .about-title {
-    margin-top: 55px;
-    font-size: 32px;
-  }
-  
-  .Subtitle {
-    font-size: 55px;
-    top: 230px;
-    left: 120px;
-  }
-  
-  .about-me-paragraph {
-    font-size: 30px;
-    top: 330px;
-    left: 120px;
-    width: 500px;
-  }
-}
-
-/* Small screens (481px to 767px) */
-@media (min-width: 481px) and (max-width: 767px) {
-  .about-title {
-    margin-top: 40px;
-    font-size: 28px;
-    width: 90%;
-  }
-  
-  .Subtitle {
-    font-size: 40px;
-    position: static;
-    top: auto;
-    left: auto;
-    margin-top: 30px;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .about-me-paragraph {
-    font-size: 24px;
-    position: static;
-    top: auto;
-    left: auto;
-    width: 90%;
-    margin: 20px auto;
-    text-align: center;
-  }
-}
-
-/* Extra small screens (480px and below) */
-@media (max-width: 480px) {
-  .about-title {
-    margin-top: 30px;
-    font-size: 24px;
-    width: 95%;
-  }
-  
-  .Subtitle {
-    font-size: 32px;
-    position: static;
-    top: auto;
-    left: auto;
-    margin-top: 25px;
-    margin-bottom: 15px;
-    text-align: center;
-  }
-  
-  .about-me-paragraph {
-    font-size: 20px;
-    position: static;
-    top: auto;
-    left: auto;
-    width: 95%;
-    margin: 15px auto;
-    text-align: center;
-  }
-}
-
-/* Landscape orientation on mobile */
-@media (max-width: 767px) and (orientation: landscape) {
-  .about-title {
-    margin-top: 25px;
-    font-size: 26px;
-  }
-  
-  .Subtitle {
-    font-size: 36px;
+  .who-am-i-section {
     margin-top: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
-  
+
+  .about-main-content {
+    gap: 80px;
+    padding-left: 120px;
+    padding-right: 120px;
+  }
+
+  .section-subtitle {
+    font-size: 46px;
+    margin-bottom: 24px;
+  }
+
   .about-me-paragraph {
     font-size: 22px;
-    margin: 15px auto;
   }
-}
 
-@media (max-width: 1300px) {
-  .about-main-content {
-    padding-left: 24px;
-    padding-right: 24px;
-    max-width: 1000px;
-    gap: 24px;
+  .skills-title {
+    font-size: 40px;
   }
-  .about-left {
-    flex-basis: 420px;
-    max-width: 420px;
+
+  .section-description {
+    font-size: 19px;
   }
-  .about-right {
-    flex-basis: 420px;
-    max-width: 420px;
+
+  .cta-heading {
+    font-size: 38px;
   }
-  .Subtitle {
-    font-size: 36px;
+
+  .cta-card {
+    padding: 45px;
+    min-height: 240px;
   }
-  .about-me-paragraph {
+
+  .cta-card-title {
+    font-size: 24px;
+  }
+
+  .section-nav-button {
+    padding: 22px 45px;
+  }
+
+  .nav-button-text {
     font-size: 20px;
   }
+
+  .nav-button-arrow {
+    font-size: 28px;
+  }
 }
 
-@media (max-width: 900px) {
+/* Large screens (1200px to 1439px) */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .about-title {
+    margin-top: 55px;
+    font-size: 38px;
+  }
+
+  .who-am-i-section {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .about-main-content {
+    gap: 50px;
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+
+  .section-subtitle {
+    font-size: 40px;
+  }
+
+  .about-me-paragraph {
+    font-size: 19px;
+  }
+
+  .skills-title {
+    font-size: 36px;
+  }
+
+  .section-description {
+    font-size: 17px;
+  }
+
+  .cta-heading {
+    font-size: 34px;
+  }
+
+  .cta-cards-container {
+    gap: 25px;
+  }
+
+  .cta-card {
+    padding: 35px;
+    min-height: 200px;
+  }
+
+  .cta-card-title {
+    font-size: 20px;
+  }
+
+  .section-nav-button {
+    padding: 18px 38px;
+  }
+
+  .nav-button-text {
+    font-size: 18px;
+  }
+}
+
+/* Medium-Large screens (1024px to 1199px) */
+@media (min-width: 1024px) and (max-width: 1199px) {
+  .about-title {
+    margin-top: 50px;
+    font-size: 36px;
+  }
+
   .about-main-content {
     flex-direction: column;
-    gap: 32px;
     align-items: center;
-    padding-left: 16px;
-    padding-right: 8px;
-    max-width: 98vw;
+    gap: 40px;
+    padding-left: 60px;
+    padding-right: 60px;
   }
-  .about-left, .about-right {
-    max-width: 98vw;
+
+  .about-left {
+    max-width: 100%;
+    min-width: auto;
+    text-align: center;
+  }
+
+  .about-right {
+    flex: 0 0 auto;
+    max-width: 450px;
+    min-width: auto;
+    width: 70%;
+  }
+
+  .section-subtitle {
+    font-size: 36px;
+    text-align: center;
+  }
+
+  .about-me-paragraph {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .who-am-i-section {
+    margin-bottom: 25px;
+  }
+
+  .skills-header-section {
+    margin: 25px auto 20px;
+  }
+
+  .skills-title {
+    font-size: 32px;
+  }
+
+  .section-description {
+    font-size: 16px;
+  }
+
+  .cta-section {
+    padding: 40px 1.5rem;
+    margin-top: 40px;
+  }
+
+  .cta-heading {
+    font-size: 30px;
+  }
+
+  .cta-cards-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .cta-card {
+    padding: 30px;
+    min-height: 180px;
+  }
+
+  .cta-card-title {
+    font-size: 19px;
+  }
+
+  .cta-card-text {
+    font-size: 14px;
+  }
+
+  .section-nav-container {
+    margin-top: 40px;
+  }
+
+  .section-nav-button {
+    padding: 16px 32px;
+  }
+
+  .nav-button-text {
+    font-size: 16px;
+  }
+
+  .nav-button-arrow {
+    font-size: 22px;
+  }
+}
+
+/* Tablet screens (768px to 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .about-title {
+    margin-top: 50px;
+    font-size: 32px;
+  }
+
+  .about-main-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .about-left {
+    max-width: 100%;
+    min-width: auto;
+    text-align: center;
+  }
+
+  .about-right {
+    flex: 0 0 auto;
+    max-width: 400px;
+    min-width: auto;
+    width: 75%;
+  }
+
+  .section-subtitle {
+    font-size: 32px;
+    text-align: center;
+  }
+
+  .about-me-paragraph {
+    font-size: 17px;
+    text-align: center;
+  }
+
+  .who-am-i-section {
+    margin-bottom: 25px;
+  }
+
+  .section-divider {
+    margin: 20px auto;
+  }
+
+  .skills-header-section {
+    margin: 25px auto 20px;
+    padding: 0 1.5rem;
+  }
+
+  .skills-title {
+    font-size: 30px;
+  }
+
+  .section-description {
+    font-size: 15px;
+  }
+
+  .cta-section {
+    padding: 35px 1.5rem;
+    margin-top: 35px;
+  }
+
+  .cta-heading {
+    font-size: 28px;
+  }
+
+  .cta-cards-container {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 0 1rem;
+  }
+
+  .cta-card {
+    padding: 25px;
+    min-height: 160px;
+  }
+
+  .cta-card-title {
+    font-size: 18px;
+  }
+
+  .cta-card-text {
+    font-size: 14px;
+  }
+
+  .section-nav-container {
+    margin-top: 35px;
+  }
+
+  .section-nav-button {
+    padding: 16px 30px;
+  }
+
+  .nav-button-text {
+    font-size: 16px;
+  }
+
+  .nav-button-arrow {
+    font-size: 22px;
+  }
+
+  .indicator {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* Mobile landscape (601px to 767px) */
+@media (min-width: 601px) and (max-width: 767px) {
+  .about-title {
+    margin-top: 45px;
+    font-size: 30px;
+  }
+
+  .about-main-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .about-left {
+    max-width: 100%;
+    min-width: auto;
     width: 100%;
-    flex-basis: auto;
+    text-align: center;
   }
-  .Subtitle {
+
+  .about-right {
+    flex: 0 0 auto;
+    max-width: 350px;
+    min-width: auto;
+    width: 85%;
+  }
+
+  .section-subtitle {
     font-size: 28px;
     text-align: center;
   }
+
   .about-me-paragraph {
     font-size: 16px;
     text-align: center;
-    margin-bottom: 24px;
+  }
+
+  .who-am-i-section {
+    margin-bottom: 20px;
+  }
+
+  .skills-header-section {
+    margin: 20px auto 20px;
+    padding: 0 1.2rem;
+  }
+
+  .skills-title {
+    font-size: 28px;
+  }
+
+  .section-description {
+    font-size: 14px;
+  }
+
+  .cta-section {
+    padding: 30px 1rem;
+    margin-top: 30px;
+  }
+
+  .cta-heading {
+    font-size: 26px;
+  }
+
+  .cta-cards-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .cta-card {
+    padding: 22px;
+    min-height: 140px;
+  }
+
+  .cta-card-title {
+    font-size: 17px;
+    margin-bottom: 10px;
+  }
+
+  .cta-card-text {
+    font-size: 13px;
+  }
+
+  .section-nav-container {
+    margin-top: 30px;
+  }
+
+  .section-nav-button {
+    padding: 14px 28px;
+  }
+
+  .nav-button-text {
+    font-size: 15px;
+  }
+
+  .nav-button-arrow {
+    font-size: 20px;
+  }
+
+  .indicator {
+    width: 10px;
+    height: 10px;
   }
 }
 
-@media (max-width: 600px) {
+/* Mobile portrait (481px to 600px) */
+@media (min-width: 481px) and (max-width: 600px) {
+  .about-title {
+    margin-top: 40px;
+    font-size: 28px;
+  }
+
   .about-main-content {
-    gap: 18px;
-    margin-top: 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding-left: 30px;
+    padding-right: 30px;
   }
-  .Subtitle {
-    font-size: 20px;
+
+  .about-left {
+    max-width: 100%;
+    min-width: auto;
+    width: 100%;
+    text-align: center;
   }
+
+  .about-right {
+    flex: 0 0 auto;
+    max-width: 320px;
+    min-width: auto;
+    width: 90%;
+  }
+
+  .section-subtitle {
+    font-size: 26px;
+    text-align: center;
+  }
+
   .about-me-paragraph {
     font-size: 15px;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .who-am-i-section {
+    margin-bottom: 20px;
+  }
+
+  .section-divider {
+    width: 70px;
+    margin: 20px auto;
+  }
+
+  .skills-header-section {
+    margin: 20px auto 15px;
+    padding: 0 1rem;
+  }
+
+  .skills-title {
+    font-size: 26px;
+  }
+
+  .section-description {
+    font-size: 13px;
+  }
+
+  .cta-section {
+    padding: 25px 1rem;
+    margin-top: 25px;
+  }
+
+  .cta-divider {
+    width: 60px;
+    margin: 0 auto 25px;
+  }
+
+  .cta-heading {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+
+  .cta-cards-container {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .cta-card {
+    padding: 20px;
+    min-height: 130px;
+  }
+
+  .cta-card-title {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
+  .cta-card-text {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+
+  .cta-arrow {
+    font-size: 20px;
+  }
+
+  .section-nav-container {
+    margin-top: 25px;
+  }
+
+  .section-nav-button {
+    padding: 12px 24px;
+  }
+
+  .nav-button-text {
+    font-size: 14px;
+  }
+
+  .nav-button-arrow {
+    font-size: 18px;
+  }
+
+  .indicator {
+    width: 9px;
+    height: 9px;
+  }
+}
+
+/* Small mobile (below 481px) */
+@media (max-width: 480px) {
+  .about-title {
+    margin-top: 35px;
+    font-size: 26px;
+  }
+
+  .about-main-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .about-left {
+    max-width: 100%;
+    min-width: auto;
+    width: 100%;
+    text-align: center;
+  }
+
+  .about-right {
+    flex: 0 0 auto;
+    max-width: 280px;
+    min-width: auto;
+    width: 95%;
+  }
+
+  .section-subtitle {
+    font-size: 24px;
+    text-align: center;
     margin-bottom: 16px;
+  }
+
+  .about-me-paragraph {
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .who-am-i-section {
+    margin-bottom: 20px;
+  }
+
+  .section-divider {
+    width: 60px;
+    margin: 20px auto;
+  }
+
+  .skills-header-section {
+    margin: 20px auto 15px;
+    padding: 0 1rem;
+  }
+
+  .skills-title {
+    font-size: 24px;
+  }
+
+  .section-description {
+    font-size: 12px;
+  }
+
+  .cta-section {
+    padding: 25px 1rem;
+    margin-top: 25px;
+  }
+
+  .cta-divider {
+    width: 50px;
+    margin: 0 auto 20px;
+  }
+
+  .cta-heading {
+    font-size: 22px;
+    margin-bottom: 25px;
+  }
+
+  .cta-cards-container {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .cta-card {
+    padding: 18px;
+    min-height: 120px;
+  }
+
+  .cta-card-title {
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+
+  .cta-card-text {
+    font-size: 11px;
+    margin-bottom: 10px;
+  }
+
+  .cta-arrow {
+    font-size: 18px;
+  }
+
+  .section-nav-container {
+    margin-top: 20px;
+  }
+
+  .section-nav-button {
+    padding: 12px 20px;
+  }
+
+  .nav-button-text {
+    font-size: 13px;
+  }
+
+  .nav-button-arrow {
+    font-size: 16px;
+  }
+
+  .section-indicators {
+    gap: 10px;
+    margin: 15px 0 8px;
+  }
+
+  .indicator {
+    width: 8px;
+    height: 8px;
   }
 }

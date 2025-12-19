@@ -1,6 +1,8 @@
 .page-container {
   padding-left: 80px;
   padding-right: 40px;
+  /* Reserve space for fixed footer */
+  padding-bottom: 64px;
   max-width: 1200px;
   margin: 0 auto;
   box-sizing: border-box;
@@ -9,5 +11,6 @@
   .page-container {
     padding-left: 16px;
     padding-right: 8px;
+    padding-bottom: 64px;
   }
 }

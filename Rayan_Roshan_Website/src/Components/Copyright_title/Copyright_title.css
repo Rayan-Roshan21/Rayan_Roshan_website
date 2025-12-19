@@ -1,11 +1,23 @@
-.Copyright-title {
-    display: flex;  
+.copyright-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    font-size: medium;
-    color: gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 16px;
+    background: #ffffff;
+    border-top: 1px solid #e9ecef;
+    z-index: 2000;
+}
+
+.Copyright-title {
+    display: block;
+    width: 100%;
+    margin: 0;
+    font-size: 14px;
+    color: #6c757d;
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
-    background: white;
-    z-index: 1000;
-    /* Removed left, right, bottom, and position: static */
 }

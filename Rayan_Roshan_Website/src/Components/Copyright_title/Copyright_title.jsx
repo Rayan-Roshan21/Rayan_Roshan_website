@@ -1,11 +1,10 @@
 import './Copyright_title.css';
+
 function Copyright_title() {
     return (
-        <div class="container">
-        <div class="bottom-div">
+        <footer className="copyright-container">
             <p className="Copyright-title">&copy; 2025 Rayan Roshan. All rights reserved.</p>
-        </div>
-    </div>
+        </footer>
     );
 }
 
