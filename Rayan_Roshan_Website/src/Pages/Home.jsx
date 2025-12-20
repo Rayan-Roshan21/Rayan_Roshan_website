@@ -4,14 +4,16 @@ import Sidebar from '@/Components/Sidebar/Sidebar.jsx';
 import profileImage from '@/assets/profile-image.JPG';
 import Tooltip from '@/Components/Information_bar/Tooltip.jsx';
 import { motion } from 'framer-motion';
-import Copyright from '@/Components/Copyright_title/Copyright_title.jsx'
+import Copyright from '@/Components/Copyright_title/Copyright_title.jsx';
 import Name_title from '@/Components/Name_title/name_title.jsx';
+import { useScrollToBottom } from '@/hooks/useScrollToBottom';
 function Home() {
   const [introText, setIntroText] = useState('');
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [texts, setTexts] = useState([]);
+  const isAtBottom = useScrollToBottom();
 
   // Set up the messages based on time
   useEffect(() => {
@@ -74,6 +76,7 @@ function Home() {
         <Tooltip />
       </div>
       </div>
+      <Copyright isVisible={isAtBottom} />
     </motion.div>
 );
 

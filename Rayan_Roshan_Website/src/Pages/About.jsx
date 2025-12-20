@@ -3,14 +3,16 @@ import { Link } from 'react-router-dom';
 import Sidebar from '@/Components/Sidebar/Sidebar.jsx';
 import '@/Pages_CSS/About.css';
 import { motion, AnimatePresence } from 'framer-motion';
-import Copyright from '@/Components/Copyright_title/Copyright_title.jsx'
+import Copyright from '@/Components/Copyright_title/Copyright_title.jsx';
 import Name_title from '@/Components/Name_title/name_title.jsx';
 import Image_slideshow from '@/Components/Image_carousel/Image_slideshow.jsx';
 import GridFour from '@/Components/Grid_Four/Grid_Four.jsx'; 
 import ExperienceTimeline from '@/Components/Experience_Timeline/ExperienceTimeline.jsx';
+import { useScrollToBottom } from '@/hooks/useScrollToBottom';
 
 function About() {
   const [currentSection, setCurrentSection] = useState(1);
+  const isAtBottom = useScrollToBottom();
 
   const goToNextSection = () => {
     setCurrentSection((prev) => (prev < 3 ? prev + 1 : prev));
@@ -131,8 +133,8 @@ function About() {
           )}
         </AnimatePresence>
 
-        {/* Fixed footer should always render */}
-        <Copyright />
+        {/* Copyright shown only at bottom */}
+        <Copyright isVisible={isAtBottom} />
       </div>
     </motion.div>
   );

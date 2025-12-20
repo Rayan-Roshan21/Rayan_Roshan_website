@@ -5,38 +5,53 @@ import Sidebar from '@/Components/Sidebar/Sidebar.jsx';
 import '@/Pages_CSS/Contact.css';
 import ContactButtons from '@/Components/Contact_Buttons/contact_buttons.jsx';
 import Tooltip from '@/Components/Information_bar/Tooltip.jsx';
+import Copyright from '@/Components/Copyright_title/Copyright_title.jsx';
+import { useScrollToBottom } from '@/hooks/useScrollToBottom';
 
 function Contacts() {
+  const isAtBottom = useScrollToBottom();
+  
   return (
     <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -30 }}
-          transition={{ duration: 0.5 }}
-      >
-    <div>
+      className="contact-page"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -30 }}
+      transition={{ duration: 0.5 }}
+    >
       <Sidebar />
       <Name_title />
-    </div>
 
-    <section className="contact-section">
-      <div className="contact-copy">
-        <h2 className='contact-title'>Contact me</h2>
-        <h3 className='reach-out-subtitle'>Reach out!</h3>
-        <p className='sub-paragraph'>If you have any questions or just want to say hello, feel free to reach out!</p>
-      </div>
+      <main className="contact-main">
+        <section className="contact-hero">
+          <h1 className="contact-heading">Get in Touch</h1>
+          <p className="contact-subtext">
+            Have a question, project idea, or just want to say hello? 
+            I'd love to hear from you!
+          </p>
+        </section>
 
-      <div className="contact-actions">
-        <div className="contact-card">
-          <ContactButtons />
-          <div className="social-buttons-container">
-            <Tooltip large />
+        <section className="contact-content">
+          <div className="contact-info">
+            <h2 className="info-title">Let's Connect</h2>
+            <p className="info-description">
+              Feel free to reach out through email or schedule a call. 
+              I'm always open to discussing new opportunities and ideas.
+            </p>
+            <div className="social-links">
+              <Tooltip large />
+            </div>
           </div>
-        </div>
-      </div>
-    </section>
 
+          <div className="contact-actions-card">
+            <ContactButtons />
+          </div>
+        </section>
+      </main>
+
+      <Copyright isVisible={isAtBottom} />
     </motion.div>
   );
 }
+
 export default Contacts;

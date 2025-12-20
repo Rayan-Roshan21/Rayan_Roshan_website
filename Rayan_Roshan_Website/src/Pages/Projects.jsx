@@ -10,8 +10,10 @@ import multimodalImage from '@/assets/multimodal video analysis.png';
 import torontoImage from '@/assets/toronto-photo.jpg';
 import medicalFormImage from '@/assets/medical_form.jpg';
 import AICustomerImage from '@/assets/aiagentimage.jpg';
+import { useScrollToBottom } from '@/hooks/useScrollToBottom';
 
 function Projects() {
+  const isAtBottom = useScrollToBottom();
   return (
     <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -74,6 +76,7 @@ Automate the Prior Authorization (PA) Form Filling Workflow</p>
         </div>
       </div>
     </div>
+    <Copyright_title isVisible={isAtBottom} />
     </motion.div>
   );
 }
