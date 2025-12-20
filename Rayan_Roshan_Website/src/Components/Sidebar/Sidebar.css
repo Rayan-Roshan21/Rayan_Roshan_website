@@ -51,6 +51,21 @@
     color: black;
     font-size: 28px;
     font-family: Arial, Helvetica, sans-serif;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.menu-toggle.hide {
+    opacity: 0;
+    transform: translateY(-40px);
+    pointer-events: none;
+}
+
+.menu-toggle.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 .overlay {

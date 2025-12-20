@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import './Sidebar.css';
 import {Link} from 'react-router-dom'
+import { useScrollDirection } from '@/hooks/useScrollDirection';
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const isScrollingUp = useScrollDirection();
 
   return (
     <>
-      <div className="menu-toggle" onClick={() => setIsOpen(true)}>
+      <div className={`menu-toggle ${!isScrollingUp && !isOpen ? 'hide' : 'show'}`} onClick={() => setIsOpen(true)}>
         ☰
       </div>
 

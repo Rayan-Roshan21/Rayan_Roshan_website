@@ -10,6 +10,10 @@
   text-decoration: underline;
 }
 
+.projects-wrapper {
+  padding-bottom: 80px;
+}
+
 /* Responsive additions - keeping original design intact */
 
 /* Large screens (1200px and up) */
