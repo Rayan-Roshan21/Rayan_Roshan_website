@@ -21,7 +21,7 @@ function Home() {
       "Welcome to my website!",
       "I'm a computer science student at TMU.",
       "Check out my projects and LinkedIn profile!",
-      "Keep it simple. Make it work."
+      "Keep it simple. Make it work. Make impact."
     ];
 
     const hour = new Date().getHours();

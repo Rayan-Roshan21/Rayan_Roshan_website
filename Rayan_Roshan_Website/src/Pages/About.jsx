@@ -62,18 +62,6 @@ function About() {
           />
         </div>
 
-        {/* Navigation Arrows */}
-        {currentSection > 1 && (
-          <button className="nav-arrow prev-arrow" onClick={goToPreviousSection} aria-label="Previous section">
-            ←
-          </button>
-        )}
-        {currentSection < 3 && (
-          <button className="nav-arrow next-arrow" onClick={goToNextSection} aria-label="Next section">
-            →
-          </button>
-        )}
-
         <AnimatePresence mode="wait">
           {currentSection === 1 && (
             <motion.div
