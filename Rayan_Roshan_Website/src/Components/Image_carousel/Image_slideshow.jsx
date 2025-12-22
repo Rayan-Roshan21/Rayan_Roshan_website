@@ -1,7 +1,6 @@
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import "./Image_slideshow.css"
-import Slider from "react-slick";
+import "./Image_slideshow.css";
 import image2 from '@/assets/Picture2.jpg';
 import image3 from '@/assets/Picture3.jpg';
 

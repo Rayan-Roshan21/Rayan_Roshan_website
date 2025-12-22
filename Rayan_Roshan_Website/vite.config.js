@@ -6,7 +6,18 @@ import path from 'path'
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: 'dist', // 👈 Explicitly set output dir
+    outDir: 'dist',
+    sourcemap: false, // Disable sourcemaps in production for faster builds
+    minify: 'esbuild', // Use esbuild for faster minification
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'animation': ['framer-motion'],
+          'carousel': ['react-responsive-carousel'],
+        },
+      },
+    },
   },
   resolve: {
     alias: {
