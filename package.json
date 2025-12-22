@@ -9,6 +9,7 @@
     "dev": "npm run dev"
   },
   "dependencies": {
-    "@emailjs/browser": "^4.4.1"
+    "@emailjs/browser": "^4.4.1",
+    "@vercel/analytics": "^1.6.1"
   }
 }
