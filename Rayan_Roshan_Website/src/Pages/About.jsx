@@ -14,6 +14,11 @@ function About() {
   const [currentSection, setCurrentSection] = useState(1);
   const isAtBottom = useScrollToBottom();
 
+  const goToSection = (sectionNumber) => {
+    setCurrentSection(sectionNumber);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const goToNextSection = () => {
     setCurrentSection((prev) => (prev < 3 ? prev + 1 : prev));
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -42,20 +47,32 @@ function About() {
         <div className="section-indicators">
           <button 
             className={`indicator ${currentSection === 1 ? 'active' : ''}`}
-            onClick={goToPreviousSection}
+            onClick={() => goToSection(1)}
             aria-label="Go to Who am I section"
           />
           <button 
             className={`indicator ${currentSection === 2 ? 'active' : ''}`}
-            onClick={goToNextSection}
+            onClick={() => goToSection(2)}
             aria-label="Go to Skills section"
           />
           <button 
             className={`indicator ${currentSection === 3 ? 'active' : ''}`}
-            onClick={goToNextSection}
+            onClick={() => goToSection(3)}
             aria-label="Go to Experience section"
           />
         </div>
+
+        {/* Navigation Arrows */}
+        {currentSection > 1 && (
+          <button className="nav-arrow prev-arrow" onClick={goToPreviousSection} aria-label="Previous section">
+            ←
+          </button>
+        )}
+        {currentSection < 3 && (
+          <button className="nav-arrow next-arrow" onClick={goToNextSection} aria-label="Next section">
+            →
+          </button>
+        )}
 
         <AnimatePresence mode="wait">
           {currentSection === 1 && (
