@@ -43,23 +43,25 @@ function About() {
         {/* Page Title */}
         <h2 className='about-title'>About</h2>
 
-        {/* Section Indicators */}
+        {/* Section Navigation Arrows */}
         <div className="section-indicators">
           <button 
-            className={`indicator ${currentSection === 1 ? 'active' : ''}`}
-            onClick={() => goToSection(1)}
-            aria-label="Go to Who am I section"
-          />
+            className="indicator-arrow arrow-left"
+            onClick={() => goToPreviousSection()}
+            disabled={currentSection === 1}
+            aria-label="Go to previous section"
+          >
+            ←
+          </button>
+          <span className="section-counter">{currentSection} / 3</span>
           <button 
-            className={`indicator ${currentSection === 2 ? 'active' : ''}`}
-            onClick={() => goToSection(2)}
-            aria-label="Go to Skills section"
-          />
-          <button 
-            className={`indicator ${currentSection === 3 ? 'active' : ''}`}
-            onClick={() => goToSection(3)}
-            aria-label="Go to Experience section"
-          />
+            className="indicator-arrow arrow-right"
+            onClick={() => goToNextSection()}
+            disabled={currentSection === 3}
+            aria-label="Go to next section"
+          >
+            →
+          </button>
         </div>
 
         <AnimatePresence mode="wait">
@@ -138,8 +140,8 @@ function About() {
           )}
         </AnimatePresence>
 
-        {/* Copyright shown only at bottom */}
-        <Copyright isVisible={isAtBottom} />
+        {/* Copyright always visible on About page */}
+        <Copyright isVisible={true} />
       </div>
     </motion.div>
   );

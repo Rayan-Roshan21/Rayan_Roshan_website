@@ -2,39 +2,48 @@
   position: static;
   display: inline-block;
   margin-top: 15px;
-  margin-left: 50%;
-  transform: translateX(-50%);
+  margin-left: 40px;
   font-family: 'Open Sans', sans-serif;
-  text-align: center;
+  text-align: left;
   z-index: 1200;
   text-decoration: none;
   color: inherit;
   cursor: pointer;
   transition: all 0.3s ease;
-  width: 50%;
+  width: auto;
 }
 
 .title-alt {
   position: static;
   display: inline-block;
   margin-top: 20px;
-  margin-left: 15%; /* Adjusted to position the title properly */
+  margin-left: 40px;
   font-family: 'Open Sans', sans-serif;
-  text-align: center;
+  text-align: left;
   z-index: 1200;
   text-decoration: none;
   color: inherit;
   cursor: pointer;
   transition: all 0.3s ease;
-  width: 50%;
+  width: auto;
 }
 
 .title:hover {
-  transform: translateX(-50%) scale(1.03);
+  transform: scale(1.03);
 }
 
 .title-alt:hover {
-  transform: translateX(-50%) scale(1.03);
+  transform: scale(1.03);
+}
+
+/* Blinking cursor animation */
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
 }
 
 /* Responsive additions - keeping original design intact */
@@ -43,13 +52,12 @@
 @media (min-width: 1200px) {
   .title {
     margin-top: 20px;
-    width: 45%;
+    margin-left: 40px;
   }
   
   .title-alt {
     margin-top: 25px;
-    margin-left: 12%;
-    width: 45%;
+    margin-left: 40px;
   }
 }
 
@@ -57,13 +65,12 @@
 @media (min-width: 768px) and (max-width: 1199px) {
   .title {
     margin-top: 18px;
-    width: 48%;
+    margin-left: 40px;
   }
   
   .title-alt {
     margin-top: 22px;
-    margin-left: 14%;
-    width: 48%;
+    margin-left: 40px;
   }
 }
 
@@ -71,18 +78,16 @@
 @media (min-width: 481px) and (max-width: 767px) {
   .title {
     margin-top: 15px;
-    width: 70%;
+    margin-left: 35px;
   }
   
   .title-alt {
     margin-top: 20px;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    width: 70%;
+    margin-left: 35px;
   }
   
   .title-alt:hover {
-    transform: translateX(-50%) scale(1.03);
+    transform: scale(1.03);
   }
 }
 
@@ -90,18 +95,16 @@
 @media (max-width: 480px) {
   .title {
     margin-top: 12px;
-    width: 85%;
+    margin-left: 30px;
   }
   
   .title-alt {
     margin-top: 18px;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    width: 85%;
+    margin-left: 30px;
   }
   
   .title-alt:hover {
-    transform: translateX(-50%) scale(1.03);
+    transform: scale(1.03);
   }
 }
 
@@ -109,31 +112,29 @@
 @media (max-width: 767px) and (orientation: landscape) {
   .title {
     margin-top: 10px;
-    width: 80%;
+    margin-left: 30px;
   }
   
   .title-alt {
     margin-top: 15px;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
+    margin-left: 30px;
   }
   
   .title-alt:hover {
-    transform: translateX(-50%) scale(1.03);
+    transform: scale(1.03);
   }
 }
 
 @media (max-width: 900px) {
   .title {
-    margin-left: 20px;
+    margin-left: 35px;
     font-size: 28px;
   }
 }
 
 @media (max-width: 600px) {
   .title {
-    margin-left: 10px;
+    margin-left: 30px;
     font-size: 22px;
   }
 }

@@ -55,7 +55,7 @@ function Home() {
           setTextIndex((prev) => (prev + 1) % texts.length);
         }
       }
-    }, isDeleting ? 50 : (isComplete ? 1500 : 100));
+    }, isDeleting ? 30 : (isComplete ? 1500 : 90));
 
     return () => clearTimeout(timeout);
   }, [charIndex, isDeleting, textIndex, texts]);

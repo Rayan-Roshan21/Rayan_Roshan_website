@@ -9,6 +9,16 @@ const Sidebar = () => {
 
   return (
     <>
+      {/* Horizontal Menu for Larger Screens */}
+      <nav className={`horizontal-nav ${!isScrollingUp ? 'hide' : 'show'}`}>
+        <ul>
+          <li><Link to="/about">About</Link></li>
+          <li><Link to="/projects">Projects</Link></li>
+          <li><Link to="/contact">Contact</Link></li>
+        </ul>
+      </nav>
+
+      {/* Hamburger Menu for Mobile Screens */}
       <div className={`menu-toggle ${!isScrollingUp && !isOpen ? 'hide' : 'show'}`} onClick={() => setIsOpen(true)}>
         ☰
       </div>
@@ -17,7 +27,6 @@ const Sidebar = () => {
         <div className="close-btn" onClick={() => setIsOpen(false)}>&times;</div>
         <h2 className='menu-title'>Menu</h2>
         <ul>
-          <li><Link to="/" onClick={() => setIsOpen(false)}>Home</Link></li>
           <li><Link to="/about" onClick={() => setIsOpen(false)}>About</Link></li>
           <li><Link to="/projects" onClick={() => setIsOpen(false)}>Projects</Link></li>
           <li><Link to="/contact" onClick={() => setIsOpen(false)}>Contact</Link></li>

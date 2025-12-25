@@ -7,6 +7,20 @@
   margin: 0 auto;
   box-sizing: border-box;
 }
+
+/* Add left padding for desktop to account for vertical menu */
+@media (min-width: 768px) {
+  .page-container {
+    padding-left: 280px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .page-container {
+    padding-left: 300px;
+  }
+}
+
 @media (max-width: 900px) {
   .page-container {
     padding-left: 16px;
