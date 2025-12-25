@@ -1,11 +1,11 @@
 /* Contact Page Styles */
 :root {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .contact-page {
   min-height: 100vh;
-  font-family: var(--font-sans);
+  font-family: 'Open Sans', sans-serif;
 }
 
 .contact-main {

@@ -1,5 +1,5 @@
 .project-container {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     padding: 20px;
     border: 3px solid #ccc;
     border-radius: 8px; /* Add some rounded corners */
@@ -34,7 +34,7 @@
     font-size: 22px;
     font-weight: bold;
     color: #333;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     text-align: center;
     margin-top: 10px;
     margin-bottom: 0;
@@ -43,7 +43,7 @@
 .project-role {
     font-size: 18px;
     color: #666;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     text-align: center;
     margin-top: 10px;
     margin-bottom: 0;
@@ -52,7 +52,7 @@
 .project-description {
     font-size: 17px;
     color: #555;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     text-align: center;
     flex-grow: 1;
     line-height: 1.5;
@@ -87,7 +87,7 @@
     text-decoration: none;
     margin: 0;
     padding: 10px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     text-align: center;
     font-weight: 600;
     border-radius: 4px;

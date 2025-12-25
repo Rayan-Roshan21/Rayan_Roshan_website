@@ -62,7 +62,7 @@ const StyledWrapper = styled.div`
     font-size: 14px;
     white-space: nowrap;
     transition: all 0.3s ease;
-    font-family: Arial, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     z-index: 2;
   }
 
