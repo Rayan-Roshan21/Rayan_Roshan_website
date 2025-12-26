@@ -151,10 +151,40 @@ export default function VoiceAgent() {
         throw new Error(msg || 'Upload failed');
       }
       const data = await res.json();
-      const text = (data && data.text) ? String(data.text) : '';
-      if (text) {
-        const id = Date.now();
-        setMessages((prev) => [...prev, { id, role: 'assistant', text }]);
+      const transcribedText = (data && data.text) ? String(data.text) : '';
+      if (transcribedText) {
+        // Add user message
+        const userMsg = { id: Date.now(), role: 'user', text: transcribedText };
+        setMessages((prev) => [...prev, userMsg]);
+
+        // Get AI response from RAG + LLM
+        try {
+          const chatRes = await fetch(`${API_BASE}/chat`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              message: transcribedText,
+              history: messages
+            })
+          });
+          if (!chatRes.ok) {
+            throw new Error('Chat failed');
+          }
+          const chatData = await chatRes.json();
+          const aiResponse = chatData.response || '';
+          if (aiResponse) {
+            setMessages((prev) => [
+              ...prev,
+              { id: Date.now() + 1, role: 'assistant', text: aiResponse }
+            ]);
+          }
+        } catch (chatErr) {
+          console.error('Chat error:', chatErr);
+          setMessages((prev) => [
+            ...prev,
+            { id: Date.now() + 1, role: 'assistant', text: `Error: ${chatErr.message}` }
+          ]);
+        }
       }
     } catch (err) {
       // Surface errors in the transcript pane for easier debugging
