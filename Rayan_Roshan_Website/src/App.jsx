@@ -5,6 +5,7 @@ import Home from './Pages/Home';
 import About from './Pages/About';
 import Contacts from './Pages/Contacts';
 import Projects from './Pages/Projects';
+import VoiceAgent from './Components/Voice agent/VoiceAgent';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -25,6 +26,7 @@ export default function App() {
   return (
     <Router>
       <AnimatedRoutes />
+      <VoiceAgent />
       <Analytics />
     </Router>
   );
