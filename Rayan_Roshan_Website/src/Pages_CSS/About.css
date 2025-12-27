@@ -2,13 +2,13 @@
 
 .page-container {
   max-width: 1600px;
-  margin: 0 auto;
+  margin: 0 0;
 }
 
 /* ===== PAGE TITLE ===== */
 .about-title {
   position: static;
-  margin-top: 50px;
+  margin-top: -20px;
   margin-left: 50%;
   transform: translateX(-50%);
   font-family: 'Open Sans', sans-serif;
