@@ -6,11 +6,10 @@ export default function VoiceAgent() {
   const [open, setOpen] = useState(false);
   const [listening, setListening] = useState(false);
   const [level, setLevel] = useState(0);
-  const [messages, setMessages] = useState([
-    { id: 1, role: 'assistant', text: 'Hi! I\'m your voice agent UI.' },
-    { id: 2, role: 'assistant', text: 'Tap the mic to simulate recording.' },
-  ]);
+  const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
+  const [speaking, setSpeaking] = useState(false);
+  const [hasGreeted, setHasGreeted] = useState(false);
   const panelRef = useRef(null);
   const audioCtxRef = useRef(null);
   const analyserRef = useRef(null);
@@ -18,8 +17,13 @@ export default function VoiceAgent() {
   const rafRef = useRef(null);
   const recorderRef = useRef(null);
   const chunksRef = useRef([]);
+  const audioElementRef = useRef(null);
 
-  const statusText = useMemo(() => (listening ? 'Listening…' : 'Idle'), [listening]);
+  const statusText = useMemo(() => {
+    if (speaking) return 'Speaking…';
+    if (listening) return 'Listening…';
+    return 'Idle';
+  }, [listening, speaking]);
 
   useEffect(() => {
     function onKey(e) {
@@ -42,6 +46,17 @@ export default function VoiceAgent() {
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, []);
+
+  // Greeting on first open
+  useEffect(() => {
+    if (open && !hasGreeted) {
+      setHasGreeted(true);
+      const greeting = "Hello! I'm Echo, your voice assistant. How can I help you today?";
+      const greetingMsg = { id: Date.now(), role: 'assistant', text: greeting };
+      setMessages([greetingMsg]);
+      playTextToSpeech(greeting);
+    }
+  }, [open, hasGreeted]);
 
   useEffect(() => {
     // Click outside closes the panel
@@ -135,6 +150,50 @@ export default function VoiceAgent() {
     setLevel(0);
   }
 
+  async function playTextToSpeech(text) {
+    try {
+      setSpeaking(true);
+      const API_BASE = import.meta.env.VITE_VOICE_API_BASE || '/api';
+      const res = await fetch(`${API_BASE}/tts`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text })
+      });
+      
+      if (!res.ok) {
+        throw new Error('TTS failed');
+      }
+      
+      const audioBlob = await res.blob();
+      const audioUrl = URL.createObjectURL(audioBlob);
+      
+      // Create or reuse audio element
+      if (!audioElementRef.current) {
+        audioElementRef.current = new Audio();
+      }
+      
+      const audio = audioElementRef.current;
+      audio.src = audioUrl;
+      
+      return new Promise((resolve, reject) => {
+        audio.onended = () => {
+          setSpeaking(false);
+          URL.revokeObjectURL(audioUrl);
+          resolve();
+        };
+        audio.onerror = (err) => {
+          setSpeaking(false);
+          URL.revokeObjectURL(audioUrl);
+          reject(err);
+        };
+        audio.play().catch(reject);
+      });
+    } catch (err) {
+      console.error('TTS error:', err);
+      setSpeaking(false);
+    }
+  }
+
   async function sendAudioBlob(blob) {
     try {
       const API_BASE = import.meta.env.VITE_VOICE_API_BASE || '/api';
@@ -177,6 +236,8 @@ export default function VoiceAgent() {
               ...prev,
               { id: Date.now() + 1, role: 'assistant', text: aiResponse }
             ]);
+            // Play response as speech
+            await playTextToSpeech(aiResponse);
           }
         } catch (chatErr) {
           console.error('Chat error:', chatErr);
