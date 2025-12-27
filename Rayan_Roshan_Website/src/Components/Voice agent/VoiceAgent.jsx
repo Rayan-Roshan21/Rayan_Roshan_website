@@ -51,7 +51,7 @@ export default function VoiceAgent() {
   useEffect(() => {
     if (open && !hasGreeted) {
       setHasGreeted(true);
-      const greeting = "Hello! I'm Echo, your voice assistant. How can I help you today?";
+      const greeting = "Hello! I'm Echo, I'm your voice assistant. How can I help you today?";
       const greetingMsg = { id: Date.now(), role: 'assistant', text: greeting };
       setMessages([greetingMsg]);
       playTextToSpeech(greeting);
@@ -255,13 +255,47 @@ export default function VoiceAgent() {
     }
   }
 
-  function handleSend(e) {
+  async function handleSend(e) {
     e.preventDefault();
     const text = input.trim();
     if (!text) return;
-    const id = Date.now();
-    setMessages((prev) => [...prev, { id, role: 'user', text }]);
+    
+    // Add user message
+    const userMsg = { id: Date.now(), role: 'user', text };
+    setMessages((prev) => [...prev, userMsg]);
     setInput('');
+
+    // Get AI response from RAG + LLM
+    try {
+      const API_BASE = import.meta.env.VITE_VOICE_API_BASE || '/api';
+      const chatRes = await fetch(`${API_BASE}/chat`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: text,
+          history: messages
+        })
+      });
+      if (!chatRes.ok) {
+        throw new Error('Chat failed');
+      }
+      const chatData = await chatRes.json();
+      const aiResponse = chatData.response || '';
+      if (aiResponse) {
+        setMessages((prev) => [
+          ...prev,
+          { id: Date.now() + 1, role: 'assistant', text: aiResponse }
+        ]);
+        // Play response as speech
+        await playTextToSpeech(aiResponse);
+      }
+    } catch (chatErr) {
+      console.error('Chat error:', chatErr);
+      setMessages((prev) => [
+        ...prev,
+        { id: Date.now() + 1, role: 'assistant', text: `Error: ${chatErr.message}` }
+      ]);
+    }
   }
 
   function handleClear() {
@@ -302,7 +336,7 @@ export default function VoiceAgent() {
             transition={{ type: 'spring', stiffness: 420, damping: 28 }}
           >
           <div className="va-header">
-            <div className="va-title">Voice Assistant (UI only)</div>
+            <div className="va-title">Voice Assistant</div>
             <div className={`va-status ${listening ? 'va-status-on' : ''}`}>{statusText}</div>
           </div>
 
@@ -342,7 +376,7 @@ export default function VoiceAgent() {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Type instead… (no backend yet)"
+              placeholder="Type instead…"
               aria-label="Type a message"
             />
             <button type="submit" className="va-send" aria-label="Send message">Send</button>
