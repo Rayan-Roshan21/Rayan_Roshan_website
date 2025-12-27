@@ -34,10 +34,10 @@ export default async function handler(req, res) {
 
     console.log('Generating speech for text:', text.substring(0, 50) + '...');
 
-    // Use tts-1 (cheaper, faster) with nova voice (natural, friendly)
+    // Use tts-1 (cheaper, faster) with shimmer voice (warm, expressive)
     const mp3 = await openai.audio.speech.create({
       model: 'tts-1',
-      voice: 'nova',
+      voice: 'shimmer',
       input: text,
       speed: 1.0
     });

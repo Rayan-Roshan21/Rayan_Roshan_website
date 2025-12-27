@@ -364,7 +364,7 @@ export default function VoiceAgent() {
             ) : (
               messages.map((m) => (
                 <div key={m.id} role="listitem" className={`va-message va-${m.role}`}>
-                  <div className="va-avatar" aria-hidden="true">{m.role === 'assistant' ? '🤖' : '🧑'}</div>
+                  <div className="va-avatar" aria-hidden="true">{m.role === 'assistant' ? '🤖' : '👤'}</div>
                   <div className="va-text">{m.text}</div>
                 </div>
               ))
