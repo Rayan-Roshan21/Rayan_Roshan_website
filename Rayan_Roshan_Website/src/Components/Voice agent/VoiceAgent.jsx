@@ -237,12 +237,13 @@ export default function VoiceAgent() {
           const chatData = await chatRes.json();
           const aiResponse = chatData.response || '';
           if (aiResponse) {
+            // OPTIMIZATION #1: Show text immediately, play TTS in parallel (non-blocking)
             setMessages((prev) => [
               ...prev,
               { id: Date.now() + 1, role: 'assistant', text: aiResponse }
             ]);
-            // Play response as speech
-            await playTextToSpeech(aiResponse);
+            // Play TTS without blocking (fire and forget)
+            playTextToSpeech(aiResponse).catch(err => console.error('TTS error:', err));
           }
         } catch (chatErr) {
           console.error('Chat error:', chatErr);
@@ -287,12 +288,13 @@ export default function VoiceAgent() {
       const chatData = await chatRes.json();
       const aiResponse = chatData.response || '';
       if (aiResponse) {
+        // OPTIMIZATION #1: Show text immediately, play TTS in parallel (non-blocking)
         setMessages((prev) => [
           ...prev,
           { id: Date.now() + 1, role: 'assistant', text: aiResponse }
         ]);
-        // Play response as speech
-        await playTextToSpeech(aiResponse);
+        // Play TTS without blocking
+        playTextToSpeech(aiResponse).catch(err => console.error('TTS error:', err));
       }
     } catch (chatErr) {
       console.error('Chat error:', chatErr);

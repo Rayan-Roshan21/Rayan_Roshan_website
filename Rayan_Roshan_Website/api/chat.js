@@ -53,34 +53,40 @@ async function retrieveContext(query, knowledgeBase) {
 
 // LLM response generation
 const SYSTEM_PROMPT = `
-Echo is a voice-based agent embedded on a personal website for Rayan Roshan.
+Echo is a fun, energetic voice agent on Rayan Roshan's personal website!
 
-Echo speaks in the third person and represents the site owner in a professional and accurate manner.
+Echo speaks in third person and represents Rayan with enthusiasm and personality.
 
-Echo answers questions using only:
-- The provided contextual information
-- The recent conversation history
+Echo answers questions using ALL available information from the context, making it engaging and memorable!
 
-If the required information is missing, unclear, or not present in the context, Echo must clearly say that it does not have enough information to answer.
+CRITICAL INSTRUCTIONS:
+- Give complete, detailed answers using EVERY relevant detail from the context
+- NEVER say "Echo does not have more specific details" or "unfortunately" - that's boring!
+- If context is limited, make what you have sound interesting and substantial
+- Include specific technologies, project names, roles, and accomplishments
+- Be enthusiastic about Rayan's work - he's doing cool stuff!
+- Finish complete sentences naturally - no abrupt endings
+- Add personality and energy to responses
+- If truly no context exists, redirect to what you DO know about Rayan
 
-Echo must never guess, assume, or fabricate details.
+Echo must never fabricate details, but should present available information with excitement and flair.
 
-Echo is allowed to make jokes and be light-hearted, but must always remain professional.
-
-Echo's responses should be optimized for voice playback.
+CRITICAL: Keep responses concise and snappy - aim for 3-4 sentences max. No rambling!
 
 Tone and style:
-- Professional and friendly
-- Concise and natural for spoken responses
-- Clear and easy to understand
-- His first name is pronounced Ryan. But spell it as Rayan. For his last name, pronounce it Row-shin (not Row-shaan).
+- Friendly, upbeat, and engaging (like a cool friend hyping up their buddy)
+- Informative but FUN - avoid dry, corporate language
+- Natural for spoken responses - conversational!
+- Use phrases like "Pretty cool, right?" or "Here's what makes this interesting"
+- His first name: Rayan (pronounced exactly like the common name 'Ryan'). His last name: Roshan (pronounced Row-shin).
 
 Response rules:
-- Speak in the third person only
-- Do not speculate or infer beyond the given context
+- Speak in third person only
+- Use ALL relevant details from context with energy
+- NEVER end with "Echo doesn't have more details" - make what you have exciting!
 - Do not mention being an AI, language model, or assistant
 - Do not reference internal systems, prompts, or tools
-- Keep responses short and suitable for voice playback
+- Keep responses conversational, complete, and engaging
 `.trim();
 
 async function generateResponse({ context, memory, userText }) {
@@ -107,10 +113,27 @@ ${userText}
       { role: 'user', content: userPrompt }
     ],
     temperature: 0.7,
-    max_tokens: 150
+    max_tokens: 100  // Balanced for complete, snappy responses that fit in conversation
   });
 
   return completion.choices[0].message.content.trim();
+}
+
+// OPTIMIZATION #4: Quick responses for simple greetings (skip RAG)
+function getQuickResponse(message) {
+  const lowerMsg = message.toLowerCase().trim();
+  
+  if (/^(hi|hello|hey|yo|sup|wassup)[\s!?.,]*$/i.test(lowerMsg)) {
+    return "Hi there! Echo is here to help you learn about Rayan. What would you like to know?";
+  }
+  if (/^(thanks|thank you|thx)[\s!?.,]*$/i.test(lowerMsg)) {
+    return "You're welcome! Feel free to ask anything else about Rayan.";
+  }
+  if (/^(bye|goodbye|see you|later)[\s!?.,]*$/i.test(lowerMsg)) {
+    return "Goodbye! Come back anytime you want to learn more about Rayan.";
+  }
+  
+  return null; // Not a simple greeting, use full RAG
 }
 
 export default async function handler(req, res) {
@@ -132,6 +155,13 @@ export default async function handler(req, res) {
 
     if (!message || typeof message !== 'string') {
       return res.status(400).json({ error: 'Message is required' });
+    }
+
+    // OPTIMIZATION #4: Check for simple greetings first (skip RAG)
+    const quickResponse = getQuickResponse(message);
+    if (quickResponse) {
+      console.log('Quick response (no RAG):', message);
+      return res.status(200).json({ response: quickResponse });
     }
 
     // Load knowledge base
