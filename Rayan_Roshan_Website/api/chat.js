@@ -20,8 +20,8 @@ function cosineSimilarity(a, b) {
 }
 
 // RAG retrieval
-const MIN_SIMILARITY = 0.25;
-const TOP_K = 4;
+const MIN_SIMILARITY = 0.15;
+const TOP_K = 6;
 
 async function embedQuery(text) {
   const result = await openai.embeddings.create({

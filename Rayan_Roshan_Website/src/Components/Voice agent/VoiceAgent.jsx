@@ -32,8 +32,7 @@ export default function VoiceAgent() {
         e.preventDefault();
         setOpen((v) => {
           const next = !v;
-          if (next) setListening(true);
-          else setListening(false);
+          if (!next) setListening(false);
           return next;
         });
       }
@@ -54,7 +53,13 @@ export default function VoiceAgent() {
       const greeting = "Hello! I'm Echo, I'm your voice assistant. How can I help you today?";
       const greetingMsg = { id: Date.now(), role: 'assistant', text: greeting };
       setMessages([greetingMsg]);
-      playTextToSpeech(greeting);
+      
+      // Play greeting first, then start listening
+      playTextToSpeech(greeting).then(() => {
+        if (open) {
+          setListening(true);
+        }
+      });
     }
   }, [open, hasGreeted]);
 
@@ -313,8 +318,7 @@ export default function VoiceAgent() {
         title="Alt+Space to toggle"
         onClick={() => setOpen((v) => {
           const next = !v;
-          if (next) setListening(true);
-          else setListening(false);
+          if (!next) setListening(false);
           return next;
         })}
       >
@@ -364,7 +368,7 @@ export default function VoiceAgent() {
             ) : (
               messages.map((m) => (
                 <div key={m.id} role="listitem" className={`va-message va-${m.role}`}>
-                  <div className="va-avatar" aria-hidden="true">{m.role === 'assistant' ? '🤖' : '👤'}</div>
+                  <div className="va-avatar" aria-hidden="true">{m.role === 'assistant' ? '🤖' : '😀'}</div>
                   <div className="va-text">{m.text}</div>
                 </div>
               ))
