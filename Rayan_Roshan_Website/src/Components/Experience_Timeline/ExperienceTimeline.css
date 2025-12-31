@@ -211,8 +211,85 @@
   }
 }
 
-/* Mobile responsive */
-@media (max-width: 768px) {
+/* Responsive Design */
+
+/* Large screens (1200px and up) */
+@media (min-width: 1200px) {
+  .timeline-root {
+    padding: 25px 0;
+  }
+  
+  .timeline-range {
+    font-size: 32px;
+  }
+  
+  .timeline {
+    max-width: 1100px;
+  }
+  
+  .timeline-card {
+    padding: 24px;
+  }
+  
+  .card-title {
+    font-size: 26px;
+  }
+  
+  .card-company {
+    font-size: 16px;
+  }
+  
+  .card-summary {
+    font-size: 15px;
+  }
+}
+
+/* Medium screens (768px to 1199px) */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .timeline-root {
+    padding: 20px 0;
+  }
+  
+  .timeline-header {
+    margin-bottom: 35px;
+  }
+  
+  .timeline-range {
+    font-size: 26px;
+  }
+  
+  .timeline {
+    max-width: 900px;
+  }
+  
+  .timeline-card {
+    padding: 18px;
+  }
+  
+  .card-title {
+    font-size: 22px;
+  }
+  
+  .card-company {
+    font-size: 14px;
+  }
+  
+  .card-summary {
+    font-size: 13px;
+  }
+  
+  .card-date {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+  
+  .tag {
+    font-size: 12px;
+  }
+}
+
+/* Tablet screens (601px to 767px) */
+@media (min-width: 601px) and (max-width: 767px) {
   .timeline:before {
     left: 20px;
   }
@@ -221,13 +298,21 @@
     left: 20px;
     margin-left: -9px;
   }
+  
+  .timeline-header {
+    margin-bottom: 30px;
+  }
+  
+  .timeline-range {
+    font-size: 24px;
+  }
 
   .direction-l,
   .direction-r {
     width: 100%;
     float: none;
     text-align: left;
-    padding-left: 60px;
+    padding-left: 55px;
     padding-right: 15px;
   }
 
@@ -243,11 +328,245 @@
     justify-content: flex-start;
   }
 
+  .timeline-card {
+    padding: 16px;
+  }
+
   .card-title {
-    font-size: 18px;
+    font-size: 20px;
+  }
+  
+  .card-company {
+    font-size: 14px;
   }
 
   .card-summary {
     font-size: 13px;
+  }
+  
+  .card-date {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+  
+  .tag {
+    font-size: 12px;
+  }
+}
+
+/* Mobile portrait (481px to 600px) */
+@media (min-width: 481px) and (max-width: 600px) {
+  .timeline:before {
+    left: 15px;
+  }
+
+  .timeline-marker {
+    left: 15px;
+    margin-left: -9px;
+  }
+  
+  .timeline-header {
+    margin-bottom: 25px;
+  }
+  
+  .timeline-range {
+    font-size: 22px;
+  }
+
+  .direction-l,
+  .direction-r {
+    width: 100%;
+    float: none;
+    text-align: left;
+    padding-left: 45px;
+    padding-right: 12px;
+  }
+
+  .direction-l .timeline-card:after,
+  .direction-r .timeline-card:after {
+    left: -10px;
+    right: auto;
+    border-left-color: transparent;
+    border-right-color: #f8f9fa;
+    border-width: 8px;
+  }
+
+  .direction-l .card-tags {
+    justify-content: flex-start;
+  }
+
+  .timeline li {
+    padding: 1.5em 0;
+  }
+
+  .timeline-card {
+    padding: 14px;
+  }
+
+  .card-title {
+    font-size: 18px;
+  }
+  
+  .card-company {
+    font-size: 13px;
+  }
+
+  .card-summary {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+  
+  .card-date {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+  
+  .card-tags {
+    gap: 8px;
+  }
+  
+  .tag {
+    font-size: 11px;
+  }
+}
+
+/* Small mobile (below 481px) */
+@media (max-width: 480px) {
+  .timeline-root {
+    padding: 15px 0;
+  }
+  
+  .timeline:before {
+    left: 12px;
+    width: 2px;
+  }
+
+  .timeline-marker {
+    left: 12px;
+    margin-left: -7px;
+  }
+  
+  .timeline-header {
+    margin-bottom: 20px;
+  }
+  
+  .timeline-range {
+    font-size: 20px;
+  }
+
+  .direction-l,
+  .direction-r {
+    width: 100%;
+    float: none;
+    text-align: left;
+    padding-left: 35px;
+    padding-right: 10px;
+  }
+
+  .direction-l .timeline-card:after,
+  .direction-r .timeline-card:after {
+    left: -8px;
+    right: auto;
+    border-left-color: transparent;
+    border-right-color: #f8f9fa;
+    border-width: 6px;
+    top: 18px;
+  }
+
+  .direction-l .card-tags {
+    justify-content: flex-start;
+  }
+
+  .timeline li {
+    padding: 1.2em 0;
+  }
+
+  .timeline-card {
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .card-title {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+  
+  .card-company {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .card-summary {
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  
+  .card-date {
+    font-size: 10px;
+    padding: 4px 8px;
+    border-radius: 15px;
+  }
+  
+  .card-tags {
+    gap: 6px;
+  }
+  
+  .tag {
+    font-size: 10px;
+  }
+  
+  .timeline-present {
+    margin-top: 6px;
+  }
+  
+  .present-dot {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .present-label {
+    font-size: 10px;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 767px) and (orientation: landscape) {
+  .timeline-root {
+    padding: 10px 0;
+  }
+  
+  .timeline-header {
+    margin-bottom: 20px;
+  }
+  
+  .timeline-range {
+    font-size: 20px;
+  }
+  
+  .timeline:before {
+    left: 15px;
+  }
+  
+  .direction-l,
+  .direction-r {
+    padding-left: 45px;
+    padding-right: 15px;
+  }
+  
+  .timeline li {
+    padding: 1em 0;
+  }
+  
+  .timeline-card {
+    padding: 12px;
+  }
+  
+  .card-title {
+    font-size: 16px;
+  }
+  
+  .card-summary {
+    font-size: 12px;
   }
 }

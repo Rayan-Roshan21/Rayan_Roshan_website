@@ -8,6 +8,7 @@
   font-size: 30px;
   z-index: 1200;
   text-decoration: underline;
+  font-weight: bold;
 }
 
 .projects-wrapper {
@@ -22,6 +23,10 @@
     margin-top: 60px;
     font-size: 35px;
   }
+  
+  .projects-wrapper {
+    padding-bottom: 90px;
+  }
 }
 
 /* Medium screens (768px to 1199px) */
@@ -30,30 +35,68 @@
     margin-top: 55px;
     font-size: 32px;
   }
+  
+  .projects-wrapper {
+    padding-bottom: 80px;
+  }
 }
 
 /* Small screens (481px to 767px) */
 @media (min-width: 481px) and (max-width: 767px) {
   .Projects-title {
-    margin-top: 40px;
-    font-size: 28px;
+    margin-top: 65px;
+    font-size: 26px;
     width: 90%;
+    margin-bottom: 20px;
+  }
+  
+  .projects-wrapper {
+    padding-bottom: 70px;
+    padding-left: 12px;
+    padding-right: 12px;
   }
 }
 
 /* Extra small screens (480px and below) */
 @media (max-width: 480px) {
   .Projects-title {
-    margin-top: 30px;
+    margin-top: 60px;
     font-size: 24px;
     width: 95%;
+    margin-bottom: 16px;
+  }
+  
+  .projects-wrapper {
+    padding-bottom: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+/* Very small screens (below 360px) */
+@media (max-width: 359px) {
+  .Projects-title {
+    margin-top: 15px;
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  
+  .projects-wrapper {
+    padding-bottom: 55px;
+    padding-left: 8px;
+    padding-right: 8px;
   }
 }
 
 /* Landscape orientation on mobile */
 @media (max-width: 767px) and (orientation: landscape) {
   .Projects-title {
-    margin-top: 25px;
-    font-size: 26px;
+    margin-top: 20px;
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  
+  .projects-wrapper {
+    padding-bottom: 50px;
   }
 }

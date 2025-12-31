@@ -77,13 +77,29 @@
 /* Small screens (481px to 767px) */
 @media (min-width: 481px) and (max-width: 767px) {
   .title {
-    margin-top: 15px;
-    margin-left: 35px;
+    position: fixed;
+    top: 25px;
+    left: 20px;
+    margin: 0;
+    font-size: 20px;
+    z-index: 1100;
+    white-space: nowrap;
+    max-width: 50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   
   .title-alt {
-    margin-top: 20px;
-    margin-left: 35px;
+    position: fixed;
+    top: 25px;
+    left: 20px;
+    margin: 0;
+    font-size: 20px;
+    z-index: 1100;
+    white-space: nowrap;
+    max-width: 50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   
   .title-alt:hover {
@@ -94,13 +110,29 @@
 /* Extra small screens (480px and below) */
 @media (max-width: 480px) {
   .title {
-    margin-top: 12px;
-    margin-left: 30px;
+    position: fixed;
+    top: 20px;
+    left: 16px;
+    margin: 0;
+    font-size: 18px;
+    z-index: 1100;
+    white-space: nowrap;
+    max-width: 55%;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   
   .title-alt {
-    margin-top: 18px;
-    margin-left: 30px;
+    position: fixed;
+    top: 20px;
+    left: 16px;
+    margin: 0;
+    font-size: 18px;
+    z-index: 1100;
+    white-space: nowrap;
+    max-width: 55%;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   
   .title-alt:hover {
@@ -111,13 +143,21 @@
 /* Landscape orientation on mobile */
 @media (max-width: 767px) and (orientation: landscape) {
   .title {
-    margin-top: 10px;
-    margin-left: 30px;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    margin: 0;
+    font-size: 20px;
+    z-index: 1100;
   }
   
   .title-alt {
-    margin-top: 15px;
-    margin-left: 30px;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    margin: 0;
+    font-size: 20px;
+    z-index: 1100;
   }
   
   .title-alt:hover {
@@ -132,9 +172,24 @@
   }
 }
 
+@media (max-width: 767px) {
+  .title {
+    position: fixed;
+    top: 22px;
+    left: 18px;
+    margin: 0;
+    font-size: 22px;
+    z-index: 1100;
+  }
+}
+
 @media (max-width: 600px) {
   .title {
-    margin-left: 30px;
-    font-size: 22px;
+    position: fixed;
+    top: 20px;
+    left: 16px;
+    margin: 0;
+    font-size: 20px;
+    z-index: 1100;
   }
 }

@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Tooltip = ({ large }) => {
+const Tooltip = ({ large, className }) => {
   return (
-    <StyledWrapper large={large}>
+    <StyledWrapper large={large} className={className}>
       <ul className="example-2">
         <li className="icon-content">
           <a href="https://www.linkedin.com/in/rayan-roshan/" aria-label="LinkedIn" data-social="linkedin">

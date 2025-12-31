@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import '@/Pages_CSS/Home.css';
 import Sidebar from '@/Components/Sidebar/Sidebar.jsx';
 import profileImage from '@/assets/profile-image.JPG';
@@ -71,10 +72,41 @@ function Home() {
         <Sidebar />
         <Name_title />
         <div id="intro">{introText}</div>
-      <div className="profile-section">
-        <img className="profile-image" src={profileImage} alt="profile-image" />
-        <Tooltip />
-      </div>
+        <div className="profile-section">
+          <img className="profile-image" src={profileImage} alt="profile-image" />
+          <Tooltip className="desktop-social-links" />
+        </div>
+        <div className="social-links-row">
+          <Tooltip className="home-social-links" />
+        </div>
+        
+        {/* Mobile CTA Buttons */}
+        <div className="mobile-cta-section">
+          <Link to="/projects" className="mobile-cta-btn mobile-cta-primary">
+            View Projects
+          </Link>
+          <Link to="/contacts" className="mobile-cta-btn mobile-cta-secondary">
+            Contact Me
+          </Link>
+        </div>
+        
+        {/* Mobile Stats Row */}
+        <div className="mobile-stats-row">
+          <div className="mobile-stat">
+            <span className="stat-number">7+</span>
+            <span className="stat-label">Projects</span>
+          </div>
+          <div className="mobile-stat-divider"></div>
+          <div className="mobile-stat">
+            <span className="stat-number">3</span>
+            <span className="stat-label">Awards</span>
+          </div>
+          <div className="mobile-stat-divider"></div>
+          <div className="mobile-stat">
+            <span className="stat-number">2</span>
+            <span className="stat-label">Fellowships</span>
+          </div>
+        </div>
       </div>
       <Copyright isVisible={isAtBottom} />
     </motion.div>
