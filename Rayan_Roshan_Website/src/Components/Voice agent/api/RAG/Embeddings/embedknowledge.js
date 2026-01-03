@@ -7,7 +7,7 @@ const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
 
 const KNOWLEDGE_PATH = path.join(
   process.cwd(),
-  "src/Components/Voice agent/api/RAG",
+  "src/Components/Voice agent/api/RAG/Embeddings",
   "knowledge.json"
 );
 
