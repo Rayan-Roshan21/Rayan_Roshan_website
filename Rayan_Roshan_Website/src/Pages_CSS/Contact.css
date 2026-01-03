@@ -11,7 +11,7 @@
 .contact-main {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 100px 24px 80px;
+  padding: 60px 24px 64px;
 }
 
 /* Hero Section */
@@ -86,7 +86,7 @@
 /* Responsive */
 @media (max-width: 768px) {
   .contact-main {
-    padding: 60px 20px 60px;
+    padding: 48px 20px 52px;
   }
 
   .contact-hero {
@@ -123,7 +123,7 @@
 /* Mobile landscape (601px to 767px) */
 @media (min-width: 601px) and (max-width: 767px) {
   .contact-main {
-    padding: 70px 24px 55px;
+    padding: 52px 24px 48px;
   }
 
   .contact-hero {
@@ -162,7 +162,7 @@
 /* Mobile portrait (481px to 600px) */
 @media (min-width: 481px) and (max-width: 600px) {
   .contact-main {
-    padding: 65px 20px 50px;
+    padding: 48px 20px 44px;
   }
 
   .contact-hero {
@@ -205,7 +205,7 @@
 
 @media (max-width: 480px) {
   .contact-main {
-    padding: 55px 16px 45px;
+    padding: 44px 16px 40px;
   }
 
   .contact-hero {
@@ -252,7 +252,7 @@
 /* Very small mobile (below 360px) */
 @media (max-width: 359px) {
   .contact-main {
-    padding: 50px 12px 40px;
+    padding: 42px 12px 36px;
   }
 
   .contact-heading {
@@ -284,7 +284,7 @@
 /* Landscape orientation on mobile */
 @media (max-width: 767px) and (orientation: landscape) {
   .contact-main {
-    padding: 50px 24px 45px;
+    padding: 42px 24px 40px;
   }
 
   .contact-hero {

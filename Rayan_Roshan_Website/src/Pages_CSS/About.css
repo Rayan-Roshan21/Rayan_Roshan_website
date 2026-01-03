@@ -9,12 +9,12 @@
 /* ===== PAGE TITLE ===== */
 .about-title {
   position: static;
-  margin-top: 80px;
+  margin-top: 6px;
   margin-left: 50%;
   transform: translateX(-50%);
   font-family: 'Open Sans', sans-serif;
   text-align: center;
-  font-size: 42px;
+  font-size: 36px;
   z-index: 1200;
   text-decoration: underline;
   font-weight: bold;
@@ -378,11 +378,13 @@
 /* Extra Large screens (1440px and up) */
 @media (min-width: 1440px) {
   .about-title {
-    margin-top: 90px;
-    font-size: 48px;
-    margin-bottom: 10px;
+    margin-top: 32px;
+     font-size: 35px;
+    margin-bottom: 17px;
   }
 
+    }
+  
   .section-indicators {
     margin: 10px 0 8px;
   }
@@ -449,13 +451,12 @@
   .nav-button-arrow {
     font-size: 28px;
   }
-}
 
 /* Large screens (1200px to 1439px) */
 @media (min-width: 1200px) and (max-width: 1439px) {
   .about-title {
-    margin-top: 85px;
-    font-size: 44px;
+    margin-top: 28px;
+    font-size: 38px;
     margin-bottom: 10px;
   }
 
@@ -520,8 +521,8 @@
 /* Medium-Large screens (1024px to 1199px) */
 @media (min-width: 1024px) and (max-width: 1199px) {
   .about-title {
-    margin-top: 50px;
-    font-size: 36px;
+    margin-top: 22px;
+    font-size: 32px;
   }
 
   .about-main-content {
@@ -618,8 +619,8 @@
 /* Tablet screens (768px to 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
   .about-title {
-    margin-top: 50px;
-    font-size: 32px;
+    margin-top: 22px;
+    font-size: 30px;
   }
 
   .about-main-content {
@@ -727,8 +728,8 @@
 /* Mobile landscape (601px to 767px) */
 @media (min-width: 601px) and (max-width: 767px) {
   .about-title {
-    margin-top: 45px;
-    font-size: 30px;
+    margin-top: 18px;
+    font-size: 28px;
   }
 
   .about-main-content {
@@ -833,8 +834,8 @@
 /* Mobile portrait (481px to 600px) */
 @media (min-width: 481px) and (max-width: 600px) {
   .about-title {
-    margin-top: 40px;
-    font-size: 28px;
+    margin-top: 16px;
+    font-size: 26px;
   }
 
   .about-main-content {
@@ -964,7 +965,7 @@
 
   .about-title {
     margin-top: 15px;
-    font-size: 24px;
+    font-size: 22px;
     margin-bottom: 8px;
     margin-left: 0;
     transform: none;
@@ -1126,7 +1127,7 @@
 /* Very small screens (360px and below) */
 @media (max-width: 360px) {
   .page-container {
-    padding-top: 55px;
+    margin-top: 10px;
   }
 
   .about-left {
@@ -1269,8 +1270,8 @@
   }
 
   .about-title {
-    font-size: 22px;
-    margin-top: 8px;
+    font-size: 20px;
+    margin-top: 6px;
   }
   
   .about-main-content {

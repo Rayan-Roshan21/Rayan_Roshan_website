@@ -1,6 +1,6 @@
 .Projects-title {
    position: static;
-  margin-top: 50px;
+  margin-top: 20px;
   margin-left: 50%;
   transform: translateX(-50%);
   font-family: 'Open Sans', sans-serif;
@@ -20,7 +20,7 @@
 /* Large screens (1200px and up) */
 @media (min-width: 1200px) {
   .Projects-title {
-    margin-top: 60px;
+    margin-top: 24px;
     font-size: 35px;
   }
   
@@ -32,7 +32,7 @@
 /* Medium screens (768px to 1199px) */
 @media (min-width: 768px) and (max-width: 1199px) {
   .Projects-title {
-    margin-top: 55px;
+    margin-top: 22px;
     font-size: 32px;
   }
   
@@ -44,7 +44,7 @@
 /* Small screens (481px to 767px) */
 @media (min-width: 481px) and (max-width: 767px) {
   .Projects-title {
-    margin-top: 65px;
+    margin-top: 26px;
     font-size: 26px;
     width: 90%;
     margin-bottom: 20px;
@@ -60,7 +60,7 @@
 /* Extra small screens (480px and below) */
 @media (max-width: 480px) {
   .Projects-title {
-    margin-top: 60px;
+    margin-top: 24px;
     font-size: 24px;
     width: 95%;
     margin-bottom: 16px;
@@ -76,7 +76,7 @@
 /* Very small screens (below 360px) */
 @media (max-width: 359px) {
   .Projects-title {
-    margin-top: 15px;
+    margin-top: 10px;
     font-size: 22px;
     margin-bottom: 12px;
   }
@@ -91,7 +91,7 @@
 /* Landscape orientation on mobile */
 @media (max-width: 767px) and (orientation: landscape) {
   .Projects-title {
-    margin-top: 20px;
+    margin-top: 12px;
     font-size: 24px;
     margin-bottom: 16px;
   }
