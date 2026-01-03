@@ -13,7 +13,7 @@ function Copyright_title({ isVisible = true }) {
                 display: isVisible ? 'flex' : 'none'
             }}
         >
-            <p className="Copyright-title">&copy; 2025 Rayan Roshan. All rights reserved.</p>
+            <p className="Copyright-title">&copy; 2026 Rayan Roshan. All rights reserved.</p>
         </motion.footer>
     );
 }

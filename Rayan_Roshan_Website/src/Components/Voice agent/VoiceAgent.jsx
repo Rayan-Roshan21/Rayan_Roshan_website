@@ -162,8 +162,16 @@ export default function VoiceAgent() {
       const res = await fetch(`${API_BASE}/tts`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({ text })
       });
+      
+      // Handle rate limiting
+      if (res.status === 429) {
+        console.warn('TTS rate limited');
+        setSpeaking(false);
+        return;
+      }
       
       if (!res.ok) {
         throw new Error('TTS failed');
@@ -208,8 +216,22 @@ export default function VoiceAgent() {
         method: 'POST',
         body: fd,
         mode: 'cors',
-        credentials: 'omit',
+        credentials: 'include',
       });
+      
+      // Handle rate limiting
+      if (res.status === 429) {
+        const errorData = await res.json();
+        const retryMinutes = Math.ceil(errorData.retryAfter / 60);
+        const errorMsg = `⚠️ ${errorData.message} Please try again in ${retryMinutes} minute${retryMinutes > 1 ? 's' : ''}.`;
+        setMessages((prev) => [
+          ...prev,
+          { id: Date.now(), role: 'assistant', text: errorMsg }
+        ]);
+        setListening(false);
+        return;
+      }
+      
       if (!res.ok) {
         const msg = await res.text();
         throw new Error(msg || 'Upload failed');
@@ -226,11 +248,26 @@ export default function VoiceAgent() {
           const chatRes = await fetch(`${API_BASE}/chat`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
             body: JSON.stringify({
               message: transcribedText,
               history: messages
             })
           });
+          
+          // Handle rate limiting
+          if (chatRes.status === 429) {
+            const errorData = await chatRes.json();
+            const retryMinutes = Math.ceil(errorData.retryAfter / 60);
+            const errorMsg = `⚠️ ${errorData.message} Please try again in ${retryMinutes} minute${retryMinutes > 1 ? 's' : ''}.`;
+            setMessages((prev) => [
+              ...prev,
+              { id: Date.now() + 1, role: 'assistant', text: errorMsg }
+            ]);
+            setListening(false);
+            return;
+          }
+          
           if (!chatRes.ok) {
             throw new Error('Chat failed');
           }
@@ -266,6 +303,15 @@ export default function VoiceAgent() {
     const text = input.trim();
     if (!text) return;
     
+    // Client-side validation
+    if (text.length > 500) {
+      setMessages((prev) => [
+        ...prev,
+        { id: Date.now(), role: 'assistant', text: '⚠️ Message too long. Please keep messages under 500 characters.' }
+      ]);
+      return;
+    }
+    
     // Add user message
     const userMsg = { id: Date.now(), role: 'user', text };
     setMessages((prev) => [...prev, userMsg]);
@@ -277,11 +323,25 @@ export default function VoiceAgent() {
       const chatRes = await fetch(`${API_BASE}/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({
           message: text,
           history: messages
         })
       });
+      
+      // Handle rate limiting
+      if (chatRes.status === 429) {
+        const errorData = await chatRes.json();
+        const retryMinutes = Math.ceil(errorData.retryAfter / 60);
+        const errorMsg = `⚠️ ${errorData.message} Please try again in ${retryMinutes} minute${retryMinutes > 1 ? 's' : ''}.`;
+        setMessages((prev) => [
+          ...prev,
+          { id: Date.now() + 1, role: 'assistant', text: errorMsg }
+        ]);
+        return;
+      }
+      
       if (!chatRes.ok) {
         throw new Error('Chat failed');
       }

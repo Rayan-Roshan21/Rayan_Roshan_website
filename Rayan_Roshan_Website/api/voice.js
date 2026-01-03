@@ -3,6 +3,7 @@ import fs from 'fs';
 import OpenAI from 'openai';
 import { promisify } from 'util';
 import { pipeline } from 'stream';
+import rateLimiter, { RATE_LIMITS, getSessionId, generateSessionId } from './utils/rateLimiter.js';
 
 const streamPipeline = promisify(pipeline);
 
@@ -57,7 +58,8 @@ export default async function handler(req, res) {
   // CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Cookie');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
 
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
@@ -65,6 +67,32 @@ export default async function handler(req, res) {
 
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  // Get or create session
+  let sessionId = getSessionId(req);
+  if (sessionId === 'default') {
+    sessionId = generateSessionId();
+    res.setHeader('Set-Cookie', `va_session=${sessionId}; Path=/; HttpOnly; SameSite=Strict; Max-Age=${60 * 60 * 24}`);
+  }
+
+  // Rate limiting check
+  const limitCheck = rateLimiter.checkLimit(sessionId, RATE_LIMITS.VOICE);
+  
+  if (!limitCheck.allowed) {
+    const stats = rateLimiter.getStats(sessionId);
+    res.setHeader('X-RateLimit-Limit', RATE_LIMITS.VOICE.maxRequests);
+    res.setHeader('X-RateLimit-Remaining', 0);
+    res.setHeader('X-Voice-Time-Used', stats.voiceTimeUsed);
+    res.setHeader('X-Voice-Time-Limit', RATE_LIMITS.VOICE.maxVoiceTime);
+    res.setHeader('Retry-After', limitCheck.retryAfter);
+    
+    return res.status(429).json({
+      error: 'Too Many Requests',
+      message: limitCheck.reason,
+      retryAfter: limitCheck.retryAfter,
+      stats: stats
+    });
   }
 
   try {
@@ -90,7 +118,15 @@ export default async function handler(req, res) {
     }
 
     console.log('Processing audio:', audioFile.originalFilename, audioFile.size, 'bytes');
+    
+    // Estimate audio duration (rough: 1MB ≈ 60 seconds for typical voice)
+    const estimatedDuration = Math.ceil(audioFile.size / (1024 * 1024) * 60);
+    
     const transcript = await speechToText(audioFile.filepath);
+
+    // Record request and voice time
+    rateLimiter.recordRequest(sessionId);
+    rateLimiter.recordVoiceTime(sessionId, estimatedDuration);
 
     // Cleanup temp file
     try {
@@ -99,7 +135,14 @@ export default async function handler(req, res) {
       console.warn('Cleanup warning:', cleanupErr.message);
     }
 
-    return res.status(200).json({ text: transcript });
+    // Add rate limit headers
+    const stats = rateLimiter.getStats(sessionId);
+    res.setHeader('X-RateLimit-Limit', RATE_LIMITS.VOICE.maxRequests);
+    res.setHeader('X-RateLimit-Remaining', Math.max(0, RATE_LIMITS.VOICE.maxRequests - stats.requestCount));
+    res.setHeader('X-Voice-Time-Used', stats.voiceTimeUsed);
+    res.setHeader('X-Voice-Time-Limit', RATE_LIMITS.VOICE.maxVoiceTime);
+
+    return res.status(200).json({ text: transcript, stats });
   } catch (error) {
     console.error('Voice API error:', error.message, error.stack);
     return res.status(500).json({

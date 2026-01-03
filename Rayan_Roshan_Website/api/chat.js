@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import OpenAI from 'openai';
+import rateLimiter, { RATE_LIMITS, getSessionId, generateSessionId } from './utils/rateLimiter.js';
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
@@ -140,7 +141,8 @@ export default async function handler(req, res) {
   // CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Cookie');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
 
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
@@ -150,12 +152,47 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  // Get or create session
+  let sessionId = getSessionId(req);
+  if (sessionId === 'default') {
+    sessionId = generateSessionId();
+    res.setHeader('Set-Cookie', `va_session=${sessionId}; Path=/; HttpOnly; SameSite=Strict; Max-Age=${60 * 60 * 24}`);
+  }
+
+  // Rate limiting check
+  const limitCheck = rateLimiter.checkLimit(sessionId, RATE_LIMITS.CHAT);
+  
+  if (!limitCheck.allowed) {
+    const stats = rateLimiter.getStats(sessionId);
+    res.setHeader('X-RateLimit-Limit', RATE_LIMITS.CHAT.maxRequests);
+    res.setHeader('X-RateLimit-Remaining', 0);
+    res.setHeader('Retry-After', limitCheck.retryAfter);
+    
+    return res.status(429).json({
+      error: 'Too Many Requests',
+      message: limitCheck.reason,
+      retryAfter: limitCheck.retryAfter,
+      stats: stats
+    });
+  }
+
   try {
     const { message, history } = req.body;
 
     if (!message || typeof message !== 'string') {
       return res.status(400).json({ error: 'Message is required' });
     }
+
+    // Message length validation
+    if (message.length > RATE_LIMITS.CHAT.maxMessageLength) {
+      return res.status(400).json({ 
+        error: 'Message too long',
+        message: `Maximum message length is ${RATE_LIMITS.CHAT.maxMessageLength} characters. Your message is ${message.length} characters.`
+      });
+    }
+
+    // Record request
+    rateLimiter.recordRequest(sessionId);
 
     // OPTIMIZATION #4: Check for simple greetings first (skip RAG)
     const quickResponse = getQuickResponse(message);
@@ -184,7 +221,12 @@ export default async function handler(req, res) {
       userText: message
     });
 
-    return res.status(200).json({ response });
+    // Add rate limit headers
+    const stats = rateLimiter.getStats(sessionId);
+    res.setHeader('X-RateLimit-Limit', RATE_LIMITS.CHAT.maxRequests);
+    res.setHeader('X-RateLimit-Remaining', Math.max(0, RATE_LIMITS.CHAT.maxRequests - stats.requestCount));
+
+    return res.status(200).json({ response, stats });
   } catch (error) {
     console.error('Chat API error:', error);
     return res.status(500).json({
