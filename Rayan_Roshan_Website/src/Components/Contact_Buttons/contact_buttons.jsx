@@ -10,6 +10,7 @@ const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 export default function ContactButtons() {
     const [showCalendar, setShowCalendar] = useState(false);
     const [showMessageModal, setShowMessageModal] = useState(false);
+    const [isClosing, setIsClosing] = useState(false);
     const [status, setStatus] = useState('');
     const [loading, setLoading] = useState(false);
     const form = useRef();
@@ -24,12 +25,20 @@ export default function ContactButtons() {
     };
 
     const closeModal = () => {
-        setShowCalendar(false);
+        setIsClosing(true);
+        setTimeout(() => {
+            setShowCalendar(false);
+            setIsClosing(false);
+        }, 300);
     };
 
     const closeMessageModal = () => {
-        setShowMessageModal(false);
-        setStatus('');
+        setIsClosing(true);
+        setTimeout(() => {
+            setShowMessageModal(false);
+            setStatus('');
+            setIsClosing(false);
+        }, 300);
     };
 
     const sendEmail = (e) => {
@@ -45,8 +54,12 @@ export default function ContactButtons() {
                     form.current.reset();
                     // Auto-close after 2 seconds on success
                     setTimeout(() => {
-                        setShowMessageModal(false);
-                        setStatus('');
+                        setIsClosing(true);
+                        setTimeout(() => {
+                            setShowMessageModal(false);
+                            setStatus('');
+                            setIsClosing(false);
+                        }, 300);
                     }, 2000);
                 },
                 (error) => {
@@ -72,8 +85,8 @@ export default function ContactButtons() {
             
             {/* Message Modal */}
             {showMessageModal && (
-                <div className="modal-overlay" onClick={closeMessageModal}>
-                    <div className="modal-container message-modal" onClick={(e) => e.stopPropagation()}>
+                <div className={`modal-overlay ${isClosing ? 'closing' : ''}`} onClick={closeMessageModal}>
+                    <div className={`modal-container message-modal ${isClosing ? 'closing' : ''}`} onClick={(e) => e.stopPropagation()}>
                         <div className="modal-header">
                             <h3 className="modal-title">Send a Message</h3>
                             <button className="modal-close-btn" onClick={closeMessageModal}>
@@ -147,8 +160,8 @@ export default function ContactButtons() {
 
             {/* Calendly Modal */}
             {showCalendar && (
-                <div className="modal-overlay" onClick={closeModal}>
-                    <div className="modal-container" onClick={(e) => e.stopPropagation()}>
+                <div className={`modal-overlay ${isClosing ? 'closing' : ''}`} onClick={closeModal}>
+                    <div className={`modal-container ${isClosing ? 'closing' : ''}`} onClick={(e) => e.stopPropagation()}>
                         <div className="modal-header">
                             <h3 className="modal-title">Schedule a Meeting</h3>
                             <button className="modal-close-btn" onClick={closeModal}>

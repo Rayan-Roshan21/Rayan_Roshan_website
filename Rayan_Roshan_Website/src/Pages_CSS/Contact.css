@@ -6,6 +6,8 @@
 .contact-page {
   min-height: 100vh;
   font-family: 'Open Sans', sans-serif;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .contact-main {
