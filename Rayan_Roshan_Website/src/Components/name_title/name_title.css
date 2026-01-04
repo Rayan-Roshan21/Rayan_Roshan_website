@@ -18,6 +18,14 @@
   pointer-events: none;
 }
 
+/* On mobile screens, never hide the title */
+@media (max-width: 767px) {
+  .title-hidden {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+}
+
 .title.title-hidden:hover,
 .title-alt.title-hidden:hover {
   transform: none;
@@ -88,28 +96,40 @@
 @media (min-width: 481px) and (max-width: 767px) {
   .title {
     position: fixed;
-    top: 25px;
+    top: 20px;
     left: 20px;
     margin: 0;
-    font-size: 22px;
+    font-size: 14px;
     z-index: 1100;
     white-space: nowrap;
-    max-width: 50%;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    transition: none;
+    opacity: 1 !important;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
   }
   
   .title-alt {
     position: fixed;
-    top: 25px;
+    top: 20px;
     left: 20px;
     margin: 0;
-    font-size: 22px;
+    font-size: 14px;
     z-index: 1100;
     white-space: nowrap;
-    max-width: 50%;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    transition: none;
+    opacity: 1 !important;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  .title.title-hidden,
+  .title-alt.title-hidden {
+    opacity: 1 !important;
+    pointer-events: auto;
   }
   
   .title-alt:hover {
@@ -121,28 +141,40 @@
 @media (max-width: 480px) {
   .title {
     position: fixed;
-    top: 20px;
+    top: 15px;
     left: 16px;
     margin: 0;
-    font-size: 20px;
+    font-size: 12px;
     z-index: 1100;
     white-space: nowrap;
-    max-width: 55%;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    transition: none;
+    opacity: 1 !important;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
   }
   
   .title-alt {
     position: fixed;
-    top: 20px;
+    top: 15px;
     left: 16px;
     margin: 0;
-    font-size: 20px;
+    font-size: 12px;
     z-index: 1100;
     white-space: nowrap;
-    max-width: 55%;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    transition: none;
+    opacity: 1 !important;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  .title.title-hidden,
+  .title-alt.title-hidden {
+    opacity: 1 !important;
+    pointer-events: auto;
   }
   
   .title-alt:hover {
@@ -157,8 +189,14 @@
     top: 15px;
     left: 15px;
     margin: 0;
-    font-size: 20px;
+    font-size: 14px;
     z-index: 1100;
+    transition: none;
+    opacity: 1 !important;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
   }
   
   .title-alt {
@@ -166,8 +204,20 @@
     top: 15px;
     left: 15px;
     margin: 0;
-    font-size: 20px;
+    font-size: 14px;
     z-index: 1100;
+    transition: none;
+    opacity: 1 !important;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  .title.title-hidden,
+  .title-alt.title-hidden {
+    opacity: 1 !important;
+    pointer-events: auto;
   }
   
   .title-alt:hover {
