@@ -120,11 +120,21 @@ function Projects() {
       <div className='project-container'>
         <img className = "project-image" src={scotiabank} alt="Related image of project." />
         <p className='project_name'>Scotia Redlight - Think before you spend!</p>
-        <p className='project-role'>Participant at S:\HACKS 2025 </p>
+        <p className='project-role'>Participant at S:\HACKS 2025</p>
         <p className='project-description'>3rd place winner at Scotiabank S:\HACKS 2025. AI spending companion using strategic friction to help Gen-Z transform impulse buys into intentional financial decisions.</p>
         <div className='project-buttons'>
          <a className = "project-linkedin" href="https://www.canva.com/design/DAGw6V-hyyI/Cl_WavQn9wgv2QHNL_-_cQ/view?utm_content=DAGw6V-hyyI&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h529ef5163a" target="_blank" rel="noopener noreferrer">View our Canva</a>
         <a className = "project-linkedin" href="https://www.linkedin.com/posts/rayan-roshan_hackathon-innovation-fintech-activity-7365737257841909761-3yHG?utm_source=share&utm_medium=member_desktop&rcm=ACoAAElZ1yEB8i14e0yTHCs44ne_g5LeOF1Vy0k" target="_blank" rel="noopener noreferrer">Check out this post!</a>
+        </div>
+      </div>
+      <div className='project-container'>
+        <img className = "project-image" src={llm-router} alt="Related image of project." />
+        <p className='project_name'>An LLM Router</p>
+        <p className='project-role'>Software Engineer</p>
+        <p className='project-description'>This tool combines Google Gemini's AI analysis with deterministic scoring across 35+ models from live leaderboards, ensuring you always get the optimal model for your specific needs.</p>
+        <div className='project-buttons'>
+        <a className = "project-github" href="https://github.com/razzacktiger/LLM-Router" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        <a className = "project-linkedin" href="https://www.npmjs.com/package/smart-llm-router" target="_blank" rel="noopener noreferrer">Download our NPM package!</a>
         </div>
       </div>
     </div>
