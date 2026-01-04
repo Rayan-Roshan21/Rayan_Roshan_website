@@ -25,6 +25,15 @@ export default function VoiceAgent() {
     return 'Idle';
   }, [listening, speaking]);
 
+  // Function to stop any currently playing audio
+  function stopAudio() {
+    if (audioElementRef.current) {
+      audioElementRef.current.pause();
+      audioElementRef.current.currentTime = 0;
+      setSpeaking(false);
+    }
+  }
+
   useEffect(() => {
     function onKey(e) {
       // Alt+Space toggles panel
@@ -32,7 +41,10 @@ export default function VoiceAgent() {
         e.preventDefault();
         setOpen((v) => {
           const next = !v;
-          if (!next) setListening(false);
+          if (!next) {
+            setListening(false);
+            stopAudio();
+          }
           return next;
         });
       }
@@ -40,6 +52,7 @@ export default function VoiceAgent() {
       if (e.code === 'Escape') {
         setOpen(false);
         setListening(false);
+        stopAudio();
       }
     }
     window.addEventListener('keydown', onKey);
@@ -70,6 +83,7 @@ export default function VoiceAgent() {
       if (panelRef.current && !panelRef.current.contains(e.target)) {
         setOpen(false);
         setListening(false);
+        stopAudio();
       }
     }
     document.addEventListener('mousedown', onClick);

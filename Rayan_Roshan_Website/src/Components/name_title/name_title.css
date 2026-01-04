@@ -9,14 +9,18 @@
   text-decoration: none;
   color: inherit;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease;
   width: auto;
 }
 
 .title-hidden {
   opacity: 0;
-  transform: translateY(-8px);
   pointer-events: none;
+}
+
+.title.title-hidden:hover,
+.title-alt.title-hidden:hover {
+  transform: none;
 }
 
 .title-alt {
@@ -30,7 +34,7 @@
   text-decoration: none;
   color: inherit;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease;
   width: auto;
 }
 
@@ -87,7 +91,7 @@
     top: 25px;
     left: 20px;
     margin: 0;
-    font-size: 20px;
+    font-size: 22px;
     z-index: 1100;
     white-space: nowrap;
     max-width: 50%;
@@ -100,7 +104,7 @@
     top: 25px;
     left: 20px;
     margin: 0;
-    font-size: 20px;
+    font-size: 22px;
     z-index: 1100;
     white-space: nowrap;
     max-width: 50%;
@@ -120,7 +124,7 @@
     top: 20px;
     left: 16px;
     margin: 0;
-    font-size: 18px;
+    font-size: 20px;
     z-index: 1100;
     white-space: nowrap;
     max-width: 55%;
@@ -133,7 +137,7 @@
     top: 20px;
     left: 16px;
     margin: 0;
-    font-size: 18px;
+    font-size: 20px;
     z-index: 1100;
     white-space: nowrap;
     max-width: 55%;
@@ -171,31 +175,3 @@
   }
 }
 
-@media (max-width: 900px) {
-  .title {
-    margin-left: 35px;
-    font-size: 28px;
-  }
-}
-
-@media (max-width: 767px) {
-  .title {
-    position: fixed;
-    top: 22px;
-    left: 18px;
-    margin: 0;
-    font-size: 22px;
-    z-index: 1100;
-  }
-}
-
-@media (max-width: 600px) {
-  .title {
-    position: fixed;
-    top: 20px;
-    left: 16px;
-    margin: 0;
-    font-size: 20px;
-    z-index: 1100;
-  }
-}

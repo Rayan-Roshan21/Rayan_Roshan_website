@@ -15,7 +15,7 @@
   font-family: 'Open Sans', sans-serif;
   text-align: center;
   font-size: 36px;
-  z-index: 1200;
+  z-index: 100;
   text-decoration: underline;
   font-weight: bold;
   margin-bottom: 10px;
@@ -728,7 +728,7 @@
 /* Mobile landscape (601px to 767px) */
 @media (min-width: 601px) and (max-width: 767px) {
   .about-title {
-    margin-top: 18px;
+    margin-top: 65px;
     font-size: 28px;
   }
 
@@ -834,8 +834,8 @@
 /* Mobile portrait (481px to 600px) */
 @media (min-width: 481px) and (max-width: 600px) {
   .about-title {
-    margin-top: 16px;
-    font-size: 26px;
+    margin-top: 65px;
+    font-size: 54px;
   }
 
   .about-main-content {
@@ -964,7 +964,7 @@
   }
 
   .about-title {
-    margin-top: 15px;
+    margin-top: 60px;
     font-size: 22px;
     margin-bottom: 8px;
     margin-left: 0;

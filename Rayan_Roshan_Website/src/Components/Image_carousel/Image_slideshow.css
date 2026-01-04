@@ -98,14 +98,14 @@
 /* Mobile landscape (601px to 767px) */
 @media (min-width: 601px) and (max-width: 767px) {
   .box {
-    width: 90%;
+    width: 92%;
     max-width: 500px;
-    height: 200px;
+    height: 240px;
     position: relative;
     top: auto;
     left: auto;
     margin: 25px auto;
-    border-radius: 10px;
+    border-radius: 12px;
   }
   
   .slide img {
@@ -129,14 +129,14 @@
 /* Mobile portrait (481px to 600px) */
 @media (min-width: 481px) and (max-width: 600px) {
   .box {
-    width: 92%;
-    max-width: 400px;
-    height: 180px;
+    width: 95%;
+    max-width: 420px;
+    height: 220px;
     position: relative;
     top: auto;
     left: auto;
     margin: 20px auto;
-    border-radius: 10px;
+    border-radius: 12px;
   }
   
   .slide img {
@@ -161,15 +161,15 @@
 /* Small mobile (below 481px) */
 @media (max-width: 480px) {
   .box {
-    width: 100%;
-    max-width: 320px;
-    height: 180px;
+    width: 95%;
+    max-width: 340px;
+    height: 200px;
     position: relative;
     top: auto;
     left: auto;
-    margin: 10px auto;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin: 15px auto;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.12);
   }
   
   .slide img {
