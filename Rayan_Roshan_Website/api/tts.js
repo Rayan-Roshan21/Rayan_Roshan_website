@@ -71,11 +71,14 @@ export default async function handler(req, res) {
 
     console.log('Generating speech for text:', text.substring(0, 50) + '...');
 
+    // Replace "Rayan" with "Ryan" for correct pronunciation (text chat still shows "Rayan")
+    const pronunciationText = text.replace(/Rayan/g, 'Ryan');
+
     // Use tts-1 (cheaper, faster) with shimmer voice (warm, expressive)
     const mp3 = await openai.audio.speech.create({
       model: 'tts-1',
       voice: 'shimmer',
-      input: text,
+      input: pronunciationText,
       speed: 1.0
     });
 
