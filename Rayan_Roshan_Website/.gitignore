@@ -27,3 +27,4 @@ server.js
 *.sw?
 
 .vercel
+.env*.local

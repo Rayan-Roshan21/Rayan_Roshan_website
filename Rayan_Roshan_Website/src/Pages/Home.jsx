@@ -6,7 +6,7 @@ import profileImage from '@/assets/profile-image.JPG';
 import Tooltip from '@/Components/Information_bar/Tooltip.jsx';
 import { motion } from 'framer-motion';
 import Copyright from '@/Components/Copyright_title/Copyright_title.jsx';
-import Name_title from '@/Components/Name_title/name_title.jsx';
+import Name_title from '@/Components/name_title/name_title.jsx';
 import { useScrollToBottom } from '@/hooks/useScrollToBottom';
 function Home() {
   const [introText, setIntroText] = useState('');
