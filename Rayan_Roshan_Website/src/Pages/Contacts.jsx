@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import Name_title from '@/Components/Name_title/name_title.jsx';
+import Name_title from '@/Components/name_title/name_title.jsx';
 import Sidebar from '@/Components/Sidebar/Sidebar.jsx';
 import '@/Pages_CSS/Contact.css';
 import ContactButtons from '@/Components/Contact_Buttons/contact_buttons.jsx';
