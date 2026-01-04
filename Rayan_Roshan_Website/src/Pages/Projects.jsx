@@ -15,6 +15,7 @@ import Yapp from '@/assets/yapp.png';
 import art_museum from '@/assets/art_meseum.jpg';
 import univ from '@/assets/univ.png';
 import scotiabank from '@/assets/scotiabank.jpg';
+import llmrouter from '@/assets/llm-router.jpg';
 import { useScrollToBottom } from '@/hooks/useScrollToBottom';
 
 function Projects() {
@@ -128,7 +129,7 @@ function Projects() {
         </div>
       </div>
       <div className='project-container'>
-        <img className = "project-image" src={llm-router} alt="Related image of project." />
+        <img className = "project-image" src={llmrouter} alt="Related image of project." />
         <p className='project_name'>An LLM Router</p>
         <p className='project-role'>Software Engineer</p>
         <p className='project-description'>This tool combines Google Gemini's AI analysis with deterministic scoring across 35+ models from live leaderboards, ensuring you always get the optimal model for your specific needs.</p>
