@@ -23,7 +23,7 @@ function Name_title() {
 
     return (
         <Link to="/" className={titleClass}>
-            <h1 className="title">Rayan Roshan<span className="blink" style={{ animation: 'blink 1s steps(1, end) infinite' }}>_</span></h1>
+            <h1 className="title">Rayan Roshan_</h1>
         </Link>
     );
 }
