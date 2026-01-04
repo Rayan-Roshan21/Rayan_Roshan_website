@@ -55,7 +55,7 @@ const Sidebar = () => {
     }
   })();
 
-  const shouldHideNav = canHideOnScroll && !isScrollingUp && scrollY > hideScrollTrigger;
+  const shouldHideNav = canHideOnScroll && scrollY > hideScrollTrigger;
 
   return (
     <>

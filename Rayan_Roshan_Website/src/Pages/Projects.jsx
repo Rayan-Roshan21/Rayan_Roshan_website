@@ -12,6 +12,9 @@ import medicalFormImage from '@/assets/medical_form.jpg';
 import AICustomerImage from '@/assets/aiagentimage.jpg';
 import Askcents from '@/assets/askcents.png';
 import Yapp from '@/assets/yapp.png';
+import art_museum from '@/assets/art_meseum.jpg';
+import univ from '@/assets/univ.png';
+import scotiabank from '@/assets/scotiabank.jpg';
 import { useScrollToBottom } from '@/hooks/useScrollToBottom';
 
 function Projects() {
@@ -47,8 +50,7 @@ function Projects() {
           <a className = "project-github" href="https://github.com/Rayan-Roshan21/Property-Recommendation-System" target="_blank" rel="noopener noreferrer">View on GitHub</a>
           <a className = "project-linkedin" href="https://www.linkedin.com/feed/update/urn:li:activity:7333915404685254658/" target="_blank" rel="noopener noreferrer">View on LinkedIn</a>
         </div>
-      </div>
-            
+      </div>  
       <div className='project-container'>
         <img className = "project-image" src={multimodalImage} alt="Related image of project." />
         <p className='project_name'>Multimodal Video Analysis</p>
@@ -94,6 +96,35 @@ function Projects() {
         <p className='project-description'>Real-time social platform for Toronto Metropolitan University students featuring instant messaging, event coordination, and community engagement tools for enhanced campus life connectivity.</p>
         <div className='project-buttons'>
          <a className = "project-linkedin" href="https://yap-mu.vercel.app/" target="_blank" rel="noopener noreferrer">Try it out!</a>
+        </div>
+      </div>
+      <div className='project-container'>
+        <img className = "project-image" src={art_museum} alt="Related image of project." />
+        <p className='project_name'>Image Style Transfer App</p>
+        <p className='project-role'>Software Engineer</p>
+        <p className='project-description'>Turn your ordinary photos into extraordinary masterpieces using the power of AI neural style transfer, all running seamlessly in your browser with WebAssembly and ONNX Runtime.</p>
+        <div className='project-buttons'>
+         <a className = "project-linkedin" href="https://imagestyletransfer.vercel.app/" target="_blank" rel="noopener noreferrer">Try it out!</a>
+        <a className = "project-github" href="https://github.com/Rayan-Roshan21/AI-Style-Transfer" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+      </div>
+      <div className='project-container'>
+        <img className = "project-image" src={univ} alt="Related image of project." />
+        <p className='project_name'>Univ</p>
+        <p className='project-role'>Founder & Software Engineer</p>
+        <p className='project-description'>Introducing Univ, the ultimate app for simplifying the post-secondary admissions process. We provide personalized school recommendations, detailed information on a wide range of institutions, and step-by-step application guidance.</p>
+        <div className='project-buttons'>
+         <a className = "project-linkedin" href="https://www.linkedin.com/posts/rayan-roshan_startup-entrepreneurship-dmz-activity-7236719626095620096-730g?utm_source=share&utm_medium=member_desktop&rcm=ACoAAElZ1yEB8i14e0yTHCs44ne_g5LeOF1Vy0k" target="_blank" rel="noopener noreferrer">Check out this post!</a>
+        </div>
+      </div>
+      <div className='project-container'>
+        <img className = "project-image" src={scotiabank} alt="Related image of project." />
+        <p className='project_name'>Scotia Redlight - Think before you spend!</p>
+        <p className='project-role'>Participant at S:\HACKS 2025 </p>
+        <p className='project-description'>3rd place winner at Scotiabank S:\HACKS 2025. AI spending companion using strategic friction to help Gen-Z transform impulse buys into intentional financial decisions.</p>
+        <div className='project-buttons'>
+         <a className = "project-linkedin" href="https://www.canva.com/design/DAGw6V-hyyI/Cl_WavQn9wgv2QHNL_-_cQ/view?utm_content=DAGw6V-hyyI&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h529ef5163a" target="_blank" rel="noopener noreferrer">View our Canva</a>
+        <a className = "project-linkedin" href="https://www.linkedin.com/posts/rayan-roshan_hackathon-innovation-fintech-activity-7365737257841909761-3yHG?utm_source=share&utm_medium=member_desktop&rcm=ACoAAElZ1yEB8i14e0yTHCs44ne_g5LeOF1Vy0k" target="_blank" rel="noopener noreferrer">Check out this post!</a>
         </div>
       </div>
     </div>
