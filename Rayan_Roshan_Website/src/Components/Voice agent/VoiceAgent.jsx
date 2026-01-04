@@ -63,8 +63,9 @@ export default function VoiceAgent() {
   useEffect(() => {
     if (open && !hasGreeted) {
       setHasGreeted(true);
-      const greeting = "Hello! I'm Echo, I'm your voice assistant. How can I help you today?";
-      const greetingMsg = { id: Date.now(), role: 'assistant', text: greeting };
+      const now = Date.now();
+      const greeting = "Hi! I'm your AI assistant. Speak naturally and I'll respond with both text and voice. Click Start to begin recording, then Stop when you're done. You can also type messages below if you prefer.";
+      const greetingMsg = { id: now, role: 'assistant', text: greeting };
       setMessages([greetingMsg]);
       
       // Play greeting first, then start listening
@@ -96,6 +97,13 @@ export default function VoiceAgent() {
     // cleanup when component unmounts
     return () => stopMic();
   }, [listening]);
+
+  // Stop audio when panel closes
+  useEffect(() => {
+    if (!open) {
+      stopAudio();
+    }
+  }, [open]);
 
   async function startMic() {
     try {
@@ -192,6 +200,13 @@ export default function VoiceAgent() {
       }
       
       const audioBlob = await res.blob();
+      
+      // Check if panel is still open before playing
+      if (!open) {
+        setSpeaking(false);
+        return;
+      }
+      
       const audioUrl = URL.createObjectURL(audioBlob);
       
       // Create or reuse audio element
@@ -394,7 +409,10 @@ export default function VoiceAgent() {
         title="Alt+Space to toggle"
         onClick={() => setOpen((v) => {
           const next = !v;
-          if (!next) setListening(false);
+          if (!next) {
+            setListening(false);
+            stopAudio();
+          }
           return next;
         })}
       >
