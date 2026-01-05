@@ -79,11 +79,10 @@ function About() {
                   <div className="about-left">
                     <h2 className='section-subtitle'>Who am I</h2>
                     <p className="about-me-paragraph">
-                      Computer Science student building real solutions with Swift, Firebase, and AI. 
-                      Passionate about turning ideas into scalable products. I love exploring new technologies 
-                      and frameworks to create meaningful applications that solve real-world problems. 
-                      My focus is on clean code, user experience, and continuous learning in the ever-evolving 
-                      tech landscape.
+                      Computer Science student at Toronto Metropolitan University building AI systems and scalable products. 
+                      I create end-to-end solutions spanning voice agents, healthcare automation, video analysis, and 
+                      recommendation systems using Gemini, OpenAI, Python, Swift, React, Firebase, and more. My focus is
+                      on reliability and user value.
                     </p>
                   </div>
                   <div className="about-right">

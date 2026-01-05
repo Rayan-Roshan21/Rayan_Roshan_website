@@ -7,10 +7,10 @@ const ExperienceTimeline = () => {
   const experiences = [
     {
       date: '2026-05',
-      title: 'Incoming ServiceNow Intern',
-      company: 'Ernst & Young · Toronto, ON',
-      summary: 'Selected for a consulting internship focused on ServiceNow platform development. Will be configuring and testing ServiceNow modules, supporting client proposals with technical documentation, and collaborating with cross-functional teams to deliver enterprise solutions.',
-      tags: ['ServiceNow', 'Consulting']
+      title: 'Incoming Intern',
+      company: 'Announcement Coming Soon · Toronto, ON',
+      summary: 'Announcement Coming Soon',
+      tags: ['Technology']
     },
     {
       date: '2025-07',
