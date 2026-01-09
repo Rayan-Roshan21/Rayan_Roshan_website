@@ -20,7 +20,7 @@ function Home() {
   useEffect(() => {
     const baseTexts = [
       "Welcome to my website!",
-      "I'm a computer science student at TMU.",
+      "I'm a 2nd year computer science student at TMU.",
       "Check out my projects and LinkedIn profile!",
       "Keep it simple. Make it work. Make impact."
     ];

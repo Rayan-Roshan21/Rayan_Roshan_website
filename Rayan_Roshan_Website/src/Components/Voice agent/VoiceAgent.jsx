@@ -416,7 +416,7 @@ export default function VoiceAgent() {
           return next;
         })}
       >
-        <span className="va-fab-icon" aria-hidden="true">{listening ? '🔴' : '🎤'}</span>
+        <span className="va-fab-icon" aria-hidden="true">{listening ? '🔴' : '🤖'}</span>
       </button>
 
       {/* Panel */}
