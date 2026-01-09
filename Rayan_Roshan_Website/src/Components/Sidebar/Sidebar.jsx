@@ -45,7 +45,7 @@ const Sidebar = () => {
   const hideScrollTrigger = (() => {
     switch (location.pathname) {
       case '/about':
-        return 120;
+        return 1200;
       case '/projects':
         return 140;
       case '/contact':
