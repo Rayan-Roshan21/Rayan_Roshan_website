@@ -64,10 +64,10 @@ export default function VoiceAgent() {
     if (open && !hasGreeted) {
       setHasGreeted(true);
       const now = Date.now();
-      const greeting = "Hi! I'm your AI assistant. Speak naturally and I'll respond with both text and voice. Click Start to begin recording, then Stop when you're done. You can also type messages below if you prefer.";
+      const greeting = "Hi! I'm your AI assistant for this website. Click Start to begin your voice message, then Stop when you're done. You can any question regarding Rayan's experience, his work, and more!";
       const greetingMsg = { id: now, role: 'assistant', text: greeting };
       setMessages([greetingMsg]);
-      
+
       // Play greeting first, then start listening
       playTextToSpeech(greeting).then(() => {
         if (open) {
@@ -163,7 +163,7 @@ export default function VoiceAgent() {
       rafRef.current = null;
     }
     if (audioCtxRef.current) {
-      try { audioCtxRef.current.close(); } catch {}
+      try { audioCtxRef.current.close(); } catch { }
       audioCtxRef.current = null;
     }
     if (micStreamRef.current) {
@@ -171,7 +171,7 @@ export default function VoiceAgent() {
       micStreamRef.current = null;
     }
     if (recorderRef.current) {
-      try { recorderRef.current.stop(); } catch {}
+      try { recorderRef.current.stop(); } catch { }
       recorderRef.current = null;
     }
     setLevel(0);
@@ -187,36 +187,36 @@ export default function VoiceAgent() {
         credentials: 'include',
         body: JSON.stringify({ text })
       });
-      
+
       // Handle rate limiting
       if (res.status === 429) {
         console.warn('TTS rate limited');
         setSpeaking(false);
         return;
       }
-      
+
       if (!res.ok) {
         throw new Error('TTS failed');
       }
-      
+
       const audioBlob = await res.blob();
-      
+
       // Check if panel is still open before playing
       if (!open) {
         setSpeaking(false);
         return;
       }
-      
+
       const audioUrl = URL.createObjectURL(audioBlob);
-      
+
       // Create or reuse audio element
       if (!audioElementRef.current) {
         audioElementRef.current = new Audio();
       }
-      
+
       const audio = audioElementRef.current;
       audio.src = audioUrl;
-      
+
       return new Promise((resolve, reject) => {
         audio.onended = () => {
           setSpeaking(false);
@@ -247,7 +247,7 @@ export default function VoiceAgent() {
         mode: 'cors',
         credentials: 'include',
       });
-      
+
       // Handle rate limiting
       if (res.status === 429) {
         const errorData = await res.json();
@@ -260,7 +260,7 @@ export default function VoiceAgent() {
         setListening(false);
         return;
       }
-      
+
       if (!res.ok) {
         const msg = await res.text();
         throw new Error(msg || 'Upload failed');
@@ -283,7 +283,7 @@ export default function VoiceAgent() {
               history: messages
             })
           });
-          
+
           // Handle rate limiting
           if (chatRes.status === 429) {
             const errorData = await chatRes.json();
@@ -296,7 +296,7 @@ export default function VoiceAgent() {
             setListening(false);
             return;
           }
-          
+
           if (!chatRes.ok) {
             throw new Error('Chat failed');
           }
@@ -331,7 +331,7 @@ export default function VoiceAgent() {
     e.preventDefault();
     const text = input.trim();
     if (!text) return;
-    
+
     // Client-side validation
     if (text.length > 500) {
       setMessages((prev) => [
@@ -340,7 +340,7 @@ export default function VoiceAgent() {
       ]);
       return;
     }
-    
+
     // Add user message
     const userMsg = { id: Date.now(), role: 'user', text };
     setMessages((prev) => [...prev, userMsg]);
@@ -358,7 +358,7 @@ export default function VoiceAgent() {
           history: messages
         })
       });
-      
+
       // Handle rate limiting
       if (chatRes.status === 429) {
         const errorData = await chatRes.json();
@@ -370,7 +370,7 @@ export default function VoiceAgent() {
         ]);
         return;
       }
-      
+
       if (!chatRes.ok) {
         throw new Error('Chat failed');
       }
@@ -433,52 +433,52 @@ export default function VoiceAgent() {
             exit={{ opacity: 0, y: 12, scale: 0.98 }}
             transition={{ type: 'spring', stiffness: 420, damping: 28 }}
           >
-          <div className="va-header">
-            <div className="va-title">Voice Assistant</div>
-            <div className={`va-status ${listening ? 'va-status-on' : ''}`}>{statusText}</div>
-          </div>
-
-          <div className="va-controls">
-            <button
-              type="button"
-              className={`va-mic ${listening ? 'va-mic-on' : ''}`}
-              aria-pressed={listening}
-              aria-label={listening ? 'Stop listening' : 'Start listening'}
-              onClick={() => setListening((v) => !v)}
-            >
-              {listening ? 'Stop' : 'Start'}
-            </button>
-            <button type="button" className="va-clear" onClick={handleClear} aria-label="Clear conversation">
-              Clear
-            </button>
-            <div className="va-level" aria-hidden={!listening} title="Input level">
-              <div className="va-levelbar" style={{ width: `${level}%` }} />
+            <div className="va-header">
+              <div className="va-title">Voice Assistant</div>
+              <div className={`va-status ${listening ? 'va-status-on' : ''}`}>{statusText}</div>
             </div>
-          </div>
 
-          <div className="va-messages" role="list">
-            {messages.length === 0 ? (
-              <div className="va-empty">No messages yet. Try typing below.</div>
-            ) : (
-              messages.map((m) => (
-                <div key={m.id} role="listitem" className={`va-message va-${m.role}`}>
-                  <div className="va-avatar" aria-hidden="true">{m.role === 'assistant' ? '🤖' : '😀'}</div>
-                  <div className="va-text">{m.text}</div>
-                </div>
-              ))
-            )}
-          </div>
+            <div className="va-controls">
+              <button
+                type="button"
+                className={`va-mic ${listening ? 'va-mic-on' : ''}`}
+                aria-pressed={listening}
+                aria-label={listening ? 'Stop listening' : 'Start listening'}
+                onClick={() => setListening((v) => !v)}
+              >
+                {listening ? 'Stop' : 'Start'}
+              </button>
+              <button type="button" className="va-clear" onClick={handleClear} aria-label="Clear conversation">
+                Clear
+              </button>
+              <div className="va-level" aria-hidden={!listening} title="Input level">
+                <div className="va-levelbar" style={{ width: `${level}%` }} />
+              </div>
+            </div>
 
-          <form className="va-input" onSubmit={handleSend}>
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Type instead…"
-              aria-label="Type a message"
-            />
-            <button type="submit" className="va-send" aria-label="Send message">Send</button>
-          </form>
+            <div className="va-messages" role="list">
+              {messages.length === 0 ? (
+                <div className="va-empty">No messages yet. Try typing below.</div>
+              ) : (
+                messages.map((m) => (
+                  <div key={m.id} role="listitem" className={`va-message va-${m.role}`}>
+                    <div className="va-avatar" aria-hidden="true">{m.role === 'assistant' ? '🤖' : '😀'}</div>
+                    <div className="va-text">{m.text}</div>
+                  </div>
+                ))
+              )}
+            </div>
+
+            <form className="va-input" onSubmit={handleSend}>
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Type instead…"
+                aria-label="Type a message"
+              />
+              <button type="submit" className="va-send" aria-label="Send message">Send</button>
+            </form>
           </motion.div>
         )}
       </AnimatePresence>
