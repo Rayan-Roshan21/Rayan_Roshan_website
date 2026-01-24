@@ -60,16 +60,16 @@
 /* Extra small screens (480px and below) */
 @media (max-width: 480px) {
   .Projects-title {
-    margin-top: 65px;
-    font-size: 24px;
+    margin-top: 56px;
+    font-size: 26px;
     width: 95%;
-    margin-bottom: 16px;
+    margin-bottom: 25px;
   }
   
   .projects-wrapper {
-    padding-bottom: 60px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-bottom: 70px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }
 

@@ -228,37 +228,104 @@
 /* Small screens (481px to 767px) */
 @media (min-width: 481px) and (max-width: 767px) {
     .project-container {
-        padding: 18px;
+        padding: 22px;
         min-height: auto;
         width: 100%;
         border-radius: 14px;
+        margin-bottom: 8px;
     }
 
     .projects-wrapper {
-        gap: 16px;
+        gap: 20px;
+        flex-direction: column;
+    }
+
+    .project_name {
+        font-size: 22px;
+        margin-top: 12px;
+        margin-bottom: 8px;
+    }
+
+    .project-role {
+        font-size: 17px;
+        margin-top: 8px;
+        margin-bottom: 10px;
+    }
+
+    .project-description {
+        font-size: 16px;
+        margin-top: 12px;
+        margin-bottom: 12px;
+    }
+
+    .project-image {
+        height: 190px;
+        border-radius: 10px;
+        margin-bottom: 8px;
+    }
+
+    .project-buttons {
+        flex-direction: row;
+        gap: 10px;
+        padding-top: 16px;
+        margin-top: 8px;
+    }
+
+    .project-container .project-github,
+    .project-container .project-linkedin,
+    .project-container .project-google-docs,
+    .project-container .project-pitchdeck {
+        font-size: 14px;
+        padding: 12px 14px;
+    }
+}
+
+/* Extra small screens (480px and below) */
+@media (max-width: 480px) {
+    .project-container {
+        padding: 20px;
+        min-height: auto;
+        width: 100%;
+        border-radius: 14px;
+        margin-bottom: 8px;
+    }
+
+    .projects-wrapper {
+        gap: 20px;
         flex-direction: column;
     }
 
     .project_name {
         font-size: 20px;
+        margin-top: 12px;
+        margin-bottom: 8px;
     }
 
     .project-role {
-        font-size: 16px;
+        font-size: 15px;
+        margin-top: 8px;
+        margin-bottom: 10px;
     }
 
     .project-description {
         font-size: 15px;
+        line-height: 1.6;
+        margin-top: 12px;
+        margin-bottom: 12px;
     }
 
     .project-image {
-        height: 180px;
+        height: 170px;
         border-radius: 10px;
+        margin-bottom: 8px;
     }
 
     .project-buttons {
         flex-direction: row;
-        gap: 8px;
+        gap: 10px;
+        padding-top: 16px;
+        border-top: 1px solid #f0f0f0;
+        margin-top: 8px;
     }
 
     .project-container .project-github,
@@ -266,57 +333,7 @@
     .project-container .project-google-docs,
     .project-container .project-pitchdeck {
         font-size: 13px;
-        padding: 10px 12px;
-    }
-}
-
-/* Extra small screens (480px and below) */
-@media (max-width: 480px) {
-    .project-container {
-        padding: 16px;
-        min-height: auto;
-        width: 100%;
-        border-radius: 14px;
-    }
-
-    .projects-wrapper {
-        gap: 14px;
-        flex-direction: column;
-    }
-
-    .project_name {
-        font-size: 18px;
-        margin-bottom: 6px;
-    }
-
-    .project-role {
-        font-size: 14px;
-        margin-bottom: 8px;
-    }
-
-    .project-description {
-        font-size: 14px;
-        line-height: 1.5;
-    }
-
-    .project-image {
-        height: 160px;
-        border-radius: 10px;
-    }
-
-    .project-buttons {
-        flex-direction: row;
-        gap: 8px;
-        padding-top: 12px;
-        border-top: 1px solid #f0f0f0;
-    }
-
-    .project-container .project-github,
-    .project-container .project-linkedin,
-    .project-container .project-google-docs,
-    .project-container .project-pitchdeck {
-        font-size: 12px;
-        padding: 10px 8px;
+        padding: 12px 10px;
         border-radius: 6px;
     }
 }
