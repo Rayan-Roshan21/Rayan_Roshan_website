@@ -9,7 +9,7 @@
 /* ===== PAGE TITLE ===== */
 .about-title {
   position: static;
-  margin-top: 6px;
+  margin-top: -10px;
   margin-left: 50%;
   transform: translateX(-50%);
   font-family: 'Open Sans', sans-serif;
@@ -730,7 +730,7 @@
 /* Mobile landscape (601px to 767px) */
 @media (min-width: 601px) and (max-width: 767px) {
   .about-title {
-    margin-top: 65px;
+    margin-top: 80px;
     font-size: 28px;
   }
 
@@ -836,7 +836,7 @@
 /* Mobile portrait (481px to 600px) */
 @media (min-width: 481px) and (max-width: 600px) {
   .about-title {
-    margin-top: 65px;
+    margin-top: 80px;
     font-size: 54px;
   }
 
@@ -966,7 +966,7 @@
   }
 
   .about-title {
-    margin-top: 60px;
+    margin-top: 80px;
     font-size: 22px;
     margin-bottom: 8px;
     margin-left: 0;

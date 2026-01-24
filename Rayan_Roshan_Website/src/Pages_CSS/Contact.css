@@ -13,7 +13,7 @@
 .contact-main {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 60px 24px 64px;
+  padding: 30px 24px 64px;
 }
 
 /* Hero Section */
@@ -129,7 +129,7 @@
   }
 
   .contact-hero {
-    margin-top: 45px;
+    margin-top: 60px;
     margin-bottom: 45px;
   }
 
@@ -169,7 +169,7 @@
   }
 
   .contact-hero {
-    margin-top: 40px;
+    margin-top: 55px;
     margin-bottom: 40px;
   }
 
@@ -213,7 +213,7 @@
   }
 
   .contact-hero {
-    margin-top: 35px;
+    margin-top: 50px;
     margin-bottom: 35px;
   }
 
