@@ -68710,5 +68710,10 @@
       0.01365636382251978,
       -0.014714796096086502
     ]
+  },
+  {
+    "id": "tmu_techweek_role",
+    "text": "From December 2025 to February 2026, Rayan served as Project Experience Lead & Web Developer for TMU Tech Week, a seasonal role in Toronto, Ontario (hybrid). He designed and developed a production web platform for TMU Tech Week, enhancing user engagement. He built responsive front-end components using JavaScript, React.js, HTML, and CSS for event discovery. He collaborated with strategic teams to gather requirements and deliver features on time.",
+    "embedding": []
   }
 ]

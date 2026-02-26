@@ -105,7 +105,7 @@
 
   .contact-content {
     grid-template-columns: 1fr;
-    gap: 25px;
+    gap: 40px;
   }
 
   .contact-info,
@@ -116,7 +116,7 @@
   .info-title {
     font-size: 28px;
   }
-  
+
   .social-links {
     gap: 60px;
   }
@@ -156,7 +156,7 @@
   .info-description {
     font-size: 16px;
   }
-  
+
   .social-links {
     gap: 50px;
   }
@@ -183,7 +183,7 @@
   }
 
   .contact-content {
-    gap: 20px;
+    gap: 36px;
   }
 
   .contact-info,
@@ -200,7 +200,7 @@
     font-size: 15px;
     line-height: 1.6;
   }
-  
+
   .social-links {
     gap: 40px;
     flex-wrap: wrap;
@@ -228,7 +228,7 @@
   }
 
   .contact-content {
-    gap: 16px;
+    gap: 24px;
   }
 
   .contact-info,
@@ -246,7 +246,7 @@
     font-size: 14px;
     line-height: 1.5;
   }
-  
+
   .social-links {
     gap: 30px;
     flex-wrap: wrap;
@@ -280,7 +280,7 @@
   .info-description {
     font-size: 13px;
   }
-  
+
   .social-links {
     gap: 20px;
   }

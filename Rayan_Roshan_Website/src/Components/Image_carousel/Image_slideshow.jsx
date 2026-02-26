@@ -3,25 +3,26 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "./Image_slideshow.css";
 import image2 from '@/assets/Picture2.jpg';
 import image3 from '@/assets/Picture3.jpg';
+import image4 from '@/assets/DSC_1262.jpeg';
 
-const images = [image2, image3];
+const images = [image2, image3, image4];
 function Image_slideshow() {
   return (
     <div className="box">
-      <Carousel 
-        useKeyboardArrows={true} 
+      <Carousel
+        useKeyboardArrows={true}
         autoPlay={true}         // Enables auto-play
         interval={3000}         // 3000ms = 3 seconds between slides
         infiniteLoop={true}     // Loop back to the start
         showThumbs={false}      // Optional: hides image thumbnails
         stopOnHover={true}      // Optional: pause auto-play on hover
-        >
+      >
         {images.map((URL, index) => (
-            <div className="slide" key={index}>
+          <div className="slide" key={index}>
             <img alt="sample_file" src={URL} />
-            </div>
+          </div>
         ))}
-    </Carousel>
+      </Carousel>
     </div>
   );
 }

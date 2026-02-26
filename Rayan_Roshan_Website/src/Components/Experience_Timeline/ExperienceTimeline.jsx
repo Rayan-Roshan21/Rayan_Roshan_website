@@ -13,6 +13,13 @@ const ExperienceTimeline = () => {
       tags: ['Technology']
     },
     {
+      date: '2025-12',
+      title: 'Project Experience Lead & Web Developer',
+      company: 'TMU Tech Week · Toronto, ON',
+      summary: 'Designed and developed a production web platform for TMU Tech Week, enhancing user engagement. Built responsive front-end components using JavaScript, React.js, HTML, and CSS for event discovery. Collaborated with strategic teams to gather requirements and deliver features on time.',
+      tags: ['JavaScript', 'React.js', 'Web Development']
+    },
+    {
       date: '2025-07',
       title: 'Project Experience Lead',
       company: 'TMU BYTE · Toronto, ON',

@@ -3,6 +3,7 @@
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -40,11 +41,14 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid #e0e0e0;
+    border-left: 4px solid #2c3e50;
+    position: relative;
 }
 
 .grid-box:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 6px 20px rgba(44, 62, 80, 0.12);
+    border-left-color: #34495e;
 }
 
 .grid-box ul {
@@ -56,12 +60,43 @@
 .grid-box ul li {
     padding: 0.75rem 0;
     font-size: 0.9rem;
-    color: #6b7280;
+    color: #4a5568;
     border-bottom: 1px solid #f0f0f0;
+    padding-left: 16px;
+    position: relative;
+}
+
+.grid-box ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    border-radius: 50%;
 }
 
 .grid-box ul li:last-child {
     border-bottom: none;
+}
+
+/* Hide dot markers on all mobile/tablet single-column layouts */
+@media (max-width: 767px) {
+    .grid-box ul li {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .grid-box ul li::before {
+        display: none;
+    }
+
+    .grid-box {
+        border-left: 1px solid #e0e0e0;
+        border-top: 3px solid #2c3e50;
+    }
 }
 
 /* Responsive Design */
@@ -73,11 +108,11 @@
         padding: 0 2.5rem;
         margin-top: 2rem;
     }
-    
+
     .Grid-title {
         font-size: 1.15rem;
     }
-    
+
     .grid-box ul li {
         font-size: 0.85rem;
     }
@@ -91,15 +126,15 @@
         margin-top: 1.75rem;
         padding: 0 2rem;
     }
-    
+
     .Grid-title {
         font-size: 1.1rem;
     }
-    
+
     .grid-box {
         padding: 1.8rem 1.3rem;
     }
-    
+
     .grid-box ul li {
         font-size: 0.85rem;
     }
@@ -113,18 +148,25 @@
         margin-top: 1.5rem;
         padding: 0 1.5rem;
     }
-    
+
     .Grid-title {
         font-size: 1.05rem;
     }
-    
+
     .grid-box {
         padding: 1.5rem 1.2rem;
+        border-left: 1px solid #e0e0e0;
+        border-top: 3px solid #2c3e50;
     }
-    
+
     .grid-box ul li {
         font-size: 0.85rem;
         text-align: center;
+        padding-left: 0;
+    }
+
+    .grid-box ul li::before {
+        display: none;
     }
 }
 
@@ -136,19 +178,26 @@
         margin-top: 1.25rem;
         padding: 0 1.2rem;
     }
-    
+
     .Grid-title {
         font-size: 1rem;
     }
-    
+
     .grid-box {
         padding: 1.3rem 1rem;
+        border-left: 1px solid #e0e0e0;
+        border-top: 3px solid #2c3e50;
     }
-    
+
     .grid-box ul li {
         font-size: 0.8rem;
         padding: 0.5rem 0;
         text-align: center;
+        padding-left: 0;
+    }
+
+    .grid-box ul li::before {
+        display: none;
     }
 }
 
@@ -161,20 +210,27 @@
         padding: 0 1rem;
         padding-bottom: 2rem;
     }
-    
+
     .Grid-title {
         font-size: 1rem;
         margin-bottom: 1rem;
     }
-    
+
     .grid-box {
         padding: 1.2rem 1rem;
+        border-left: 1px solid #e0e0e0;
+        border-top: 3px solid #2c3e50;
     }
-    
+
     .grid-box ul li {
         font-size: 0.8rem;
         padding: 0.5rem 0;
         text-align: center;
+        padding-left: 0;
+    }
+
+    .grid-box ul li::before {
+        display: none;
     }
 }
 
@@ -187,20 +243,27 @@
         padding: 0 0.8rem;
         padding-bottom: 1.5rem;
     }
-    
+
     .Grid-title {
         font-size: 0.95rem;
         margin-bottom: 0.8rem;
     }
-    
+
     .grid-box {
         padding: 1rem 0.8rem;
         border-radius: 10px;
+        border-left: 1px solid #e0e0e0;
+        border-top: 3px solid #2c3e50;
     }
-    
+
     .grid-box ul li {
         font-size: 0.75rem;
         padding: 0.4rem 0;
         text-align: center;
+        padding-left: 0;
+    }
+
+    .grid-box ul li::before {
+        display: none;
     }
 }

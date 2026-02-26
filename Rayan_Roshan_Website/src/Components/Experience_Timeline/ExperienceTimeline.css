@@ -32,7 +32,7 @@
   width: 3px;
   height: 100%;
   margin-left: -1.5px;
-  background: linear-gradient(to bottom, rgba(224,224,224,0) 0%, #2c3e50 5%, #2c3e50 95%, rgba(224,224,224,0) 100%);
+  background: linear-gradient(to bottom, rgba(224, 224, 224, 0) 0%, #2c3e50 5%, #2c3e50 95%, rgba(224, 224, 224, 0) 100%);
   z-index: 1;
 }
 
@@ -71,15 +71,18 @@
   background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
   border: 1px solid #e0e0e0;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   padding: 20px;
   position: relative;
   transition: all 0.3s ease;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  box-sizing: border-box;
 }
 
 .timeline-card:hover {
   border-color: #2c3e50;
-  box-shadow: 0 4px 20px rgba(44,62,80,0.15);
+  box-shadow: 0 4px 20px rgba(44, 62, 80, 0.15);
 }
 
 .direction-l .timeline-card:after {
@@ -117,7 +120,7 @@
   border-radius: 20px;
   margin-bottom: 10px;
   font-weight: 600;
-  box-shadow: 0 2px 6px rgba(44,62,80,0.2);
+  box-shadow: 0 2px 6px rgba(44, 62, 80, 0.2);
 }
 
 .card-title {
@@ -201,10 +204,13 @@
 }
 
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }
+
   50% {
     opacity: 0.6;
     transform: scale(1.1);
@@ -218,27 +224,27 @@
   .timeline-root {
     padding: 25px 0;
   }
-  
+
   .timeline-range {
     font-size: 32px;
   }
-  
+
   .timeline {
     max-width: 1100px;
   }
-  
+
   .timeline-card {
     padding: 24px;
   }
-  
+
   .card-title {
     font-size: 26px;
   }
-  
+
   .card-company {
     font-size: 16px;
   }
-  
+
   .card-summary {
     font-size: 15px;
   }
@@ -249,40 +255,40 @@
   .timeline-root {
     padding: 20px 0;
   }
-  
+
   .timeline-header {
     margin-bottom: 35px;
   }
-  
+
   .timeline-range {
     font-size: 26px;
   }
-  
+
   .timeline {
     max-width: 900px;
   }
-  
+
   .timeline-card {
     padding: 18px;
   }
-  
+
   .card-title {
     font-size: 22px;
   }
-  
+
   .card-company {
     font-size: 14px;
   }
-  
+
   .card-summary {
     font-size: 13px;
   }
-  
+
   .card-date {
     font-size: 12px;
     padding: 5px 10px;
   }
-  
+
   .tag {
     font-size: 12px;
   }
@@ -298,11 +304,11 @@
     left: 20px;
     margin-left: -9px;
   }
-  
+
   .timeline-header {
     margin-bottom: 30px;
   }
-  
+
   .timeline-range {
     font-size: 24px;
   }
@@ -335,7 +341,7 @@
   .card-title {
     font-size: 20px;
   }
-  
+
   .card-company {
     font-size: 14px;
   }
@@ -343,12 +349,12 @@
   .card-summary {
     font-size: 13px;
   }
-  
+
   .card-date {
     font-size: 11px;
     padding: 5px 10px;
   }
-  
+
   .tag {
     font-size: 12px;
   }
@@ -364,11 +370,11 @@
     left: 15px;
     margin-left: -9px;
   }
-  
+
   .timeline-header {
     margin-bottom: 25px;
   }
-  
+
   .timeline-range {
     font-size: 22px;
   }
@@ -406,7 +412,7 @@
   .card-title {
     font-size: 18px;
   }
-  
+
   .card-company {
     font-size: 13px;
   }
@@ -415,16 +421,16 @@
     font-size: 12px;
     margin-bottom: 10px;
   }
-  
+
   .card-date {
     font-size: 11px;
     padding: 4px 8px;
   }
-  
+
   .card-tags {
     gap: 8px;
   }
-  
+
   .tag {
     font-size: 11px;
   }
@@ -435,7 +441,7 @@
   .timeline-root {
     padding: 15px 0;
   }
-  
+
   .timeline:before {
     left: 12px;
     width: 2px;
@@ -445,11 +451,11 @@
     left: 12px;
     margin-left: -7px;
   }
-  
+
   .timeline-header {
     margin-bottom: 20px;
   }
-  
+
   .timeline-range {
     font-size: 20px;
   }
@@ -461,6 +467,8 @@
     text-align: left;
     padding-left: 35px;
     padding-right: 10px;
+    box-sizing: border-box;
+    max-width: 100%;
   }
 
   .direction-l .timeline-card:after,
@@ -484,13 +492,15 @@
   .timeline-card {
     padding: 12px;
     border-radius: 10px;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   .card-title {
     font-size: 16px;
     margin-bottom: 6px;
   }
-  
+
   .card-company {
     font-size: 12px;
     margin-bottom: 8px;
@@ -501,30 +511,30 @@
     line-height: 1.5;
     margin-bottom: 10px;
   }
-  
+
   .card-date {
     font-size: 10px;
     padding: 4px 8px;
     border-radius: 15px;
   }
-  
+
   .card-tags {
     gap: 6px;
   }
-  
+
   .tag {
     font-size: 10px;
   }
-  
+
   .timeline-present {
     margin-top: 6px;
   }
-  
+
   .present-dot {
     width: 6px;
     height: 6px;
   }
-  
+
   .present-label {
     font-size: 10px;
   }
@@ -535,37 +545,37 @@
   .timeline-root {
     padding: 10px 0;
   }
-  
+
   .timeline-header {
     margin-bottom: 20px;
   }
-  
+
   .timeline-range {
     font-size: 20px;
   }
-  
+
   .timeline:before {
     left: 15px;
   }
-  
+
   .direction-l,
   .direction-r {
     padding-left: 45px;
     padding-right: 15px;
   }
-  
+
   .timeline li {
     padding: 1em 0;
   }
-  
+
   .timeline-card {
     padding: 12px;
   }
-  
+
   .card-title {
     font-size: 16px;
   }
-  
+
   .card-summary {
     font-size: 12px;
   }

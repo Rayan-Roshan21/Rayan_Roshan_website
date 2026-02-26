@@ -6,7 +6,7 @@
   position: relative;
   overflow: hidden;
   background: #fff;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -40,7 +40,7 @@
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,7 +62,7 @@
   .box {
     max-width: 550px;
   }
-  
+
   .nav_btn {
     width: 3.5rem;
     height: 3.5rem;
@@ -81,7 +81,7 @@
   .box {
     max-width: 450px;
   }
-  
+
   .nav_btn {
     width: 2.5rem;
     height: 2.5rem;
@@ -93,7 +93,7 @@
   .box {
     max-width: 400px;
   }
-  
+
   .nav_btn {
     width: 2.5rem;
     height: 2.5rem;
@@ -111,20 +111,20 @@
     margin: 25px auto;
     border-radius: 12px;
   }
-  
+
   .slide img {
     border-radius: 10px;
   }
-  
+
   .nav_btn {
     width: 2.2rem;
     height: 2.2rem;
   }
-  
+
   .nav_btn_left {
     left: 8px;
   }
-  
+
   .nav_btn_right {
     right: 8px;
   }
@@ -133,29 +133,29 @@
 /* Mobile portrait (481px to 600px) */
 @media (min-width: 481px) and (max-width: 600px) {
   .box {
-    width: 95%;
-    max-width: 420px;
+    width: 100%;
+    max-width: 100%;
     position: relative;
     top: auto;
     left: auto;
     margin: 20px auto;
     border-radius: 12px;
   }
-  
+
   .slide img {
     border-radius: 10px;
   }
-  
+
   .nav_btn {
     width: 2rem;
     height: 2rem;
-    box-shadow: 0 1px 6px rgba(0,0,0,0.12);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12);
   }
-  
+
   .nav_btn_left {
     left: 6px;
   }
-  
+
   .nav_btn_right {
     right: 6px;
   }
@@ -164,30 +164,30 @@
 /* Small mobile (below 481px) */
 @media (max-width: 480px) {
   .box {
-    width: 95%;
-    max-width: 340px;
+    width: 100%;
+    max-width: 100%;
     position: relative;
     top: auto;
     left: auto;
     margin: 15px auto;
     border-radius: 12px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
   }
-  
+
   .slide img {
     border-radius: 10px;
   }
-  
+
   .nav_btn {
     width: 2rem;
     height: 2rem;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
   }
-  
+
   .nav_btn_left {
     left: 5px;
   }
-  
+
   .nav_btn_right {
     right: 5px;
   }
@@ -201,7 +201,7 @@
     position: relative;
     margin: 15px auto;
   }
-  
+
   .nav_btn {
     width: 1.8rem;
     height: 1.8rem;
