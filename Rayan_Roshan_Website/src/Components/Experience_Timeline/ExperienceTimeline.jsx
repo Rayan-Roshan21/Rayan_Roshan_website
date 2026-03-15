@@ -55,8 +55,16 @@ const ExperienceTimeline = () => {
     [experiences]
   );
 
-  const todayYear = new Date().getFullYear();
-  const todayMonth = new Date().getMonth();
+  const today = new Date();
+
+  // Index of the most recent past entry (shown as "Present")
+  const firstPastIdx = useMemo(
+    () => sorted.findIndex(exp => {
+      const [y, m] = exp.date.split('-').map(Number);
+      return new Date(y, m - 1, 1) <= today;
+    }),
+    [sorted]
+  );
 
   const cardVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -71,9 +79,11 @@ const ExperienceTimeline = () => {
 
       <ul className="timeline">
         {sorted.map((exp, idx) => {
-          const date = new Date(exp.date + '-01');
+          const [y, m] = exp.date.split('-').map(Number);
+          const date = new Date(y, m - 1, 1);
           const label = date.toLocaleDateString(undefined, { month: 'short', year: 'numeric' });
-          const isPresent = date.getFullYear() === todayYear && date.getMonth() >= todayMonth;
+          const isFuture = date > today;
+          const isPresent = !isFuture && idx === firstPastIdx;
           const direction = idx % 2 === 0 ? 'direction-l' : 'direction-r';
 
           return (
@@ -102,6 +112,12 @@ const ExperienceTimeline = () => {
                       ))}
                     </ul>
                   ) : null}
+                  {isFuture && (
+                    <div className="timeline-present">
+                      <span className="present-dot upcoming-dot" />
+                      <span className="present-label">Upcoming</span>
+                    </div>
+                  )}
                   {isPresent && (
                     <div className="timeline-present">
                       <span className="present-dot" />

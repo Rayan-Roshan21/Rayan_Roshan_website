@@ -8,17 +8,29 @@
 
 /* ===== PAGE TITLE ===== */
 .about-title {
-  position: static;
+  position: relative;
   margin-top: -10px;
-  margin-left: 50%;
-  transform: translateX(-50%);
   font-family: 'Open Sans', sans-serif;
   text-align: center;
   font-size: 36px;
   z-index: 100;
-  text-decoration: underline;
+  text-decoration: none;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  display: block;
+  padding-bottom: 10px;
+}
+
+.about-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, #2c3e50, #34495e);
+  border-radius: 2px;
 }
 
 /* ===== ABOUT SECTIONS ===== */
@@ -32,9 +44,10 @@
 .who-am-i-section {
   margin-top: 40px;
   margin-bottom: 60px;
-  background: linear-gradient(135deg, rgba(248, 249, 250, 0.6) 0%, rgba(233, 236, 239, 0.3) 100%);
+  background: linear-gradient(135deg, rgba(244, 246, 248, 0.9) 0%, rgba(228, 232, 237, 0.6) 100%);
   border-radius: 20px;
   padding: 10px 0;
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .about-main-content {

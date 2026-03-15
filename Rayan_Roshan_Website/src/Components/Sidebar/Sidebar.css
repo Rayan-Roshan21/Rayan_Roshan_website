@@ -49,10 +49,21 @@
     transform: translateX(0);
 }
 
-.sidebar.open ul li:nth-child(1) { transition-delay: 0.08s; }
-.sidebar.open ul li:nth-child(2) { transition-delay: 0.14s; }
-.sidebar.open ul li:nth-child(3) { transition-delay: 0.2s; }
-.sidebar.open ul li:nth-child(4) { transition-delay: 0.26s; }
+.sidebar.open ul li:nth-child(1) {
+    transition-delay: 0.08s;
+}
+
+.sidebar.open ul li:nth-child(2) {
+    transition-delay: 0.14s;
+}
+
+.sidebar.open ul li:nth-child(3) {
+    transition-delay: 0.2s;
+}
+
+.sidebar.open ul li:nth-child(4) {
+    transition-delay: 0.26s;
+}
 
 .sidebar ul li a {
     color: #222;
@@ -81,7 +92,7 @@
 .sidebar ul li a:hover {
     color: #000;
     padding-left: 8px;
-    background: linear-gradient(90deg, rgba(0,0,0,0.02) 0%, transparent 100%);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.02) 0%, transparent 100%);
 }
 
 .sidebar ul li a:hover::after {
@@ -220,8 +231,13 @@
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .menu-title {
@@ -301,12 +317,12 @@
         margin-bottom: 30px;
         font-size: 13px;
     }
-    
+
     .sidebar ul li a {
         font-size: 18px;
         padding: 14px 0;
     }
-    
+
     .menu-toggle {
         top: 25px;
         right: 25px;
@@ -337,12 +353,12 @@
         font-size: 12px;
         letter-spacing: 1.5px;
     }
-    
+
     .sidebar ul li a {
         font-size: 17px;
         padding: 12px 0;
     }
-    
+
     .menu-toggle {
         top: 20px;
         right: 20px;
@@ -352,7 +368,7 @@
         border-radius: 10px;
         display: flex;
     }
-    
+
     .close-btn {
         top: 15px;
         right: 15px;
@@ -374,18 +390,18 @@
         padding: 20px;
         display: block;
     }
-    
+
     .sidebar h2 {
         margin-top: 35px;
         margin-bottom: 20px;
         font-size: 11px;
     }
-    
+
     .sidebar ul li a {
         font-size: 15px;
         padding: 10px 0;
     }
-    
+
     .menu-toggle {
         top: 15px;
         right: 15px;
@@ -394,7 +410,7 @@
         font-size: 16px;
         display: flex;
     }
-    
+
     .close-btn {
         top: 12px;
         right: 12px;
@@ -424,12 +440,12 @@
         font-size: 11px;
         letter-spacing: 1px;
     }
-    
+
     .sidebar ul li a {
         font-size: 15px;
         padding: 10px 0;
     }
-    
+
     .menu-toggle {
         top: 15px;
         right: 15px;
@@ -439,7 +455,7 @@
         border-radius: 8px;
         display: flex;
     }
-    
+
     .close-btn {
         top: 12px;
         right: 12px;

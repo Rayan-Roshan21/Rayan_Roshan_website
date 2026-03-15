@@ -10,7 +10,6 @@
     justify-content: flex-start;
     align-items: stretch;
     min-height: 500px;
-    height: 500px;
     width: 48%;
     box-sizing: border-box;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -37,17 +36,20 @@
     font-weight: bold;
     color: #333;
     font-family: 'Open Sans', sans-serif;
-    text-align: center;
+    text-align: left;
     margin-top: 10px;
     margin-bottom: 0;
 }
 
 .project-role {
-    font-size: 18px;
-    color: #666;
+    font-size: 14px;
+    color: #888;
     font-family: 'Open Sans', sans-serif;
-    text-align: center;
-    margin-top: 10px;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-weight: 600;
+    margin-top: 6px;
     margin-bottom: 0;
 }
 
@@ -55,7 +57,7 @@
     font-size: 17px;
     color: #555;
     font-family: 'Open Sans', sans-serif;
-    text-align: center;
+    text-align: left;
     flex-grow: 1;
     line-height: 1.5;
     margin-top: 10px;
@@ -106,23 +108,23 @@
 }
 
 .project-container .project-github {
-    color: #111;
+    color: #333;
     background-color: #f0f0f0;
 }
 
 .project-container .project-linkedin {
-    color: #111;
-    background-color: #f0f0f0;
+    color: #0077b5;
+    background-color: #e8f4fb;
 }
 
 .project-container .project-google-docs {
-    color: #111;
-    background-color: #f0f0f0;
+    color: #1a73e8;
+    background-color: #e8f0fe;
 }
 
 .project-container .project-pitchdeck {
-    color: #111;
-    background-color: #f0f0f0;
+    color: #cc5500;
+    background-color: #fff1eb;
 }
 
 .project-container .project-github:hover {
@@ -377,7 +379,6 @@
         min-width: 420px;
         max-width: 420px;
         min-height: 480px;
-        height: 480px;
     }
 }
 

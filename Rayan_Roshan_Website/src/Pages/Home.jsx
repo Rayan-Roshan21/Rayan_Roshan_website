@@ -63,10 +63,10 @@ function Home() {
 
   return (
     <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -30 }}
-        transition={{ duration: 0.5 }}
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -30 }}
+      transition={{ duration: 0.5 }}
     >
       <div className="App">
         <Sidebar />
@@ -79,7 +79,7 @@ function Home() {
         <div className="social-links-row">
           <Tooltip className="home-social-links" />
         </div>
-        
+
         {/* Mobile CTA Buttons */}
         <div className="mobile-cta-section">
           <Link to="/projects" className="mobile-cta-btn mobile-cta-primary">
@@ -89,7 +89,7 @@ function Home() {
             Contact Me
           </Link>
         </div>
-        
+
         {/* Mobile Stats Row */}
         <div className="mobile-stats-row">
           <div className="mobile-stat">
@@ -110,7 +110,7 @@ function Home() {
       </div>
       <Copyright isVisible={isAtBottom} />
     </motion.div>
-);
+  );
 
 }
 

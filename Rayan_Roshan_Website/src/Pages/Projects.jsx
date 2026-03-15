@@ -100,7 +100,7 @@ function Projects() {
           <p className='project-role'>Co-Founder & Software Engineer</p>
           <p className='project-description'>Real-time social platform for Toronto Metropolitan University students featuring instant messaging, event coordination, and community engagement tools for enhanced campus life connectivity.</p>
           <div className='project-buttons'>
-            <a className="project-linkedin" href="https://yap-mu.vercel.app/" target="_blank" rel="noopener noreferrer">Try it out!</a>
+            <a className="project-linkedin" href="https://yapp-mu.com" target="_blank" rel="noopener noreferrer">Try it out!</a>
           </div>
         </div>
         <div className='project-container'>
