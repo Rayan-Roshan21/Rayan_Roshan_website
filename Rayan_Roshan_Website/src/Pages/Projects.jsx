@@ -16,6 +16,7 @@ import art_museum from '@/assets/art_meseum.jpg';
 import univ from '@/assets/univ.png';
 import scotiabank from '@/assets/scotiabank.jpg';
 import llmrouter from '@/assets/llm-router.jpg';
+import tmuTechWeek from '@/assets/tmu_tech_week.png';
 import { useScrollToBottom } from '@/hooks/useScrollToBottom';
 
 function Projects() {
@@ -33,6 +34,16 @@ function Projects() {
       </div>
       <h2 className='Projects-title'>Projects</h2>
       <div className='projects-wrapper'>
+        <div className='project-container'>
+          <img className="project-image" src={tmuTechWeek} alt="TMU Tech Week logo." />
+          <p className='project_name'>TMU Tech Week</p>
+          <p className='project-role'>Web Developer & Project Lead</p>
+          <p className='project-description'>Led infrastructure build for TMU's flagship tech event—integrated Boardy to connect students with startups and shipped directly to production under a tight deadline. Result: 2,000+ page views and 1,000+ unique visitors in 7 days with zero outages.</p>
+          <div className='project-buttons'>
+            <a className="project-linkedin" href="https://www.tmutechweek.com" target="_blank" rel="noopener noreferrer">Visit Website</a>
+            <a className="project-github" href="https://github.com/BYTE-TMU/Tmu_Tech_Week_Website" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+          </div>
+        </div>
         <div className='project-container'>
           <img className="project-image" src={AICustomerImage} alt="Related image of project." />
           <p className='project_name'>AI Customer Support Agent</p>
