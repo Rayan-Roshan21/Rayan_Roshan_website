@@ -161,14 +161,14 @@ export default function ContactButtons() {
             {/* Calendly Modal */}
             {showCalendar && (
                 <div className={`modal-overlay ${isClosing ? 'closing' : ''}`} onClick={closeModal}>
-                    <div className={`modal-container ${isClosing ? 'closing' : ''}`} onClick={(e) => e.stopPropagation()}>
+                    <div className={`modal-container calendly-modal ${isClosing ? 'closing' : ''}`} onClick={(e) => e.stopPropagation()}>
                         <div className="modal-header">
                             <h3 className="modal-title">Schedule a Meeting</h3>
                             <button className="modal-close-btn" onClick={closeModal}>
                                 ✕
                             </button>
                         </div>
-                        <div className="modal-content">
+                        <div className="modal-content calendly-content">
                             <CalendlyBox />
                         </div>
                     </div>

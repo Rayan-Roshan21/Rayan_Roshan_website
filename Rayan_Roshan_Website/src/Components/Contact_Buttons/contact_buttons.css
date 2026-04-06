@@ -1,458 +1,289 @@
-/* Contact Buttons Component Styles */
+/* ============================================================
+   CONTACT BUTTONS — Apple Design
+   ============================================================ */
+
 .contact-buttons-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    width: 100%;
-    max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
 }
 
 .contact-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    padding: 16px 24px;
-    font-size: 16px;
-    font-weight: 600;
-    font-family: 'Open Sans', sans-serif;
-    color: #111;
-    background-color: #fff;
-    border: 2px solid #222;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 18px 24px;
+  background: #f5f5f7;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 1.06rem;
+  font-weight: 400;
+  color: #1d1d1f;
+  letter-spacing: -0.374px;
+  transition: background 0.2s ease, transform 0.2s ease;
+  text-align: left;
+  min-height: 64px;
 }
 
 .contact-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    background-color: #f8f9ff;
+  background: #ebebed;
+  transform: translateY(-2px);
 }
 
 .contact-btn:active {
-    transform: translateY(0);
+  transform: translateY(0);
+  background: #e0e0e2;
 }
 
 .btn-icon {
-    font-size: 20px;
+  font-size: 22px;
+  flex-shrink: 0;
 }
 
 .btn-text {
-    font-size: 16px;
+  font-size: 1.06rem;
+  font-weight: 400;
+  color: #1d1d1f;
+  letter-spacing: -0.374px;
 }
 
-/* Modal Overlay */
+/* ============================================================
+   MODAL OVERLAY
+   ============================================================ */
+
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    animation: fadeIn 0.3s ease-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+  animation: modalOverlayIn 0.25s ease;
 }
 
 .modal-overlay.closing {
-    animation: fadeOut 0.3s ease-out forwards;
+  animation: modalOverlayOut 0.3s ease forwards;
 }
 
-/* Modal Container */
+@keyframes modalOverlayIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalOverlayOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* ============================================================
+   MODAL CONTAINER
+   ============================================================ */
+
 .modal-container {
-    width: 90vw;
-    max-width: 1000px;
-    height: 90vh;
-    max-height: 800px;
-    background-color: #fff;
-    border-radius: 16px;
-    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  background: #ffffff;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: modalIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
 }
 
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px) scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-@keyframes slideDown {
-    from {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-    to {
-        opacity: 0;
-        transform: translateY(30px) scale(0.95);
-    }
+/* Wider container for Calendly */
+.modal-container.calendly-modal {
+  max-width: 900px;
+  max-height: 92vh;
 }
 
 .modal-container.closing {
-    animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+  animation: modalOut 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
-/* Modal Header */
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.96) translateY(12px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes modalOut {
+  from { opacity: 1; transform: scale(1) translateY(0); }
+  to { opacity: 0; transform: scale(0.96) translateY(12px); }
+}
+
 .modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 16px;
-    background-color: #fafafa;
-    border-bottom: 1px solid #e0e0e0;
-    flex-shrink: 0;
-    min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 28px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .modal-title {
-    margin: 0;
-    font-size: 20px;
-    font-weight: 700;
-    color: #222;
-    font-family: 'Open Sans', sans-serif;
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 1.19rem;
+  font-weight: 600;
+  color: #1d1d1f;
+  letter-spacing: 0.231px;
+  margin: 0;
 }
 
 .modal-close-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    padding: 0;
-    font-size: 20px;
-    font-weight: bold;
-    color: #fff;
-    background-color: #e74c3c;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s ease;
+  background: rgba(0, 0, 0, 0.06);
+  border: none;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 15px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
 }
 
 .modal-close-btn:hover {
-    background-color: #c0392b;
-    transform: scale(1.05);
+  background: rgba(0, 0, 0, 0.12);
+  color: #1d1d1f;
 }
 
-/* Modal Content */
 .modal-content {
-    flex: 1;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+  padding: 28px;
 }
 
-.modal-content > div {
-    height: 100%;
-    overflow: hidden;
+/* No extra padding for Calendly — it has its own internal padding */
+.modal-content.calendly-content {
+  padding: 0;
+  overflow: hidden;
+  border-radius: 0 0 16px 16px;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .modal-container {
-        width: 95vw;
-        height: 92vh;
-        max-height: 750px;
-        border-radius: 12px;
-    }
-    
-    .modal-header {
-        padding: 12px 16px;
-    }
-    
-    .modal-title {
-        font-size: 18px;
-    }
-}
-
-/* Mobile portrait (481px to 600px) */
-@media (min-width: 481px) and (max-width: 600px) {
-    .contact-buttons-wrapper {
-        max-width: 100%;
-        gap: 14px;
-    }
-    
-    .contact-btn {
-        padding: 14px 22px;
-        font-size: 15px;
-        border-radius: 10px;
-    }
-    
-    .btn-icon {
-        font-size: 18px;
-    }
-    
-    .btn-text {
-        font-size: 15px;
-    }
-}
-
-/* Small mobile (below 481px) */
-@media (max-width: 480px) {
-    .contact-buttons-wrapper {
-        max-width: 100%;
-        gap: 12px;
-    }
-    
-    .contact-btn {
-        padding: 12px 18px;
-        font-size: 14px;
-        border-radius: 10px;
-    }
-    
-    .btn-icon {
-        font-size: 18px;
-    }
-    
-    .btn-text {
-        font-size: 14px;
-    }
-    
-    .modal-container {
-        width: 96vw;
-        height: 92vh;
-        max-height: none;
-        border-radius: 12px;
-    }
-    
-    .modal-header {
-        padding: 10px 14px;
-        min-height: 44px;
-    }
-    
-    .modal-title {
-        font-size: 16px;
-    }
-    
-    .modal-close-btn {
-        width: 32px;
-        height: 32px;
-        font-size: 18px;
-    }
-}
-
-/* Landscape orientation on mobile */
-@media (max-width: 767px) and (orientation: landscape) {
-    .contact-buttons-wrapper {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 10px;
-        max-width: 100%;
-    }
-    
-    .contact-btn {
-        flex: 1 1 45%;
-        padding: 10px 16px;
-        font-size: 13px;
-    }
-    
-    .modal-container {
-        width: 95vw;
-        height: 85vh;
-    }
-}
-
-/* ===== Message Form Modal Styles ===== */
-
-.message-modal {
-    max-width: 500px;
-    height: auto;
-    max-height: 90vh;
-}
-
-.message-content {
-    padding: 24px;
-    overflow-y: auto;
-}
+/* ============================================================
+   MESSAGE FORM — Apple Design
+   ============================================================ */
 
 .message-form {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
 }
 
 .form-group label {
-    font-size: 14px;
-    font-weight: 600;
-    color: #333;
-    font-family: 'Open Sans', sans-serif;
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.6);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 .form-group input,
 .form-group textarea {
-    width: 100%;
-    padding: 12px 16px;
-    font-size: 15px;
-    font-family: 'Open Sans', sans-serif;
-    color: #222;
-    background-color: #fafafa;
-    border: 2px solid #e0e0e0;
-    border-radius: 10px;
-    transition: all 0.2s ease;
-    box-sizing: border-box;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: #4a6cf7;
-    background-color: #fff;
-    box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 1.06rem;
+  font-weight: 400;
+  color: #1d1d1f;
+  background: #f5f5f7;
+  border: none;
+  border-radius: 11px;
+  padding: 14px 16px;
+  outline: none;
+  transition: box-shadow 0.2s ease, background 0.2s ease;
+  width: 100%;
+  letter-spacing: -0.374px;
+  resize: vertical;
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-    color: #999;
+  color: rgba(0, 0, 0, 0.3);
 }
 
-.form-group textarea {
-    resize: vertical;
-    min-height: 120px;
+.form-group input:focus,
+.form-group textarea:focus {
+  background: #ffffff;
+  box-shadow: 0 0 0 2px #0071e3;
 }
 
 .submit-btn {
-    width: 100%;
-    padding: 14px 24px;
-    font-size: 16px;
-    font-weight: 700;
-    font-family: 'Open Sans', sans-serif;
-    color: #fff;
-    background: linear-gradient(135deg, #4a6cf7 0%, #6366f1 100%);
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.25s ease;
-    margin-top: 8px;
+  background: #0071e3;
+  color: #ffffff;
+  border: none;
+  border-radius: 980px;
+  padding: 14px 28px;
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 1.06rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  min-height: 48px;
+  letter-spacing: -0.374px;
+  align-self: flex-start;
 }
 
 .submit-btn:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(74, 108, 247, 0.3);
-}
-
-.submit-btn:active:not(:disabled) {
-    transform: translateY(0);
+  background: #0077ed;
 }
 
 .submit-btn:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .form-status {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px 16px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    font-family: 'Open Sans', sans-serif;
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 12px 16px;
+  border-radius: 8px;
+  letter-spacing: -0.224px;
 }
 
 .form-status.success {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
+  background: rgba(52, 199, 89, 0.12);
+  color: #1a7f37;
 }
 
 .form-status.error {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
+  background: rgba(255, 59, 48, 0.1);
+  color: #c0392b;
 }
 
-/* Message Modal Responsive */
-@media (max-width: 768px) {
-    .message-modal {
-        max-width: 95vw;
-        max-height: 85vh;
-    }
-    
-    .message-content {
-        padding: 20px;
-    }
-    
-    .message-form {
-        gap: 16px;
-    }
-    
-    .form-group input,
-    .form-group textarea {
-        padding: 10px 14px;
-        font-size: 14px;
-    }
-    
-    .submit-btn {
-        padding: 12px 20px;
-        font-size: 15px;
-    }
-}
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
 
-@media (max-width: 480px) {
-    .message-modal {
-        max-width: 98vw;
-        max-height: 90vh;
-    }
-    
-    .message-content {
-        padding: 16px;
-    }
-    
-    .message-form {
-        gap: 14px;
-    }
-    
-    .form-group label {
-        font-size: 13px;
-    }
-    
-    .form-group input,
-    .form-group textarea {
-        padding: 10px 12px;
-        font-size: 14px;
-        border-radius: 8px;
-    }
-    
-    .form-group textarea {
-        min-height: 100px;
-    }
-    
-    .submit-btn {
-        padding: 12px 18px;
-        font-size: 14px;
-        border-radius: 8px;
-    }
-    
-    .form-status {
-        padding: 10px 14px;
-        font-size: 13px;
-    }
+@media (max-width: 600px) {
+  .modal-container {
+    border-radius: 14px;
+    max-height: 85vh;
+  }
+
+  .modal-header {
+    padding: 20px 22px 16px;
+  }
+
+  .modal-content {
+    padding: 22px;
+  }
+
+  .contact-btn {
+    padding: 16px 20px;
+    min-height: 56px;
+  }
 }

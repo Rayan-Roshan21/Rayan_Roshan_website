@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import Name_title from '@/Components/Name_title/name_title.jsx';
 import Sidebar from '@/Components/Sidebar/Sidebar.jsx';
 import Copyright_title from '@/Components/Copyright_title/Copyright_title.jsx';
 import '@/Pages_CSS/Projects.css';
@@ -17,147 +16,195 @@ import univ from '@/assets/univ.png';
 import scotiabank from '@/assets/scotiabank.jpg';
 import llmrouter from '@/assets/llm-router.jpg';
 import tmuTechWeek from '@/assets/tmu_tech_week.png';
-import { useScrollToBottom } from '@/hooks/useScrollToBottom';
+
+const projects = [
+  {
+    image: tmuTechWeek,
+    alt: 'TMU Tech Week',
+    name: 'TMU Tech Week',
+    role: 'Web Developer & Project Lead',
+    description: 'Led infrastructure build for TMU\'s flagship tech event—integrated Boardy to connect students with startups and shipped directly to production under a tight deadline. Result: 2,000+ page views and 1,000+ unique visitors in 7 days with zero outages.',
+    links: [
+      { label: 'Visit Website ›', href: 'https://www.tmutechweek.com', type: 'primary' },
+      { label: 'GitHub ›', href: 'https://github.com/BYTE-TMU/Tmu_Tech_Week_Website', type: 'secondary' },
+    ],
+  },
+  {
+    image: AICustomerImage,
+    alt: 'AI Customer Support Agent',
+    name: 'AI Customer Support Agent',
+    role: 'Software Engineer',
+    description: 'Real-time voice and text AI assistant with live transcription and mode switching. Uses Pinecone vector embeddings and Gemini API for context-aware, multi-modal customer support interactions.',
+    links: [
+      { label: 'Pitch Deck ›', href: 'https://www.canva.com/design/DAGs_7HWn98/9iVL7aUQEPx3BtbD5VUSpQ/view', type: 'primary' },
+      { label: 'GitHub ›', href: 'https://github.com/razzacktiger/Customer-Support-Agent-', type: 'secondary' },
+    ],
+  },
+  {
+    image: PropertyImage,
+    alt: 'Property Recommendation Software',
+    name: 'Property Recommendation Software',
+    role: 'Software Engineer',
+    description: 'Python-based tool leveraging feature similarity algorithms, distance-based matching, and statistical analysis to identify comparable properties and provide accurate market recommendations.',
+    links: [
+      { label: 'GitHub ›', href: 'https://github.com/Rayan-Roshan21/Property-Recommendation-System', type: 'secondary' },
+      { label: 'LinkedIn ›', href: 'https://www.linkedin.com/feed/update/urn:li:activity:7333915404685254658/', type: 'secondary' },
+      { label: 'Pitch Deck ›', href: 'https://www.canva.com/design/DAGnq21Q--w/lliWqqZTqjbpImYEwg7Neg/view', type: 'tertiary' },
+    ],
+  },
+  {
+    image: multimodalImage,
+    alt: 'Multimodal Video Analysis',
+    name: 'Multimodal Video Analysis',
+    role: 'Software Engineer / Project Manager',
+    description: 'AI-driven application enabling natural language conversations with YouTube videos. Generates precise timestamps and scene searches using NLP and computer vision for enhanced video discovery.',
+    links: [
+      { label: 'GitHub ›', href: 'https://github.com/razzacktiger/Multimodal-video-analysis-deployed', type: 'secondary' },
+      { label: 'LinkedIn ›', href: 'https://www.linkedin.com', type: 'secondary' },
+    ],
+  },
+  {
+    image: medicalFormImage,
+    alt: 'Prior Authorization Automation',
+    name: 'Prior Authorization Form Automation',
+    role: 'Software Engineer',
+    description: 'AI system that extracts healthcare information from medical records and automatically completes Prior Authorization forms. Improves accuracy while reducing administrative burden in healthcare workflows.',
+    links: [
+      { label: 'GitHub ›', href: 'https://github.com/Rayan-Roshan21/mandolin-project', type: 'secondary' },
+      { label: 'Pitch Deck ›', href: 'https://www.canva.com/design/DAGnq21Q--w/lliWqqZTqjbpImYEwg7Neg/view', type: 'tertiary' },
+    ],
+  },
+  {
+    image: torontoImage,
+    alt: 'Immigrant Families Research',
+    name: 'Immigrant Families & Child Care Inequality in the GTA',
+    role: 'Student Researcher',
+    description: 'Research analysis of child care accessibility and affordability for 700,000+ immigrant families across the Greater Toronto Area. Identified infrastructure gaps and informed evidence-based policy recommendations.',
+    links: [
+      { label: 'Read Paper ›', href: 'https://docs.google.com/document/d/1wDk_c1n9sb-IAN295CwN3162BCbKSOUX04ZgxMZ2ins/edit', type: 'primary' },
+      { label: 'Pitch Deck ›', href: 'https://www.canva.com/design/DAGnq21Q--w/lliWqqZTqjbpImYEwg7Neg/view', type: 'tertiary' },
+    ],
+  },
+  {
+    image: Askcents,
+    alt: 'AskCents',
+    name: 'AskCents',
+    role: 'Founder & Software Engineer',
+    description: 'Personal finance platform featuring an AI chatbot advisor, gamified rewards center, and comprehensive money management tools to improve financial literacy and user engagement.',
+    links: [
+      { label: 'GitHub ›', href: 'https://github.com/Rayan-Roshan21/AskCents', type: 'secondary' },
+    ],
+  },
+  {
+    image: Yapp,
+    alt: 'Yapp social platform',
+    name: 'Yapp',
+    role: 'Co-Founder & Software Engineer',
+    description: 'Real-time social platform for Toronto Metropolitan University students featuring instant messaging, event coordination, and community engagement tools for enhanced campus life connectivity.',
+    links: [
+      { label: 'Try it out ›', href: 'https://yapp-mu.com', type: 'primary' },
+    ],
+  },
+  {
+    image: art_museum,
+    alt: 'Image Style Transfer App',
+    name: 'Image Style Transfer App',
+    role: 'Software Engineer',
+    description: 'Turn ordinary photos into extraordinary masterpieces using AI neural style transfer, running seamlessly in the browser with WebAssembly and ONNX Runtime.',
+    links: [
+      { label: 'Try it out ›', href: 'https://imagestyletransfer.vercel.app/', type: 'primary' },
+      { label: 'GitHub ›', href: 'https://github.com/Rayan-Roshan21/AI-Style-Transfer', type: 'secondary' },
+      { label: 'Pitch Deck ›', href: 'https://www.canva.com/design/DAGxkfIu1-k/k49DSteIEngQ51fTVxr6Eg/view', type: 'tertiary' },
+    ],
+  },
+  {
+    image: univ,
+    alt: 'Univ app',
+    name: 'Univ',
+    role: 'Founder & Software Engineer',
+    description: 'Introducing Univ, the ultimate app for simplifying the post-secondary admissions process — personalized school recommendations, detailed institution info, and step-by-step application guidance.',
+    links: [
+      { label: 'LinkedIn Post ›', href: 'https://www.linkedin.com/posts/rayan-roshan_startup-entrepreneurship-dmz-activity-7236719626095620096-730g', type: 'secondary' },
+    ],
+  },
+  {
+    image: scotiabank,
+    alt: 'Scotia Redlight hackathon project',
+    name: 'Scotia Redlight — Think Before You Spend',
+    role: 'Participant at S:\\HACKS 2025 · 3rd Place Winner',
+    description: '3rd place winner at Scotiabank S:\\HACKS 2025. AI spending companion using strategic friction to help Gen-Z transform impulse buys into intentional financial decisions.',
+    links: [
+      { label: 'View on Canva ›', href: 'https://www.canva.com/design/DAGw6V-hyyI/Cl_WavQn9wgv2QHNL_-_cQ/view', type: 'primary' },
+      { label: 'LinkedIn Post ›', href: 'https://www.linkedin.com/posts/rayan-roshan_hackathon-innovation-fintech-activity-7365737257841909761-3yHG', type: 'secondary' },
+    ],
+  },
+  {
+    image: llmrouter,
+    alt: 'LLM Router',
+    name: 'An LLM Router',
+    role: 'Software Engineer',
+    description: 'Combines Google Gemini\'s AI analysis with deterministic scoring across 35+ models from live leaderboards, ensuring you always get the optimal model for your specific needs.',
+    links: [
+      { label: 'GitHub ›', href: 'https://github.com/razzacktiger/LLM-Router', type: 'secondary' },
+      { label: 'NPM Package ›', href: 'https://www.npmjs.com/package/smart-llm-router', type: 'primary' },
+      { label: 'Pitch Deck ›', href: 'https://www.canva.com/design/DAGvi9DbXNE/7rnwEmvNEzt2fGyeFBoe1A/view', type: 'tertiary' },
+    ],
+  },
+];
 
 function Projects() {
-  const isAtBottom = useScrollToBottom();
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -30 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div>
-        <Sidebar />
-        <Name_title />
-      </div>
-      <h2 className='Projects-title'>Projects</h2>
-      <div className='projects-wrapper'>
-        <div className='project-container'>
-          <img className="project-image" src={tmuTechWeek} alt="TMU Tech Week logo." />
-          <p className='project_name'>TMU Tech Week</p>
-          <p className='project-role'>Web Developer & Project Lead</p>
-          <p className='project-description'>Led infrastructure build for TMU's flagship tech event—integrated Boardy to connect students with startups and shipped directly to production under a tight deadline. Result: 2,000+ page views and 1,000+ unique visitors in 7 days with zero outages.</p>
-          <div className='project-buttons'>
-            <a className="project-linkedin" href="https://www.tmutechweek.com" target="_blank" rel="noopener noreferrer">Visit Website</a>
-            <a className="project-github" href="https://github.com/BYTE-TMU/Tmu_Tech_Week_Website" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-          </div>
-        </div>
-        <div className='project-container'>
-          <img className="project-image" src={AICustomerImage} alt="Related image of project." />
-          <p className='project_name'>AI Customer Support Agent</p>
-          <p className='project-role'>Software Engineer</p>
-          <p className='project-description'>Real-time voice and text AI assistant with live transcription and mode switching. Uses Pinecone vector embeddings and Gemini API for context-aware, multi-modal customer support interactions.</p>
-          <div className='project-buttons'>
-            <a className="project-pitchdeck" href="https://www.canva.com/design/DAGs_7HWn98/9iVL7aUQEPx3BtbD5VUSpQ/view?utm_content=DAGs_7HWn98&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h71f73a6e6f" target="_blank" rel="noopener noreferrer">View our pitch deck</a>
-            <a className="project-github" href="https://github.com/razzacktiger/Customer-Support-Agent-" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-          </div>
-        </div>
-        <div className='project-container'>
-          <img className="project-image" src={PropertyImage} alt="Related image of project." />
-          <p className='project_name'>Property Recommendation Software</p>
-          <p className='project-role'>Software Engineer</p>
-          <p className='project-description'>Python-based tool leveraging feature similarity algorithms, distance-based matching, and statistical analysis to identify comparable properties and provide accurate market recommendations for real estate decisions.</p>
-          <div className='project-buttons'>
-            <a className="project-github" href="https://github.com/Rayan-Roshan21/Property-Recommendation-System" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-            <a className="project-linkedin" href="https://www.linkedin.com/feed/update/urn:li:activity:7333915404685254658/" target="_blank" rel="noopener noreferrer">View on LinkedIn</a>
-            <a className="project-pitchdeck" href="https://www.canva.com/design/DAGnq21Q--w/lliWqqZTqjbpImYEwg7Neg/view?utm_content=DAGnq21Q--w&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3268374d04" target="_blank" rel="noopener noreferrer">View my pitch deck</a>
-          </div>
-        </div>
-        <div className='project-container'>
-          <img className="project-image" src={multimodalImage} alt="Related image of project." />
-          <p className='project_name'>Multimodal Video Analysis</p>
-          <p className='project-role'>Software Engineer/Project Manager</p>
-          <p className='project-description'>AI-driven application enabling natural language conversations with YouTube videos. Generates precise timestamps and scene searches using NLP and computer vision technologies for enhanced video discovery.</p>
-          <div className='project-buttons'>
-            <a className="project-github" href="https://github.com/razzacktiger/Multimodal-video-analysis-deployed" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-            <a className="project-linkedin" href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">View on LinkedIn</a>
-          </div>
-        </div>
-        <div className='project-container'>
-          <img className="project-image" src={medicalFormImage} alt="Related image of project." />
-          <p className='project_name'>Automate the Prior Authorization (PA) Form Filling Workflow</p>
-          <p className='project-role'>Software Engineer</p>
-          <p className='project-description'>AI system that extracts healthcare information from medical records and automatically completes Prior Authorization forms. Improves accuracy while reducing administrative burden in healthcare workflows.</p>
-          <div className='project-buttons'>
-            <a className="project-github" href="https://github.com/Rayan-Roshan21/mandolin-project" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-            <a className="project-pitchdeck" href="https://www.canva.com/design/DAGnq21Q--w/lliWqqZTqjbpImYEwg7Neg/view?utm_content=DAGnq21Q--w&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3268374d04" target="_blank" rel="noopener noreferrer">View our pitch deck</a>
-          </div>
-        </div>
+      <Sidebar />
 
-        <div className='project-container'>
-          <img className="project-image" src={torontoImage} alt="Related image of project." />
-          <p className='project_name'>Immigrant Families and Child Care Inequality in the GTA</p>
-          <p className='project-role'>Student Researcher</p>
-          <p className='project-description'>Research analysis of child care accessibility and affordability for 700,000+ immigrant families across the Greater Toronto Area. Identified infrastructure gaps and informed evidence-based policy recommendations.</p>
-          <div className='project-buttons'>
-            <a className="project-google-docs" href="https://docs.google.com/document/d/1wDk_c1n9sb-IAN295CwN3162BCbKSOUX04ZgxMZ2ins/edit?usp=sharing" target="_blank" rel="noopener noreferrer">View on Google Docs</a>
-            <a className="project-pitchdeck" href="https://www.canva.com/design/DAGnq21Q--w/lliWqqZTqjbpImYEwg7Neg/view?utm_content=DAGnq21Q--w&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h3268374d04" target="_blank" rel="noopener noreferrer">View our pitch deck</a>
+      {/* ── HERO ── */}
+      <section className="projects-hero section-dark">
+        <div className="projects-hero__inner section-container">
+          <p className="projects-hero__eyebrow">Portfolio</p>
+          <h1 className="projects-hero__heading">Projects</h1>
+          <p className="projects-hero__sub">
+            A selection of work across AI, full-stack engineering, and research.
+          </p>
+        </div>
+      </section>
+
+      {/* ── GRID ── */}
+      <section className="projects-grid-section section-light">
+        <div className="projects-grid-section__inner">
+          <div className="projects-wrapper">
+            {projects.map((project, idx) => (
+              <div key={idx} className="project-container">
+                <img className="project-image" src={project.image} alt={project.alt} loading={idx > 3 ? 'lazy' : 'eager'} />
+                <p className="project_name">{project.name}</p>
+                <p className="project-role">{project.role}</p>
+                <p className="project-description">{project.description}</p>
+                <div className="project-buttons">
+                  {project.links.map((link, li) => (
+                    <a
+                      key={li}
+                      className={`project-link project-link--${link.type}`}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-        <div className='project-container'>
-          <img className="project-image" src={Askcents} alt="Related image of project." />
-          <p className='project_name'>AskCents</p>
-          <p className='project-role'>Founder & Software Engineer</p>
-          <p className='project-description'>Personal finance platform featuring an AI chatbot advisor, gamified rewards center, and comprehensive money management tools to improve financial literacy and user engagement.</p>
-          <div className='project-buttons'>
-            <a className="project-github" href="https://github.com/Rayan-Roshan21/AskCents" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-          </div>
-        </div>
-        <div className='project-container'>
-          <img className="project-image" src={Yapp} alt="Related image of project." />
-          <p className='project_name'>Yapp</p>
-          <p className='project-role'>Co-Founder & Software Engineer</p>
-          <p className='project-description'>Real-time social platform for Toronto Metropolitan University students featuring instant messaging, event coordination, and community engagement tools for enhanced campus life connectivity.</p>
-          <div className='project-buttons'>
-            <a className="project-linkedin" href="https://yapp-mu.com" target="_blank" rel="noopener noreferrer">Try it out!</a>
-          </div>
-        </div>
-        <div className='project-container'>
-          <img className="project-image" src={art_museum} alt="Related image of project." />
-          <p className='project_name'>Image Style Transfer App</p>
-          <p className='project-role'>Software Engineer</p>
-          <p className='project-description'>Turn your ordinary photos into extraordinary masterpieces using the power of AI neural style transfer, all running seamlessly in your browser with WebAssembly and ONNX Runtime.</p>
-          <div className='project-buttons'>
-            <a className="project-linkedin" href="https://imagestyletransfer.vercel.app/" target="_blank" rel="noopener noreferrer">Try it out!</a>
-            <a className="project-github" href="https://github.com/Rayan-Roshan21/AI-Style-Transfer" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-            <a className="project-pitchdeck" href="https://www.canva.com/design/DAGxkfIu1-k/k49DSteIEngQ51fTVxr6Eg/view?utm_content=DAGxkfIu1-k&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hdf6bd90af1" target="_blank" rel="noopener noreferrer">View my pitch deck</a>
-          </div>
-        </div>
-        <div className='project-container'>
-          <img className="project-image" src={univ} alt="Related image of project." />
-          <p className='project_name'>Univ</p>
-          <p className='project-role'>Founder & Software Engineer</p>
-          <p className='project-description'>Introducing Univ, the ultimate app for simplifying the post-secondary admissions process. We provide personalized school recommendations, detailed information on a wide range of institutions, and step-by-step application guidance.</p>
-          <div className='project-buttons'>
-            <a className="project-linkedin" href="https://www.linkedin.com/posts/rayan-roshan_startup-entrepreneurship-dmz-activity-7236719626095620096-730g?utm_source=share&utm_medium=member_desktop&rcm=ACoAAElZ1yEB8i14e0yTHCs44ne_g5LeOF1Vy0k" target="_blank" rel="noopener noreferrer">Check out this post!</a>
-          </div>
-        </div>
-        <div className='project-container'>
-          <img className="project-image" src={scotiabank} alt="Related image of project." />
-          <p className='project_name'>Scotia Redlight - Think before you spend!</p>
-          <p className='project-role'>Participant at S:\HACKS 2025</p>
-          <p className='project-description'>3rd place winner at Scotiabank S:\HACKS 2025. AI spending companion using strategic friction to help Gen-Z transform impulse buys into intentional financial decisions.</p>
-          <div className='project-buttons'>
-            <a className="project-linkedin" href="https://www.canva.com/design/DAGw6V-hyyI/Cl_WavQn9wgv2QHNL_-_cQ/view?utm_content=DAGw6V-hyyI&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h529ef5163a" target="_blank" rel="noopener noreferrer">View on Canva</a>
-            <a className="project-linkedin" href="https://www.linkedin.com/posts/rayan-roshan_hackathon-innovation-fintech-activity-7365737257841909761-3yHG?utm_source=share&utm_medium=member_desktop&rcm=ACoAAElZ1yEB8i14e0yTHCs44ne_g5LeOF1Vy0k" target="_blank" rel="noopener noreferrer">Check out this post!</a>
-          </div>
-        </div>
-        <div className='project-container'>
-          <img className="project-image" src={llmrouter} alt="Related image of project." />
-          <p className='project_name'>An LLM Router</p>
-          <p className='project-role'>Software Engineer</p>
-          <p className='project-description'>This tool combines Google Gemini's AI analysis with deterministic scoring across 35+ models from live leaderboards, ensuring you always get the optimal model for your specific needs.</p>
-          <div className='project-buttons'>
-            <a className="project-github" href="https://github.com/razzacktiger/LLM-Router" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-            <a className="project-linkedin" href="https://www.npmjs.com/package/smart-llm-router" target="_blank" rel="noopener noreferrer">Download our NPM package!</a>
-            <a className="project-pitchdeck" href="https://www.canva.com/design/DAGvi9DbXNE/7rnwEmvNEzt2fGyeFBoe1A/view?utm_content=DAGvi9DbXNE&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hd973e58923" target="_blank" rel="noopener noreferrer">View our pitch deck</a>
-          </div>
-        </div>
-      </div>
-      <Copyright_title isVisible={isAtBottom} />
+      </section>
+
+      <Copyright_title isVisible={true} />
     </motion.div>
   );
 }
+
 export default Projects;

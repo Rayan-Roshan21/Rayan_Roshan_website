@@ -1,1420 +1,373 @@
-/* About Page Styling */
+/* ============================================================
+   ABOUT PAGE — Apple Design
+   ============================================================ */
 
-.page-container {
-  max-width: 1600px;
-  margin: 0 auto;
-  min-height: 100vh;
-}
-
-/* ===== PAGE TITLE ===== */
-.about-title {
-  position: relative;
-  margin-top: -10px;
-  font-family: 'Open Sans', sans-serif;
-  text-align: center;
-  font-size: 36px;
+/* ── TAB BAR ── */
+.about-tab-bar {
+  position: sticky;
+  top: 48px; /* below the nav */
   z-index: 100;
-  text-decoration: none;
-  font-weight: bold;
-  margin-bottom: 20px;
-  display: block;
-  padding-bottom: 10px;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.about-title::after {
+.about-tab-bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+
+.about-tab {
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 14px 24px;
+  letter-spacing: -0.12px;
+  position: relative;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+}
+
+.about-tab:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.about-tab--active {
+  color: #ffffff;
+}
+
+.about-tab--active::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
-  height: 3px;
-  background: linear-gradient(90deg, #2c3e50, #34495e);
-  border-radius: 2px;
+  left: 24px;
+  right: 24px;
+  height: 2px;
+  background: #0071e3;
+  border-radius: 1px 1px 0 0;
 }
 
-/* ===== ABOUT SECTIONS ===== */
+/* ── SHARED SECTION STYLES ── */
 .about-section {
   width: 100%;
-  margin: 0;
-  padding: 0;
 }
 
-/* ===== WHO AM I SECTION ===== */
-.who-am-i-section {
-  margin-top: 40px;
-  margin-bottom: 60px;
-  background: linear-gradient(135deg, rgba(244, 246, 248, 0.9) 0%, rgba(228, 232, 237, 0.6) 100%);
-  border-radius: 20px;
-  padding: 10px 0;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.about-main-content {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 100px;
-  padding-left: 80px;
-  padding-right: 80px;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  max-width: 1400px;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-.about-left {
-  flex: 1;
-  max-width: 550px;
-  min-width: 350px;
-  width: 100%;
-}
-
-.about-right {
-  flex: 0 0 550px;
-  max-width: 550px;
-  min-width: 400px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.section-subtitle {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 56px;
-  font-weight: bold;
-  margin-top: 0;
-  margin-bottom: 35px;
-  text-align: left;
-  line-height: 1.3;
-  color: #222;
-  position: relative;
-  display: inline-block;
-}
-
-.section-subtitle::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 0;
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, #2c3e50, #34495e);
-  border-radius: 2px;
-}
-
-/* Center the accent underline on screens where text is centered */
-@media (max-width: 1199px) {
-  .section-subtitle::after {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}
-
-@media (max-width: 480px) {
-  .section-subtitle::after {
-    width: 40px;
-    height: 2px;
-  }
-
-  .who-am-i-section {
-    border-radius: 12px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-  }
-
-  .skills-title::after {
-    width: 35px;
-    height: 2px;
-  }
-}
-
-@media (max-width: 359px) {
-  .who-am-i-section {
-    border-radius: 8px;
-    background: linear-gradient(135deg, rgba(248, 249, 250, 0.4) 0%, rgba(233, 236, 239, 0.2) 100%);
-  }
-}
-
-.about-me-paragraph {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 24px;
-  margin: 0;
-  max-width: 100%;
-  line-height: 2;
-  text-align: left;
-  color: #4a5568;
-  letter-spacing: 0.01em;
-}
-
-/* ===== SECTION DIVIDER ===== */
-.section-divider {
-  width: 100px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #333, transparent);
-  margin: 25px auto;
-  border-radius: 1px;
-}
-
-/* ===== SECTION INDICATORS ===== */
-.section-indicators {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  margin: 10px 0 5px;
-}
-
-.indicator-arrow {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 3px solid #333;
-  background: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  font-family: 'Open Sans', sans-serif;
-  color: #333;
-}
-
-.indicator-arrow:hover:not(:disabled) {
-  background: #333;
-  color: white;
-  transform: scale(1.1);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
-}
-
-.indicator-arrow:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
-
-.section-counter {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 18px;
+/* ── EYEBROW ── */
+.about-eyebrow {
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 12px;
   font-weight: 600;
-  color: #333;
-  min-width: 50px;
-  text-align: center;
-}
-
-.indicator {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  border: 3px solid #333;
-  background: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-}
-
-.indicator:hover {
-  background: rgba(51, 51, 51, 0.4);
-  transform: scale(1.15);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
-}
-
-.indicator.active {
-  background: #333;
-  transform: scale(1.1);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
-}
-
-/* ===== SECTION NAVIGATION ===== */
-.section-nav-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
-  padding: 20px 0;
-}
-
-.section-nav-container.section-nav-top {
-  margin-top: 0;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.48);
   margin-bottom: 20px;
 }
 
-.section-nav-button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  padding: 20px 40px;
-  background: white;
-  border: 2px solid #333;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+.about-eyebrow--dark {
+  color: rgba(0, 0, 0, 0.48);
 }
 
-.section-nav-button:hover {
-  background: #333;
-  color: white;
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.section-nav-button.back-button {
-  flex-direction: column-reverse;
-}
-
-.nav-button-text {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 18px;
+/* ── HERO HEADING (shared across sections) ── */
+.about-hero__heading {
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
   font-weight: 600;
+  color: #ffffff;
+  line-height: 1.07;
+  letter-spacing: -0.28px;
+  margin-bottom: 28px;
 }
 
-.nav-button-arrow {
-  font-size: 24px;
-  animation: bounce 2s infinite;
-}
-
-.back-button .nav-button-arrow {
-  animation: bounceUp 2s infinite;
-}
-
-@keyframes bounce {
-
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
-    transform: translateY(0);
-  }
-
-  40% {
-    transform: translateY(8px);
-  }
-
-  60% {
-    transform: translateY(4px);
-  }
-}
-
-@keyframes bounceUp {
-
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
-    transform: translateY(0);
-  }
-
-  40% {
-    transform: translateY(-8px);
-  }
-
-  60% {
-    transform: translateY(-4px);
-  }
-}
-
-/* ===== SKILLS HEADER SECTION ===== */
-.skills-header-section {
-  text-align: center;
-  margin: 30px auto 30px;
-  padding: 0 2rem;
-  max-width: 900px;
-}
-
-.skills-title {
-  font-size: 38px;
-  margin-bottom: 8px;
-  text-align: center;
-  color: #222;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: bold;
-  position: relative;
-  display: inline-block;
-}
-
-.skills-header-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.skills-title::after {
-  content: '';
-  position: absolute;
-  bottom: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
-  height: 3px;
-  background: linear-gradient(90deg, #2c3e50, #34495e);
-  border-radius: 2px;
-}
-
-.section-description {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 18px;
-  color: #6b7280;
-  line-height: 1.7;
-  margin: 10px 0 0 0;
-  letter-spacing: 0.01em;
-}
-
-/* ===== SKILLS SECTION ===== */
-.skills-section {
-  margin: 30px 0;
-}
-
-/* Experience section spacing (matches skills) */
-.experience-section {
-  margin: 30px 0;
-}
-
-/* ===== CTA SECTION ===== */
-.cta-section {
-  margin-top: 50px;
-  padding: 50px 2rem;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  text-align: center;
-}
-
-.cta-divider {
-  width: 80px;
-  height: 2px;
-  background: #333;
-  margin: 0 auto 30px;
-  border-radius: 1px;
-}
-
-.cta-heading {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 36px;
-  font-weight: bold;
-  color: #333;
-  margin: 0 0 40px 0;
-}
-
-.cta-cards-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.cta-card {
-  background: white;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 220px;
-  position: relative;
-}
-
-.cta-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-
-.cta-card-projects {
-  border-top-color: #333;
-}
-
-.cta-card-projects:hover {
-  background-color: #f5f5f5;
-}
-
-.cta-card-contact {
-  border-top-color: #4CAF50;
-}
-
-.cta-card-contact:hover {
-  background-color: #f0f7f0;
-}
-
-.cta-card-title {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 22px;
-  font-weight: bold;
-  color: #333;
-  margin: 0 0 12px 0;
-}
-
-.cta-card-text {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 15px;
-  color: #666;
-  margin: 0 0 15px 0;
-  line-height: 1.5;
-}
-
-.cta-arrow {
-  font-size: 24px;
-  color: #333;
-  transition: transform 0.3s ease;
-}
-
-.cta-card:hover .cta-arrow {
-  transform: translateX(5px);
-}
-
-/* ===== RESPONSIVE DESIGN ===== */
-
-/* Extra Large screens (1440px and up) */
-@media (min-width: 1440px) {
-  .about-title {
-    margin-top: 32px;
-    font-size: 35px;
-    margin-bottom: 17px;
-  }
-
-}
-
-.section-indicators {
-  margin: 10px 0 8px;
-}
-
-.who-am-i-section {
-  margin-top: 25px;
-  margin-bottom: 50px;
-}
-
-.about-main-content {
-  gap: 80px;
-  padding-left: 100px;
-  padding-right: 100px;
-  max-width: 1400px;
-}
-
-.about-left {
+.about-hero__body {
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: clamp(1rem, 1.8vw, 1.19rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.47;
+  letter-spacing: -0.374px;
   max-width: 600px;
 }
 
-.about-right {
-  flex: 0 0 500px;
-  max-width: 500px;
+/* ── WHO AM I SECTION ── */
+
+.about-who-hero {
+  padding-top: calc(48px + 44px + 80px); /* nav + tab + breathing room */
+  padding-bottom: 100px;
 }
 
-.section-subtitle {
-  font-size: 46px;
-  margin-bottom: 24px;
+.about-who-hero__inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 44px;
 }
 
-.about-me-paragraph {
-  font-size: 22px;
+.about-who-hero__text {
+  flex: 1;
+  min-width: 0;
 }
 
-.skills-title {
-  font-size: 42px;
+.about-who-hero__visual {
+  flex-shrink: 0;
+  width: clamp(280px, 35vw, 460px);
 }
 
-.section-description {
-  font-size: 18px;
+/* Facts grid */
+.about-facts {
+  padding: 80px 0;
 }
 
-.cta-heading {
-  font-size: 38px;
+.about-facts__inner {
+  text-align: center;
 }
 
-.cta-card {
-  padding: 45px;
-  min-height: 240px;
+.about-facts__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  margin-top: 20px;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-large, 12px);
+  overflow: hidden;
 }
 
-.cta-card-title {
-  font-size: 24px;
+.about-fact__item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 28px 32px;
+  background: #f5f5f7;
+  transition: background 0.2s ease;
 }
 
-.section-nav-button {
-  padding: 22px 45px;
+.about-fact__item:hover {
+  background: #ebebed;
 }
 
-.nav-button-text {
-  font-size: 20px;
+.about-fact__label {
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.48);
 }
 
-.nav-button-arrow {
-  font-size: 28px;
+.about-fact__value {
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 1.06rem;
+  font-weight: 400;
+  color: #1d1d1f;
+  letter-spacing: -0.224px;
+  line-height: 1.4;
 }
 
-/* Large screens (1200px to 1439px) */
-@media (min-width: 1200px) and (max-width: 1439px) {
-  .about-title {
-    margin-top: 28px;
-    font-size: 38px;
-    margin-bottom: 10px;
-  }
+/* ── SKILLS SECTION ── */
 
-  .section-indicators {
-    margin: 10px 0 6px;
-  }
-
-  .who-am-i-section {
-    margin-top: 20px;
-    margin-bottom: 45px;
-  }
-
-  .about-main-content {
-    gap: 70px;
-    padding-left: 80px;
-    padding-right: 80px;
-  }
-
-  .section-subtitle {
-    font-size: 44px;
-    margin-bottom: 22px;
-  }
-
-  .about-me-paragraph {
-    font-size: 21px;
-  }
-
-  .skills-title {
-    font-size: 38px;
-  }
-
-  .section-description {
-    font-size: 17px;
-  }
-
-  .cta-heading {
-    font-size: 34px;
-  }
-
-  .cta-cards-container {
-    gap: 25px;
-  }
-
-  .cta-card {
-    padding: 35px;
-    min-height: 200px;
-  }
-
-  .cta-card-title {
-    font-size: 20px;
-  }
-
-  .section-nav-button {
-    padding: 18px 38px;
-  }
-
-  .nav-button-text {
-    font-size: 18px;
-  }
+.about-skills-hero {
+  padding-top: calc(48px + 44px + 80px);
+  padding-bottom: 80px;
 }
 
-/* Medium-Large screens (1024px to 1199px) */
-@media (min-width: 1024px) and (max-width: 1199px) {
-  .about-title {
-    margin-top: 22px;
-    font-size: 32px;
-  }
+.about-skills-hero__inner {
+  text-align: left;
+  padding: 0 44px;
+}
 
-  .about-main-content {
+.about-skills-grid {
+  padding: 60px 0 100px;
+}
+
+.about-skills-grid__inner {
+  padding-left: 44px;
+  padding-right: 44px;
+}
+
+/* ── EXPERIENCE SECTION ── */
+
+.about-exp-hero {
+  padding-top: calc(48px + 44px + 80px);
+  padding-bottom: 80px;
+}
+
+.about-exp-hero__inner {
+  text-align: left;
+  padding: 0 44px;
+}
+
+.about-timeline {
+  padding: 60px 0 100px;
+}
+
+.about-timeline__inner {
+  padding-left: 44px;
+  padding-right: 44px;
+}
+
+/* ── SECTION NAVIGATION ── */
+
+.about-section-nav {
+  background: #000000;
+  padding: 32px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.about-section-nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 44px;
+}
+
+.about-section-nav__btn {
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #2997ff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  letter-spacing: -0.224px;
+  transition: opacity 0.2s ease;
+  min-height: 44px;
+  padding: 0 8px;
+  text-align: left;
+}
+
+.about-section-nav__btn--right {
+  text-align: right;
+}
+
+.about-section-nav__btn:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.about-section-nav__btn:not(:disabled):hover {
+  text-decoration: underline;
+}
+
+.about-section-nav__counter {
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.48);
+  letter-spacing: -0.12px;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 900px) {
+  .about-who-hero__inner {
     flex-direction: column;
-    align-items: center;
-    gap: 40px;
-    padding-left: 60px;
-    padding-right: 60px;
-  }
-
-  .about-left {
-    max-width: 100%;
-    min-width: auto;
+    padding: 0 32px;
+    gap: 48px;
     text-align: center;
   }
 
-  .about-right {
-    flex: 0 0 auto;
-    max-width: 450px;
-    min-width: auto;
-    width: 70%;
-  }
-
-  .section-subtitle {
-    font-size: 36px;
-    text-align: center;
-  }
-
-  .about-me-paragraph {
-    font-size: 18px;
-    text-align: center;
-  }
-
-  .who-am-i-section {
-    margin-bottom: 25px;
-  }
-
-  .skills-header-section {
-    margin: 25px auto 20px;
-  }
-
-  .skills-title {
-    font-size: 32px;
-  }
-
-  .section-description {
-    font-size: 16px;
-  }
-
-  .cta-section {
-    padding: 40px 1.5rem;
-    margin-top: 40px;
-  }
-
-  .cta-heading {
-    font-size: 30px;
-  }
-
-  .cta-cards-container {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .cta-card {
-    padding: 30px;
-    min-height: 180px;
-  }
-
-  .cta-card-title {
-    font-size: 19px;
-  }
-
-  .cta-card-text {
-    font-size: 14px;
-  }
-
-  .section-nav-container {
-    margin-top: 40px;
-  }
-
-  .section-nav-button {
-    padding: 16px 32px;
-  }
-
-  .nav-button-text {
-    font-size: 16px;
-  }
-
-  .nav-button-arrow {
-    font-size: 22px;
-  }
-}
-
-/* Tablet screens (768px to 1023px) */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .about-title {
-    margin-top: 22px;
-    font-size: 30px;
-  }
-
-  .about-main-content {
-    flex-direction: column;
-    align-items: center;
-    gap: 35px;
-    padding-left: 50px;
-    padding-right: 50px;
-  }
-
-  .about-left {
-    max-width: 100%;
-    min-width: auto;
-    text-align: center;
-  }
-
-  .about-right {
-    flex: 0 0 auto;
-    max-width: 400px;
-    min-width: auto;
-    width: 75%;
-  }
-
-  .section-subtitle {
-    font-size: 32px;
-    text-align: center;
-  }
-
-  .about-me-paragraph {
-    font-size: 17px;
-    text-align: center;
-  }
-
-  .who-am-i-section {
-    margin-bottom: 25px;
-  }
-
-  .section-divider {
-    margin: 20px auto;
-  }
-
-  .skills-header-section {
-    margin: 25px auto 20px;
-    padding: 0 1.5rem;
-  }
-
-  .skills-title {
-    font-size: 30px;
-  }
-
-  .section-description {
-    font-size: 15px;
-  }
-
-  .cta-section {
-    padding: 35px 1.5rem;
-    margin-top: 35px;
-  }
-
-  .cta-heading {
-    font-size: 28px;
-  }
-
-  .cta-cards-container {
-    grid-template-columns: 1fr;
-    gap: 18px;
-    padding: 0 1rem;
-  }
-
-  .cta-card {
-    padding: 25px;
-    min-height: 160px;
-  }
-
-  .cta-card-title {
-    font-size: 18px;
-  }
-
-  .cta-card-text {
-    font-size: 14px;
-  }
-
-  .section-nav-container {
-    margin-top: 35px;
-  }
-
-  .section-nav-button {
-    padding: 16px 30px;
-  }
-
-  .nav-button-text {
-    font-size: 16px;
-  }
-
-  .nav-button-arrow {
-    font-size: 22px;
-  }
-
-  .indicator {
-    width: 14px;
-    height: 14px;
-  }
-}
-
-/* Mobile landscape (601px to 767px) */
-@media (min-width: 601px) and (max-width: 767px) {
-  .about-title {
-    margin-top: 80px;
-    font-size: 28px;
-  }
-
-  .about-main-content {
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    padding-left: 40px;
-    padding-right: 40px;
-  }
-
-  .about-left {
-    max-width: 100%;
-    min-width: auto;
-    width: 100%;
-    text-align: center;
-  }
-
-  .about-right {
-    flex: 0 0 auto;
-    max-width: 350px;
-    min-width: auto;
-    width: 85%;
-  }
-
-  .section-subtitle {
-    font-size: 28px;
-    text-align: center;
-  }
-
-  .about-me-paragraph {
-    font-size: 16px;
-    text-align: center;
-  }
-
-  .who-am-i-section {
-    margin-bottom: 20px;
-  }
-
-  .skills-header-section {
-    margin: 20px auto 20px;
-    padding: 0 1.2rem;
-  }
-
-  .skills-title {
-    font-size: 28px;
-  }
-
-  .section-description {
-    font-size: 14px;
-  }
-
-  .cta-section {
-    padding: 30px 1rem;
-    margin-top: 30px;
-  }
-
-  .cta-heading {
-    font-size: 26px;
-  }
-
-  .cta-cards-container {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-
-  .cta-card {
-    padding: 22px;
-    min-height: 140px;
-  }
-
-  .cta-card-title {
-    font-size: 17px;
-    margin-bottom: 10px;
-  }
-
-  .cta-card-text {
-    font-size: 13px;
-  }
-
-  .section-nav-container {
-    margin-top: 30px;
-  }
-
-  .section-nav-button {
-    padding: 14px 28px;
-  }
-
-  .nav-button-text {
-    font-size: 15px;
-  }
-
-  .nav-button-arrow {
-    font-size: 20px;
-  }
-
-  .indicator {
-    width: 14px;
-    height: 14px;
-  }
-}
-
-/* Mobile portrait (481px to 600px) */
-@media (min-width: 481px) and (max-width: 600px) {
-  .about-title {
-    margin-top: 80px;
-    font-size: 54px;
-  }
-
-  .about-main-content {
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-
-  .about-left {
-    max-width: 100%;
-    min-width: auto;
-    width: 100%;
-    text-align: center;
-  }
-
-  .about-right {
-    flex: 0 0 auto;
-    max-width: 320px;
-    min-width: auto;
-    width: 90%;
-  }
-
-  .section-subtitle {
-    font-size: 26px;
-    text-align: center;
-  }
-
-  .about-me-paragraph {
-    font-size: 15px;
-    text-align: center;
-    line-height: 1.6;
-  }
-
-  .who-am-i-section {
-    margin-bottom: 20px;
-  }
-
-  .section-divider {
-    width: 70px;
-    margin: 20px auto;
-  }
-
-  .skills-header-section {
-    margin: 20px auto 15px;
-    padding: 0 1rem;
-  }
-
-  .skills-title {
-    font-size: 26px;
-  }
-
-  .section-description {
-    font-size: 13px;
-  }
-
-  .cta-section {
-    padding: 25px 1rem;
-    margin-top: 25px;
-  }
-
-  .cta-divider {
-    width: 60px;
-    margin: 0 auto 25px;
-  }
-
-  .cta-heading {
-    font-size: 24px;
-    margin-bottom: 30px;
-  }
-
-  .cta-cards-container {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .cta-card {
-    padding: 20px;
-    min-height: 130px;
-  }
-
-  .cta-card-title {
-    font-size: 16px;
-    margin-bottom: 8px;
-  }
-
-  .cta-card-text {
-    font-size: 12px;
-    margin-bottom: 12px;
-  }
-
-  .cta-arrow {
-    font-size: 20px;
-  }
-
-  .section-nav-container {
-    margin-top: 25px;
-  }
-
-  .section-nav-button {
-    padding: 12px 24px;
-  }
-
-  .nav-button-text {
-    font-size: 14px;
-  }
-
-  .nav-button-arrow {
-    font-size: 18px;
-  }
-
-  .indicator {
-    width: 9px;
-    height: 9px;
-  }
-}
-
-/* Small mobile (below 481px) */
-@media (max-width: 480px) {
-  .page-container {
-    padding-top: 60px;
-    min-height: 100vh;
+  .about-who-hero__text {
     display: flex;
     flex-direction: column;
-  }
-
-  .about-title {
-    margin-top: 80px;
-    font-size: 22px;
-    margin-bottom: 8px;
-    margin-left: 0;
-    transform: none;
-    text-align: center;
-  }
-
-  .about-main-content {
-    flex-direction: column;
     align-items: center;
-    gap: 20px;
-    padding-left: 16px;
-    padding-right: 16px;
   }
 
-  .about-left {
-    max-width: 100%;
-    min-width: auto;
-    width: 100%;
+  .about-hero__body {
     text-align: center;
   }
 
-  .about-right {
-    flex: 0 0 auto;
-    max-width: 280px;
-    min-width: auto;
-    width: 90%;
+  .about-who-hero__visual {
+    width: min(100%, 400px);
+  }
+
+  .about-skills-hero__inner,
+  .about-exp-hero__inner {
+    padding: 0 32px;
+    text-align: center;
+  }
+
+  .about-hero__body {
     margin: 0 auto;
   }
 
-  .section-subtitle {
-    font-size: 22px;
-    text-align: center;
-    margin-bottom: 12px;
+  .about-skills-grid__inner,
+  .about-timeline__inner {
+    padding-left: 24px;
+    padding-right: 24px;
   }
 
-  .about-me-paragraph {
-    font-size: 15px;
-    text-align: center;
-    line-height: 1.6;
+  .about-facts__grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .who-am-i-section {
-    margin-top: 10px;
-    margin-bottom: 20px;
-    flex: 1;
-  }
-
-  .section-divider {
-    width: 50px;
-    margin: 16px auto;
-  }
-
-  .skills-header-section {
-    margin: 15px auto 12px;
-    padding: 0 1rem;
-  }
-
-  .skills-title {
-    font-size: 22px;
-  }
-
-  .section-description {
-    font-size: 13px;
-  }
-
-  .cta-section {
-    padding: 20px 1rem;
-    margin-top: 20px;
-  }
-
-  .cta-divider {
-    width: 50px;
-    margin: 0 auto 16px;
-  }
-
-  .cta-heading {
-    font-size: 20px;
-    margin-bottom: 20px;
-  }
-
-  .cta-cards-container {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-
-  .cta-card {
-    padding: 14px;
-    min-height: 100px;
-    border-radius: 12px;
-  }
-
-  .cta-card-title {
-    font-size: 14px;
-    margin-bottom: 6px;
-  }
-
-  .cta-card-text {
-    font-size: 11px;
-    margin-bottom: 8px;
-  }
-
-  .cta-arrow {
-    font-size: 16px;
-  }
-
-  .section-nav-container {
-    margin-top: 16px;
-    padding: 12px 0;
-  }
-
-  .section-nav-button {
-    padding: 10px 16px;
-    border-radius: 10px;
-  }
-
-  .nav-button-text {
-    font-size: 12px;
-  }
-
-  .nav-button-arrow {
-    font-size: 14px;
-  }
-
-  .section-indicators {
-    gap: 12px;
-    margin: 10px 0 8px;
-    flex-wrap: wrap;
-  }
-
-  .indicator {
-    width: 10px;
-    height: 10px;
-    border-width: 2px;
-  }
-
-  .indicator-arrow {
-    width: 40px;
-    height: 40px;
-    font-size: 22px;
-    border-width: 2px;
-  }
-
-  .section-counter {
-    font-size: 15px;
-    min-width: 50px;
-    font-weight: 600;
-  }
-
-  .skills-section {
-    margin: 15px 0;
-    padding: 0 10px;
-  }
-
-  .about-section {
-    padding: 0 10px;
+  .about-section-nav__inner {
+    padding: 0 24px;
   }
 }
 
-/* Very small screens (360px and below) */
-@media (max-width: 360px) {
-  .page-container {
-    margin-top: 10px;
+@media (max-width: 600px) {
+  .about-who-hero {
+    padding-top: calc(48px + 44px + 48px);
+    padding-bottom: 60px;
   }
 
-  .about-left {
-    max-width: 100%;
-    min-width: auto;
-    width: 100%;
-    text-align: center;
+  .about-who-hero__inner {
+    padding: 0 22px;
   }
 
-  .about-right {
-    flex: 0 0 auto;
-    max-width: 240px;
-    min-width: auto;
-    width: 85%;
-    margin: 0 auto;
+  .about-skills-hero,
+  .about-exp-hero {
+    padding-top: calc(48px + 44px + 48px);
+    padding-bottom: 60px;
   }
 
-  .section-subtitle {
-    font-size: 22px;
-    text-align: center;
-    margin-bottom: 12px;
+  .about-skills-hero__inner,
+  .about-exp-hero__inner {
+    padding: 0 22px;
   }
 
-  .about-me-paragraph {
-    font-size: 14px;
-    text-align: center;
-    line-height: 1.55;
-  }
-
-  .who-am-i-section {
-    margin-top: 15px;
-    margin-bottom: 15px;
-  }
-
-  .section-divider {
-    width: 50px;
-    margin: 16px auto;
-  }
-
-  .skills-header-section {
-    margin: 15px auto 12px;
-    padding: 0 1rem;
-  }
-
-  .skills-title {
-    font-size: 22px;
-  }
-
-  .section-description {
-    font-size: 12px;
-  }
-
-  .cta-section {
-    padding: 20px 1rem;
-    margin-top: 20px;
-  }
-
-  .cta-divider {
-    width: 50px;
-    margin: 0 auto 16px;
-  }
-
-  .cta-heading {
-    font-size: 20px;
-    margin-bottom: 20px;
-  }
-
-  .cta-cards-container {
+  .about-facts__grid {
     grid-template-columns: 1fr;
-    gap: 8px;
   }
 
-  .cta-card {
-    padding: 14px;
-    min-height: 100px;
-    border-radius: 12px;
+  .about-fact__item {
+    padding: 20px 22px;
   }
 
-  .cta-card-title {
-    font-size: 14px;
-    margin-bottom: 6px;
-  }
-
-  .cta-card-text {
-    font-size: 11px;
-    margin-bottom: 8px;
-  }
-
-  .cta-arrow {
-    font-size: 16px;
-  }
-
-  .section-nav-container {
-    margin-top: 16px;
-    padding: 12px 0;
-  }
-
-  .section-nav-button {
-    padding: 10px 16px;
-    border-radius: 10px;
-  }
-
-  .nav-button-text {
-    font-size: 12px;
-  }
-
-  .nav-button-arrow {
-    font-size: 14px;
-  }
-
-  .section-indicators {
-    gap: 8px;
-    margin: 12px 0 6px;
-    flex-wrap: wrap;
-  }
-
-  .indicator {
-    width: 10px;
-    height: 10px;
-    border-width: 2px;
-  }
-
-  .indicator-arrow {
-    width: 36px;
-    height: 36px;
-    font-size: 20px;
-    border-width: 2px;
-  }
-
-  .section-counter {
-    font-size: 14px;
-    min-width: 40px;
-  }
-}
-
-/* Very small screens (360px and below) */
-@media (max-width: 360px) {
-  .page-container {
-    padding-top: 55px;
-  }
-
-  .about-title {
-    font-size: 20px;
-    margin-top: 6px;
-  }
-
-  .about-main-content {
-    padding-left: 12px;
-    padding-right: 12px;
-    gap: 16px;
-  }
-
-  .about-right {
-    max-width: 240px;
-  }
-
-  .section-subtitle {
-    font-size: 20px;
-  }
-
-  .about-me-paragraph {
-    font-size: 14px;
-  }
-
-  .skills-title {
-    font-size: 20px;
-  }
-
-  .cta-heading {
-    font-size: 18px;
-  }
-
-  .cta-card {
-    padding: 12px;
-  }
-
-  .indicator-arrow {
-    width: 36px;
-    height: 36px;
-    font-size: 18px;
-  }
-
-  .section-counter {
+  .about-section-nav__btn {
     font-size: 13px;
   }
 
-  .section-indicators {
-    gap: 10px;
+  .about-tab {
+    padding: 12px 16px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 360px) {
+  .about-hero__heading {
+    font-size: 1.9rem;
+  }
+
+  .about-tab {
+    padding: 12px 10px;
   }
 }

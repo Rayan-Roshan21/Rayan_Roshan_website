@@ -1,93 +1,48 @@
-.copyright-container {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 16px 24px;
-    background: #ffffff;
-    border-top: 1px solid #e9ecef;
-    z-index: 999;
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+/* ============================================================
+   COPYRIGHT FOOTER — Apple Design
+   ============================================================ */
+
+.copyright-footer {
+  width: 100%;
+  padding: 24px 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.Copyright-title {
-    display: block;
-    width: 100%;
-    margin: 0;
-    font-size: 14px;
-    color: #6c757d;
-    font-family: 'Open Sans', sans-serif;
-    text-align: center;
+.copyright-footer--dark {
+  background-color: #000000;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Responsive Design */
-
-/* Large screens (1200px and up) */
-@media (min-width: 1200px) {
-    .copyright-container {
-        padding: 18px 30px;
-    }
-
-    .Copyright-title {
-        font-size: 14px;
-    }
+.copyright-footer--light {
+  background-color: #f5f5f7;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-/* Medium screens (768px to 1199px) */
-@media (min-width: 768px) and (max-width: 1199px) {
-    .copyright-container {
-        padding: 14px 24px;
-    }
-
-    .Copyright-title {
-        font-size: 13px;
-    }
+.copyright-text {
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: -0.12px;
+  text-align: center;
+  margin: 0;
 }
 
-/* Tablet screens (601px to 767px) */
-@media (min-width: 601px) and (max-width: 767px) {
-    .copyright-container {
-        padding: 12px 20px;
-    }
-
-    .Copyright-title {
-        font-size: 12px;
-    }
+.copyright-footer--dark .copyright-text {
+  color: rgba(255, 255, 255, 0.36);
 }
 
-/* Mobile portrait (481px to 600px) */
-@media (min-width: 481px) and (max-width: 600px) {
-    .copyright-container {
-        padding: 10px 16px;
-    }
-
-    .Copyright-title {
-        font-size: 11px;
-    }
+.copyright-footer--light .copyright-text {
+  color: rgba(0, 0, 0, 0.36);
 }
 
-/* Small mobile (below 481px) */
-@media (max-width: 480px) {
-    .copyright-container {
-        padding: 8px 12px;
-        box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.03);
-    }
+@media (max-width: 600px) {
+  .copyright-footer {
+    padding: 20px 22px;
+  }
 
-    .Copyright-title {
-        font-size: 10px;
-    }
-}
-
-/* Landscape orientation on mobile */
-@media (max-width: 767px) and (orientation: landscape) {
-    .copyright-container {
-        padding: 6px 12px;
-    }
-
-    .Copyright-title {
-        font-size: 10px;
-    }
+  .copyright-text {
+    font-size: 11px;
+  }
 }

@@ -1,448 +1,207 @@
+/* ============================================================
+   PROJECT CARDS — Apple Design
+   ============================================================ */
+
+.projects-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
 .project-container {
-    font-family: 'Open Sans', sans-serif;
-    padding: 20px;
-    border: none;
-    border-radius: 16px;
-    background-color: #ffffff;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
-    min-height: 500px;
-    width: 48%;
-    box-sizing: border-box;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  width: calc(50% - 10px);
+  box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
 }
 
 .project-container:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(-6px);
+  box-shadow: rgba(0, 0, 0, 0.3) 3px 12px 40px 0px;
 }
 
-.projects-wrapper {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    align-items: flex-start;
-}
-
-.project_name {
-    font-size: 22px;
-    font-weight: bold;
-    color: #333;
-    font-family: 'Open Sans', sans-serif;
-    text-align: left;
-    margin-top: 10px;
-    margin-bottom: 0;
-}
-
-.project-role {
-    font-size: 14px;
-    color: #888;
-    font-family: 'Open Sans', sans-serif;
-    text-align: left;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
-    font-weight: 600;
-    margin-top: 6px;
-    margin-bottom: 0;
-}
-
-.project-description {
-    font-size: 17px;
-    color: #555;
-    font-family: 'Open Sans', sans-serif;
-    text-align: left;
-    flex-grow: 1;
-    line-height: 1.5;
-    margin-top: 10px;
-    margin-bottom: 0;
-}
-
+/* ── Image ── */
 .project-image {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 12px;
-    margin-top: 0;
-    margin-bottom: 0;
-    background-color: #f5f5f5;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    display: block;
-    transition: transform 0.3s ease;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+  background-color: #f5f5f7;
+  transition: transform 0.4s ease;
 }
 
 .project-container:hover .project-image {
-    transform: scale(1.02);
+  transform: scale(1.03);
 }
 
+/* ── Content ── */
+.project-content-inner {
+  padding: 24px 24px 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Since we're not using project-content-inner wrapper in JSX, apply padding to text elements */
+.project_name {
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 1.19rem;
+  font-weight: 700;
+  color: #1d1d1f;
+  line-height: 1.19;
+  letter-spacing: 0.231px;
+  margin: 20px 24px 0;
+}
+
+.project-role {
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.48);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 8px 24px 0;
+}
+
+.project-description {
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 0.94rem;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.7);
+  line-height: 1.5;
+  letter-spacing: -0.224px;
+  margin: 12px 24px 0;
+  flex-grow: 1;
+}
+
+/* ── Buttons ── */
 .project-buttons {
-    display: flex;
-    gap: 10px;
-    padding-top: 15px;
-    border-top: 1px solid #f0f0f0;
-    margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 20px 24px 24px;
+  margin-top: auto;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-.project-container .project-github,
-.project-container .project-linkedin,
-.project-container .project-google-docs,
-.project-container .project-pitchdeck {
-    font-size: 14px;
-    text-decoration: none;
-    margin: 0;
-    padding: 12px 16px;
-    font-family: 'Open Sans', sans-serif;
-    text-align: center;
-    font-weight: 600;
-    border-radius: 8px;
-    display: block;
-    flex: 1;
-    border: none;
-    transition: all 0.25s ease;
+/* Apple link styles */
+.project-link {
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 980px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  letter-spacing: -0.224px;
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
 }
 
-.project-container .project-github {
-    color: #333;
-    background-color: #f0f0f0;
+.project-link--primary {
+  background: #0071e3;
+  color: #ffffff;
+  border: 1px solid transparent;
 }
 
-.project-container .project-linkedin {
-    color: #0077b5;
-    background-color: #e8f4fb;
+.project-link--primary:hover {
+  background: #0077ed;
+  text-decoration: none;
 }
 
-.project-container .project-google-docs {
-    color: #1a73e8;
-    background-color: #e8f0fe;
+.project-link--secondary {
+  background: transparent;
+  color: #0066cc;
+  border: 1px solid rgba(0, 102, 204, 0.35);
 }
 
-.project-container .project-pitchdeck {
-    color: #cc5500;
-    background-color: #fff1eb;
+.project-link--secondary:hover {
+  border-color: #0066cc;
+  text-decoration: underline;
 }
 
-.project-container .project-github:hover {
-    color: #fff;
-    background-color: #333;
-    text-decoration: none;
+.project-link--tertiary {
+  background: transparent;
+  color: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.15);
 }
 
-.project-container .project-linkedin:hover {
-    color: #fff;
-    background-color: #0077b5;
-    text-decoration: none;
+.project-link--tertiary:hover {
+  color: #1d1d1f;
+  border-color: rgba(0, 0, 0, 0.4);
 }
 
-.project-container .project-google-docs:hover {
-    color: #fff;
-    background-color: #4285f4;
-    text-decoration: none;
-}
-
-.project-container .project-pitchdeck:hover {
-    color: #fff;
-    background-color: #ff6b35;
-    text-decoration: none;
-}
-
-/* Responsive additions - keeping original design intact */
-
-/* Large screens (1200px and up) */
-@media (min-width: 1200px) {
-    .project-container {
-        padding: 25px;
-        min-height: 500px;
-        width: 48%;
-    }
-
-    .projects-wrapper {
-        gap: 20px;
-    }
-
-    .project_name {
-        font-size: 24px;
-    }
-
-    .project-role {
-        font-size: 20px;
-    }
-
-    .project-description {
-        font-size: 19px;
-    }
-
-    .project-image {
-        height: 200px;
-    }
-
-    .project-container .project-github,
-    .project-container .project-linkedin,
-    .project-container .project-google-docs,
-    .project-container .project-pitchdeck {
-        font-size: 18px;
-        padding: 12px;
-    }
-}
-
-/* Medium screens (768px to 1199px) */
-@media (min-width: 768px) and (max-width: 1199px) {
-    .project-container {
-        padding: 22px;
-        min-height: 480px;
-        width: 48%;
-    }
-
-    .projects-wrapper {
-        gap: 18px;
-    }
-
-    .project_name {
-        font-size: 23px;
-    }
-
-    .project-role {
-        font-size: 19px;
-    }
-
-    .project-description {
-        font-size: 18px;
-    }
-
-    .project-image {
-        height: 190px;
-    }
-
-    .project-container .project-github,
-    .project-container .project-linkedin,
-    .project-container .project-google-docs,
-    .project-container .project-pitchdeck {
-        font-size: 17px;
-        padding: 11px;
-    }
-}
-
-/* Small screens (481px to 767px) */
-@media (min-width: 481px) and (max-width: 767px) {
-    .project-container {
-        padding: 22px;
-        min-height: auto;
-        width: 100%;
-        border-radius: 14px;
-        margin-bottom: 8px;
-    }
-
-    .projects-wrapper {
-        gap: 20px;
-        flex-direction: column;
-    }
-
-    .project_name {
-        font-size: 22px;
-        margin-top: 12px;
-        margin-bottom: 8px;
-    }
-
-    .project-role {
-        font-size: 17px;
-        margin-top: 8px;
-        margin-bottom: 10px;
-    }
-
-    .project-description {
-        font-size: 16px;
-        margin-top: 12px;
-        margin-bottom: 12px;
-    }
-
-    .project-image {
-        height: 190px;
-        border-radius: 10px;
-        margin-bottom: 8px;
-    }
-
-    .project-buttons {
-        flex-direction: row;
-        gap: 10px;
-        padding-top: 16px;
-        margin-top: 8px;
-    }
-
-    .project-container .project-github,
-    .project-container .project-linkedin,
-    .project-container .project-google-docs,
-    .project-container .project-pitchdeck {
-        font-size: 14px;
-        padding: 12px 14px;
-    }
-}
-
-/* Extra small screens (480px and below) */
-@media (max-width: 480px) {
-    .project-container {
-        padding: 20px;
-        min-height: auto;
-        width: 100%;
-        border-radius: 14px;
-        margin-bottom: 8px;
-    }
-
-    .projects-wrapper {
-        gap: 20px;
-        flex-direction: column;
-    }
-
-    .project_name {
-        font-size: 20px;
-        margin-top: 12px;
-        margin-bottom: 8px;
-    }
-
-    .project-role {
-        font-size: 15px;
-        margin-top: 8px;
-        margin-bottom: 10px;
-    }
-
-    .project-description {
-        font-size: 15px;
-        line-height: 1.6;
-        margin-top: 12px;
-        margin-bottom: 12px;
-    }
-
-    .project-image {
-        height: 170px;
-        border-radius: 10px;
-        margin-bottom: 8px;
-    }
-
-    .project-buttons {
-        flex-direction: row;
-        gap: 10px;
-        padding-top: 16px;
-        border-top: 1px solid #f0f0f0;
-        margin-top: 8px;
-    }
-
-    .project-container .project-github,
-    .project-container .project-linkedin,
-    .project-container .project-google-docs,
-    .project-container .project-pitchdeck {
-        font-size: 13px;
-        padding: 12px 10px;
-        border-radius: 6px;
-    }
-}
-
-/* Landscape orientation on mobile */
-@media (max-width: 767px) and (orientation: landscape) {
-    .project-container {
-        padding: 14px;
-        min-height: auto;
-    }
-
-    .project_name {
-        font-size: 17px;
-    }
-
-    .project-role {
-        font-size: 14px;
-    }
-
-    .project-description {
-        font-size: 13px;
-    }
-
-    .project-image {
-        height: 140px;
-        border-radius: 8px;
-    }
-
-    .project-container .project-github,
-    .project-container .project-linkedin,
-    .project-container .project-google-docs,
-    .project-container .project-pitchdeck {
-        font-size: 12px;
-        padding: 8px;
-    }
-}
-
-@media (max-width: 1200px) {
-    .project-container {
-        width: 420px;
-        min-width: 420px;
-        max-width: 420px;
-        min-height: 480px;
-    }
-}
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
 
 @media (max-width: 900px) {
-    .project-container {
-        min-height: auto;
-        height: auto;
-        width: 100%;
-        min-width: auto;
-        max-width: 100%;
-    }
+  .project-container {
+    width: 100%;
+  }
+
+  .projects-wrapper {
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 600px) {
-    .project-container {
-        min-height: auto;
-        height: auto;
-        width: 100%;
-    }
+  .project-container {
+    width: 100%;
+    border-radius: 12px;
+  }
+
+  .project-image {
+    height: 180px;
+  }
+
+  .project_name {
+    font-size: 1.06rem;
+    margin: 16px 20px 0;
+  }
+
+  .project-role {
+    margin: 6px 20px 0;
+  }
+
+  .project-description {
+    font-size: 0.875rem;
+    margin: 10px 20px 0;
+  }
+
+  .project-buttons {
+    padding: 16px 20px 20px;
+  }
+
+  .project-link {
+    font-size: 12px;
+    padding: 7px 14px;
+  }
 }
 
-/* Very small screens (below 360px) */
-@media (max-width: 359px) {
-    .project-container {
-        padding: 14px;
-        min-height: auto;
-        height: auto;
-        width: 100%;
-        border-radius: 12px;
-    }
+@media (max-width: 360px) {
+  .project_name {
+    font-size: 1rem;
+    margin: 14px 16px 0;
+  }
 
-    .projects-wrapper {
-        gap: 12px;
-    }
+  .project-description {
+    margin: 8px 16px 0;
+  }
 
-    .project_name {
-        font-size: 16px;
-    }
-
-    .project-role {
-        font-size: 13px;
-    }
-
-    .project-description {
-        font-size: 13px;
-        line-height: 1.45;
-    }
-
-    .project-image {
-        height: 140px;
-        border-radius: 8px;
-    }
-
-    .project-buttons {
-        flex-direction: row;
-        gap: 6px;
-        padding-top: 10px;
-    }
-
-    .project-container .project-github,
-    .project-container .project-linkedin,
-    .project-container .project-google-docs,
-    .project-container .project-pitchdeck {
-        font-size: 11px;
-        padding: 8px 6px;
-    }
+  .project-buttons {
+    padding: 14px 16px 18px;
+  }
 }

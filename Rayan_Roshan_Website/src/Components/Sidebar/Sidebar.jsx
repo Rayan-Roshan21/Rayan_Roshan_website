@@ -1,90 +1,144 @@
 import React, { useEffect, useState } from 'react';
 import './Sidebar.css';
-import { Link, useLocation } from 'react-router-dom'
-import { useScrollDirection } from '@/hooks/useScrollDirection';
+import { Link, useLocation } from 'react-router-dom';
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [canHideOnScroll, setCanHideOnScroll] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const isScrollingUp = useScrollDirection();
 
+  // Close mobile menu on route change
   useEffect(() => {
-    const scrollableThreshold = (() => {
-      switch (location.pathname) {
-        case '/about':
-          return 120;
-        case '/projects':
-          return 160;
-        case '/contact':
-          return 140;
-        default:
-          return 140;
-      }
-    })();
-
-    const updateScrollAbility = () => {
-      const scrollableSpace = document.documentElement.scrollHeight - window.innerHeight;
-      setCanHideOnScroll(scrollableSpace > scrollableThreshold);
-    };
-
-    updateScrollAbility();
-    window.addEventListener('resize', updateScrollAbility);
-    return () => window.removeEventListener('resize', updateScrollAbility);
+    setIsOpen(false);
   }, [location.pathname]);
 
+  // Add scrolled class for nav shadow
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY || window.pageYOffset || 0);
-
-    handleScroll();
+    const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [location.pathname]);
+  }, []);
 
-  const hideScrollTrigger = (() => {
-    switch (location.pathname) {
-      case '/about':
-        return 1200;
-      case '/projects':
-        return 140;
-      case '/contact':
-        return 120;
-      default:
-        return 120;
-    }
-  })();
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [isOpen]);
 
-  const shouldHideNav = canHideOnScroll && scrollY > hideScrollTrigger;
+  const isActive = (path) => location.pathname === path;
 
   return (
     <>
-      {/* Horizontal Menu for Larger Screens */}
-      <nav className={`horizontal-nav ${shouldHideNav ? 'hide' : 'show'}`}>
-        <ul>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/projects">Projects</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
-        </ul>
+      {/* Apple Glass Navigation Bar */}
+      <nav className={`apple-nav ${scrolled ? 'apple-nav--scrolled' : ''}`} role="navigation" aria-label="Main navigation">
+        <div className="apple-nav__inner">
+
+          {/* Logo / Name — left side */}
+          <Link to="/" className="apple-nav__logo" aria-label="Rayan Roshan — Home">
+            Rayan Roshan
+          </Link>
+
+          {/* Desktop Links — right side */}
+          <ul className="apple-nav__links" role="list">
+            <li>
+              <Link
+                to="/about"
+                className={`apple-nav__link ${isActive('/about') ? 'apple-nav__link--active' : ''}`}
+              >
+                About
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/projects"
+                className={`apple-nav__link ${isActive('/projects') ? 'apple-nav__link--active' : ''}`}
+              >
+                Projects
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/contact"
+                className={`apple-nav__link ${isActive('/contact') ? 'apple-nav__link--active' : ''}`}
+              >
+                Contact
+              </Link>
+            </li>
+          </ul>
+
+          {/* Mobile Hamburger */}
+          <button
+            className={`apple-nav__hamburger ${isOpen ? 'apple-nav__hamburger--open' : ''}`}
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isOpen}
+          >
+            <span className="apple-nav__hamburger-bar" />
+            <span className="apple-nav__hamburger-bar" />
+            <span className="apple-nav__hamburger-bar" />
+          </button>
+        </div>
       </nav>
 
-      {/* Hamburger Menu for Mobile Screens */}
-      <div className={`menu-toggle ${shouldHideNav && !isOpen ? 'hide' : 'show'}`} onClick={() => setIsOpen(true)}>
-        ☰
-      </div>
+      {/* Mobile Overlay */}
+      {isOpen && (
+        <div
+          className="apple-mobile-overlay"
+          onClick={() => setIsOpen(false)}
+          aria-hidden="true"
+        />
+      )}
 
-      <div className={`sidebar ${isOpen ? 'open' : ''}`}>
-        <div className="close-btn" onClick={() => setIsOpen(false)}>&times;</div>
-        <h2 className='menu-title'>Menu</h2>
-        <ul>
-          <li><Link to="/about" onClick={() => setIsOpen(false)}>About</Link></li>
-          <li><Link to="/projects" onClick={() => setIsOpen(false)}>Projects</Link></li>
-          <li><Link to="/contact" onClick={() => setIsOpen(false)}>Contact</Link></li>
+      {/* Mobile Menu Drawer */}
+      <div
+        className={`apple-mobile-menu ${isOpen ? 'apple-mobile-menu--open' : ''}`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile navigation"
+      >
+        <div className="apple-mobile-menu__header">
+          <Link to="/" className="apple-mobile-menu__logo" onClick={() => setIsOpen(false)}>
+            Rayan Roshan
+          </Link>
+          <button
+            className="apple-mobile-menu__close"
+            onClick={() => setIsOpen(false)}
+            aria-label="Close menu"
+          >
+            ✕
+          </button>
+        </div>
+
+        <ul className="apple-mobile-menu__links" role="list">
+          <li>
+            <Link
+              to="/about"
+              className={`apple-mobile-menu__link ${isActive('/about') ? 'apple-mobile-menu__link--active' : ''}`}
+              onClick={() => setIsOpen(false)}
+            >
+              About
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/projects"
+              className={`apple-mobile-menu__link ${isActive('/projects') ? 'apple-mobile-menu__link--active' : ''}`}
+              onClick={() => setIsOpen(false)}
+            >
+              Projects
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/contact"
+              className={`apple-mobile-menu__link ${isActive('/contact') ? 'apple-mobile-menu__link--active' : ''}`}
+              onClick={() => setIsOpen(false)}
+            >
+              Contact
+            </Link>
+          </li>
         </ul>
-
       </div>
-
-      {isOpen && <div className="overlay" onClick={() => setIsOpen(false)} />}
     </>
   );
 };

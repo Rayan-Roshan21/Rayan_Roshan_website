@@ -1,31 +1,7 @@
-import './name_title.css'
-import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-
+// Name_title is now embedded in the Apple nav bar (Sidebar.jsx).
+// This component renders nothing to maintain backwards compatibility.
 function Name_title() {
-    const location = useLocation();
-    const [isVisible, setIsVisible] = useState(true);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            // Hide the logo once the user scrolls past the top of the page
-            const currentY = window.scrollY || window.pageYOffset || 0;
-            setIsVisible(currentY < 32);
-        };
-
-        handleScroll();
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, [location.pathname]);
-
-    const isHome = location.pathname === '/';
-    const titleClass = `title ${!isHome ? 'title-alt' : ''} ${!isVisible ? 'title-hidden' : ''}`.trim();
-
-    return (
-        <Link to="/" className={titleClass}>
-            <h1>Rayan Roshan_</h1>
-        </Link>
-    );
+  return null;
 }
 
 export default Name_title;

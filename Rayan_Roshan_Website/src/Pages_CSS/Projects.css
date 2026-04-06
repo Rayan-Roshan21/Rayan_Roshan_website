@@ -1,116 +1,87 @@
-.Projects-title {
-  position: relative;
-  margin-top: 0px;
-  margin-left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Open Sans', sans-serif;
-  text-align: center;
-  font-size: 30px;
-  z-index: 100;
-  text-decoration: none;
-  font-weight: bold;
-  display: inline-block;
-  padding-bottom: 10px;
-}
+/* ============================================================
+   PROJECTS PAGE — Apple Design
+   ============================================================ */
 
-.Projects-title::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 50px;
-  height: 3px;
-  background: linear-gradient(90deg, #2c3e50, #34495e);
-  border-radius: 2px;
-}
-
-.projects-wrapper {
+/* ── HERO ── */
+.projects-hero {
+  padding-top: calc(48px + 80px);
   padding-bottom: 80px;
 }
 
-/* Responsive additions - keeping original design intact */
+.projects-hero__inner {
+  padding: 0 44px;
+}
 
-/* Large screens (1200px and up) */
-@media (min-width: 1200px) {
-  .Projects-title {
-    margin-top: 24px;
-    font-size: 35px;
+.projects-hero__eyebrow {
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.48);
+  margin-bottom: 16px;
+}
+
+.projects-hero__heading {
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.07;
+  letter-spacing: -0.28px;
+  margin-bottom: 20px;
+}
+
+.projects-hero__sub {
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-size: 1.19rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.47;
+  letter-spacing: -0.374px;
+  max-width: 500px;
+}
+
+/* ── GRID SECTION ── */
+.projects-grid-section {
+  padding: 80px 0 120px;
+}
+
+.projects-grid-section__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 44px;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .projects-hero {
+    padding-top: calc(48px + 56px);
+    padding-bottom: 56px;
   }
-  
-  .projects-wrapper {
-    padding-bottom: 90px;
+
+  .projects-hero__inner {
+    padding: 0 22px;
+  }
+
+  .projects-hero__heading {
+    font-size: 2.5rem;
+  }
+
+  .projects-grid-section__inner {
+    padding: 0 22px;
   }
 }
 
-/* Medium screens (768px to 1199px) */
-@media (min-width: 768px) and (max-width: 1199px) {
-  .Projects-title {
-    margin-top: 22px;
-    font-size: 32px;
-  }
-  
-  .projects-wrapper {
-    padding-bottom: 80px;
-  }
-}
-
-/* Small screens (481px to 767px) */
-@media (min-width: 481px) and (max-width: 767px) {
-  .Projects-title {
-    margin-top: 80px;
-    font-size: 26px;
-    width: 90%;
-    margin-bottom: 20px;
-  }
-  
-  .projects-wrapper {
-    padding-bottom: 70px;
-    padding-left: 12px;
-    padding-right: 12px;
-  }
-}
-
-/* Extra small screens (480px and below) */
 @media (max-width: 480px) {
-  .Projects-title {
-    margin-top: 80px;
-    font-size: 26px;
-    width: 95%;
-    margin-bottom: 25px;
+  .projects-hero__heading {
+    font-size: 2rem;
   }
-  
-  .projects-wrapper {
-    padding-bottom: 70px;
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-}
 
-/* Very small screens (below 360px) */
-@media (max-width: 359px) {
-  .Projects-title {
-    margin-top: 80px;
-    font-size: 22px;
-    margin-bottom: 12px;
-  }
-  
-  .projects-wrapper {
-    padding-bottom: 55px;
-    padding-left: 8px;
-    padding-right: 8px;
-  }
-}
-
-/* Landscape orientation on mobile */
-@media (max-width: 767px) and (orientation: landscape) {
-  .Projects-title {
-    margin-top: 80px;
-    font-size: 24px;
-    margin-bottom: 16px;
-  }
-  
-  .projects-wrapper {
-    padding-bottom: 50px;
+  .projects-grid-section {
+    padding: 48px 0 80px;
   }
 }
