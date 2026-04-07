@@ -79,7 +79,13 @@ function About() {
             </section>
 
             {/* Light section — quick facts */}
-            <section className="about-section section-light about-facts">
+            <motion.section
+              className="about-section section-light about-facts"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
+            >
               <div className="about-facts__inner section-container-wide">
                 <p className="about-eyebrow about-eyebrow--dark">Quick Facts</p>
                 <div className="about-facts__grid">
@@ -98,7 +104,7 @@ function About() {
                   ))}
                 </div>
               </div>
-            </section>
+            </motion.section>
           </motion.div>
         )}
 
@@ -126,11 +132,17 @@ function About() {
             </section>
 
             {/* Light section — Grid */}
-            <section className="about-section section-light about-skills-grid">
+            <motion.section
+              className="about-section section-light about-skills-grid"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
+            >
               <div className="about-skills-grid__inner section-container-wide">
                 <GridFour />
               </div>
-            </section>
+            </motion.section>
           </motion.div>
         )}
 
@@ -157,11 +169,17 @@ function About() {
             </section>
 
             {/* Light section — Timeline */}
-            <section className="about-section section-light about-timeline">
+            <motion.section
+              className="about-section section-light about-timeline"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.6, ease: 'easeOut' }}
+            >
               <div className="about-timeline__inner section-container-wide">
                 <ExperienceTimeline />
               </div>
-            </section>
+            </motion.section>
           </motion.div>
         )}
       </AnimatePresence>

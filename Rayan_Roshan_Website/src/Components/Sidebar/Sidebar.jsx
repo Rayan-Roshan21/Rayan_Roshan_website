@@ -97,16 +97,6 @@ const Sidebar = () => {
         aria-label="Mobile navigation"
       >
         <div className="apple-mobile-menu__header">
-          <Link to="/" className="apple-mobile-menu__logo" onClick={() => setIsOpen(false)}>
-            Rayan Roshan
-          </Link>
-          <button
-            className="apple-mobile-menu__close"
-            onClick={() => setIsOpen(false)}
-            aria-label="Close menu"
-          >
-            ✕
-          </button>
         </div>
 
         <ul className="apple-mobile-menu__links" role="list">

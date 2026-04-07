@@ -31,7 +31,13 @@ function Contacts() {
       </section>
 
       {/* ── CONTACT CONTENT — Light ── */}
-      <section className="contact-content-section section-light">
+      <motion.section
+        className="contact-content-section section-light"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+      >
       <div className="contact-content-section__inner">
           <div className="contact-grid">
 
@@ -79,8 +85,32 @@ function Contacts() {
               <ContactButtons />
             </div>
           </div>
+
+          {/* ── Quick Info Strip ── */}
+          <motion.div
+            className="contact-quick-info"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.5, ease: 'easeOut', delay: 0.15 }}
+          >
+            <div className="contact-quick-item">
+              <span className="contact-quick-label">Response Time</span>
+              <span className="contact-quick-value">Within 24 hours</span>
+            </div>
+            <div className="contact-quick-divider" aria-hidden="true" />
+            <div className="contact-quick-item">
+              <span className="contact-quick-label">Timezone</span>
+              <span className="contact-quick-value">EST — Toronto, ON</span>
+            </div>
+            <div className="contact-quick-divider" aria-hidden="true" />
+            <div className="contact-quick-item">
+              <span className="contact-quick-label">Open To</span>
+              <span className="contact-quick-value">Internships · Collabs · Coffee Chats</span>
+            </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       <Copyright isVisible={true} />
     </motion.div>

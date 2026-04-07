@@ -178,7 +178,14 @@ function Projects() {
         <div className="projects-grid-section__inner">
           <div className="projects-wrapper">
             {projects.map((project, idx) => (
-              <div key={idx} className="project-container">
+              <motion.div
+                key={idx}
+                className="project-container"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ duration: 0.5, ease: 'easeOut', delay: (idx % 3) * 0.1 }}
+              >
                 <img className="project-image" src={project.image} alt={project.alt} loading={idx > 3 ? 'lazy' : 'eager'} />
                 <p className="project_name">{project.name}</p>
                 <p className="project-role">{project.role}</p>
@@ -196,7 +203,7 @@ function Projects() {
                     </a>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

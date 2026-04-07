@@ -107,7 +107,13 @@ function Home() {
       </section>
 
       {/* ── STATS SECTION — Light Gray ── */}
-      <section className="home-stats section-light">
+      <motion.section
+        className="home-stats section-light"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+      >
         <div className="home-stats__inner section-container">
           <div className="home-stats__grid">
             <div className="home-stat__item">
@@ -131,10 +137,16 @@ function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* ── ABOUT TEASER — Black ── */}
-      <section className="home-about section-dark">
+      <motion.section
+        className="home-about section-dark"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+      >
         <div className="home-about__inner section-container">
           <p className="home-about__label">Who I Am</p>
           <h2 className="home-about__heading">
@@ -155,7 +167,7 @@ function Home() {
             </Link>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Footer */}
       <Copyright isVisible={true} dark />
