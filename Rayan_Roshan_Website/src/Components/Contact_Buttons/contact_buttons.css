@@ -16,7 +16,7 @@
   width: 100%;
   padding: 18px 24px;
   background: #f5f5f7;
-  border: none;
+  border: 1.5px solid transparent;
   border-radius: 12px;
   cursor: pointer;
   font-family: 'Inter', 'Helvetica Neue', sans-serif;
@@ -24,7 +24,7 @@
   font-weight: 400;
   color: #1d1d1f;
   letter-spacing: -0.374px;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
   text-align: left;
   min-height: 64px;
 }
@@ -39,15 +39,54 @@
   background: #e0e0e2;
 }
 
+/* Primary — Apple Blue */
+.contact-btn--primary {
+  background: #0071e3;
+  border-color: transparent;
+  color: #ffffff;
+}
+
+.contact-btn--primary:hover {
+  background: #0077ed;
+  border-color: transparent;
+}
+
+.contact-btn--primary:active {
+  background: #006edb;
+}
+
+.contact-btn--primary .btn-text {
+  color: #ffffff;
+}
+
+/* Secondary — Blue outline */
+.contact-btn--secondary {
+  background: transparent;
+  border-color: rgba(0, 102, 204, 0.4);
+  color: #0066cc;
+}
+
+.contact-btn--secondary:hover {
+  background: rgba(0, 102, 204, 0.05);
+  border-color: #0066cc;
+}
+
+.contact-btn--secondary .btn-text {
+  color: #0066cc;
+}
+
 .btn-icon {
-  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
+  width: 22px;
+  height: 22px;
 }
 
 .btn-text {
   font-size: 1.06rem;
-  font-weight: 400;
-  color: #1d1d1f;
+  font-weight: 500;
   letter-spacing: -0.374px;
 }
 

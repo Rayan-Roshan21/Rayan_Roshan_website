@@ -107,6 +107,14 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
+.apple-nav__hamburger--open {
+  background: transparent;
+}
+
+.apple-nav__hamburger--open:hover {
+  background: transparent;
+}
+
 .apple-nav__hamburger-bar {
   display: block;
   width: 20px;
@@ -178,39 +186,44 @@
 
 .apple-mobile-menu__header {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
-  padding: 16px 24px;
+  padding: 28px 28px 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  min-height: 64px;
+  min-height: 80px;
 }
 
 .apple-mobile-menu__logo {
   font-family: 'Inter', 'Helvetica Neue', sans-serif;
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 600;
   color: #ffffff;
   text-decoration: none;
-  letter-spacing: -0.374px;
+  letter-spacing: -0.5px;
+  line-height: 1;
 }
 
 .apple-mobile-menu__close {
-  background: rgba(255, 255, 255, 0.1);
+  background: transparent;
   border: none;
-  color: #ffffff;
-  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 22px;
+  font-weight: 300;
   width: 36px;
   height: 36px;
-  border-radius: 50%;
+  border-radius: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s ease;
+  transition: color 0.2s ease;
+  line-height: 1;
+  padding: 0;
 }
 
 .apple-mobile-menu__close:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: transparent;
+  color: #ffffff;
 }
 
 .apple-mobile-menu__links {

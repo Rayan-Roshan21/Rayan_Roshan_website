@@ -49,7 +49,7 @@ const projects = [
     links: [
       { label: 'GitHub ›', href: 'https://github.com/Rayan-Roshan21/Property-Recommendation-System', type: 'secondary' },
       { label: 'LinkedIn ›', href: 'https://www.linkedin.com/feed/update/urn:li:activity:7333915404685254658/', type: 'secondary' },
-      { label: 'Pitch Deck ›', href: 'https://www.canva.com/design/DAGnq21Q--w/lliWqqZTqjbpImYEwg7Neg/view', type: 'tertiary' },
+      { label: 'Pitch Deck ›', href: 'https://www.canva.com/design/DAGnq21Q--w/lliWqqZTqjbpImYEwg7Neg/view', type: 'secondary' },
     ],
   },
   {
@@ -71,7 +71,7 @@ const projects = [
     description: 'AI system that extracts healthcare information from medical records and automatically completes Prior Authorization forms. Improves accuracy while reducing administrative burden in healthcare workflows.',
     links: [
       { label: 'GitHub ›', href: 'https://github.com/Rayan-Roshan21/mandolin-project', type: 'secondary' },
-      { label: 'Pitch Deck ›', href: 'https://www.canva.com/design/DAGnq21Q--w/lliWqqZTqjbpImYEwg7Neg/view', type: 'tertiary' },
+      { label: 'Pitch Deck ›', href: 'https://www.canva.com/design/DAGnq21Q--w/lliWqqZTqjbpImYEwg7Neg/view', type: 'secondary' },
     ],
   },
   {
@@ -82,7 +82,7 @@ const projects = [
     description: 'Research analysis of child care accessibility and affordability for 700,000+ immigrant families across the Greater Toronto Area. Identified infrastructure gaps and informed evidence-based policy recommendations.',
     links: [
       { label: 'Read Paper ›', href: 'https://docs.google.com/document/d/1wDk_c1n9sb-IAN295CwN3162BCbKSOUX04ZgxMZ2ins/edit', type: 'primary' },
-      { label: 'Pitch Deck ›', href: 'https://www.canva.com/design/DAGnq21Q--w/lliWqqZTqjbpImYEwg7Neg/view', type: 'tertiary' },
+      { label: 'Pitch Deck ›', href: 'https://www.canva.com/design/DAGnq21Q--w/lliWqqZTqjbpImYEwg7Neg/view', type: 'secondary' },
     ],
   },
   {
@@ -114,7 +114,7 @@ const projects = [
     links: [
       { label: 'Try it out ›', href: 'https://imagestyletransfer.vercel.app/', type: 'primary' },
       { label: 'GitHub ›', href: 'https://github.com/Rayan-Roshan21/AI-Style-Transfer', type: 'secondary' },
-      { label: 'Pitch Deck ›', href: 'https://www.canva.com/design/DAGxkfIu1-k/k49DSteIEngQ51fTVxr6Eg/view', type: 'tertiary' },
+      { label: 'Pitch Deck ›', href: 'https://www.canva.com/design/DAGxkfIu1-k/k49DSteIEngQ51fTVxr6Eg/view', type: 'secondary' },
     ],
   },
   {
@@ -147,7 +147,7 @@ const projects = [
     links: [
       { label: 'GitHub ›', href: 'https://github.com/razzacktiger/LLM-Router', type: 'secondary' },
       { label: 'NPM Package ›', href: 'https://www.npmjs.com/package/smart-llm-router', type: 'primary' },
-      { label: 'Pitch Deck ›', href: 'https://www.canva.com/design/DAGvi9DbXNE/7rnwEmvNEzt2fGyeFBoe1A/view', type: 'tertiary' },
+      { label: 'Pitch Deck ›', href: 'https://www.canva.com/design/DAGvi9DbXNE/7rnwEmvNEzt2fGyeFBoe1A/view', type: 'secondary' },
     ],
   },
 ];

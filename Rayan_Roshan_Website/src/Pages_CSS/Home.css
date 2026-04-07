@@ -286,8 +286,8 @@
   }
 
   .home-hero__image-wrap {
-    width: clamp(180px, 40vw, 260px);
-    height: clamp(180px, 40vw, 260px);
+    width: clamp(160px, 42vw, 240px);
+    height: clamp(160px, 42vw, 240px);
   }
 
   .home-about__inner {
@@ -305,14 +305,28 @@
 }
 
 @media (max-width: 600px) {
+  .home-hero {
+    min-height: calc(100svh - 48px);
+  }
+
   .home-hero__inner {
-    padding: 48px 22px;
+    padding: 40px 22px 56px;
+    gap: 32px;
+  }
+
+  .home-hero__image-wrap {
+    width: clamp(140px, 50vw, 200px);
+    height: clamp(140px, 50vw, 200px);
+  }
+
+  .home-hero__name {
+    font-size: clamp(2.2rem, 10vw, 3rem);
   }
 
   .home-hero__ctas {
     flex-direction: column;
     width: 100%;
-    max-width: 280px;
+    max-width: 300px;
   }
 
   .home-cta-pill {
