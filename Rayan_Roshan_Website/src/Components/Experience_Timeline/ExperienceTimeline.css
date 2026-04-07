@@ -25,17 +25,16 @@
   max-width: 1000px;
 }
 
-.timeline:before {
+.timeline-line {
   position: absolute;
   left: 50%;
   top: 0;
-  content: ' ';
-  display: block;
   width: 2px;
   height: 100%;
   margin-left: -1px;
-  background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, #0071e3 5%, #0071e3 95%, rgba(0,0,0,0) 100%);
+  background: linear-gradient(to bottom, rgba(0,113,227,0) 0%, #0071e3 8%, #5e5ce6 50%, #e63946 92%, rgba(230,57,70,0) 100%);
   z-index: 1;
+  transform-origin: top;
 }
 
 .timeline li {
@@ -171,12 +170,8 @@
 .tag {
   font-family: 'Inter', 'Helvetica Neue', sans-serif;
   color: #0066cc;
-  font-size: 12px;
-  font-weight: 400;
-  position: relative;
-  padding: 4px 12px;
-  background: rgba(0, 102, 204, 0.08);
-  border-radius: 980px;
+  font-size: 14px;
+  font-weight: 500;
   letter-spacing: -0.12px;
 }
 
@@ -300,7 +295,7 @@
 
 /* Tablet screens (601px to 767px) */
 @media (min-width: 601px) and (max-width: 767px) {
-  .timeline:before {
+  .timeline-line {
     left: 20px;
   }
 
@@ -366,7 +361,7 @@
 
 /* Mobile portrait (481px to 600px) */
 @media (min-width: 481px) and (max-width: 600px) {
-  .timeline:before {
+  .timeline-line {
     left: 15px;
   }
 
@@ -446,7 +441,7 @@
     padding: 15px 0;
   }
 
-  .timeline:before {
+  .timeline-line {
     left: 12px;
     width: 2px;
   }
@@ -558,7 +553,7 @@
     font-size: 20px;
   }
 
-  .timeline:before {
+  .timeline-line {
     left: 15px;
   }
 
