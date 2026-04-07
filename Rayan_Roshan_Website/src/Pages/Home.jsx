@@ -122,7 +122,7 @@ function Home() {
             </div>
             <div className="home-stat__divider" aria-hidden="true" />
             <div className="home-stat__item">
-              <span className="home-stat__number">3</span>
+              <span className="home-stat__number">3+</span>
               <span className="home-stat__label">Awards Won</span>
             </div>
             <div className="home-stat__divider" aria-hidden="true" />
