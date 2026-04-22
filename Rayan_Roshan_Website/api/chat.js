@@ -1,7 +1,11 @@
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import OpenAI from 'openai';
 import rateLimiter, { RATE_LIMITS, getSessionId, generateSessionId } from './utils/rateLimiter.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
@@ -200,7 +204,7 @@ export default async function handler(req, res) {
     }
 
     // Load knowledge base
-    const knowledgePath = path.join(process.cwd(), 'src/Components/Voice agent/api/RAG/Embeddings/knowledge.json');
+    const knowledgePath = path.join(__dirname, '..', 'src', 'Components', 'Voice agent', 'api', 'RAG', 'Embeddings', 'knowledge.json');
     const knowledgeBase = JSON.parse(fs.readFileSync(knowledgePath, 'utf-8'));
 
     // Retrieve context from RAG
