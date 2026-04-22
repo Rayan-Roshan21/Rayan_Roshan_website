@@ -125,7 +125,7 @@ ${userText}
 // OPTIMIZATION #4: Quick responses for simple greetings (skip RAG)
 function getQuickResponse(message) {
   const lowerMsg = message.toLowerCase().trim();
-  
+
   if (/^(hi|hello|hey|yo|sup|wassup)[\s!?.,]*$/i.test(lowerMsg)) {
     return "Hi there! Echo is here to help you learn about Rayan. What would you like to know?";
   }
@@ -135,7 +135,7 @@ function getQuickResponse(message) {
   if (/^(bye|goodbye|see you|later)[\s!?.,]*$/i.test(lowerMsg)) {
     return "Goodbye! Come back anytime you want to learn more about Rayan.";
   }
-  
+
   return null; // Not a simple greeting, use full RAG
 }
 
@@ -163,13 +163,13 @@ export default async function handler(req, res) {
 
   // Rate limiting check
   const limitCheck = rateLimiter.checkLimit(sessionId, RATE_LIMITS.CHAT);
-  
+
   if (!limitCheck.allowed) {
     const stats = rateLimiter.getStats(sessionId);
     res.setHeader('X-RateLimit-Limit', RATE_LIMITS.CHAT.maxRequests);
     res.setHeader('X-RateLimit-Remaining', 0);
     res.setHeader('Retry-After', limitCheck.retryAfter);
-    
+
     return res.status(429).json({
       error: 'Too Many Requests',
       message: limitCheck.reason,
@@ -187,7 +187,7 @@ export default async function handler(req, res) {
 
     // Message length validation
     if (message.length > RATE_LIMITS.CHAT.maxMessageLength) {
-      return res.status(400).json({ 
+      return res.status(400).json({
         error: 'Message too long',
         message: `Maximum message length is ${RATE_LIMITS.CHAT.maxMessageLength} characters. Your message is ${message.length} characters.`
       });
