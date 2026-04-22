@@ -7,6 +7,9 @@ const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
+// Initialize EmailJS with public key
+emailjs.init({ publicKey: PUBLIC_KEY });
+
 export default function ContactButtons() {
     const [showCalendar, setShowCalendar] = useState(false);
     const [showMessageModal, setShowMessageModal] = useState(false);
@@ -46,7 +49,9 @@ export default function ContactButtons() {
         setLoading(true);
         setStatus('');
         
-        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
+        console.log('EmailJS config:', { SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY: PUBLIC_KEY?.substring(0, 5) + '...' });
+        
+        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current)
             .then(
                 () => {
                     setStatus('success');
@@ -64,6 +69,8 @@ export default function ContactButtons() {
                 },
                 (error) => {
                     console.error('EmailJS error:', error);
+                    console.error('EmailJS error text:', error?.text);
+                    console.error('EmailJS error status:', error?.status);
                     setStatus('error');
                     setLoading(false);
                 }
