@@ -2,34 +2,5 @@
   "buildCommand": "cd Rayan_Roshan_Website && npm install && npm run build",
   "outputDirectory": "Rayan_Roshan_Website/dist",
   "installCommand": "echo 'install handled in buildCommand'",
-  "framework": null,
-  "functions": {
-    "Rayan_Roshan_Website/api/**/*.js": {
-      "memory": 1024,
-      "maxDuration": 30
-    }
-  },
-  "rewrites": [
-    {
-      "source": "/api/health",
-      "destination": "/Rayan_Roshan_Website/api/health.js"
-    },
-    {
-      "source": "/api/voice",
-      "destination": "/Rayan_Roshan_Website/api/voice.js"
-    },
-    {
-      "source": "/api/chat",
-      "destination": "/Rayan_Roshan_Website/api/chat.js"
-    },
-    {
-      "source": "/api/tts",
-      "destination": "/Rayan_Roshan_Website/api/tts.js"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/Rayan_Roshan_Website/dist/index.html"
-    }
-  ]
+  "framework": null
 }
-
