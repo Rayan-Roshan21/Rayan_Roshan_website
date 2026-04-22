@@ -49,9 +49,15 @@ export default function ContactButtons() {
         setLoading(true);
         setStatus('');
         
-        console.log('EmailJS config:', { SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY: PUBLIC_KEY?.substring(0, 5) + '...' });
+        const formData = new FormData(form.current);
+        const templateParams = {
+            name: formData.get('name'),
+            email: formData.get('email'),
+            title: formData.get('title'),
+            message: formData.get('message'),
+        };
         
-        emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current)
+        emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams)
             .then(
                 () => {
                     setStatus('success');
@@ -68,9 +74,7 @@ export default function ContactButtons() {
                     }, 2000);
                 },
                 (error) => {
-                    console.error('EmailJS error:', error);
-                    console.error('EmailJS error text:', error?.text);
-                    console.error('EmailJS error status:', error?.status);
+                    console.error('EmailJS error:', error?.text || error);
                     setStatus('error');
                     setLoading(false);
                 }
