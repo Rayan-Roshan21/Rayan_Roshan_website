@@ -7,11 +7,11 @@ const ExperienceTimeline = () => {
   const experiences = [
     {
       date: '2026-05',
-      title: 'Incoming Intern',
-      company: 'Announcement Coming Soon · Toronto, ON',
-      summary: 'Announcement Coming Soon',
-      tags: ['Technology'],
-      accentColor: '#9b5de5'
+      title: 'Technology Consulting Intern | ServiceNow Group',
+      company: 'EY · Toronto, ON',
+      summary: 'Will join a leading professional services firm as a Technology Consulting Intern in the ServiceNow Group.',
+      tags: ['Technology', 'Consulting'],
+      accentColor: '#003781'
     },
     {
       date: '2025-12',
