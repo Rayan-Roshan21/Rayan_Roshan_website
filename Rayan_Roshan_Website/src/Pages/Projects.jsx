@@ -18,6 +18,17 @@ import llmrouter from '@/assets/llm-router.jpg';
 import tmuTechWeek from '@/assets/tmu_tech_week.png';
 
 const projects = [
+    {
+    image: Yapp,
+    alt: 'Yapp social platform',
+    name: 'Yapp',
+    role: 'Co-Founder & Software Engineer',
+    description: 'Real-time social platform for Toronto Metropolitan University students featuring instant messaging, event coordination, and community engagement tools for enhanced campus life connectivity.',
+    links: [
+      { label: 'Get Involved›', href: 'https://www.torontomu.ca/cs/current-undergraduate-students/student-life/', type: 'primary' },
+      { label: 'Website ›', href: 'https://yapp-mu.com', type: 'secondary' },
+    ],
+  },
   {
     image: tmuTechWeek,
     alt: 'TMU Tech Week',
@@ -71,7 +82,7 @@ const projects = [
     description: 'AI system that extracts healthcare information from medical records and automatically completes Prior Authorization forms. Improves accuracy while reducing administrative burden in healthcare workflows.',
     links: [
       { label: 'GitHub ›', href: 'https://github.com/Rayan-Roshan21/mandolin-project', type: 'secondary' },
-      { label: 'Pitch Deck ›', href: 'https://www.canva.com/design/DAGnq21Q--w/lliWqqZTqjbpImYEwg7Neg/view', type: 'secondary' },
+      { label: 'Pitch Deck ›', href: 'https://canva.link/895kypqwnla3vv7', type: 'secondary' },
     ],
   },
   {
@@ -93,16 +104,6 @@ const projects = [
     description: 'Personal finance platform featuring an AI chatbot advisor, gamified rewards center, and comprehensive money management tools to improve financial literacy and user engagement.',
     links: [
       { label: 'GitHub ›', href: 'https://github.com/Rayan-Roshan21/AskCents', type: 'secondary' },
-    ],
-  },
-  {
-    image: Yapp,
-    alt: 'Yapp social platform',
-    name: 'Yapp',
-    role: 'Co-Founder & Software Engineer',
-    description: 'Real-time social platform for Toronto Metropolitan University students featuring instant messaging, event coordination, and community engagement tools for enhanced campus life connectivity.',
-    links: [
-      { label: 'Try it out ›', href: 'https://yapp-mu.com', type: 'primary' },
     ],
   },
   {
