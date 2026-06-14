@@ -6,13 +6,12 @@ import About from './Pages/About';
 import Contacts from './Pages/Contacts';
 import Projects from './Pages/Projects';
 import VoiceAgent from './Components/Voice agent/VoiceAgent';
-import { TransitionProvider } from './Components/PageTransition/PageTransition';
 
 function AnimatedRoutes() {
   const location = useLocation();
 
   return (
-    <AnimatePresence mode="sync">
+    <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -26,10 +25,8 @@ function AnimatedRoutes() {
 export default function App() {
   return (
     <Router>
-      <TransitionProvider>
-        <AnimatedRoutes />
-        <VoiceAgent />
-      </TransitionProvider>
+      <AnimatedRoutes />
+      <VoiceAgent />
       <Analytics />
     </Router>
   );

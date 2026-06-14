@@ -1,63 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { TransitionLink } from '@/Components/PageTransition/PageTransition';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import '@/Pages_CSS/Home.css';
 import Sidebar from '@/Components/Sidebar/Sidebar.jsx';
 import profileImage from '@/assets/profile-image.JPG';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Copyright from '@/Components/Copyright_title/Copyright_title.jsx';
-
-// Count-up animation for stats
-function AnimatedCounter({ value }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-  const [display, setDisplay] = useState('0');
-
-  useEffect(() => {
-    if (!isInView) return;
-    if (value === '∞') { setDisplay('∞'); return; }
-    const numStr = value.replace(/\D/g, '');
-    const suffix = value.replace(/\d/g, '');
-    const target = parseInt(numStr, 10);
-    if (isNaN(target)) { setDisplay(value); return; }
-
-    const duration = 1400;
-    let startTime = null;
-    const step = (ts) => {
-      if (!startTime) startTime = ts;
-      const progress = Math.min((ts - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const current = Math.floor(eased * target);
-      setDisplay(current + (progress >= 1 ? suffix : ''));
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }, [isInView, value]);
-
-  return <span ref={ref}>{display}</span>;
-}
-
-const TECH_PILLS = ['React', 'Python', 'FastAPI', 'TypeScript', 'OpenAI', 'Node.js'];
-
-const FEATURED = [
-  {
-    num: '01',
-    name: 'Yapp',
-    desc: 'Social platform for student communities — built and shipped as co-founder.',
-    to: '/projects',
-  },
-  {
-    num: '02',
-    name: 'AI Voice Agent',
-    desc: 'Real-time customer support with voice, RAG pipeline, and Pinecone retrieval.',
-    to: '/projects',
-  },
-  {
-    num: '03',
-    name: 'Prior Auth Automation',
-    desc: 'Cuts clinical admin time for healthcare providers using document AI.',
-    to: '/projects',
-  },
-];
 
 function Home() {
   const [introText, setIntroText] = useState('');
@@ -66,6 +13,7 @@ function Home() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [texts, setTexts] = useState([]);
 
+  // Set up the messages based on time
   useEffect(() => {
     const baseTexts = [
       "Building AI systems that make an impact.",
@@ -116,11 +64,8 @@ function Home() {
     >
       <Sidebar />
 
-      {/* ── HERO SECTION ── */}
+      {/* ── HERO SECTION — Black ── */}
       <section className="home-hero section-dark">
-        <div className="home-hero__orb home-hero__orb--1" aria-hidden="true" />
-        <div className="home-hero__orb home-hero__orb--2" aria-hidden="true" />
-
         <div className="home-hero__inner">
 
           {/* Left — Text content */}
@@ -134,25 +79,19 @@ function Home() {
               voice agents, and scalable products.
             </p>
 
+            {/* Typewriter */}
             <p className="home-hero__typewriter" aria-live="polite">
               {introText}<span className="home-hero__cursor" aria-hidden="true">|</span>
             </p>
 
-            {/* Tech stack pills */}
-            <div className="home-hero__pills" aria-label="Tech stack">
-              {TECH_PILLS.map((pill) => (
-                <span key={pill} className="home-tech-pill">{pill}</span>
-              ))}
-            </div>
-
             {/* CTAs */}
             <div className="home-hero__ctas">
-              <TransitionLink to="/projects" className="home-cta-pill home-cta-pill--outline" id="hero-cta-projects">
+              <Link to="/projects" className="home-cta-pill home-cta-pill--outline" id="hero-cta-projects">
                 View Projects ›
-              </TransitionLink>
-              <TransitionLink to="/contact" className="home-cta-pill home-cta-pill--blue" id="hero-cta-contact">
+              </Link>
+              <Link to="/contact" className="home-cta-pill home-cta-pill--blue" id="hero-cta-contact">
                 Get in Touch
-              </TransitionLink>
+              </Link>
             </div>
           </div>
 
@@ -165,14 +104,9 @@ function Home() {
             />
           </div>
         </div>
-
-        {/* Scroll indicator */}
-        <div className="home-hero__scroll" aria-hidden="true">
-          <span className="home-hero__scroll-dot" />
-        </div>
       </section>
 
-      {/* ── STATS SECTION ── */}
+      {/* ── STATS SECTION — Light Gray ── */}
       <motion.section
         className="home-stats section-light"
         initial={{ opacity: 0, y: 30 }}
@@ -183,64 +117,29 @@ function Home() {
         <div className="home-stats__inner section-container">
           <div className="home-stats__grid">
             <div className="home-stat__item">
-              <span className="home-stat__number"><AnimatedCounter value="12+" /></span>
+              <span className="home-stat__number">12+</span>
               <span className="home-stat__label">Projects Shipped</span>
             </div>
             <div className="home-stat__divider" aria-hidden="true" />
             <div className="home-stat__item">
-              <span className="home-stat__number"><AnimatedCounter value="3+" /></span>
+              <span className="home-stat__number">3+</span>
               <span className="home-stat__label">Awards Won</span>
             </div>
             <div className="home-stat__divider" aria-hidden="true" />
             <div className="home-stat__item">
-              <span className="home-stat__number"><AnimatedCounter value="2" /></span>
+              <span className="home-stat__number">2</span>
               <span className="home-stat__label">Fellowships</span>
             </div>
             <div className="home-stat__divider" aria-hidden="true" />
             <div className="home-stat__item">
-              <span className="home-stat__number"><AnimatedCounter value="∞" /></span>
+              <span className="home-stat__number">∞</span>
               <span className="home-stat__label">Curiosity</span>
             </div>
           </div>
         </div>
       </motion.section>
 
-      {/* ── FEATURED WORK ── */}
-      <motion.section
-        className="home-featured section-dark"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.15 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-      >
-        <div className="home-featured__inner section-container">
-          <p className="home-featured__label">Selected Work</p>
-          <div className="home-featured__grid">
-            {FEATURED.map((project, i) => (
-              <motion.div
-                key={project.num}
-                className="home-feat-card"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1, ease: 'easeOut' }}
-              >
-                <span className="home-feat-card__num">{project.num}</span>
-                <h3 className="home-feat-card__name">{project.name}</h3>
-                <p className="home-feat-card__desc">{project.desc}</p>
-                <TransitionLink to={project.to} className="home-feat-card__link">View project ›</TransitionLink>
-              </motion.div>
-            ))}
-          </div>
-          <div className="home-featured__footer">
-            <TransitionLink to="/projects" className="home-learn-more" id="home-featured-all">
-              See all projects ›
-            </TransitionLink>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* ── ABOUT TEASER ── */}
+      {/* ── ABOUT TEASER — Black ── */}
       <motion.section
         className="home-about section-dark"
         initial={{ opacity: 0, y: 30 }}
@@ -260,16 +159,17 @@ function Home() {
             My focus: shipping things that work.
           </p>
           <div className="home-about__links">
-            <TransitionLink to="/about" className="home-learn-more" id="home-learn-more-about">
+            <Link to="/about" className="home-learn-more" id="home-learn-more-about">
               Learn more ›
-            </TransitionLink>
-            <TransitionLink to="/projects" className="home-learn-more" id="home-learn-more-projects">
+            </Link>
+            <Link to="/projects" className="home-learn-more" id="home-learn-more-projects">
               See my projects ›
-            </TransitionLink>
+            </Link>
           </div>
         </div>
       </motion.section>
 
+      {/* Footer */}
       <Copyright isVisible={true} dark />
     </motion.div>
   );
