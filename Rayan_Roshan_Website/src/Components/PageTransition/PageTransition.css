@@ -1,0 +1,20 @@
+.pt-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all;
+  will-change: transform;
+}
+
+.pt-label {
+  font-family: var(--font-display, 'Inter', sans-serif);
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.5px;
+  user-select: none;
+}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Sidebar.css';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { TransitionLink } from '@/Components/PageTransition/PageTransition';
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,35 +35,35 @@ const Sidebar = () => {
         <div className="apple-nav__inner">
 
           {/* Logo / Name — left side */}
-          <Link to="/" className="apple-nav__logo" aria-label="Rayan Roshan — Home">
+          <TransitionLink to="/" className="apple-nav__logo" aria-label="Rayan Roshan — Home">
             Rayan Roshan
-          </Link>
+          </TransitionLink>
 
           {/* Desktop Links — right side */}
           <ul className="apple-nav__links" role="list">
             <li>
-              <Link
+              <TransitionLink
                 to="/about"
                 className={`apple-nav__link ${isActive('/about') ? 'apple-nav__link--active' : ''}`}
               >
                 About
-              </Link>
+              </TransitionLink>
             </li>
             <li>
-              <Link
+              <TransitionLink
                 to="/projects"
                 className={`apple-nav__link ${isActive('/projects') ? 'apple-nav__link--active' : ''}`}
               >
                 Projects
-              </Link>
+              </TransitionLink>
             </li>
             <li>
-              <Link
+              <TransitionLink
                 to="/contact"
                 className={`apple-nav__link ${isActive('/contact') ? 'apple-nav__link--active' : ''}`}
               >
                 Contact
-              </Link>
+              </TransitionLink>
             </li>
           </ul>
 
@@ -101,31 +102,31 @@ const Sidebar = () => {
 
         <ul className="apple-mobile-menu__links" role="list">
           <li>
-            <Link
+            <TransitionLink
               to="/about"
               className={`apple-mobile-menu__link ${isActive('/about') ? 'apple-mobile-menu__link--active' : ''}`}
               onClick={() => setIsOpen(false)}
             >
               About
-            </Link>
+            </TransitionLink>
           </li>
           <li>
-            <Link
+            <TransitionLink
               to="/projects"
               className={`apple-mobile-menu__link ${isActive('/projects') ? 'apple-mobile-menu__link--active' : ''}`}
               onClick={() => setIsOpen(false)}
             >
               Projects
-            </Link>
+            </TransitionLink>
           </li>
           <li>
-            <Link
+            <TransitionLink
               to="/contact"
               className={`apple-mobile-menu__link ${isActive('/contact') ? 'apple-mobile-menu__link--active' : ''}`}
               onClick={() => setIsOpen(false)}
             >
               Contact
-            </Link>
+            </TransitionLink>
           </li>
         </ul>
       </div>
