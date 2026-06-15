@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import '@/Pages_CSS/Home.css';
 import Sidebar from '@/Components/Sidebar/Sidebar.jsx';
 import profileImage from '@/assets/profile-image.JPG';
 import { motion } from 'framer-motion';
 import Copyright from '@/Components/Copyright_title/Copyright_title.jsx';
+import TransitionLink from '@/Components/TransitionLink/TransitionLink.jsx';
 
 function Home() {
   const [introText, setIntroText] = useState('');
@@ -86,12 +86,12 @@ function Home() {
 
             {/* CTAs */}
             <div className="home-hero__ctas">
-              <Link to="/projects" className="home-cta-pill home-cta-pill--outline" id="hero-cta-projects">
+              <TransitionLink to="/projects" className="home-cta-pill home-cta-pill--outline" id="hero-cta-projects">
                 View Projects ›
-              </Link>
-              <Link to="/contact" className="home-cta-pill home-cta-pill--blue" id="hero-cta-contact">
+              </TransitionLink>
+              <TransitionLink to="/contact" className="home-cta-pill home-cta-pill--blue" id="hero-cta-contact">
                 Get in Touch
-              </Link>
+              </TransitionLink>
             </div>
           </div>
 
@@ -159,12 +159,12 @@ function Home() {
             My focus: shipping things that work.
           </p>
           <div className="home-about__links">
-            <Link to="/about" className="home-learn-more" id="home-learn-more-about">
+            <TransitionLink to="/about" className="home-learn-more" id="home-learn-more-about">
               Learn more ›
-            </Link>
-            <Link to="/projects" className="home-learn-more" id="home-learn-more-projects">
+            </TransitionLink>
+            <TransitionLink to="/projects" className="home-learn-more" id="home-learn-more-projects">
               See my projects ›
-            </Link>
+            </TransitionLink>
           </div>
         </div>
       </motion.section>

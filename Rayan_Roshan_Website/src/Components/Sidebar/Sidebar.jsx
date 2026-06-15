@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import './Sidebar.css';
 import { Link, useLocation } from 'react-router-dom';
+import { usePageTransition } from '@/context/PageTransitionContext';
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { navigateTo } = usePageTransition();
+
+  const handleNav = (e, path, label) => {
+    e.preventDefault();
+    setIsOpen(false);
+    navigateTo(path, label, location.pathname);
+  };
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -34,7 +42,12 @@ const Sidebar = () => {
         <div className="apple-nav__inner">
 
           {/* Logo / Name — left side */}
-          <Link to="/" className="apple-nav__logo" aria-label="Rayan Roshan — Home">
+          <Link
+            to="/"
+            className="apple-nav__logo"
+            aria-label="Rayan Roshan — Home"
+            onClick={(e) => handleNav(e, '/', 'Home')}
+          >
             Rayan Roshan
           </Link>
 
@@ -44,6 +57,7 @@ const Sidebar = () => {
               <Link
                 to="/about"
                 className={`apple-nav__link ${isActive('/about') ? 'apple-nav__link--active' : ''}`}
+                onClick={(e) => handleNav(e, '/about', 'About')}
               >
                 About
               </Link>
@@ -52,6 +66,7 @@ const Sidebar = () => {
               <Link
                 to="/projects"
                 className={`apple-nav__link ${isActive('/projects') ? 'apple-nav__link--active' : ''}`}
+                onClick={(e) => handleNav(e, '/projects', 'Projects')}
               >
                 Projects
               </Link>
@@ -60,6 +75,7 @@ const Sidebar = () => {
               <Link
                 to="/contact"
                 className={`apple-nav__link ${isActive('/contact') ? 'apple-nav__link--active' : ''}`}
+                onClick={(e) => handleNav(e, '/contact', 'Contact')}
               >
                 Contact
               </Link>
@@ -104,7 +120,7 @@ const Sidebar = () => {
             <Link
               to="/about"
               className={`apple-mobile-menu__link ${isActive('/about') ? 'apple-mobile-menu__link--active' : ''}`}
-              onClick={() => setIsOpen(false)}
+              onClick={(e) => handleNav(e, '/about', 'About')}
             >
               About
             </Link>
@@ -113,7 +129,7 @@ const Sidebar = () => {
             <Link
               to="/projects"
               className={`apple-mobile-menu__link ${isActive('/projects') ? 'apple-mobile-menu__link--active' : ''}`}
-              onClick={() => setIsOpen(false)}
+              onClick={(e) => handleNav(e, '/projects', 'Projects')}
             >
               Projects
             </Link>
@@ -122,7 +138,7 @@ const Sidebar = () => {
             <Link
               to="/contact"
               className={`apple-mobile-menu__link ${isActive('/contact') ? 'apple-mobile-menu__link--active' : ''}`}
-              onClick={() => setIsOpen(false)}
+              onClick={(e) => handleNav(e, '/contact', 'Contact')}
             >
               Contact
             </Link>
