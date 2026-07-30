@@ -117,7 +117,7 @@ function Home() {
         <div className="home-stats__inner section-container">
           <div className="home-stats__grid">
             <div className="home-stat__item">
-              <span className="home-stat__number">12+</span>
+              <span className="home-stat__number">14+</span>
               <span className="home-stat__label">Projects Shipped</span>
             </div>
             <div className="home-stat__divider" aria-hidden="true" />

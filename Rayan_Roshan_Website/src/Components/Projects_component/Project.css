@@ -40,6 +40,11 @@
   transition: transform 0.4s ease;
 }
 
+/* Opt-in backdrop for transparent logos that would vanish on the default light gray */
+.project-image--dark {
+  background-color: #000000;
+}
+
 .project-container:hover .project-image {
   transform: scale(1.03);
 }

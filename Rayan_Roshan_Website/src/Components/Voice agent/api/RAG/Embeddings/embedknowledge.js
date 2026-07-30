@@ -1,9 +1,15 @@
 import 'dotenv/config';
 import fs from "fs";
 import path from "path";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import OpenAI from "openai";
 
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
+// Must match the query embedding model used in rag.js / api/chat.js — mismatched
+// dimensions score NaN in cosine similarity and are silently never retrieved.
+const EMBEDDING_MODEL = "text-embedding-3-small";
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY
+});
 
 const KNOWLEDGE_PATH = path.join(
   process.cwd(),
@@ -27,11 +33,12 @@ async function embedKnowledge() {
     }
 
     try {
-      const result = await genAI.getGenerativeModel({
-        model: "text-embedding-004"
-      }).embedContent(item.text);
-      
-      item.embedding = result.embedding.values;
+      const result = await openai.embeddings.create({
+        model: EMBEDDING_MODEL,
+        input: item.text
+      });
+
+      item.embedding = result.data[0].embedding;
       console.log(`Embedded: ${item.id}`);
     } catch (error) {
       console.error(`Failed embedding ${item.id}:`, error.message);

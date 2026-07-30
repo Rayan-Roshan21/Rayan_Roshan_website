@@ -16,9 +16,34 @@ import univ from '@/assets/univ.png';
 import scotiabank from '@/assets/scotiabank.jpg';
 import llmrouter from '@/assets/llm-router.jpg';
 import tmuTechWeek from '@/assets/tmu_tech_week.png';
+import byteSite from '@/assets/byte_site.png';
+import bchByteWorkshop from '@/assets/bch_byte_workshop.jpeg';
 
 const projects = [
-    {
+  {
+    image: byteSite,
+    alt: 'BYTE TMU AI club website',
+    imageBg: 'dark', // white logo on a transparent PNG — needs a dark backdrop
+    name: 'BYTE TMU AI Club Website',
+    role: 'Software Engineer',
+    description: 'Official site for BYTE, Toronto Metropolitan University\'s student-run open-source AI club. A React and TypeScript single-page app showcasing the team, events, and projects, with a RAG-powered chatbot that answers questions about the club from an internal knowledge base.',
+    links: [
+      { label: 'Visit Website ›', href: 'https://tmubyte.com', type: 'primary' },
+      { label: 'GitHub ›', href: 'https://github.com/BYTE-TMU/BYTE_site', type: 'secondary' },
+    ],
+  },
+  {
+    image: bchByteWorkshop,
+    alt: 'BCH x BYTE workshop curriculum site',
+    name: 'BCH x BYTE: Build a Project from Scratch Using AI',
+    role: 'Web Developer & Curriculum Author',
+    description: 'Self-paced curriculum site for a hands-on workshop that takes students from a vague idea to a live, deployed product with no coding experience required. Five sections covering AI-powered scoping, rapid prototyping, and parallel no-code and code build paths.',
+    links: [
+      { label: 'Start the Curriculum ›', href: 'https://byte-tmu.github.io/BCH-X-BYTE-Workshop/', type: 'primary' },
+      { label: 'GitHub ›', href: 'https://github.com/BYTE-TMU/BCH-X-BYTE-Workshop', type: 'secondary' },
+    ],
+  },
+  {
     image: Yapp,
     alt: 'Yapp social platform',
     name: 'Yapp',
@@ -187,7 +212,12 @@ function Projects() {
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.5, ease: 'easeOut', delay: (idx % 3) * 0.1 }}
               >
-                <img className="project-image" src={project.image} alt={project.alt} loading={idx > 3 ? 'lazy' : 'eager'} />
+                <img
+                  className={`project-image${project.imageBg ? ` project-image--${project.imageBg}` : ''}`}
+                  src={project.image}
+                  alt={project.alt}
+                  loading={idx > 3 ? 'lazy' : 'eager'}
+                />
                 <p className="project_name">{project.name}</p>
                 <p className="project-role">{project.role}</p>
                 <p className="project-description">{project.description}</p>
