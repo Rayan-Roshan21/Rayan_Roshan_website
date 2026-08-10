@@ -30,18 +30,23 @@
   padding: 0 22px;
 }
 
+/* Anchors rather than buttons — see About.jsx. Anchor defaults
+   (underline, inherited inline layout) are reset here. */
 .about-tab {
+  display: inline-flex;
+  align-items: center;
   font-family: var(--font-body);
   font-size: 12px;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
   background: none;
   border: none;
   cursor: pointer;
   padding: 14px 24px;
   letter-spacing: var(--track-micro);
   position: relative;
-  transition: color 0.2s ease;
+  transition: color var(--duration-state) var(--ease-out);
   white-space: nowrap;
 }
 
@@ -244,15 +249,17 @@
 }
 
 .about-section-nav__btn {
+  display: inline-flex;
+  align-items: center;
   font-family: var(--font-body);
   font-size: 14px;
   font-weight: 400;
-  color: #2997ff;
+  color: var(--color-link-blue-dark);
+  text-decoration: none;
   background: none;
   border: none;
   cursor: pointer;
   letter-spacing: var(--track-caption);
-  transition: opacity 0.2s ease;
   min-height: 44px;
   padding: 0 8px;
   text-align: left;
@@ -262,13 +269,17 @@
   text-align: right;
 }
 
-.about-section-nav__btn:disabled {
-  opacity: 0.25;
-  cursor: not-allowed;
+.about-section-nav__btn:hover {
+  text-decoration: underline;
 }
 
-.about-section-nav__btn:not(:disabled):hover {
-  text-decoration: underline;
+/* Holds the end position so the counter stays centred when there
+   is no previous or next section to link to. Replaces the old
+   disabled button, which advertised a control that did nothing. */
+.about-section-nav__spacer {
+  display: block;
+  min-height: 44px;
+  flex: 0 0 1px;
 }
 
 .about-section-nav__counter {

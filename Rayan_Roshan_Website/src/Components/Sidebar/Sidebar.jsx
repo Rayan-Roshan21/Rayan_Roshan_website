@@ -62,7 +62,13 @@ const Sidebar = () => {
     return () => desktop.removeEventListener('change', onChange);
   }, []);
 
-  const isActive = (path) => location.pathname === path;
+  // Prefix match, so "About" stays marked as the current section
+  // while the user is on /about/skills or /about/experience. "/" is
+  // matched exactly, since every path is prefixed by it.
+  const isActive = (path) =>
+    path === '/'
+      ? location.pathname === '/'
+      : location.pathname === path || location.pathname.startsWith(`${path}/`);
 
   /**
    * Release handler for the drawer drag.

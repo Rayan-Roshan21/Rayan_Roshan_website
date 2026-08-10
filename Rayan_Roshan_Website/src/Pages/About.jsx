@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import Sidebar from '@/Components/Sidebar/Sidebar.jsx';
 import { usePageMotion } from '@/context/PageTransitionContext';
 import '@/Pages_CSS/About.css';
@@ -8,57 +9,91 @@ import Image_slideshow from '@/Components/Image_carousel/Image_slideshow.jsx';
 import GridFour from '@/Components/Grid_Four/Grid_Four.jsx';
 import ExperienceTimeline from '@/Components/Experience_Timeline/ExperienceTimeline.jsx';
 
+/* ============================================================
+   ABOUT
+   ------------------------------------------------------------
+   The three sections are routes, not component state.
+
+   As useState they answered none of the wayfinding questions:
+   the URL never changed, so Back left the page entirely instead
+   of stepping between sections, "Experience" could not be linked
+   to or bookmarked, a refresh silently dropped you back on
+   section one, and the tabs could not be opened in a new tab.
+
+   Section one is /about rather than /about/who-i-am so the page
+   has one canonical address instead of two that render the same
+   thing.
+   ============================================================ */
+
+const SECTIONS = [
+  { slug: null, path: '/about', label: 'Who I Am' },
+  { slug: 'skills', path: '/about/skills', label: 'Skills & Tools' },
+  { slug: 'experience', path: '/about/experience', label: 'Experience' },
+];
+
 function About() {
   const pageMotion = usePageMotion();
   const reduced = useReducedMotion();
-  const [currentSection, setCurrentSection] = useState(1);
+  const { section: slug } = useParams();
 
-  const goToSection = (n) => {
-    setCurrentSection(n);
-    // A smooth scroll here is an animation the user has to sit
-    // through before the new section is readable, and it is exactly
-    // the kind of large-surface travel reduced motion asks us to drop.
-    window.scrollTo({ top: 0, behavior: reduced ? 'instant' : 'smooth' });
+  const index = SECTIONS.findIndex((s) => s.slug === (slug ?? null));
+
+  // An unknown slug is a dead end. Send it to the canonical address,
+  // replacing the bad entry so Back does not bounce into it again.
+  if (index === -1) return <Navigate to="/about" replace />;
+
+  const prev = index > 0 ? SECTIONS[index - 1] : null;
+  const next = index < SECTIONS.length - 1 ? SECTIONS[index + 1] : null;
+
+  // Swap motion, shared by all three sections.
+  const swap = {
+    initial: reduced ? { opacity: 0 } : { opacity: 0, y: 16 },
+    animate: { opacity: 1, y: 0 },
+    exit: reduced ? { opacity: 0 } : { opacity: 0, y: -16 },
+    transition: reduced
+      ? { duration: 0.15 }
+      : { type: 'spring', bounce: 0, duration: 0.35 },
   };
 
-  const goNext = () => { if (currentSection < 3) goToSection(currentSection + 1); };
-  const goPrev = () => { if (currentSection > 1) goToSection(currentSection - 1); };
-
-  const sectionLabels = ['Who I Am', 'Skills & Tools', 'Experience'];
+  // Reveal motion for the light half of each section.
+  const reveal = (amount) => ({
+    initial: reduced ? { opacity: 0 } : { opacity: 0, y: 24 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount },
+    transition: reduced
+      ? { duration: 0.2 }
+      : { type: 'spring', bounce: 0, duration: 0.5 },
+  });
 
   return (
     <motion.div {...pageMotion}>
       <Sidebar />
 
-      {/* ── Section Tab Navigation ── */}
-      <div className="about-tab-bar">
-        <div className="about-tab-bar__inner" role="tablist" aria-label="About sections">
-          {sectionLabels.map((label, i) => (
-            <button
-              key={i}
+      {/* ── Section navigation ──────────────────────────────────
+          Links, not buttons: they change the address, so they
+          should support middle-click, cmd-click and "copy link"
+          like every other navigation on the site.
+          ─────────────────────────────────────────────────────── */}
+      <nav className="about-tab-bar" aria-label="About sections">
+        <div className="about-tab-bar__inner">
+          {SECTIONS.map(({ path, label }, i) => (
+            <Link
+              key={path}
+              to={path}
               id={`about-tab-${i + 1}`}
-              className={`about-tab pressable ${currentSection === i + 1 ? 'about-tab--active' : ''}`}
-              type="button"
-              role="tab"
-              onClick={() => goToSection(i + 1)}
-              aria-selected={currentSection === i + 1}
+              className={`about-tab pressable ${i === index ? 'about-tab--active' : ''}`}
+              aria-current={i === index ? 'page' : undefined}
             >
               {label}
-            </button>
+            </Link>
           ))}
         </div>
-      </div>
+      </nav>
 
       <AnimatePresence mode="wait">
         {/* ── SECTION 1: Who Am I ── */}
-        {currentSection === 1 && (
-          <motion.div
-            key="section1"
-            initial={reduced ? { opacity: 0 } : { opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={reduced ? { opacity: 0 } : { opacity: 0, y: -16 }}
-            transition={reduced ? { duration: 0.15 } : { type: 'spring', bounce: 0, duration: 0.35 }}
-          >
+        {index === 0 && (
+          <motion.div key="who" {...swap}>
             {/* Dark hero */}
             <section className="about-section section-dark about-who-hero">
               <div className="about-who-hero__inner">
@@ -84,10 +119,7 @@ function About() {
             {/* Light section — quick facts */}
             <motion.section
               className="about-section section-light about-facts"
-              initial={reduced ? { opacity: 0 } : { opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={reduced ? { duration: 0.2 } : { type: 'spring', bounce: 0, duration: 0.5 }}
+              {...reveal(0.2)}
             >
               <div className="about-facts__inner section-container-wide">
                 <p className="about-eyebrow about-eyebrow--dark">Quick Facts</p>
@@ -112,18 +144,12 @@ function About() {
         )}
 
         {/* ── SECTION 2: Skills ── */}
-        {currentSection === 2 && (
-          <motion.div
-            key="section2"
-            initial={reduced ? { opacity: 0 } : { opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={reduced ? { opacity: 0 } : { opacity: 0, y: -16 }}
-            transition={reduced ? { duration: 0.15 } : { type: 'spring', bounce: 0, duration: 0.35 }}
-          >
+        {index === 1 && (
+          <motion.div key="skills" {...swap}>
             {/* Dark hero intro */}
             <section className="about-section section-dark about-skills-hero">
               <div className="about-skills-hero__inner section-container">
-                <p className="about-eyebrow">Skills & Tools</p>
+                <p className="about-eyebrow">Skills &amp; Tools</p>
                 <h1 className="about-hero__heading">
                   The stack I build with.
                 </h1>
@@ -137,10 +163,7 @@ function About() {
             {/* Light section — Grid */}
             <motion.section
               className="about-section section-light about-skills-grid"
-              initial={reduced ? { opacity: 0 } : { opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
-              transition={reduced ? { duration: 0.2 } : { type: 'spring', bounce: 0, duration: 0.5 }}
+              {...reveal(0.15)}
             >
               <div className="about-skills-grid__inner section-container-wide">
                 <GridFour />
@@ -150,14 +173,8 @@ function About() {
         )}
 
         {/* ── SECTION 3: Experience ── */}
-        {currentSection === 3 && (
-          <motion.div
-            key="section3"
-            initial={reduced ? { opacity: 0 } : { opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={reduced ? { opacity: 0 } : { opacity: 0, y: -16 }}
-            transition={reduced ? { duration: 0.15 } : { type: 'spring', bounce: 0, duration: 0.35 }}
-          >
+        {index === 2 && (
+          <motion.div key="experience" {...swap}>
             {/* Dark hero intro */}
             <section className="about-section section-dark about-exp-hero">
               <div className="about-exp-hero__inner section-container">
@@ -174,10 +191,7 @@ function About() {
             {/* Light section — Timeline */}
             <motion.section
               className="about-section section-light about-timeline"
-              initial={reduced ? { opacity: 0 } : { opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
-              transition={reduced ? { duration: 0.2 } : { type: 'spring', bounce: 0, duration: 0.5 }}
+              {...reveal(0.15)}
             >
               <div className="about-timeline__inner section-container-wide">
                 <ExperienceTimeline />
@@ -187,34 +201,45 @@ function About() {
         )}
       </AnimatePresence>
 
-      {/* Section nav arrows */}
+      {/* Previous / next. Rendered as links where a destination
+          exists and as an inert spacer where it does not — a
+          disabled link is not a real thing, and an anchor with no
+          href is invisible to keyboard users anyway. */}
       <div className="about-section-nav">
         <div className="about-section-nav__inner">
-          <button
-            id="about-prev-btn"
-            className="about-section-nav__btn pressable"
-            onClick={goPrev}
-            disabled={currentSection === 1}
-            aria-label="Previous section"
-          >
-            ← {currentSection > 1 ? sectionLabels[currentSection - 2] : ''}
-          </button>
+          {prev ? (
+            <Link
+              id="about-prev-btn"
+              to={prev.path}
+              className="about-section-nav__btn pressable"
+              rel="prev"
+            >
+              ← {prev.label}
+            </Link>
+          ) : (
+            <span className="about-section-nav__spacer" aria-hidden="true" />
+          )}
+
           <span className="about-section-nav__counter">
-            {currentSection} / 3
+            {index + 1} / {SECTIONS.length}
           </span>
-          <button
-            id="about-next-btn"
-            className="about-section-nav__btn about-section-nav__btn--right pressable"
-            onClick={goNext}
-            disabled={currentSection === 3}
-            aria-label="Next section"
-          >
-            {currentSection < 3 ? sectionLabels[currentSection] : ''} →
-          </button>
+
+          {next ? (
+            <Link
+              id="about-next-btn"
+              to={next.path}
+              className="about-section-nav__btn about-section-nav__btn--right pressable"
+              rel="next"
+            >
+              {next.label} →
+            </Link>
+          ) : (
+            <span className="about-section-nav__spacer" aria-hidden="true" />
+          )}
         </div>
       </div>
 
-      <Copyright isVisible={true} dark={currentSection !== 2} />
+      <Copyright isVisible={true} dark={index !== 1} />
     </motion.div>
   );
 }
