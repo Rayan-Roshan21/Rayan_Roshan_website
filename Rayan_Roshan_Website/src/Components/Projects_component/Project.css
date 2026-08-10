@@ -19,14 +19,20 @@
   flex-direction: column;
   width: calc(50% - 10px);
   box-sizing: border-box;
-  box-shadow: rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
   overflow: hidden;
+  /* Shadow was `3px 5px 30px` — offset sideways, implying a light
+     source off to the left that nothing else on the page shared.
+     Now overhead and symmetric, like every other surface. */
+  box-shadow: var(--shadow-card);
+  transition:
+    transform 0.3s var(--ease-out),
+    box-shadow 0.3s var(--ease-out);
 }
 
 .project-container:hover {
-  transform: translateY(-6px);
-  box-shadow: rgba(0, 0, 0, 0.3) 3px 12px 40px 0px;
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-raised);
 }
 
 /* ── Image ── */
@@ -59,32 +65,32 @@
 
 /* Since we're not using project-content-inner wrapper in JSX, apply padding to text elements */
 .project_name {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 1.19rem;
   font-weight: 700;
   color: #1d1d1f;
   line-height: 1.19;
-  letter-spacing: 0.231px;
+  letter-spacing: var(--track-subhead);
   margin: 20px 24px 0;
 }
 
 .project-role {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 11px;
   font-weight: 600;
   color: rgba(0, 0, 0, 0.48);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: var(--track-caps);
   margin: 8px 24px 0;
 }
 
 .project-description {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 0.94rem;
   font-weight: 400;
   color: rgba(0, 0, 0, 0.7);
   line-height: 1.5;
-  letter-spacing: -0.224px;
+  letter-spacing: var(--track-caption);
   margin: 12px 24px 0;
   flex-grow: 1;
 }
@@ -101,15 +107,15 @@
 
 /* Apple link styles */
 .project-link {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 13px;
   font-weight: 400;
   text-decoration: none;
   padding: 8px 16px;
   border-radius: 980px;
-  transition: all 0.2s ease;
+  transition: background 0.2s var(--ease-out), border-color 0.2s var(--ease-out), color 0.2s var(--ease-out);
   white-space: nowrap;
-  letter-spacing: -0.224px;
+  letter-spacing: var(--track-micro);
   min-height: 36px;
   display: inline-flex;
   align-items: center;

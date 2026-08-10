@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { spring } from '@/lib/motion';
 import './VoiceAgent.css';
 
 export default function VoiceAgent() {
+  const reduced = useReducedMotion();
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
@@ -13,10 +15,8 @@ export default function VoiceAgent() {
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
-    if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [messages]);
+    messagesEndRef.current?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+  }, [messages, reduced]);
 
   useEffect(() => {
     function onKey(e) {
@@ -141,10 +141,15 @@ export default function VoiceAgent() {
             role="dialog"
             aria-modal="false"
             aria-label="Chat assistant"
-            initial={{ opacity: 0, y: 12, scale: 0.98 }}
+            /* Anchored to the button that opened it: the panel grows
+               out of the FAB in the corner rather than out of its own
+               centre, so the relationship between control and surface
+               is obvious. */
+            style={{ transformOrigin: '100% 100%' }}
+            initial={reduced ? { opacity: 0 } : { opacity: 0, y: 8, scale: 0.94 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 12, scale: 0.98 }}
-            transition={{ type: 'spring', stiffness: 420, damping: 28 }}
+            exit={reduced ? { opacity: 0 } : { opacity: 0, y: 8, scale: 0.94 }}
+            transition={reduced ? { duration: 0.15, ease: 'easeOut' } : spring.snap}
           >
             <div className="va-header">
               <div className="va-title">Chat Assistant</div>

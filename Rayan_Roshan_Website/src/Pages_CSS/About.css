@@ -2,14 +2,21 @@
    ABOUT PAGE — Apple Design
    ============================================================ */
 
-/* ── TAB BAR ── */
+/* ── TAB BAR ─────────────────────────────────────────────────
+   Sits directly beneath the translucent nav. Two blurred
+   translucent surfaces stacked on top of each other muddy each
+   other and legibility collapses — and the second backdrop-filter
+   costs a full-width composite for no visual gain, because the
+   only thing behind it at the top of the page is the nav.
+
+   So this layer is solid. The nav stays the glass; the tab bar is
+   the structural region under it.
+   ─────────────────────────────────────────────────────────── */
 .about-tab-bar {
   position: sticky;
-  top: 48px; /* below the nav */
+  top: var(--nav-height);
   z-index: 100;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  background: var(--color-black);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -24,7 +31,7 @@
 }
 
 .about-tab {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 12px;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.6);
@@ -32,7 +39,7 @@
   border: none;
   cursor: pointer;
   padding: 14px 24px;
-  letter-spacing: -0.12px;
+  letter-spacing: var(--track-micro);
   position: relative;
   transition: color 0.2s ease;
   white-space: nowrap;
@@ -64,10 +71,10 @@
 
 /* ── EYEBROW ── */
 .about-eyebrow {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 12px;
   font-weight: 600;
-  letter-spacing: 1.5px;
+  letter-spacing: var(--track-caps);
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.48);
   margin-bottom: 20px;
@@ -79,22 +86,22 @@
 
 /* ── HERO HEADING (shared across sections) ── */
 .about-hero__heading {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(2.2rem, 5vw, 3.5rem);
   font-weight: 600;
   color: #ffffff;
   line-height: 1.07;
-  letter-spacing: -0.28px;
+  letter-spacing: var(--track-display);
   margin-bottom: 28px;
 }
 
 .about-hero__body {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(1rem, 1.8vw, 1.19rem);
   font-weight: 400;
   color: rgba(255, 255, 255, 0.75);
   line-height: 1.47;
-  letter-spacing: -0.374px;
+  letter-spacing: var(--track-subhead);
   max-width: 600px;
 }
 
@@ -160,20 +167,20 @@
 }
 
 .about-fact__label {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: 1px;
+  letter-spacing: var(--track-caps);
   text-transform: uppercase;
   color: rgba(0, 0, 0, 0.48);
 }
 
 .about-fact__value {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 1.06rem;
   font-weight: 400;
   color: #1d1d1f;
-  letter-spacing: -0.224px;
+  letter-spacing: var(--track-body);
   line-height: 1.4;
 }
 
@@ -237,14 +244,14 @@
 }
 
 .about-section-nav__btn {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 14px;
   font-weight: 400;
   color: #2997ff;
   background: none;
   border: none;
   cursor: pointer;
-  letter-spacing: -0.224px;
+  letter-spacing: var(--track-caption);
   transition: opacity 0.2s ease;
   min-height: 44px;
   padding: 0 8px;
@@ -265,11 +272,11 @@
 }
 
 .about-section-nav__counter {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 12px;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.48);
-  letter-spacing: -0.12px;
+  letter-spacing: var(--track-micro);
 }
 
 /* ============================================================

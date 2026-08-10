@@ -21,10 +21,10 @@
 }
 
 .copyright-text {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 12px;
   font-weight: 400;
-  letter-spacing: -0.12px;
+  letter-spacing: var(--track-micro);
   text-align: center;
   margin: 0;
 }

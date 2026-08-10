@@ -1,27 +1,15 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import Sidebar from '@/Components/Sidebar/Sidebar.jsx';
+import Img from '@/Components/Img/Img.jsx';
+import { usePageMotion } from '@/context/PageTransitionContext';
 import Copyright_title from '@/Components/Copyright_title/Copyright_title.jsx';
 import '@/Pages_CSS/Projects.css';
 import '@/Components/Projects_component/Project.css';
-import PropertyImage from '@/assets/property-image.jpg';
-import multimodalImage from '@/assets/multimodal video analysis.png';
-import torontoImage from '@/assets/toronto-photo.jpg';
-import medicalFormImage from '@/assets/medical_form.jpg';
-import AICustomerImage from '@/assets/aiagentimage.jpg';
-import Askcents from '@/assets/askcents.png';
-import Yapp from '@/assets/yapp.png';
-import art_museum from '@/assets/art_meseum.jpg';
-import univ from '@/assets/univ.png';
-import scotiabank from '@/assets/scotiabank.jpg';
-import llmrouter from '@/assets/llm-router.jpg';
-import tmuTechWeek from '@/assets/tmu_tech_week.png';
-import byteSite from '@/assets/byte_site.png';
-import bchByteWorkshop from '@/assets/bch_byte_workshop.jpeg';
 
 const projects = [
   {
-    image: byteSite,
+    image: 'byte_site',
     alt: 'BYTE TMU AI club website',
     imageBg: 'dark', // white logo on a transparent PNG — needs a dark backdrop
     name: 'BYTE TMU AI Club Website',
@@ -33,7 +21,7 @@ const projects = [
     ],
   },
   {
-    image: bchByteWorkshop,
+    image: 'bch_byte_workshop',
     alt: 'BCH x BYTE workshop curriculum site',
     name: 'BCH x BYTE: Build a Project from Scratch Using AI',
     role: 'Web Developer & Curriculum Author',
@@ -44,7 +32,7 @@ const projects = [
     ],
   },
   {
-    image: Yapp,
+    image: 'yapp',
     alt: 'Yapp social platform',
     name: 'Yapp',
     role: 'Co-Founder & Software Engineer',
@@ -55,7 +43,7 @@ const projects = [
     ],
   },
   {
-    image: tmuTechWeek,
+    image: 'tmu_tech_week',
     alt: 'TMU Tech Week',
     name: 'TMU Tech Week',
     role: 'Web Developer & Project Lead',
@@ -66,7 +54,7 @@ const projects = [
     ],
   },
   {
-    image: AICustomerImage,
+    image: 'aiagentimage',
     alt: 'AI Customer Support Agent',
     name: 'AI Customer Support Agent',
     role: 'Software Engineer',
@@ -77,7 +65,7 @@ const projects = [
     ],
   },
   {
-    image: PropertyImage,
+    image: 'property-image',
     alt: 'Property Recommendation Software',
     name: 'Property Recommendation Software',
     role: 'Software Engineer',
@@ -89,7 +77,7 @@ const projects = [
     ],
   },
   {
-    image: multimodalImage,
+    image: 'multimodal video analysis',
     alt: 'Multimodal Video Analysis',
     name: 'Multimodal Video Analysis',
     role: 'Software Engineer / Project Manager',
@@ -100,7 +88,7 @@ const projects = [
     ],
   },
   {
-    image: medicalFormImage,
+    image: 'medical_form',
     alt: 'Prior Authorization Automation',
     name: 'Prior Authorization Form Automation',
     role: 'Software Engineer',
@@ -111,7 +99,7 @@ const projects = [
     ],
   },
   {
-    image: torontoImage,
+    image: 'toronto-photo',
     alt: 'Immigrant Families Research',
     name: 'Immigrant Families & Child Care Inequality in the GTA',
     role: 'Student Researcher',
@@ -122,7 +110,7 @@ const projects = [
     ],
   },
   {
-    image: Askcents,
+    image: 'askcents',
     alt: 'AskCents',
     name: 'AskCents',
     role: 'Founder & Software Engineer',
@@ -132,7 +120,7 @@ const projects = [
     ],
   },
   {
-    image: art_museum,
+    image: 'art_meseum',
     alt: 'Image Style Transfer App',
     name: 'Image Style Transfer App',
     role: 'Software Engineer',
@@ -144,7 +132,7 @@ const projects = [
     ],
   },
   {
-    image: univ,
+    image: 'univ',
     alt: 'Univ app',
     name: 'Univ',
     role: 'Founder & Software Engineer',
@@ -154,7 +142,7 @@ const projects = [
     ],
   },
   {
-    image: scotiabank,
+    image: 'scotiabank',
     alt: 'Scotia Redlight hackathon project',
     name: 'Scotia Redlight — Think Before You Spend',
     role: 'Participant at S:\\HACKS 2025 · 3rd Place Winner',
@@ -165,7 +153,7 @@ const projects = [
     ],
   },
   {
-    image: llmrouter,
+    image: 'llm-router',
     alt: 'LLM Router',
     name: 'An LLM Router',
     role: 'Software Engineer',
@@ -179,13 +167,11 @@ const projects = [
 ];
 
 function Projects() {
+  const pageMotion = usePageMotion();
+  const reduced = useReducedMotion();
+
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-    >
+    <motion.div {...pageMotion}>
       <Sidebar />
 
       {/* ── HERO ── */}
@@ -206,17 +192,23 @@ function Projects() {
             {projects.map((project, idx) => (
               <motion.div
                 key={idx}
-                className="project-container"
-                initial={{ opacity: 0, y: 30 }}
+                className="project-container pressable pressable--subtle"
+                initial={reduced ? { opacity: 0 } : { opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
-                transition={{ duration: 0.5, ease: 'easeOut', delay: (idx % 3) * 0.1 }}
+                transition={
+                  reduced
+                    ? { duration: 0.2, ease: 'easeOut' }
+                    : { type: 'spring', bounce: 0, duration: 0.5, delay: (idx % 3) * 0.06 }
+                }
               >
-                <img
+                <Img
                   className={`project-image${project.imageBg ? ` project-image--${project.imageBg}` : ''}`}
-                  src={project.image}
+                  name={project.image}
                   alt={project.alt}
                   loading={idx > 3 ? 'lazy' : 'eager'}
+                  fetchPriority={idx < 2 ? 'high' : undefined}
+                  sizes="(max-width: 900px) 100vw, 560px"
                 />
                 <p className="project_name">{project.name}</p>
                 <p className="project-role">{project.role}</p>

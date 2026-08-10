@@ -19,23 +19,24 @@
   border: 1.5px solid transparent;
   border-radius: 12px;
   cursor: pointer;
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 1.06rem;
   font-weight: 400;
-  color: #1d1d1f;
-  letter-spacing: -0.374px;
-  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  color: var(--color-text-dark);
+  letter-spacing: var(--track-body);
+  /* transform is left to .pressable so hover lift and press dip do
+     not overwrite one another */
+  transition: background var(--duration-state) var(--ease-out),
+              border-color var(--duration-state) var(--ease-out);
   text-align: left;
   min-height: 64px;
 }
 
 .contact-btn:hover {
   background: #ebebed;
-  transform: translateY(-2px);
 }
 
 .contact-btn:active {
-  transform: translateY(0);
   background: #e0e0e2;
 }
 
@@ -87,7 +88,7 @@
 .btn-text {
   font-size: 1.06rem;
   font-weight: 500;
-  letter-spacing: -0.374px;
+  letter-spacing: var(--track-body);
 }
 
 /* ============================================================
@@ -98,32 +99,21 @@
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   z-index: 10000;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 22px;
-  animation: modalOverlayIn 0.25s ease;
-}
-
-.modal-overlay.closing {
-  animation: modalOverlayOut 0.3s ease forwards;
-}
-
-@keyframes modalOverlayIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes modalOverlayOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  /* Opacity and blur are animated together by the spring in
+     Modal.jsx so the scrim materialises rather than fading. */
 }
 
 /* ============================================================
    MODAL CONTAINER
+
+   Geometry and material only — enter, exit and drag are owned by
+   the springs in Modal.jsx. Keyframes here would be uninterruptible
+   and would fight the drag for control of `transform`.
    ============================================================ */
 
 .modal-container {
@@ -133,44 +123,49 @@
   max-width: 680px;
   max-height: 90vh;
   overflow-y: auto;
-  animation: modalIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  box-shadow: rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
+  box-shadow: var(--shadow-sheet);
+  will-change: transform;
 }
 
-/* Wider container for Calendly */
 .modal-container.calendly-modal {
   max-width: 900px;
   max-height: 92vh;
 }
 
-.modal-container.closing {
-  animation: modalOut 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-@keyframes modalIn {
-  from { opacity: 0; transform: scale(0.96) translateY(12px); }
-  to { opacity: 1; transform: scale(1) translateY(0); }
-}
-
-@keyframes modalOut {
-  from { opacity: 1; transform: scale(1) translateY(0); }
-  to { opacity: 0; transform: scale(0.96) translateY(12px); }
-}
-
 .modal-header {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 24px 28px 20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  cursor: grab;
+  touch-action: pan-x;
+}
+
+.modal-header:active {
+  cursor: grabbing;
+}
+
+/* Affordance for drag-to-dismiss. Shown where the gesture starts. */
+.modal-grabber {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 36px;
+  height: 4px;
+  margin-left: -18px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.14);
 }
 
 .modal-title {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.19rem;
   font-weight: 600;
-  color: #1d1d1f;
-  letter-spacing: 0.231px;
+  color: var(--color-text-dark);
+  letter-spacing: var(--track-subhead);
+  line-height: var(--leading-title);
   margin: 0;
 }
 
@@ -223,17 +218,17 @@
 }
 
 .form-group label {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 12px;
   font-weight: 600;
   color: rgba(0, 0, 0, 0.6);
-  letter-spacing: 0.5px;
+  letter-spacing: var(--track-caps);
   text-transform: uppercase;
 }
 
 .form-group input,
 .form-group textarea {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 1.06rem;
   font-weight: 400;
   color: #1d1d1f;
@@ -244,7 +239,7 @@
   outline: none;
   transition: box-shadow 0.2s ease, background 0.2s ease;
   width: 100%;
-  letter-spacing: -0.374px;
+  letter-spacing: var(--track-body);
   resize: vertical;
 }
 
@@ -265,13 +260,13 @@
   border: none;
   border-radius: 980px;
   padding: 14px 28px;
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 1.06rem;
   font-weight: 400;
   cursor: pointer;
   transition: background 0.2s ease;
   min-height: 48px;
-  letter-spacing: -0.374px;
+  letter-spacing: var(--track-body);
   align-self: flex-start;
 }
 
@@ -285,12 +280,12 @@
 }
 
 .form-status {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 14px;
   font-weight: 400;
   padding: 12px 16px;
   border-radius: 8px;
-  letter-spacing: -0.224px;
+  letter-spacing: var(--track-caption);
 }
 
 .form-status.success {

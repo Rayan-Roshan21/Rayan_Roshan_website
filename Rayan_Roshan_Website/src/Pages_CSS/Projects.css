@@ -13,32 +13,32 @@
 }
 
 .projects-hero__eyebrow {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 12px;
   font-weight: 600;
-  letter-spacing: 1.5px;
+  letter-spacing: var(--track-caps);
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.48);
   margin-bottom: 16px;
 }
 
 .projects-hero__heading {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 600;
   color: #ffffff;
   line-height: 1.07;
-  letter-spacing: -0.28px;
+  letter-spacing: var(--track-display);
   margin-bottom: 20px;
 }
 
 .projects-hero__sub {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 1.19rem;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.65);
   line-height: 1.47;
-  letter-spacing: -0.374px;
+  letter-spacing: var(--track-subhead);
   max-width: 500px;
 }
 

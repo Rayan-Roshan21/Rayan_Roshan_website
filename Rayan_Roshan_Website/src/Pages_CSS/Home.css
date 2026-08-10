@@ -30,43 +30,43 @@
 }
 
 .home-hero__eyebrow {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 12px;
   font-weight: 600;
-  letter-spacing: 1.5px;
+  letter-spacing: var(--track-caps);
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.5);
   margin-bottom: 20px;
 }
 
 .home-hero__name {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 600;
   color: #ffffff;
   line-height: 1.07;
-  letter-spacing: -0.28px;
+  letter-spacing: var(--track-display);
   margin-bottom: 24px;
 }
 
 .home-hero__subtitle {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(1rem, 2vw, 1.31rem);
   font-weight: 400;
   color: rgba(255, 255, 255, 0.75);
   line-height: 1.47;
-  letter-spacing: -0.224px;
+  letter-spacing: var(--track-title);
   margin-bottom: 28px;
 }
 
 /* Typewriter */
 .home-hero__typewriter {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(0.85rem, 1.5vw, 1.06rem);
   font-weight: 400;
   color: rgba(255, 255, 255, 0.55);
   line-height: 1.47;
-  letter-spacing: -0.374px;
+  letter-spacing: var(--track-body);
   min-height: 1.6em;
   margin-bottom: 44px;
 }
@@ -97,13 +97,13 @@
   justify-content: center;
   padding: 10px 24px;
   border-radius: 980px;
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 1.06rem;
   font-weight: 400;
-  letter-spacing: -0.374px;
+  letter-spacing: var(--track-body);
   text-decoration: none;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background 0.2s var(--ease-out), border-color 0.2s var(--ease-out);
   min-height: 44px;
   white-space: nowrap;
 }
@@ -144,7 +144,7 @@
   display: block;
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.08),
-    rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
+    var(--shadow-card-raised);
 }
 
 /* ── STATS SECTION ── */
@@ -175,21 +175,21 @@
 }
 
 .home-stat__number {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 600;
   color: #1d1d1f;
   line-height: 1.07;
-  letter-spacing: -0.28px;
+  letter-spacing: var(--track-display);
 }
 
 .home-stat__label {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 12px;
   font-weight: 400;
   color: rgba(0, 0, 0, 0.48);
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: var(--track-caps);
 }
 
 .home-stat__divider {
@@ -211,32 +211,32 @@
 }
 
 .home-about__label {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 12px;
   font-weight: 600;
-  letter-spacing: 1.5px;
+  letter-spacing: var(--track-caps);
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.48);
   margin-bottom: 20px;
 }
 
 .home-about__heading {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(2rem, 4.5vw, 3rem);
   font-weight: 600;
   color: #ffffff;
   line-height: 1.10;
-  letter-spacing: -0.28px;
+  letter-spacing: var(--track-display);
   margin-bottom: 24px;
 }
 
 .home-about__body {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 1.06rem;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.75);
   line-height: 1.47;
-  letter-spacing: -0.374px;
+  letter-spacing: var(--track-body);
   margin-bottom: 36px;
   max-width: 580px;
 }
@@ -249,12 +249,12 @@
 }
 
 .home-learn-more {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 1.06rem;
   font-weight: 400;
   color: #2997ff;
   text-decoration: none;
-  letter-spacing: -0.224px;
+  letter-spacing: var(--track-body);
   transition: text-decoration 0.2s ease;
 }
 

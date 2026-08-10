@@ -1,11 +1,38 @@
 /* ============================================================
-   APPLE DESIGN SYSTEM — Global CSS Variables & Resets
+   DESIGN SYSTEM — Global tokens, type scale, resets
    ============================================================ */
 
 :root {
   /* ── Typography ── */
-  --font-display: 'Inter', 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-body: 'Inter', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-display: 'Inter', system-ui, -apple-system, 'SF Pro Display', 'Helvetica Neue', sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+
+  /* ── Tracking scale ──────────────────────────────────────
+     Tracking is size-specific: there is no single correct
+     letter-spacing. Large text reads too loose as it grows and
+     wants negative tracking; small text wants a touch of
+     positive tracking to stay legible; body sits near zero.
+
+     Expressed in em so the value scales with clamp()-driven
+     font sizes instead of vanishing at the top of the range.
+     ─────────────────────────────────────────────────────── */
+  --track-display: -0.025em;   /* 40px+  */
+  --track-heading: -0.021em;   /* 28-40  */
+  --track-tile: -0.017em;      /* 24-28  */
+  --track-title: -0.014em;     /* 20-21  */
+  --track-subhead: -0.011em;   /* 19     */
+  --track-body: -0.004em;      /* 17 — effectively neutral */
+  --track-caption: 0em;        /* 14     */
+  --track-micro: 0.006em;      /* 12 — slightly open */
+  --track-caps: 0.08em;        /* all-caps always needs air */
+
+  /* ── Leading scale — tracks size inversely ── */
+  --leading-display: 1.05;
+  --leading-heading: 1.08;
+  --leading-tile: 1.15;
+  --leading-title: 1.2;
+  --leading-body: 1.47;
+  --leading-caption: 1.43;
 
   /* ── Colors: Backgrounds ── */
   --color-black: #000000;
@@ -31,13 +58,21 @@
   --color-dark-surface-2: #262628;
   --color-dark-surface-3: #28282a;
 
-  /* ── Shadows ── */
-  --shadow-card: rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
+  /* ── Shadows ─────────────────────────────────────────────
+     Bigger surfaces read as thicker: more blur, more depth.
+     Symmetric on x so the implied light source is overhead
+     rather than off to one side.
+     ─────────────────────────────────────────────────────── */
+  --shadow-chip: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.10);
+  --shadow-card-raised: 0 4px 12px rgba(0, 0, 0, 0.08), 0 16px 40px rgba(0, 0, 0, 0.16);
+  --shadow-sheet: 0 8px 24px rgba(0, 0, 0, 0.12), 0 32px 80px rgba(0, 0, 0, 0.24);
 
-  /* ── Navigation ── */
+  /* ── Navigation / materials ── */
   --nav-height: 48px;
-  --nav-bg: rgba(0, 0, 0, 0.8);
+  --nav-bg: rgba(0, 0, 0, 0.72);
   --nav-blur: saturate(180%) blur(20px);
+  --sheet-blur: saturate(180%) blur(30px);
 
   /* ── Border Radius ── */
   --radius-micro: 5px;
@@ -47,18 +82,32 @@
   --radius-pill: 980px;
   --radius-circle: 50%;
 
-  /* ── Spacing (8px base unit) ── */
-  --space-xs: 4px;
-  --space-sm: 8px;
-  --space-md: 16px;
-  --space-lg: 24px;
-  --space-xl: 48px;
-  --space-2xl: 80px;
-  --space-3xl: 120px;
+  /* ── Spacing ─────────────────────────────────────────────
+     In rem, not px, so the layout grows with the user's text
+     size setting instead of cramping around larger type.
+     ─────────────────────────────────────────────────────── */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 3rem;
+  --space-2xl: 5rem;
+  --space-3xl: 7.5rem;
 
   /* ── Container ── */
   --container-max: 980px;
   --container-wide: 1200px;
+
+  /* ── Motion ──────────────────────────────────────────────
+     CSS transitions cannot be grabbed and reversed mid-flight,
+     so they are used only for discrete state changes (hover,
+     press, color). Anything a gesture can touch uses a spring
+     in JS — see src/lib/motion.js.
+     ─────────────────────────────────────────────────────── */
+  --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-in: cubic-bezier(0.55, 0.09, 0.68, 0.53);   /* mirror of --ease-out */
+  --duration-press: 100ms;
+  --duration-state: 200ms;
 }
 
 /* ============================================================
@@ -85,184 +134,100 @@ body {
   width: 100%;
 }
 
+/* <picture> is a wrapper for source selection, not a layout box.
+   Taking it out of the layout tree keeps the <img> as the direct
+   child its container's flex/grid rules were written for, and
+   avoids the inline baseline gap under the image. */
+picture {
+  display: contents;
+}
+
 body {
   font-family: var(--font-body);
+  font-optical-sizing: auto;
   background-color: var(--color-black);
   color: var(--color-text-light);
   min-height: 100vh;
   position: relative;
-  /* No textures, no patterns, no gradients — Apple philosophy */
-  background-image: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 /* ============================================================
-   Apple Typography Utilities
+   Typography utilities
+
+   Hierarchy is built from weight + size + leading + tracking as
+   a set, not from size alone.
    ============================================================ */
 
-/* Display Hero — 56px */
 .text-hero {
   font-family: var(--font-display);
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 600;
-  line-height: 1.07;
-  letter-spacing: -0.28px;
+  line-height: var(--leading-display);
+  letter-spacing: var(--track-display);
 }
 
-/* Section Heading — 40px */
 .text-section-heading {
   font-family: var(--font-display);
   font-size: clamp(1.75rem, 3.5vw, 2.5rem);
   font-weight: 600;
-  line-height: 1.10;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--track-heading);
 }
 
-/* Tile Heading — 28px */
 .text-tile-heading {
   font-family: var(--font-display);
   font-size: 1.75rem;
-  font-weight: 400;
-  line-height: 1.14;
-  letter-spacing: 0.196px;
+  font-weight: 500;
+  line-height: var(--leading-tile);
+  letter-spacing: var(--track-tile);
 }
 
-/* Card Title — 21px bold */
 .text-card-title {
   font-family: var(--font-display);
   font-size: 1.31rem;
-  font-weight: 700;
-  line-height: 1.19;
-  letter-spacing: 0.231px;
+  font-weight: 600;
+  line-height: var(--leading-title);
+  letter-spacing: var(--track-title);
 }
 
-/* Body — 17px */
 .text-body {
   font-family: var(--font-body);
   font-size: 1.06rem;
   font-weight: 400;
-  line-height: 1.47;
-  letter-spacing: -0.374px;
+  line-height: var(--leading-body);
+  letter-spacing: var(--track-body);
 }
 
-/* Caption — 14px */
 .text-caption {
   font-family: var(--font-body);
   font-size: 0.875rem;
   font-weight: 400;
-  line-height: 1.43;
-  letter-spacing: -0.224px;
+  line-height: var(--leading-caption);
+  letter-spacing: var(--track-caption);
 }
 
-/* Micro — 12px */
 .text-micro {
   font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 400;
   line-height: 1.33;
-  letter-spacing: -0.12px;
+  letter-spacing: var(--track-micro);
+}
+
+/* Eyebrow — small all-caps label above a heading */
+.text-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.33;
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
 }
 
 /* ============================================================
-   Apple Button Utilities
-   ============================================================ */
-
-/* Primary CTA — Apple Blue */
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-apple-blue);
-  color: var(--color-white);
-  padding: 8px 20px;
-  border-radius: var(--radius-standard);
-  border: 1px solid transparent;
-  font-family: var(--font-body);
-  font-size: 1.06rem;
-  font-weight: 400;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background-color 0.2s ease;
-  min-height: 44px;
-}
-
-.btn-primary:hover {
-  background-color: #0077ed;
-}
-
-.btn-primary:active {
-  background-color: #006edb;
-}
-
-/* Dark CTA */
-.btn-dark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-near-black);
-  color: var(--color-white);
-  padding: 8px 20px;
-  border-radius: var(--radius-standard);
-  border: 1px solid transparent;
-  font-family: var(--font-body);
-  font-size: 1.06rem;
-  font-weight: 400;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background-color 0.2s ease;
-  min-height: 44px;
-}
-
-.btn-dark:hover {
-  background-color: #2d2d2f;
-}
-
-/* Pill Link — "Learn more" signature style */
-.btn-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background: transparent;
-  border: 1px solid var(--color-link-blue-light);
-  color: var(--color-link-blue-light);
-  padding: 8px 20px;
-  border-radius: var(--radius-pill);
-  font-family: var(--font-body);
-  font-size: 1.06rem;
-  font-weight: 400;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  min-height: 44px;
-  cursor: pointer;
-}
-
-.btn-pill:hover {
-  text-decoration: underline;
-}
-
-/* Pill Link on dark background */
-.btn-pill-dark {
-  border-color: var(--color-link-blue-dark);
-  color: var(--color-link-blue-dark);
-}
-
-.btn-pill-dark:hover {
-  text-decoration: underline;
-}
-
-/* Pill outline on dark bg — white variant */
-.btn-pill-outline {
-  border-color: rgba(255, 255, 255, 0.6);
-  color: var(--color-white);
-}
-
-.btn-pill-outline:hover {
-  border-color: var(--color-white);
-  text-decoration: underline;
-}
-
-/* ============================================================
-   Apple Section Utilities
+   Section utilities
    ============================================================ */
 
 .section-dark {
@@ -289,13 +254,33 @@ body {
   width: 100%;
 }
 
-/* ============================================================
-   Global page wrapper — accounts for nav height
-   ============================================================ */
-
 .apple-page {
   padding-top: var(--nav-height);
   min-height: 100vh;
+}
+
+/* ============================================================
+   Press feedback
+
+   Feedback belongs on pointer-down, not on release. Waiting for
+   click to acknowledge a press reads as a dead interface, so any
+   element carrying .pressable dips the instant it is touched.
+   ============================================================ */
+
+.pressable {
+  transition: transform var(--duration-press) var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.pressable:active {
+  transform: scale(0.97);
+}
+
+/* Large surfaces need a subtler dip than small controls —
+   the same 3% on a full-width card reads as a lurch. */
+.pressable--subtle:active {
+  transform: scale(0.99);
 }
 
 /* ============================================================
@@ -332,17 +317,66 @@ body {
 }
 
 /* ============================================================
-   Font size scaling  
+   Font size scaling
    ============================================================ */
 
 @media (max-width: 480px) {
-  html {
-    font-size: 15px;
-  }
+  html { font-size: 15px; }
 }
 
 @media (max-width: 359px) {
+  html { font-size: 14px; }
+}
+
+/* ============================================================
+   ACCESSIBILITY PREFERENCES
+
+   Reduced motion does not mean no feedback — it means a gentler,
+   non-vestibular equivalent. Opacity and color changes survive
+   because they aid comprehension; travel, parallax and overshoot
+   do not.
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
   html {
-    font-size: 14px;
+    scroll-behavior: auto;
+  }
+
+  /* Blanket floor: nothing travels, nothing loops. Individual
+     components still opt back into short cross-fades above this. */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Keep press feedback — it is instantaneous, not vestibular. */
+  .pressable {
+    transition-duration: var(--duration-press) !important;
+  }
+}
+
+/* Translucent surfaces become frosty and near-solid rather than
+   losing their identity entirely. */
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --nav-bg: rgba(0, 0, 0, 0.98);
+    --nav-blur: none;
+    --sheet-blur: none;
+  }
+}
+
+/* Near-solid backgrounds with a defined, contrasting border. */
+@media (prefers-contrast: more) {
+  :root {
+    --nav-bg: #000000;
+    --nav-blur: none;
+    --sheet-blur: none;
+    --color-text-secondary-dark: rgba(255, 255, 255, 0.95);
+    --color-text-secondary-light: rgba(0, 0, 0, 0.95);
+    --color-text-tertiary-light: rgba(0, 0, 0, 0.7);
   }
 }

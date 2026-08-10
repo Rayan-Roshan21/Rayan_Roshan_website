@@ -1,18 +1,24 @@
 import React, { useState } from 'react';
 import Sidebar from '@/Components/Sidebar/Sidebar.jsx';
+import { usePageMotion } from '@/context/PageTransitionContext';
 import '@/Pages_CSS/About.css';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import Copyright from '@/Components/Copyright_title/Copyright_title.jsx';
 import Image_slideshow from '@/Components/Image_carousel/Image_slideshow.jsx';
 import GridFour from '@/Components/Grid_Four/Grid_Four.jsx';
 import ExperienceTimeline from '@/Components/Experience_Timeline/ExperienceTimeline.jsx';
 
 function About() {
+  const pageMotion = usePageMotion();
+  const reduced = useReducedMotion();
   const [currentSection, setCurrentSection] = useState(1);
 
   const goToSection = (n) => {
     setCurrentSection(n);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // A smooth scroll here is an animation the user has to sit
+    // through before the new section is readable, and it is exactly
+    // the kind of large-surface travel reduced motion asks us to drop.
+    window.scrollTo({ top: 0, behavior: reduced ? 'instant' : 'smooth' });
   };
 
   const goNext = () => { if (currentSection < 3) goToSection(currentSection + 1); };
@@ -21,22 +27,19 @@ function About() {
   const sectionLabels = ['Who I Am', 'Skills & Tools', 'Experience'];
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-    >
+    <motion.div {...pageMotion}>
       <Sidebar />
 
       {/* ── Section Tab Navigation ── */}
       <div className="about-tab-bar">
-        <div className="about-tab-bar__inner">
+        <div className="about-tab-bar__inner" role="tablist" aria-label="About sections">
           {sectionLabels.map((label, i) => (
             <button
               key={i}
               id={`about-tab-${i + 1}`}
-              className={`about-tab ${currentSection === i + 1 ? 'about-tab--active' : ''}`}
+              className={`about-tab pressable ${currentSection === i + 1 ? 'about-tab--active' : ''}`}
+              type="button"
+              role="tab"
               onClick={() => goToSection(i + 1)}
               aria-selected={currentSection === i + 1}
             >
@@ -51,10 +54,10 @@ function About() {
         {currentSection === 1 && (
           <motion.div
             key="section1"
-            initial={{ opacity: 0, y: 20 }}
+            initial={reduced ? { opacity: 0 } : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4 }}
+            exit={reduced ? { opacity: 0 } : { opacity: 0, y: -16 }}
+            transition={reduced ? { duration: 0.15 } : { type: 'spring', bounce: 0, duration: 0.35 }}
           >
             {/* Dark hero */}
             <section className="about-section section-dark about-who-hero">
@@ -81,10 +84,10 @@ function About() {
             {/* Light section — quick facts */}
             <motion.section
               className="about-section section-light about-facts"
-              initial={{ opacity: 0, y: 30 }}
+              initial={reduced ? { opacity: 0 } : { opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6, ease: 'easeOut' }}
+              transition={reduced ? { duration: 0.2 } : { type: 'spring', bounce: 0, duration: 0.5 }}
             >
               <div className="about-facts__inner section-container-wide">
                 <p className="about-eyebrow about-eyebrow--dark">Quick Facts</p>
@@ -112,10 +115,10 @@ function About() {
         {currentSection === 2 && (
           <motion.div
             key="section2"
-            initial={{ opacity: 0, y: 20 }}
+            initial={reduced ? { opacity: 0 } : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4 }}
+            exit={reduced ? { opacity: 0 } : { opacity: 0, y: -16 }}
+            transition={reduced ? { duration: 0.15 } : { type: 'spring', bounce: 0, duration: 0.35 }}
           >
             {/* Dark hero intro */}
             <section className="about-section section-dark about-skills-hero">
@@ -134,10 +137,10 @@ function About() {
             {/* Light section — Grid */}
             <motion.section
               className="about-section section-light about-skills-grid"
-              initial={{ opacity: 0, y: 30 }}
+              initial={reduced ? { opacity: 0 } : { opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.6, ease: 'easeOut' }}
+              transition={reduced ? { duration: 0.2 } : { type: 'spring', bounce: 0, duration: 0.5 }}
             >
               <div className="about-skills-grid__inner section-container-wide">
                 <GridFour />
@@ -150,10 +153,10 @@ function About() {
         {currentSection === 3 && (
           <motion.div
             key="section3"
-            initial={{ opacity: 0, y: 20 }}
+            initial={reduced ? { opacity: 0 } : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4 }}
+            exit={reduced ? { opacity: 0 } : { opacity: 0, y: -16 }}
+            transition={reduced ? { duration: 0.15 } : { type: 'spring', bounce: 0, duration: 0.35 }}
           >
             {/* Dark hero intro */}
             <section className="about-section section-dark about-exp-hero">
@@ -171,10 +174,10 @@ function About() {
             {/* Light section — Timeline */}
             <motion.section
               className="about-section section-light about-timeline"
-              initial={{ opacity: 0, y: 30 }}
+              initial={reduced ? { opacity: 0 } : { opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.6, ease: 'easeOut' }}
+              transition={reduced ? { duration: 0.2 } : { type: 'spring', bounce: 0, duration: 0.5 }}
             >
               <div className="about-timeline__inner section-container-wide">
                 <ExperienceTimeline />
@@ -189,7 +192,7 @@ function About() {
         <div className="about-section-nav__inner">
           <button
             id="about-prev-btn"
-            className="about-section-nav__btn"
+            className="about-section-nav__btn pressable"
             onClick={goPrev}
             disabled={currentSection === 1}
             aria-label="Previous section"
@@ -201,7 +204,7 @@ function About() {
           </span>
           <button
             id="about-next-btn"
-            className="about-section-nav__btn about-section-nav__btn--right"
+            className="about-section-nav__btn about-section-nav__btn--right pressable"
             onClick={goNext}
             disabled={currentSection === 3}
             aria-label="Next section"

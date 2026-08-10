@@ -1,54 +1,39 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import CalendlyBox from '@/Components/Calendly_box/calendly_box';
 import emailjs from '@emailjs/browser';
+import Modal from './Modal.jsx';
 import './contact_buttons.css';
 
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-// Initialize EmailJS with public key
 emailjs.init({ publicKey: PUBLIC_KEY });
 
 export default function ContactButtons() {
     const [showCalendar, setShowCalendar] = useState(false);
     const [showMessageModal, setShowMessageModal] = useState(false);
-    const [isClosing, setIsClosing] = useState(false);
     const [status, setStatus] = useState('');
     const [loading, setLoading] = useState(false);
     const form = useRef();
 
-    const handleMessageClick = () => {
-        setShowMessageModal(true);
+    // Each sheet scales out of its own button.
+    const messageBtnRef = useRef(null);
+    const calendlyBtnRef = useRef(null);
+
+    const closeMessageModal = useCallback(() => {
+        setShowMessageModal(false);
         setStatus('');
-    };
+    }, []);
 
-    const handleCalendlyClick = () => {
-        setShowCalendar(true);
-    };
-
-    const closeModal = () => {
-        setIsClosing(true);
-        setTimeout(() => {
-            setShowCalendar(false);
-            setIsClosing(false);
-        }, 300);
-    };
-
-    const closeMessageModal = () => {
-        setIsClosing(true);
-        setTimeout(() => {
-            setShowMessageModal(false);
-            setStatus('');
-            setIsClosing(false);
-        }, 300);
-    };
+    const closeCalendar = useCallback(() => setShowCalendar(false), []);
 
     const sendEmail = (e) => {
         e.preventDefault();
         setLoading(true);
         setStatus('');
-        
+
         const formData = new FormData(form.current);
         const templateParams = {
             name: formData.get('name'),
@@ -56,22 +41,17 @@ export default function ContactButtons() {
             title: formData.get('title'),
             message: formData.get('message'),
         };
-        
+
         emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams)
             .then(
                 () => {
                     setStatus('success');
                     setLoading(false);
                     form.current.reset();
-                    // Auto-close after 2 seconds on success
-                    setTimeout(() => {
-                        setIsClosing(true);
-                        setTimeout(() => {
-                            setShowMessageModal(false);
-                            setStatus('');
-                            setIsClosing(false);
-                        }, 300);
-                    }, 2000);
+                    // Hold the confirmation long enough to read, then
+                    // dismiss. Unmounting is a single state change; the
+                    // exit spring owns the animation.
+                    setTimeout(closeMessageModal, 2000);
                 },
                 (error) => {
                     console.error('EmailJS error:', error?.text || error);
@@ -84,7 +64,11 @@ export default function ContactButtons() {
     return (
         <>
             <div className="contact-buttons-wrapper">
-                <button className="contact-btn contact-btn--primary" onClick={handleMessageClick}>
+                <button
+                    ref={messageBtnRef}
+                    className="contact-btn contact-btn--primary pressable pressable--subtle"
+                    onClick={() => { setShowMessageModal(true); setStatus(''); }}
+                >
                     <span className="btn-icon" aria-hidden="true">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
@@ -93,7 +77,11 @@ export default function ContactButtons() {
                     </span>
                     <span className="btn-text">Message Me</span>
                 </button>
-                <button className="contact-btn contact-btn--secondary" onClick={handleCalendlyClick}>
+                <button
+                    ref={calendlyBtnRef}
+                    className="contact-btn contact-btn--secondary pressable pressable--subtle"
+                    onClick={() => setShowCalendar(true)}
+                >
                     <span className="btn-icon" aria-hidden="true">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                             <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
@@ -105,98 +93,68 @@ export default function ContactButtons() {
                     <span className="btn-text">Schedule Call</span>
                 </button>
             </div>
-            
-            {/* Message Modal */}
-            {showMessageModal && (
-                <div className={`modal-overlay ${isClosing ? 'closing' : ''}`} onClick={closeMessageModal}>
-                    <div className={`modal-container message-modal ${isClosing ? 'closing' : ''}`} onClick={(e) => e.stopPropagation()}>
-                        <div className="modal-header">
-                            <h3 className="modal-title">Send a Message</h3>
-                            <button className="modal-close-btn" onClick={closeMessageModal}>
-                                ✕
-                            </button>
-                        </div>
+
+            <AnimatePresence>
+                {showMessageModal && (
+                    <Modal
+                        key="message"
+                        open
+                        onClose={closeMessageModal}
+                        title="Send a Message"
+                        originRef={messageBtnRef}
+                        className="message-modal"
+                    >
                         <div className="modal-content message-content">
                             <form ref={form} onSubmit={sendEmail} className="message-form">
                                 <div className="form-group">
                                     <label htmlFor="name">Your Name</label>
-                                    <input 
-                                        type="text" 
-                                        id="name"
-                                        name="name" 
-                                        placeholder="John Doe" 
-                                        required 
-                                    />
+                                    <input type="text" id="name" name="name" placeholder="John Doe" required />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="email">Your Email</label>
-                                    <input 
-                                        type="email" 
-                                        id="email"
-                                        name="email" 
-                                        placeholder="john@example.com" 
-                                        required 
-                                    />
+                                    <input type="email" id="email" name="email" placeholder="john@example.com" required />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="title">Subject</label>
-                                    <input 
-                                        type="text" 
-                                        id="title"
-                                        name="title" 
-                                        placeholder="What's this about?" 
-                                        required 
-                                    />
+                                    <input type="text" id="title" name="title" placeholder="What's this about?" required />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="message">Message</label>
-                                    <textarea 
-                                        id="message"
-                                        name="message" 
-                                        placeholder="Your message here..." 
-                                        required 
-                                        rows={5} 
-                                    />
+                                    <textarea id="message" name="message" placeholder="Your message here..." required rows={5} />
                                 </div>
-                                <button 
-                                    type="submit" 
-                                    className="submit-btn"
-                                    disabled={loading}
-                                >
-                                    {loading ? 'Sending...' : 'Send Message'}
+                                <button type="submit" className="submit-btn pressable" disabled={loading}>
+                                    {loading ? 'Sending…' : 'Send Message'}
                                 </button>
                                 {status === 'success' && (
-                                    <div className="form-status success">
+                                    <div className="form-status success" role="status">
                                         ✓ Message sent successfully!
                                     </div>
                                 )}
                                 {status === 'error' && (
-                                    <div className="form-status error">
+                                    <div className="form-status error" role="alert">
                                         ✗ Failed to send. Please try again.
                                     </div>
                                 )}
                             </form>
                         </div>
-                    </div>
-                </div>
-            )}
+                    </Modal>
+                )}
 
-            {/* Calendly Modal */}
-            {showCalendar && (
-                <div className={`modal-overlay ${isClosing ? 'closing' : ''}`} onClick={closeModal}>
-                    <div className={`modal-container calendly-modal ${isClosing ? 'closing' : ''}`} onClick={(e) => e.stopPropagation()}>
-                        <div className="modal-header">
-                            <h3 className="modal-title">Schedule a Meeting</h3>
-                            <button className="modal-close-btn" onClick={closeModal}>
-                                ✕
-                            </button>
-                        </div>
+                {showCalendar && (
+                    <Modal
+                        key="calendly"
+                        open
+                        onClose={closeCalendar}
+                        title="Schedule a Meeting"
+                        originRef={calendlyBtnRef}
+                        className="calendly-modal"
+                    >
                         <div className="modal-content calendly-content">
                             <CalendlyBox />
                         </div>
-                    </div>
-                </div>
-            )}
+                    </Modal>
+                )}
+            </AnimatePresence>
         </>
     );
 }

@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import '@/Pages_CSS/Home.css';
 import Sidebar from '@/Components/Sidebar/Sidebar.jsx';
-import profileImage from '@/assets/profile-image.JPG';
-import { motion } from 'framer-motion';
+import Img from '@/Components/Img/Img.jsx';
+import { motion, useReducedMotion } from 'framer-motion';
 import Copyright from '@/Components/Copyright_title/Copyright_title.jsx';
 import TransitionLink from '@/Components/TransitionLink/TransitionLink.jsx';
+import { usePageMotion } from '@/context/PageTransitionContext';
 
 function Home() {
+  const pageMotion = usePageMotion();
+  const reduced = useReducedMotion();
+
   const [introText, setIntroText] = useState('');
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -31,8 +35,15 @@ function Home() {
     setTexts(baseTexts);
   }, []);
 
+  // The typewriter is a continuous loop with a 1Hz blinking cursor.
+  // Under reduced motion both are suppressed and the first line is
+  // simply shown — the information survives, the oscillation does not.
   useEffect(() => {
     if (texts.length === 0) return;
+    if (reduced) {
+      setIntroText(texts[0]);
+      return;
+    }
 
     const current = texts[textIndex];
     const isComplete = charIndex === current.length;
@@ -53,15 +64,10 @@ function Home() {
     }, isDeleting ? 25 : (isComplete ? 1800 : 75));
 
     return () => clearTimeout(timeout);
-  }, [charIndex, isDeleting, textIndex, texts]);
+  }, [charIndex, isDeleting, textIndex, texts, reduced]);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.6 }}
-    >
+    <motion.div {...pageMotion}>
       <Sidebar />
 
       {/* ── HERO SECTION — Black ── */}
@@ -81,15 +87,16 @@ function Home() {
 
             {/* Typewriter */}
             <p className="home-hero__typewriter" aria-live="polite">
-              {introText}<span className="home-hero__cursor" aria-hidden="true">|</span>
+              {introText}
+              {!reduced && <span className="home-hero__cursor" aria-hidden="true">|</span>}
             </p>
 
             {/* CTAs */}
             <div className="home-hero__ctas">
-              <TransitionLink to="/projects" className="home-cta-pill home-cta-pill--outline" id="hero-cta-projects">
+              <TransitionLink to="/projects" className="home-cta-pill home-cta-pill--outline pressable" id="hero-cta-projects">
                 View Projects ›
               </TransitionLink>
-              <TransitionLink to="/contact" className="home-cta-pill home-cta-pill--blue" id="hero-cta-contact">
+              <TransitionLink to="/contact" className="home-cta-pill home-cta-pill--blue pressable" id="hero-cta-contact">
                 Get in Touch
               </TransitionLink>
             </div>
@@ -97,10 +104,13 @@ function Home() {
 
           {/* Right — Profile image */}
           <div className="home-hero__image-wrap">
-            <img
+            <Img
               className="home-hero__image"
-              src={profileImage}
+              name="profile-image"
               alt="Rayan Roshan"
+              loading="eager"
+              fetchPriority="high"
+              sizes="(max-width: 900px) 50vw, 360px"
             />
           </div>
         </div>

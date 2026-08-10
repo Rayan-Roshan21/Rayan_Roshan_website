@@ -11,8 +11,11 @@ import { PageTransitionProvider } from './context/PageTransitionContext';
 function AnimatedRoutes() {
   const location = useLocation();
 
+  // mode="popLayout" rather than "wait": the outgoing page leaves
+  // immediately instead of holding the incoming one back for the
+  // length of its exit animation.
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode="popLayout" initial={false}>
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

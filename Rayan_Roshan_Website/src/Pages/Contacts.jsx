@@ -1,19 +1,17 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import Sidebar from '@/Components/Sidebar/Sidebar.jsx';
+import { usePageMotion } from '@/context/PageTransitionContext';
 import '@/Pages_CSS/Contact.css';
 import ContactButtons from '@/Components/Contact_Buttons/contact_buttons.jsx';
 import Copyright from '@/Components/Copyright_title/Copyright_title.jsx';
 
 function Contacts() {
+  const pageMotion = usePageMotion();
+  const reduced = useReducedMotion();
+
   return (
-    <motion.div
-      className="contact-page"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
-    >
+    <motion.div className="contact-page" {...pageMotion}>
       <Sidebar />
 
       {/* ── HERO — Dark ── */}
@@ -33,10 +31,10 @@ function Contacts() {
       {/* ── CONTACT CONTENT — Light ── */}
       <motion.section
         className="contact-content-section section-light"
-        initial={{ opacity: 0, y: 30 }}
+        initial={reduced ? { opacity: 0 } : { opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
+        transition={reduced ? { duration: 0.2 } : { type: 'spring', bounce: 0, duration: 0.5 }}
       >
       <div className="contact-content-section__inner">
           <div className="contact-grid">
@@ -53,7 +51,7 @@ function Contacts() {
               <div className="contact-social-row">
                 <a
                   href="https://www.linkedin.com/in/rayan-roshan/"
-                  className="contact-social-link"
+                  className="contact-social-link pressable"
                   target="_blank"
                   rel="noopener noreferrer"
                   id="contact-linkedin-link"
@@ -66,7 +64,7 @@ function Contacts() {
                 </a>
                 <a
                   href="https://github.com/Rayan-Roshan21"
-                  className="contact-social-link"
+                  className="contact-social-link pressable"
                   target="_blank"
                   rel="noopener noreferrer"
                   id="contact-github-link"
@@ -89,10 +87,10 @@ function Contacts() {
           {/* ── Quick Info Strip ── */}
           <motion.div
             className="contact-quick-info"
-            initial={{ opacity: 0, y: 20 }}
+            initial={reduced ? { opacity: 0 } : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5, ease: 'easeOut', delay: 0.15 }}
+            transition={reduced ? { duration: 0.2 } : { type: 'spring', bounce: 0, duration: 0.5, delay: 0.1 }}
           >
             <div className="contact-quick-item">
               <span className="contact-quick-label">Response Time</span>

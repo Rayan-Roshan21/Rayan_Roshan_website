@@ -1,5 +1,5 @@
 .timeline-root {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   padding: 20px 0;
 }
 
@@ -9,11 +9,11 @@
 }
 
 .timeline-range {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-weight: 600;
   font-size: 1.75rem;
   color: #1d1d1f;
-  letter-spacing: 0.196px;
+  letter-spacing: var(--track-heading);
 }
 
 .timeline {
@@ -72,17 +72,17 @@
   background: #ffffff;
   border: none;
   border-radius: 12px;
-  box-shadow: rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
+  box-shadow: var(--shadow-card);
   padding: 20px;
   position: relative;
-  transition: all 0.3s ease;
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
   overflow-wrap: break-word;
   word-wrap: break-word;
   box-sizing: border-box;
 }
 
 .timeline-card:hover {
-  box-shadow: rgba(0, 0, 0, 0.3) 3px 12px 40px 0px;
+  box-shadow: var(--shadow-card-raised);
   transform: translateY(-2px);
 }
 
@@ -94,7 +94,7 @@
   width: 0;
   height: 0;
   border: solid transparent;
-  border-left-color: #f8f9fa;
+  border-left-color: #ffffff;
   border-width: 10px;
   pointer-events: none;
 }
@@ -107,13 +107,13 @@
   width: 0;
   height: 0;
   border: solid transparent;
-  border-right-color: #f8f9fa;
+  border-right-color: #ffffff;
   border-width: 10px;
   pointer-events: none;
 }
 
 .card-date {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 11px;
   font-weight: 600;
   color: rgba(0,0,0,0.6);
@@ -122,36 +122,36 @@
   padding: 5px 12px;
   border-radius: 980px;
   margin-bottom: 10px;
-  letter-spacing: 0.5px;
+  letter-spacing: var(--track-caps);
   text-transform: uppercase;
 }
 
 .card-title {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 1.31rem;
   margin: 0 0 8px;
   color: #1d1d1f;
   font-weight: 700;
   line-height: 1.19;
-  letter-spacing: 0.231px;
+  letter-spacing: var(--track-title);
 }
 
 .card-company {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 14px;
   color: #0066cc;
   margin-bottom: 12px;
   font-weight: 600;
-  letter-spacing: -0.224px;
+  letter-spacing: var(--track-caption);
 }
 
 .card-summary {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 14px;
   color: rgba(0,0,0,0.65);
   margin: 0 0 14px;
   line-height: 1.5;
-  letter-spacing: -0.224px;
+  letter-spacing: var(--track-caption);
 }
 
 .card-tags {
@@ -168,11 +168,11 @@
 }
 
 .tag {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   color: #0066cc;
   font-size: 14px;
   font-weight: 500;
-  letter-spacing: -0.12px;
+  letter-spacing: var(--track-caption);
 }
 
 .timeline-present {
@@ -195,11 +195,11 @@
 }
 
 .present-label {
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   font-size: 12px;
   color: #0071e3;
   font-weight: 600;
-  letter-spacing: -0.12px;
+  letter-spacing: var(--track-micro);
 }
 
 @keyframes pulse {
@@ -326,7 +326,7 @@
     left: -12px;
     right: auto;
     border-left-color: transparent;
-    border-right-color: #f8f9fa;
+    border-right-color: #ffffff;
   }
 
   .direction-l .card-tags {
@@ -392,7 +392,7 @@
     left: -10px;
     right: auto;
     border-left-color: transparent;
-    border-right-color: #f8f9fa;
+    border-right-color: #ffffff;
     border-width: 8px;
   }
 
@@ -475,7 +475,7 @@
     left: -8px;
     right: auto;
     border-left-color: transparent;
-    border-right-color: #f8f9fa;
+    border-right-color: #ffffff;
     border-width: 6px;
     top: 18px;
   }
