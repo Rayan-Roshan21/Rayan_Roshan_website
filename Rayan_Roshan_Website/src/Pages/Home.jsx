@@ -101,8 +101,7 @@ function Home() {
 
             <p className="home-hero__subtitle">
               Third-year CS co-op student at TMU. I build full-stack products<br />
-              and applied AI systems, most recently for 500+ users at Yapp<br />
-              and a 12,000-person practice at EY.
+              and applied AI systems.
             </p>
 
             {/* Typewriter — the animated node is hidden from assistive tech
