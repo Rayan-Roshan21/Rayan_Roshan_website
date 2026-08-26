@@ -182,6 +182,16 @@
   letter-spacing: var(--track-subhead);
 }
 
+.contact-quick-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact-quick-link:hover {
+  color: #0066cc;
+  text-decoration: underline;
+}
+
 .contact-quick-divider {
   width: 1px;
   height: 52px;

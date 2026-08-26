@@ -1,5 +1,5 @@
 import React from "react";
-import "./Grid_Four.css"
+import "./GridFour.css"
 
 function GridFour() {
     return (
@@ -8,22 +8,22 @@ function GridFour() {
                 <h2 className="Grid-title">Technical Skills</h2>
                 <ul>
                     <li>JavaScript / TypeScript / Python / Java / Swift / C / Bash</li>
-                    <li>React.js / Next.js / Node.js / Vite</li>
+                    <li>React.js / Next.js / Node.js / Flask</li>
                     <li>HTML5 / CSS3 / Responsive Web Design</li>
                     <li>Data Structures & Algorithms / Object-Oriented Programming</li>
                     <li>REST APIs / JSON / Secure API Design</li>
-                    <li>SQL & NoSQL Concepts</li>
+                    <li>SQL / MongoDB / NoSQL Concepts</li>
                 </ul>
             </div>
             <div className="grid-box">
-                <h2 className="Grid-title">Core Competencies</h2>
+                <h2 className="Grid-title">AI & Systems</h2>
                 <ul>
-                    <li>Full-Stack Application Development</li>
-                    <li>AI/ML Integration & LLM-Based Systems</li>
-                    <li>System Design & Architecture</li>
-                    <li>Problem Solving, Debugging & Optimization</li>
-                    <li>Agile & Team-Based Development</li>
-                    <li>Technical Leadership & Project Execution</li>
+                    <li>RAG pipelines: chunking, embeddings, vector search, reranking</li>
+                    <li>LLM orchestration & model routing across OpenAI and Gemini</li>
+                    <li>Passwordless auth: email OTP, short-lived JWTs</li>
+                    <li>Serverless deployment: Vercel functions, Railway persistent processes</li>
+                    <li>CI/CD and environment-specific configuration</li>
+                    <li>Technical leadership: architecture, roadmaps, code review</li>
                 </ul>
             </div>
             <div className="grid-box">
@@ -33,8 +33,8 @@ function GridFour() {
                     <li>Git / GitHub / CI/CD Pipelines</li>
                     <li>TensorFlow / Scikit-learn / Pandas / NumPy</li>
                     <li>OpenAI & Google Gemini APIs / Pinecone</li>
-                    <li>VS Code / Jupyter Notebook</li>
-                    <li>Figma / Framer Motion</li>
+                    <li>Vercel / Railway / Resend</li>
+                    <li>VS Code / Figma / Framer Motion</li>
                 </ul>
             </div>
         </div>

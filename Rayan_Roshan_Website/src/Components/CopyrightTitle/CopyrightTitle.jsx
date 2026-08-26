@@ -1,6 +1,6 @@
-import './Copyright_title.css';
+import './CopyrightTitle.css';
 
-function Copyright_title({ isVisible = true, dark = false }) {
+function CopyrightTitle({ isVisible = true, dark = false }) {
   if (!isVisible) return null;
 
   return (
@@ -10,4 +10,4 @@ function Copyright_title({ isVisible = true, dark = false }) {
   );
 }
 
-export default Copyright_title;
+export default CopyrightTitle;

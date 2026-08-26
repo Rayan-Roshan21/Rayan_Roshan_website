@@ -2,6 +2,45 @@
    PROJECT CARDS — Apple Design
    ============================================================ */
 
+/* ── Filter row ── */
+.projects-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.projects-filter-btn {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: var(--track-micro);
+  color: rgba(0, 0, 0, 0.6);
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  border-radius: 980px;
+  padding: 8px 18px;
+  min-height: 36px;
+  cursor: pointer;
+  transition: background 0.2s var(--ease-out), border-color 0.2s var(--ease-out), color 0.2s var(--ease-out);
+}
+
+.projects-filter-btn:hover {
+  border-color: rgba(0, 0, 0, 0.3);
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.projects-filter-btn--active {
+  background: #1d1d1f;
+  border-color: #1d1d1f;
+  color: #ffffff;
+}
+
+.projects-filter-btn--active:hover {
+  background: #1d1d1f;
+  color: #ffffff;
+}
+
 .projects-wrapper {
   display: flex;
   flex-direction: row;

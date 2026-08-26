@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "voice:dev": "node server.js",
-    "optimize:images": "node scripts/optimize-images.mjs"
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "embed:knowledge": "node scripts/embedknowledge.js"
   },
   "engines": {
     "node": ">=18.0.0"
@@ -18,12 +19,7 @@
     "@emailjs/browser": "^4.4.1",
     "@google/genai": "^1.34.0",
     "@vercel/analytics": "^1.6.1",
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
-    "express": "^4.18.2",
-    "formidable": "^3.5.4",
     "framer-motion": "^12.12.1",
-    "multer": "^1.4.5-lts.1",
     "openai": "^4.53.0",
     "react": "^19.1.0",
     "react-calendly": "^4.4.0",
@@ -37,10 +33,15 @@
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.4.1",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
     "eslint": "^9.25.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
+    "express": "^4.18.2",
+    "formidable": "^3.5.4",
     "globals": "^16.0.0",
+    "multer": "^2.0.2",
     "sharp": "^0.35.3",
     "vite": "^6.3.5"
   }

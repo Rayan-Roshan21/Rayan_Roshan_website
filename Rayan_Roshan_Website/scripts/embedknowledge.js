@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import OpenAI from "openai";
 
-// Must match the query embedding model used in rag.js / api/chat.js — mismatched
+// Must match the query embedding model used in api/chat.js — mismatched
 // dimensions score NaN in cosine similarity and are silently never retrieved.
 const EMBEDDING_MODEL = "text-embedding-3-small";
 
@@ -11,16 +11,21 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
 
-const KNOWLEDGE_PATH = path.join(
-  process.cwd(),
-  "src/Components/Voice agent/api/RAG/Embeddings",
-  "knowledge.json"
-);
+const KNOWLEDGE_PATH = path.join(process.cwd(), "api", "knowledge.json");
 
 async function embedKnowledge() {
   const knowledge = JSON.parse(
     fs.readFileSync(KNOWLEDGE_PATH, "utf-8")
   );
+
+  const seenIds = new Set();
+  for (const item of knowledge) {
+    if (seenIds.has(item.id)) {
+      console.error(`Duplicate knowledge chunk id: "${item.id}" — retrieval silently favors whichever copy wins similarity, fix before embedding.`);
+      process.exit(1);
+    }
+    seenIds.add(item.id);
+  }
 
   console.log(`Embedding ${knowledge.length} knowledge chunks...`);
 

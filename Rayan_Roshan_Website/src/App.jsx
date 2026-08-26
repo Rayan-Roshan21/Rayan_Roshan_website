@@ -5,7 +5,7 @@ import Home from './Pages/Home';
 import About from './Pages/About';
 import Contacts from './Pages/Contacts';
 import Projects from './Pages/Projects';
-import VoiceAgent from './Components/Voice agent/VoiceAgent';
+import VoiceAgent from './Components/VoiceAgent/VoiceAgent';
 import { PageTransitionProvider } from './context/PageTransitionContext';
 
 function AnimatedRoutes() {

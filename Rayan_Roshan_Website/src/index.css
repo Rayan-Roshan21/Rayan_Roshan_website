@@ -134,6 +134,21 @@ body {
   width: 100%;
 }
 
+/* Visually hidden but present for assistive tech — used where an
+   animated node is hidden from screen readers (aria-hidden) and the
+   underlying content needs a static announcement instead. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* <picture> is a wrapper for source selection, not a layout box.
    Taking it out of the layout tree keeps the <img> as the direct
    child its container's flex/grid rules were written for, and

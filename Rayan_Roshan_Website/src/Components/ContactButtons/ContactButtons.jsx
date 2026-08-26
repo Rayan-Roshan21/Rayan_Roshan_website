@@ -3,7 +3,7 @@ import { AnimatePresence } from 'framer-motion';
 import CalendlyBox from '@/Components/Calendly_box/calendly_box';
 import emailjs from '@emailjs/browser';
 import Modal from './Modal.jsx';
-import './contact_buttons.css';
+import './ContactButtons.css';
 
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
@@ -31,10 +31,22 @@ export default function ContactButtons() {
 
     const sendEmail = (e) => {
         e.preventDefault();
+
+        const formData = new FormData(form.current);
+
+        // Honeypot: a field real users never see or fill, hidden from
+        // sighted users and skipped by tab order. Bots that fill every
+        // field trip it; report success without actually sending.
+        if (formData.get('company')) {
+            setStatus('success');
+            form.current.reset();
+            setTimeout(closeMessageModal, 2000);
+            return;
+        }
+
         setLoading(true);
         setStatus('');
 
-        const formData = new FormData(form.current);
         const templateParams = {
             name: formData.get('name'),
             email: formData.get('email'),
@@ -106,6 +118,14 @@ export default function ContactButtons() {
                     >
                         <div className="modal-content message-content">
                             <form ref={form} onSubmit={sendEmail} className="message-form">
+                                <input
+                                    type="text"
+                                    name="company"
+                                    className="visually-hidden"
+                                    tabIndex={-1}
+                                    autoComplete="off"
+                                    aria-hidden="true"
+                                />
                                 <div className="form-group">
                                     <label htmlFor="name">Your Name</label>
                                     <input type="text" id="name" name="name" placeholder="John Doe" required />

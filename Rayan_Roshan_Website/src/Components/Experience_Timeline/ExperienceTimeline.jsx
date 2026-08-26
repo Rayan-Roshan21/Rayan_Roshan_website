@@ -3,18 +3,31 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import './ExperienceTimeline.css';
 
 const ExperienceTimeline = () => {
-  // Resume experiences (projects excluded)
+  // Resume experiences (projects excluded). endDate: null means ongoing —
+  // that flag drives the "Present" badge instead of inferring it from
+  // array position, which broke once more than one entry had passed.
   const experiences = [
     {
+      date: '2025-07',
+      endDate: null,
+      title: 'VP of Technology',
+      company: 'TMU BYTE · Toronto, ON',
+      summary: 'Set technical direction for TMU\'s student-run open-source AI club — architecture decisions, project roadmaps, and engineering standards across the team. Mentoring 10+ contributors through code reviews and technical workshops.',
+      tags: ['AI/ML', 'Leadership'],
+      accentColor: '#00b4d8'
+    },
+    {
       date: '2026-05',
+      endDate: '2026-08',
       title: 'Technology Consulting Intern | ServiceNow Group',
       company: 'EY · Toronto, ON',
-      summary: 'Will join a leading professional services firm as a Technology Consulting Intern in the ServiceNow Group.',
-      tags: ['Technology', 'Consulting'],
+      summary: 'Built AI Lens, an LLM-powered triage tool grounded in knowledge base retrieval to minimize unsourced outputs. Shipped two Copilot agents used by 12,000+ consultants firm-wide. Supported ServiceNow module configuration, testing, and proposal documentation for the practice.',
+      tags: ['LLM', 'ServiceNow', 'Consulting'],
       accentColor: '#003781'
     },
     {
       date: '2025-12',
+      endDate: '2026-01',
       title: 'Project Experience Lead & Web Developer',
       company: 'TMU Tech Week · Toronto, ON',
       summary: 'Designed and developed a production web platform for TMU Tech Week, enhancing user engagement. Built responsive front-end components using JavaScript, React.js, HTML, and CSS for event discovery. Collaborated with strategic teams to gather requirements and deliver features on time.',
@@ -22,15 +35,26 @@ const ExperienceTimeline = () => {
       accentColor: '#0071e3'
     },
     {
-      date: '2025-07',
+      date: '2025-01',
+      endDate: null,
+      title: 'Co-Founder & Full-Stack Engineer',
+      company: 'Yapp · Toronto, ON',
+      summary: 'Building a campus discovery platform for TMU students on React, Flask, and MongoDB, with a Railway backend tuned for persistent processes. Implemented passwordless email OTP auth verified against short-lived JWTs. Reached 500+ users and 3,700+ views in the first two weeks, with recognition from TMU\'s CS department.',
+      tags: ['React', 'Flask', 'MongoDB'],
+      accentColor: '#8338ec'
+    },
+    {
+      date: '2024-08',
+      endDate: '2025-06',
       title: 'Project Experience Lead',
       company: 'TMU BYTE · Toronto, ON',
-      summary: 'Leading AI/ML project initiatives by designing comprehensive technical roadmaps and architectures. Mentoring a team of 10+ contributors through code reviews, technical workshops, and agile development practices. Successfully delivered multiple showcase-ready machine learning applications with production-grade quality.',
+      summary: 'Led AI/ML project initiatives by designing comprehensive technical roadmaps and architectures. Mentored a team of 10+ contributors through code reviews, technical workshops, and agile development practices. Delivered multiple showcase-ready machine learning applications with production-grade quality.',
       tags: ['AI/ML', 'Leadership'],
       accentColor: '#00b4d8'
     },
     {
       date: '2025-04',
+      endDate: '2025-06',
       title: 'Software Engineering Resident',
       company: 'Headstarter · Remote',
       summary: 'Developed 4+ production-ready ML/AI and full-stack projects using JavaScript, TypeScript, and Python. Deployed scalable applications on Vercel with focus on performance optimization. Implemented advanced LLM chaining techniques and fine-tuned models for specific use cases, gaining hands-on experience with modern AI development workflows.',
@@ -39,6 +63,7 @@ const ExperienceTimeline = () => {
     },
     {
       date: '2024-07',
+      endDate: '2024-08',
       title: 'Entrepreneurship Fellow',
       company: 'DMZ & IBZ · Toronto, ON',
       summary: 'Participated in startup accelerator program where I scaled Univ by securing grants and cloud credits. Worked closely with industry mentors to refine technical architecture, implement scalable infrastructure on Azure, and develop go-to-market strategies. Gained valuable insights into building and scaling technology startups.',
@@ -47,9 +72,10 @@ const ExperienceTimeline = () => {
     },
     {
       date: '2023-04',
+      endDate: '2024-08',
       title: 'Founder & iOS Developer',
       company: 'Univ · Toronto, ON',
-      summary: 'Founded and developed a comprehensive college admissions platform from the ground up. Built the iOS application using Swift with Firebase backend, integrated Gemini AI for personalized recommendations, and deployed scalable services on Azure. Successfully shipped MVP to production in under 4 months, managing the entire product lifecycle from concept to launch.',
+      summary: 'Founded and developed a comprehensive college admissions platform from the ground up. Built the iOS application using Swift with Firebase backend, integrated Gemini AI for personalized recommendations, and deployed scalable services on Azure. Shipped MVP to production in under 4 months, secured $5,000 in Azure credits via Microsoft Startup Founder Hub, and grew a database of 50+ institutions.',
       tags: ['Swift', 'Firebase', 'AI'],
       accentColor: '#e63946'
     }
@@ -62,15 +88,6 @@ const ExperienceTimeline = () => {
   );
 
   const today = new Date();
-
-  // Index of the most recent past entry (shown as "Present")
-  const firstPastIdx = useMemo(
-    () => sorted.findIndex(exp => {
-      const [y, m] = exp.date.split('-').map(Number);
-      return new Date(y, m - 1, 1) <= today;
-    }),
-    [sorted]
-  );
 
   // Scroll-animated timeline line
   const timelineRef = useRef(null);
@@ -127,7 +144,7 @@ const ExperienceTimeline = () => {
           const date = new Date(y, m - 1, 1);
           const label = date.toLocaleDateString(undefined, { month: 'short', year: 'numeric' });
           const isFuture = date > today;
-          const isPresent = !isFuture && idx === firstPastIdx;
+          const isPresent = !isFuture && exp.endDate === null;
           const direction = idx % 2 === 0 ? 'direction-l' : 'direction-r';
           const isActive = activeIdx === null || activeIdx === idx;
 

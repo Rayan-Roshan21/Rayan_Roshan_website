@@ -3,7 +3,7 @@ import '@/Pages_CSS/Home.css';
 import Sidebar from '@/Components/Sidebar/Sidebar.jsx';
 import Img from '@/Components/Img/Img.jsx';
 import { motion, useReducedMotion } from 'framer-motion';
-import Copyright from '@/Components/Copyright_title/Copyright_title.jsx';
+import Copyright from '@/Components/CopyrightTitle/CopyrightTitle.jsx';
 import TransitionLink from '@/Components/TransitionLink/TransitionLink.jsx';
 import { usePageMotion } from '@/context/PageTransitionContext';
 
@@ -17,13 +17,14 @@ function Home() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [texts, setTexts] = useState([]);
 
-  // Set up the messages based on time
+  // Set up the messages based on time. The last entry is the resting
+  // line the typewriter settles on — see the effect below.
   useEffect(() => {
     const baseTexts = [
       "Building AI systems that make an impact.",
-      "CS student. Builder. Founder.",
+      "Voice agents, healthcare AI, recommendation systems.",
       "Keep it simple. Make it work. Make impact.",
-      "Voice agents, healthcare AI, recommendation systems."
+      "CS student. Builder. Founder."
     ];
 
     const hour = new Date().getHours();
@@ -35,14 +36,29 @@ function Home() {
     setTexts(baseTexts);
   }, []);
 
-  // The typewriter is a continuous loop with a 1Hz blinking cursor.
-  // Under reduced motion both are suppressed and the first line is
-  // simply shown — the information survives, the oscillation does not.
+  // The typewriter cycles through every line but the last, then types
+  // the last line once and leaves it — perpetual motion above the fold
+  // competes with everything else on the page for attention. Under
+  // reduced motion both the cycle and the settle-typing are skipped and
+  // the first line is simply shown.
+  const restIndex = texts.length - 1;
+  const settled = texts.length > 0 && textIndex >= restIndex;
+
   useEffect(() => {
     if (texts.length === 0) return;
     if (reduced) {
       setIntroText(texts[0]);
       return;
+    }
+
+    if (settled) {
+      const restText = texts[restIndex];
+      if (charIndex >= restText.length) return; // fully typed — stay put
+      const timeout = setTimeout(() => {
+        setIntroText(restText.substring(0, charIndex + 1));
+        setCharIndex((prev) => prev + 1);
+      }, 75);
+      return () => clearTimeout(timeout);
     }
 
     const current = texts[textIndex];
@@ -58,16 +74,19 @@ function Home() {
         setCharIndex((prev) => prev - 1);
         if (charIndex === 0) {
           setIsDeleting(false);
-          setTextIndex((prev) => (prev + 1) % texts.length);
+          setTextIndex((prev) => prev + 1);
         }
       }
     }, isDeleting ? 25 : (isComplete ? 1800 : 75));
 
     return () => clearTimeout(timeout);
-  }, [charIndex, isDeleting, textIndex, texts, reduced]);
+  }, [charIndex, isDeleting, textIndex, texts, reduced, settled, restIndex]);
 
   return (
     <motion.div {...pageMotion}>
+      <title>Rayan Roshan</title>
+      <meta name="description" content="Rayan Roshan — Computer Science co-op student at TMU building AI systems, voice agents, and scalable products." />
+
       <Sidebar />
 
       {/* ── HERO SECTION — Black ── */}
@@ -81,15 +100,20 @@ function Home() {
             <h1 className="home-hero__name">Rayan Roshan</h1>
 
             <p className="home-hero__subtitle">
-              Computer Science student building AI systems,<br />
-              voice agents, and scalable products.
+              Third-year CS co-op student at TMU. I build full-stack products<br />
+              and applied AI systems, most recently for 500+ users at Yapp<br />
+              and a 12,000-person practice at EY.
             </p>
 
-            {/* Typewriter */}
-            <p className="home-hero__typewriter" aria-live="polite">
+            {/* Typewriter — the animated node is hidden from assistive tech
+                since it mutates continuously; the first line is rendered
+                once, statically, in a visually-hidden sibling so the
+                content itself still reaches a screen reader. */}
+            <p className="home-hero__typewriter" aria-hidden="true">
               {introText}
               {!reduced && <span className="home-hero__cursor" aria-hidden="true">|</span>}
             </p>
+            <p className="visually-hidden">{texts[0]}</p>
 
             {/* CTAs */}
             <div className="home-hero__ctas">
@@ -127,23 +151,23 @@ function Home() {
         <div className="home-stats__inner section-container">
           <div className="home-stats__grid">
             <div className="home-stat__item">
-              <span className="home-stat__number">14+</span>
-              <span className="home-stat__label">Projects Shipped</span>
+              <span className="home-stat__number">1,500+</span>
+              <span className="home-stat__label">Users Reached</span>
             </div>
             <div className="home-stat__divider" aria-hidden="true" />
             <div className="home-stat__item">
-              <span className="home-stat__number">3+</span>
-              <span className="home-stat__label">Awards Won</span>
+              <span className="home-stat__number">13</span>
+              <span className="home-stat__label">Engineers Led</span>
             </div>
             <div className="home-stat__divider" aria-hidden="true" />
             <div className="home-stat__item">
-              <span className="home-stat__number">2</span>
-              <span className="home-stat__label">Fellowships</span>
+              <span className="home-stat__number">6</span>
+              <span className="home-stat__label">Awards &amp; Grants</span>
             </div>
             <div className="home-stat__divider" aria-hidden="true" />
             <div className="home-stat__item">
-              <span className="home-stat__number">∞</span>
-              <span className="home-stat__label">Curiosity</span>
+              <span className="home-stat__number">3</span>
+              <span className="home-stat__label">Years Shipping</span>
             </div>
           </div>
         </div>
@@ -164,9 +188,8 @@ function Home() {
           </h2>
           <p className="home-about__body">
             In a world where everyone has access to the same AI models, execution is the moat.
-            I build production-ready systems — voice agents that handle real calls, automation
-            that cuts clinical admin time, and recommendation engines that actually convert.
-            My focus: shipping things that work.
+            I build production-ready systems — voice agents that handle real calls and automation
+            that cuts clinical admin time. My focus: shipping things that work.
           </p>
           <div className="home-about__links">
             <TransitionLink to="/about" className="home-learn-more" id="home-learn-more-about">

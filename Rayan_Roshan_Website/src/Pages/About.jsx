@@ -4,9 +4,9 @@ import Sidebar from '@/Components/Sidebar/Sidebar.jsx';
 import { usePageMotion } from '@/context/PageTransitionContext';
 import '@/Pages_CSS/About.css';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import Copyright from '@/Components/Copyright_title/Copyright_title.jsx';
+import Copyright from '@/Components/CopyrightTitle/CopyrightTitle.jsx';
 import Image_slideshow from '@/Components/Image_carousel/Image_slideshow.jsx';
-import GridFour from '@/Components/Grid_Four/Grid_Four.jsx';
+import GridFour from '@/Components/GridFour/GridFour.jsx';
 import ExperienceTimeline from '@/Components/Experience_Timeline/ExperienceTimeline.jsx';
 
 /* ============================================================
@@ -65,8 +65,13 @@ function About() {
       : { type: 'spring', bounce: 0, duration: 0.5 },
   });
 
+  const sectionTitle = SECTIONS[index].slug === null ? 'About' : SECTIONS[index].label;
+
   return (
     <motion.div {...pageMotion}>
+      <title>{`${sectionTitle} | Rayan Roshan`}</title>
+      <meta name="description" content="Rayan Roshan — TMU Computer Science co-op student, VP of Technology at BYTE. Background, skills, and experience." />
+
       <Sidebar />
 
       {/* ── Section navigation ──────────────────────────────────
@@ -126,11 +131,11 @@ function About() {
                 <div className="about-facts__grid">
                   {[
                     { label: 'University', value: 'Toronto Metropolitan University' },
-                    { label: 'Program', value: 'B.Sc. Computer Science' },
-                    { label: 'Year', value: '2nd Year' },
-                    { label: 'Based in', value: 'Toronto, Ontario, Canada' },
-                    { label: 'Focus', value: 'AI Systems + Full-Stack' },
-                    { label: 'Available', value: 'Internships & Collabs' },
+                    { label: 'Program', value: 'B.Sc. Computer Science (Co-op)' },
+                    { label: 'Year', value: '3rd Year · Grad Apr 2029' },
+                    { label: 'Standing', value: "3.65 CGPA · Dean's List ×3" },
+                    { label: 'Based in', value: 'Toronto, Ontario' },
+                    { label: 'Focus', value: 'Full-Stack + Applied AI' },
                   ].map((fact) => (
                     <div key={fact.label} className="about-fact__item">
                       <span className="about-fact__label">{fact.label}</span>
@@ -183,7 +188,7 @@ function About() {
                   A timeline of work.
                 </h1>
                 <p className="about-hero__body">
-                  Roles and projects from 2024 to present — shipped fast, learned faster.
+                  Roles and projects from 2023 to present — shipped fast, learned faster.
                 </p>
               </div>
             </section>

@@ -3,8 +3,8 @@ import { motion, useReducedMotion } from 'framer-motion';
 import Sidebar from '@/Components/Sidebar/Sidebar.jsx';
 import { usePageMotion } from '@/context/PageTransitionContext';
 import '@/Pages_CSS/Contact.css';
-import ContactButtons from '@/Components/Contact_Buttons/contact_buttons.jsx';
-import Copyright from '@/Components/Copyright_title/Copyright_title.jsx';
+import ContactButtons from '@/Components/ContactButtons/ContactButtons.jsx';
+import Copyright from '@/Components/CopyrightTitle/CopyrightTitle.jsx';
 
 function Contacts() {
   const pageMotion = usePageMotion();
@@ -12,6 +12,9 @@ function Contacts() {
 
   return (
     <motion.div className="contact-page" {...pageMotion}>
+      <title>Contact | Rayan Roshan</title>
+      <meta name="description" content="Get in touch with Rayan Roshan — CS co-op student at TMU, VP of Technology at BYTE." />
+
       <Sidebar />
 
       {/* ── HERO — Dark ── */}
@@ -93,13 +96,15 @@ function Contacts() {
             transition={reduced ? { duration: 0.2 } : { type: 'spring', bounce: 0, duration: 0.5, delay: 0.1 }}
           >
             <div className="contact-quick-item">
-              <span className="contact-quick-label">Response Time</span>
-              <span className="contact-quick-value">Within 24 hours</span>
+              <span className="contact-quick-label">Email</span>
+              <span className="contact-quick-value">
+                <a href="mailto:2006rayanroshan@gmail.com" className="contact-quick-link">2006rayanroshan@gmail.com</a>
+              </span>
             </div>
             <div className="contact-quick-divider" aria-hidden="true" />
             <div className="contact-quick-item">
               <span className="contact-quick-label">Timezone</span>
-              <span className="contact-quick-value">EST — Toronto, ON</span>
+              <span className="contact-quick-value">Eastern Time (Toronto)</span>
             </div>
             <div className="contact-quick-divider" aria-hidden="true" />
             <div className="contact-quick-item">

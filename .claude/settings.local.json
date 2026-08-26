@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.tmutechweek.com)",
+      "Bash(gh api:*)",
+      "Bash(curl -s \"https://api.github.com/repos/BYTE-TMU/Tmu_Tech_Week_Website/contents\")",
+      "Bash(python3 -c \"import json,sys; data=json.load\\(sys.stdin\\); [print\\(f[''''name'''']\\) for f in data if isinstance\\(data, list\\)]\")",
+      "Bash(curl -s \"https://api.github.com/repos/BYTE-TMU/Tmu_Tech_Week_Website/contents/TTW%20Brand%20Assets\")",
+      "Bash(python3 -c \"import json,sys; data=json.load\\(sys.stdin\\); [print\\(f[''''name''''], f.get\\(''''download_url'''',''''''''\\)\\) for f in data if isinstance\\(data, list\\)]\")",
+      "Bash(curl -s \"https://api.github.com/repos/BYTE-TMU/Tmu_Tech_Week_Website/contents/TTW%20Brand%20Assets/Logos\")",
+      "Bash(curl -sL -o /Users/rayanroshan/Downloads/Rayan_Roshan_website/Rayan_Roshan_Website/src/assets/tmu_tech_week.png \"https://raw.githubusercontent.com/BYTE-TMU/Tmu_Tech_Week_Website/main/TTW%20Brand%20Assets/Logos/ttw_logo-black-bg_s25.png\")",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(python3 -c \"import json,sys; data=json.load\\(sys.stdin\\); [print\\(f[''''name''''], f.get\\(''''download_url'''',''''''''\\)\\) for f in data]\")",
+      "Bash(curl -s \"https://api.github.com/repos/BYTE-TMU/Tmu_Tech_Week_Website/contents/TTW%20Brand%20Assets/Exports\")",
+      "Bash(curl -s \"https://api.github.com/repos/BYTE-TMU/Tmu_Tech_Week_Website/contents/TTW_Tech_Week_Website\")",
+      "Bash(python3 -c \"import json,sys; data=json.load\\(sys.stdin\\); [print\\(f[''''name''''], f.get\\(''''type'''',''''''''\\)\\) for f in data]\")",
+      "Bash(curl -s https://api.github.com/repos/BYTE-TMU/Tmu_Tech_Week_Website/contents/src)",
+      "Bash(curl -s \"https://api.github.com/repos/BYTE-TMU/Tmu_Tech_Week_Website/contents/TTW%20Brand%20Assets/Graphics\")",
+      "Bash(curl -sL -o /tmp/ttw_logo_black.png \"https://raw.githubusercontent.com/BYTE-TMU/Tmu_Tech_Week_Website/main/TTW%20Brand%20Assets/Logos/ttw_logo-black_s25.png\")",
+      "Read(//tmp/**)",
+      "Bash(python3 -c \"from PIL import Image; img=Image.open\\(''/tmp/ttw_logo_black.png''\\); print\\(img.size\\)\")",
+      "Bash(curl -sL \"https://www.tmutechweek.com\")",
+      "Bash(curl -sL -o /Users/rayanroshan/Downloads/Rayan_Roshan_website/Rayan_Roshan_Website/src/assets/tmu_tech_week.png \"https://www.tmutechweek.com/og-image.png\")",
+      "Bash(python3 -c \"from PIL import Image; img=Image.open\\(''/Users/rayanroshan/Downloads/Rayan_Roshan_website/Rayan_Roshan_Website/src/assets/tmu_tech_week.png''\\); print\\(img.size\\)\")"
+    ]
+  }
+}
